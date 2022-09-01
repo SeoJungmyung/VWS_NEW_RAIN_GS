@@ -13,7 +13,7 @@ switch($mode) {
 case 'heroes':
 	$time = time();
 	$hour = "-9 hour";
-	$coms = "";
+	$coms = array();
 	//$hour = "15 hour";
 	//$hour = "-11 hour";
 
