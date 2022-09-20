@@ -35,18 +35,20 @@ case 'heroes':
 			while (($file = readdir($dh)) !== false){
 				$name = date("YmdHi", strtotime(date('YmdHi')." -550 minutes")); // -9시간 10분
 				$fileName = explode(".", $file);
-				if($name >  $fileName[0]){
-					if(strlen($fileName[0]) > 5) unlink($dir.$file); // 삭제
-				}else{
-					if($lastName == ""){
-						$lastName = $fileName[0];
+				if($fileName[0] != "sub_sat"){
+					if($name >  $fileName[0]){
+						if(strlen($fileName[0]) > 5) unlink($dir.$file); // 삭제
 					}else{
-						if($lastName < $fileName[0]) $lastName = $fileName[0];
+						if($lastName == ""){
+							$lastName = $fileName[0];
+						}else{
+							if($lastName < $fileName[0]) $lastName = $fileName[0];
+						}
+						// 최근 10분 파일
+						// echo "name:" . $name . "<br>"; 
+						// echo "filename:" . $fileName[0] . "<br>"; 
+						$imgFlag = false;
 					}
-					// 최근 10분 파일
-					// echo "name:" . $name . "<br>"; 
-					// echo "filename:" . $fileName[0] . "<br>"; 
-					$imgFlag = false;
 				}
 			}
 			closedir($dh);
@@ -93,6 +95,7 @@ case 'heroes':
 					$filename = $dir.$linkArray[count($linkArray)-1];
 					$result = $dvUtil->imgDownload($filename, $coms['heroes']);
 					if($result) $coms['heroes'] = $linkArray[count($linkArray)-1];
+					else $coms['heroes'] = "sub_sat.png";
 				}else{
 					//데이터 없을때 전일로 검색
 					//echo "aa";

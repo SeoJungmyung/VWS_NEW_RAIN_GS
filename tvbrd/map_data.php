@@ -21,7 +21,7 @@
         </span>
         <span class="tv_subcon heroes"   >
         <!-- <img class='raderloading' src='http://www.weather.go.kr/cgi-bin/rdr_new/nph-rdr_sfc_pty_img?&cmp=SFC&obs=HSR&qcd=PTY&acc=&aws=1&map=HR&color=C4&legend=1&size=640&zoom_level=0&zoom_x=0000000&zoom_y=0000000&ZRa=200&ZRb=1.6&rand=12160&gis=&rnexdisp=0&griddisp=0' width='100%' height='100%'> -->
-        <img id='heroesImg' class='raderloading' src='#' width='100%' height='100%'>
+        <img id='heroesImg' class='raderloading' src='./img/heroes/sub_sat.png' width='100%' height='100%'>
         </span>
       </div>
 </div>

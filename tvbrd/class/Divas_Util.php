@@ -563,16 +563,19 @@ function getDecodedString($str) {
 	// 위성, 레이더 이미지 다운로드 관련 함수
 	function imgDownload($filename, $imgLink){ 
         $img_info = @getimagesize($imgLink);
-        // var_dump($img_info);
+        // var_dump($filename);
         if($img_info == true){
             $fp = fopen($filename,'w');
+            $fp_sub = fopen("../img/heroes/sub_sat.png",'w');
             $ch = curl_init();
             curl_setopt ($ch, CURLOPT_URL, $imgLink);
             curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
             $contents = curl_exec($ch);
             curl_close($ch);
             fwrite($fp, $contents);
+            fwrite($fp_sub, $contents);
             fclose($fp);
+            fclose($fp_sub);
             return true;
         }else{
             return false;
