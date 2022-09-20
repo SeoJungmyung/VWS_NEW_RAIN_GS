@@ -560,5 +560,24 @@ function getDecodedString($str) {
 		}
 	}
 
+	// 위성, 레이더 이미지 다운로드 관련 함수
+	function imgDownload($filename, $imgLink){ 
+        $img_info = @getimagesize($imgLink);
+        // var_dump($img_info);
+        if($img_info == true){
+            $fp = fopen($filename,'w');
+            $ch = curl_init();
+            curl_setopt ($ch, CURLOPT_URL, $imgLink);
+            curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
+            $contents = curl_exec($ch);
+            curl_close($ch);
+            fwrite($fp, $contents);
+            fclose($fp);
+            return true;
+        }else{
+            return false;
+        }
+	}
+
 }//End Class
 ?>
