@@ -36,13 +36,13 @@ case 'heroes':
 				$name = date("YmdHi", strtotime(date('YmdHi')." -550 minutes")); // -9시간 10분
 				$fileName = explode(".", $file);
 				if($fileName[0] != "sub_sat"){
-					if($name >  $fileName[0]){
+					if(strtotime($name) >  strtotime($fileName[0])){
 						if(strlen($fileName[0]) > 5) unlink($dir.$file); // 삭제
 					}else{
 						if($lastName == ""){
 							$lastName = $fileName[0];
 						}else{
-							if($lastName < $fileName[0]) $lastName = $fileName[0];
+							if(strtotime($lastName) < strtotime($fileName[0])) $lastName = $fileName[0];
 						}
 						// 최근 10분 파일
 						// echo "name:" . $name . "<br>"; 
