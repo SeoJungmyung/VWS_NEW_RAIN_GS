@@ -764,9 +764,9 @@ require_once "./head.php";
 								<option value="http://" <?=(strstr($val['menu_url'], "http://") ? 'selected' : '')?>>http://</option>
 								<option value="https://" <?=(strstr($val['menu_url'], "https://") ? 'selected' : '')?>>https://</option>
 							</select> 
-							<input name="popup_url[]" type="text" size="60" maxlength="100" class="popup_url"
+							<input name="popup_url[]" type="text" size="60" maxlength="90" class="popup_url"
 									value="<?=str_replace($http_array,"",$val['menu_url'])?>" 
-									onblur="this.value = this.value.replace('http:\/\/','').replace('https:\/\/',''); inputCheck(this,'text','0~1000');"> 
+									onblur="this.value = this.value.replace('http:\/\/','').replace('https:\/\/',''); inputCheck(this,'text','0~90');"> 
 							</td>	
 							<!-- <td>
 								<select name="popup_level[]">
@@ -991,7 +991,7 @@ $(document).ready(function(){
 						result.push(true);
 					}
 					if($(this).find('.popup_url').val().length < 4 || $(this).find('.popup_url').val().length > 100){
-						swal("체크", "팝업메뉴 사이트 주소를 4~100자로 입력해 주세요.", "warning");
+						swal("체크", "팝업메뉴 사이트 주소를 4~90자로 입력해 주세요.", "warning");
 						$(this).find('.popup_url').focus();
 						result.push(false);
 					}else{

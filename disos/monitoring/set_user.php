@@ -780,6 +780,9 @@ crypt.setKey(key);
 			}else if( !$("#EMAIL1").val() || !$("#EMAIL3").val() ){
 				swal("체크", "이메일 주소를 입력해 주세요.", "warning"); 
 				$("#EMAIL1").focus(); return false;
+			}else if($('#EMAIL3').val().length < 4 || $('#EMAIL3').val().length > 20){
+				swal("체크", "이메일 도메인 주소를 4~20자로 입력해 주세요.", "warning");
+				$("#EMAIL3").focus(); return false;
 			}else if( !$("#MOBILE2").val() || !$("#MOBILE3").val() ){
 			    swal("체크", "휴대폰 번호를 입력해 주세요.", "warning"); 
 			    $("#MOBILE2").focus(); return false;
