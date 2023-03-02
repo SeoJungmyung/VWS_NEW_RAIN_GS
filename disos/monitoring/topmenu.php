@@ -80,13 +80,13 @@ require_once "../_info/_set_setting.php";
 
         <div class="top_btn">
             <button type="button" class="login_btn " id="btn_logout">
-                <span><img src="../img/top_icon_login.png"></span> <span>로그아웃 </span>
+                <span><img src="../img/top_icon_login.png" alt="로그아웃"></span> <span>로그아웃 </span>
             </button>
             <button type="button" class="login_btn " id="btn_login">
-                <span><img src="../img/top_icon_login.png"></span> <span>로그인 </span>
+                <span><img src="../img/top_icon_login.png" alt="로그인"></span> <span>로그인 </span>
             </button>
             <button type="button" class="layout_btn " id="btn_layout">
-                <span><img src="../img/top_icon_layout.png"></span> <span>레이아웃 설정 </span>
+                <span><img src="../img/top_icon_layout.png" alt="레이아웃 설정"></span> <span>레이아웃 설정 </span>
             </button>
         </div>
     </div>

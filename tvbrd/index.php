@@ -8,7 +8,7 @@ require_once "./head.php";
 	    <div id="top" style="display:none">
 	    	<div class="settings">
 	    		<a id="setToggle" href="#" onclick="setToggle('set'); return false">
-	    			<img src="img/settings.png">
+	    			<img src="img/settings.png" alt="설정">
 	    		</a>
 	    	</div>
 	        <div id="top_img"><img src="../disos/images/top/<?=$_SESSION['top_img']?>" alt="로고"/></div>
@@ -140,7 +140,7 @@ require_once "./head.php";
 	              <ul class="bB_1gry hb">
 	              <li class="w50 bR_1gry fL al_C p5 bg_lgr">
 	              	<label>
-	              	<img src="img/map_set_01.png">
+	              	<img src="img/map_set_01.png" alt="레이더/위성">
 	              	<input type="radio" name="sel_sub" value="1" style="display: none;" />
 	              	</label>
 	              </li>
@@ -177,7 +177,7 @@ require_once "./head.php";
 	      <ul id="con_ul" class="w100 h100">
 	        <li id="map_wrap" class="w75 h100 fL">
 	        	<div id="legend2"></div>
-	        	<div id="legend"><img src="img/mapcolor_bar.png" /><img id="img_tag" src="img/mapcolor_500.jpg" /></div>
+	        	<div id="legend"><img src="img/mapcolor_bar.png" alt="범례"/><img id="img_tag" src="img/mapcolor_500.jpg" /></div>
 		    	<!--레프트메뉴-->				
 			    <!--레프트메뉴 끝-->
 

@@ -436,7 +436,7 @@
 				$("#legend").show();
 				$("#legend2").show();
 				$(".menu_animal").hide();
-				var txt = '<img src="img/legend_label_title.png" />';
+				var txt = '<img src="img/legend_label_title.png" alt="시설구분"/>';
 	            if( arr_data['mix']['cnt'] != 0 && jQuery.inArray("mix", setval) != "-1" ){
 	            	txt += '<img id="img_tag" src="img/legend_label_09.jpg" />';
 	            }

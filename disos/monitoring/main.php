@@ -61,7 +61,7 @@ $(document).ready(function(){
 	}, 3600000 * 4); // 4시간마다 한번씩 리로드해서 메모리 초기화 하도록
 
 	// 공용 변수 관련 스크립트
-	if(common_top_img) $("#logo_area").html('<img src="../images/top/'+common_top_img+'" width="100%" height="100%">');
+	if(common_top_img) $("#logo_area").html('<img src="../images/top/'+common_top_img+'" alt="로고 이미지" width="100%" height="100%">');
 	if(common_top_title && common_top_text) $("#top_title").html(common_top_title +" "+ common_top_text);
 	// if(common_top_text) $("#top_text").html(common_top_text);
 	if(common_board_type == 0){

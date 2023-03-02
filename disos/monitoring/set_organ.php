@@ -17,7 +17,7 @@ require_once "./head.php";
 		<input type="hidden" name="OTT" value="<? echo $ott; ?>">
 
 		<div class="main_contitle">
-			<div class="tit"><img src="../images/board_icon_aws.png"> <span>기관정보 설정</span>
+			<div class="tit"><img src="../images/board_icon_aws.png" alt="기관정보 설정"> <span>기관정보 설정</span>
 			</div>  				
 		</div>
 		<div class="dp0">

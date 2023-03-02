@@ -22,7 +22,7 @@ require_once "./head.php";
 		<input type="hidden" id="mode" name="mode">
 		<input type="hidden" name="OTT" value="<? echo $ott; ?>">
 		<div class="main_contitle">
-					<div class="tit"><img src="../images/board_icon_aws.png"> <span>관리자 설정</span>
+					<div class="tit"><img src="../images/board_icon_aws.png" alt="관리자 설정"> <span>관리자 설정</span>
 					<span id="rtu_name" class="sub_tit mL20"></span>
 					</div>  				
 		</div>

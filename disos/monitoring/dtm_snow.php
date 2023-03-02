@@ -11,7 +11,7 @@ require_once "./head.php";
 	<div id="content">
 	
 	<div class="main_contitle">
-	<div class="tit"><img src="../images/board_icon_aws.png"> <span>적설자료</span></div>
+	<div class="tit"><img src="../images/board_icon_aws.png" alt="적설자료"> <span>적설자료</span></div>
 			<!-- <img src="../images/title_04_01.png" alt="강우 자료"> -->
 		</div>
 

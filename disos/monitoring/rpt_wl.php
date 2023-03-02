@@ -14,7 +14,7 @@ require_once "./head.php";
 			
 
 		<div class="main_contitle">
-					<div class="tit"><img src="../images/board_icon_aws.png"> <span>수위 보고서</span>
+					<div class="tit"><img src="../images/board_icon_aws.png" alt="수위 보고서"> <span>수위 보고서</span>
 					<span id="rtu_name" class="sub_tit mL20"></span>
 					<select id="area_code" name="area_code" class="fL mL10 mT3 print_hd">
 					<? 

@@ -40,9 +40,9 @@
 		    		
 					lay_html += ' <div class="main_contitle"> ';
 					lay_html += ' <div class="tit"> ';
-					lay_html += ' <img src="../images/board_icon_aws.png">  <span>강우현황</span> ';
+					lay_html += ' <img src="../images/board_icon_aws.png" alt="강우현황">  <span>강우현황</span> ';
 					lay_html += ' <span class="quick"> ';
-					lay_html += ' <img src="../images/quick_link.png" onclick="quick_button(1);"></span>';
+					lay_html += ' <img src="../images/quick_link.png" alt="상세보고서 바로가기" onclick="quick_button(1);"></span>';
 					lay_html += ' </div>';
 					lay_html += ' </div> <div class="right_bg2">';
 					lay_html += ' <table class="main_table m20"> ';
@@ -335,7 +335,7 @@
 		    		var lay_html = '';
 					lay_html += ' <div class="main_contitle"> ';
 					lay_html += ' <div class="tit"> ';
-					lay_html += ' <img src="../images/board_icon_aws.png">  <span>관제상황판</span> ';
+					lay_html += ' <img src="../images/board_icon_aws.png" alt="관제상황판">  <span>관제상황판</span> ';
 					lay_html += ' <span class="quick"> ';
 					// lay_html += ' <img src="../images/quick_link.png" onclick=";"></span>';
 					lay_html += ' </div>';
@@ -357,7 +357,7 @@
 		    		var lay_html = '';	
 					lay_html += ' <div class="main_contitle"> ';
 					lay_html += ' <div class="tit"> ';
-					lay_html += ' <img src="../images/board_icon_aws.png">  <span>관제상황판</span> ';
+					lay_html += ' <img src="../images/board_icon_aws.png" alt="관제상황판">  <span>관제상황판</span> ';
 					lay_html += ' <span class="quick"> ';
 					// lay_html += ' <img src="../images/quick_link.png" onclick=";"></span>';
 					lay_html += ' </div>';
@@ -391,9 +391,9 @@
 		    		
 					lay_html += ' <div class="main_contitle"> ';
 					lay_html += ' <div class="tit"> ';
-					lay_html += ' <img src="../images/board_icon_aws.png">  <span>수위현황</span> ';
+					lay_html += ' <img src="../images/board_icon_aws.png" alt="수위현황">  <span>수위현황</span> ';
 					lay_html += ' <span class="quick"> ';
-					lay_html += ' <img src="../images/quick_link.png" onclick="quick_button(2);"></span>';
+					lay_html += ' <img src="../images/quick_link.png" alt="상세보고서 바로가기" onclick="quick_button(2);"></span>';
 					lay_html += ' </div>';
 					lay_html += ' </div> <div class="right_bg2">';
 					lay_html += ' <table class="main_table m20 allv"> ';
@@ -507,9 +507,9 @@
 		    		
 					lay_html += ' <div class="main_contitle"> ';
 					lay_html += ' <div class="tit"> ';
-					lay_html += ' <img src="../images/board_icon_aws.png">  <span>AWS현황</span> ';
+					lay_html += ' <img src="../images/board_icon_aws.png" alt="AWS현황">  <span>AWS현황</span> ';
 					lay_html += ' <span class="quick"> ';
-					lay_html += ' <img src="../images/quick_link.png" onclick="quick_button(3);"></span>';
+					lay_html += ' <img src="../images/quick_link.png" alt="상세보고서 바로가기" onclick="quick_button(3);"></span>';
 					lay_html += ' </div>';
 					lay_html += ' </div> <div class="right_bg2">';
 					lay_html += ' <table class="main_table_1 m20"> ';
@@ -704,9 +704,9 @@
 		    		
 					lay_html += ' <div class="main_contitle"> ';
 					lay_html += ' <div class="tit"> ';
-					lay_html += ' <img src="../images/board_icon_aws.png">  <span>적설현황</span> ';
+					lay_html += ' <img src="../images/board_icon_aws.png" alt="적설현황">  <span>적설현황</span> ';
 					lay_html += ' <span class="quick"> ';
-					lay_html += ' <img src="../images/quick_link.png" onclick="quick_button(4);"></span>';
+					lay_html += ' <img src="../images/quick_link.png" alt="상세보고서 바로가기" onclick="quick_button(4);"></span>';
 					lay_html += ' </div>';
 					lay_html += ' </div> <div class="right_bg2">';
 					lay_html += ' <table class="main_table m20"> ';
@@ -765,7 +765,7 @@
 					lay_html += ' </table>';
 					lay_html += ' <div class="guide_txt" style="padding: 0 20px; height:40px;"> ';
 					lay_html += '<ul class="intro" style="">';
-					lay_html += '<li style="margin:1px 3px 0 0;"><img style="" src="../images/snow_info.png"/></li> ';
+					lay_html += '<li style="margin:1px 3px 0 0;"><img style="" src="../images/snow_info.png"/ alt="적설명칭설명"></li> ';
 					lay_html += '<li class="font12 mT3" style="color:#6e6e6e;"> ';
 					lay_html += '<span class="bold">전일최심적설</span> : 전일 내린 적설 중 가장 높은 값 / ';
 					lay_html += '<span class="bold">전일적설</span> : 전일 마지막 수집된 적설 / ';

@@ -10,7 +10,7 @@ require_once "./head.php";
 	<div class="product_state"><div id="content">
 
 	<div class="main_contitle">
-	<div class="tit"><img src="../images/board_icon_aws.png"> <span>AWS자료</span></div>
+	<div class="tit"><img src="../images/board_icon_aws.png" alt="AWS자료"> <span>AWS자료</span></div>
 			<!-- <img src="../images/title_04_01.png" alt="강우 자료"> -->
 		</div>
 
