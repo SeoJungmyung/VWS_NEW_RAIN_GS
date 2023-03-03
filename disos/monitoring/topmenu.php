@@ -98,8 +98,8 @@ require_once "../_info/_set_setting.php";
              foreach($data_url as $key => $val){
                if($val['menu_use'] == "1"){
               ?>
-              <li><a href="<?=$val['menu_url']?>" data-num="<?=$val['menu_idx']?>" target='_blank'><span><?=$val['menu_name']?></span></a><span><img src="../img/quick_btn_icon.png"></span></li>
-              <? 
+              <li><a href="<?=$val['menu_url']?>" data-num="<?=$val['menu_idx']?>" target='_blank'><span><?=$val['menu_name']?></span></a><span><img src="../img/quick_btn_icon.png" alt="바로가기 아이콘"></span></li>
+              <?
               }
           }
         }

@@ -195,7 +195,7 @@ require_once "./head.php";
 								value="<? echo $data_organ[0]['ORGAN_NAME'] ?>" readonly>
 						</td>
 						<td class="bg_lb w10 bold al_C">지역 정렬 번호</td>
-						<td><input id="SORT_FLAG" name="SORT_FLAG" type="text" class="f333_12" size="6" value="0" oninput="inputCheck(this,'onlyNumber','1~9999')"></td>
+						<td><input id="SORT_FLAG" name="SORT_FLAG" type="text" class="f333_12" size="6" value="0" oninput="inputCheck(this,'onlyNumber','0~9999')"></td>
 						<td class="bg_lb w10 bold al_C bT_1gry">회선 / 모델</td>
 						<td class="bT_1gry" colspan="3">
 							<select id="LINE_NO" name="LINE_NO" size="1" class="f333_12">

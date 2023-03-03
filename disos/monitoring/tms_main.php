@@ -72,22 +72,22 @@ require_once "./head.php";
 					<li class="alarm_gry bg_blue02">화면구성 선택</li>
 					<li id="lay_sel">
 						<div id="lay_1_sel" class="main_popup_sel">
-							<img src="../images/main_layout_01.png"/>
+							<img src="../images/main_layout_01.png" alt="레이아웃 구성 한개"/>
 						</div>
 						<div id="lay_2_sel" class="main_popup_sel">
-							<img src="../images/main_layout_02.png"/>
+							<img src="../images/main_layout_02.png" alt="레이아웃 구성 두개 : 좌, 우"/>
 						</div>
 						<div id="lay_3_sel" class="main_popup_sel">
-							<img src="../images/main_layout_03.png"/>
+							<img src="../images/main_layout_03.png" alt="레이아웃 구성 두개 : 상, 하"/>
 						</div>
 						<div id="lay_4_sel" class="main_popup_sel">
-							<img src="../images/main_layout_04.png"/>
+							<img src="../images/main_layout_04.png" alt="레이아웃 구성 세개 : 상단, 좌, 우"/>
 						</div>
 						<div id="lay_5_sel" class="main_popup_sel">
-							<img src="../images/main_layout_05.png"/>
+							<img src="../images/main_layout_05.png" alt="레이아웃 구성 세개 : 좌, 우, 하단"/>
 						</div>
 						<div id="lay_6_sel" class="main_popup_sel mR0">
-							<img src="../images/main_layout_06.png"/>
+							<img src="../images/main_layout_06.png" alt="레이아웃 구성 네개 : 상단, 좌, 우, 하단"/>
 						</div>
 					</li>
 				</ul>
@@ -105,10 +105,10 @@ require_once "./head.php";
 										<select name="ival[]" class="mL0 fL">
 										</select>
 										<div class="fL mL5">
-											<i style="cursor: pointer;"><img src="../images/plus.gif" /></i>
+											<i style="cursor: pointer;"><img src="../images/plus.gif" alt="플러스 버튼"/></i>
 										</div>
 										<div class="fL mL5">
-											<d style="cursor: pointer;"><img src="../images/minus.gif" /></d>
+											<d style="cursor: pointer;"><img src="../images/minus.gif" alt="마이너스 버튼"/></d>
 										</div>
 									</div>
 								</li>
@@ -121,10 +121,10 @@ require_once "./head.php";
 										<select name="ival[]" class="mL0 fL">
 										</select>
 										<div class="fL mL5">
-											<i style="cursor: pointer;"><img src="../images/plus.gif" /></i>
+											<i style="cursor: pointer;"><img src="../images/plus.gif" alt="플러스 버튼"/></i>
 										</div>
 										<div class="fL mL5">
-											<d style="cursor: pointer;"><img src="../images/minus.gif" /></d>
+											<d style="cursor: pointer;"><img src="../images/minus.gif" alt="마이너스 버튼"/></d>
 										</div>
 									</div>
 								</li>
@@ -133,10 +133,10 @@ require_once "./head.php";
 										<select name="ival[]" class="mL0 fL">
 										</select>
 										<div class="fL mL5">
-											<i style="cursor: pointer;"><img src="../images/plus.gif" /></i>
+											<i style="cursor: pointer;"><img src="../images/plus.gif" alt="플러스 버튼"/></i>
 										</div>
 										<div class="fL mL5">
-											<d style="cursor: pointer;"><img src="../images/minus.gif" /></d>
+											<d style="cursor: pointer;"><img src="../images/minus.gif" alt="마이너스 버튼"/></d>
 										</div>
 									</div>
 								</li>
@@ -149,10 +149,10 @@ require_once "./head.php";
 										<select name="ival[]" class="mL0 fL">
 										</select>
 										<div class="fL mL5">
-											<i style="cursor: pointer;"><img src="../images/plus.gif" /></i>
+											<i style="cursor: pointer;"><img src="../images/plus.gif" alt="플러스 버튼"/></i>
 										</div>
 										<div class="fL mL5">
-											<d style="cursor: pointer;"><img src="../images/minus.gif" /></d>
+											<d style="cursor: pointer;"><img src="../images/minus.gif" alt="마이너스 버튼"/></d>
 										</div>
 									</div>
 								</li>
@@ -161,10 +161,10 @@ require_once "./head.php";
 										<select name="ival[]" class="mL0 fL">
 										</select>
 										<div class="fL mL5">
-											<i style="cursor: pointer;"><img src="../images/plus.gif" /></i>
+											<i style="cursor: pointer;"><img src="../images/plus.gif" alt="플러스 버튼"/></i>
 										</div>
 										<div class="fL mL5">
-											<d style="cursor: pointer;"><img src="../images/minus.gif" /></d>
+											<d style="cursor: pointer;"><img src="../images/minus.gif" alt="마이너스 버튼"/></d>
 										</div>
 									</div>
 								</li>
@@ -177,10 +177,10 @@ require_once "./head.php";
 										<select name="ival[]" class="mL0 fL">
 										</select>
 										<div class="fL mL5">
-											<i style="cursor: pointer;"><img src="../images/plus.gif" /></i>
+											<i style="cursor: pointer;"><img src="../images/plus.gif" alt="플러스 버튼"/></i>
 										</div>
 										<div class="fL mL5">
-											<d style="cursor: pointer;"><img src="../images/minus.gif" /></d>
+											<d style="cursor: pointer;"><img src="../images/minus.gif" alt="마이너스 버튼"/></d>
 										</div>
 									</div>
 								</li>
@@ -189,10 +189,10 @@ require_once "./head.php";
 										<select name="ival[]" class="mL0 fL">
 										</select>
 										<div class="fL mL5">
-											<i style="cursor: pointer;"><img src="../images/plus.gif" /></i>
+											<i style="cursor: pointer;"><img src="../images/plus.gif" alt="플러스 버튼"/></i>
 										</div>
 										<div class="fL mL5">
-											<d style="cursor: pointer;"><img src="../images/minus.gif" /></d>
+											<d style="cursor: pointer;"><img src="../images/minus.gif" alt="마이너스 버튼"/></d>
 										</div>
 									</div>
 								</li>
@@ -201,10 +201,10 @@ require_once "./head.php";
 										<select name="ival[]" class="mL0 fL">
 										</select>
 										<div class="fL mL5">
-											<i style="cursor: pointer;"><img src="../images/plus.gif" /></i>
+											<i style="cursor: pointer;"><img src="../images/plus.gif" alt="플러스 버튼"/></i>
 										</div>
 										<div class="fL mL5">
-											<d style="cursor: pointer;"><img src="../images/minus.gif" /></d>
+											<d style="cursor: pointer;"><img src="../images/minus.gif" alt="마이너스 버튼"/></d>
 										</div>
 									</div>
 								</li>
@@ -217,10 +217,10 @@ require_once "./head.php";
 										<select name="ival[]" class="mL0 fL">
 										</select>
 										<div class="fL mL5">
-											<i style="cursor: pointer;"><img src="../images/plus.gif" /></i>
+											<i style="cursor: pointer;"><img src="../images/plus.gif" alt="플러스 버튼"/></i>
 										</div>
 										<div class="fL mL5">
-											<d style="cursor: pointer;"><img src="../images/minus.gif" /></d>
+											<d style="cursor: pointer;"><img src="../images/minus.gif" alt="마이너스 버튼"/></d>
 										</div>
 									</div>
 								</li>
@@ -229,10 +229,10 @@ require_once "./head.php";
 										<select name="ival[]" class="mL0 fL">
 										</select>
 										<div class="fL mL5">
-											<i style="cursor: pointer;"><img src="../images/plus.gif" /></i>
+											<i style="cursor: pointer;"><img src="../images/plus.gif" alt="플러스 버튼"/></i>
 										</div>
 										<div class="fL mL5">
-											<d style="cursor: pointer;"><img src="../images/minus.gif" /></d>
+											<d style="cursor: pointer;"><img src="../images/minus.gif" alt="마이너스 버튼"/></d>
 										</div>
 									</div>
 								</li>
@@ -241,10 +241,10 @@ require_once "./head.php";
 										<select name="ival[]" class="mL0 fL">
 										</select>
 										<div class="fL mL5">
-											<i style="cursor: pointer;"><img src="../images/plus.gif" /></i>
+											<i style="cursor: pointer;"><img src="../images/plus.gif" alt="플러스 버튼"/></i>
 										</div>
 										<div class="fL mL5">
-											<d style="cursor: pointer;"><img src="../images/minus.gif" /></d>
+											<d style="cursor: pointer;"><img src="../images/minus.gif" alt="마이너스 버튼"/></d>
 										</div>
 									</div>
 								</li>
@@ -257,10 +257,10 @@ require_once "./head.php";
 										<select name="ival[]" class="mL0 fL">
 										</select>
 										<div class="fL mL5">
-											<i style="cursor: pointer;"><img src="../images/plus.gif" /></i>
+											<i style="cursor: pointer;"><img src="../images/plus.gif" alt="플러스 버튼"/></i>
 										</div>
 										<div class="fL mL5">
-											<d style="cursor: pointer;"><img src="../images/minus.gif" /></d>
+											<d style="cursor: pointer;"><img src="../images/minus.gif" alt="마이너스 버튼"/></d>
 										</div>
 									</div>
 								</li>
@@ -269,10 +269,10 @@ require_once "./head.php";
 										<select name="ival[]" class="mL0 fL">
 										</select>
 										<div class="fL mL5">
-											<i style="cursor: pointer;"><img src="../images/plus.gif" /></i>
+											<i style="cursor: pointer;"><img src="../images/plus.gif" alt="플러스 버튼"/></i>
 										</div>
 										<div class="fL mL5">
-											<d style="cursor: pointer;"><img src="../images/minus.gif" /></d>
+											<d style="cursor: pointer;"><img src="../images/minus.gif" alt="마이너스 버튼"/></d>
 										</div>
 									</div>
 								</li>
@@ -281,10 +281,10 @@ require_once "./head.php";
 										<select name="ival[]" class="mL0 fL">
 										</select>
 										<div class="fL mL5">
-											<i style="cursor: pointer;"><img src="../images/plus.gif" /></i>
+											<i style="cursor: pointer;"><img src="../images/plus.gif" alt="플러스 버튼"/></i>
 										</div>
 										<div class="fL mL5">
-											<d style="cursor: pointer;"><img src="../images/minus.gif" /></d>
+											<d style="cursor: pointer;"><img src="../images/minus.gif" alt="마이너스 버튼"/></d>
 										</div>
 									</div>
 								</li>
@@ -293,10 +293,10 @@ require_once "./head.php";
 										<select name="ival[]" class="mL0 fL">
 										</select>
 										<div class="fL mL5">
-											<i style="cursor: pointer;"><img src="../images/plus.gif" /></i>
+											<i style="cursor: pointer;"><img src="../images/plus.gif" alt="플러스 버튼"/></i>
 										</div>
 										<div class="fL mL5">
-											<d style="cursor: pointer;"><img src="../images/minus.gif" /></d>
+											<d style="cursor: pointer;"><img src="../images/minus.gif" alt="마이너스 버튼"/></d>
 										</div>
 									</div>
 								</li>
@@ -380,10 +380,10 @@ $(document).ready(function(){
 								lay_html += lay_option;
 								lay_html += ' 	</select> ';
 								lay_html += ' 	<div class="fL mL5"> ';
-								lay_html += ' 	<i style="cursor: pointer;"><img src="../images/plus.gif" /></i> ';
+								lay_html += ' 	<i style="cursor: pointer;"><img src="../images/plus.gif" alt="플러스 버튼"/></i> ';
 								lay_html += ' 	</div> ';
 								lay_html += ' 	<div class="fL mL5"> ';
-								lay_html += ' 	<d style="cursor: pointer;"><img src="../images/minus.gif" /></d> ';
+								lay_html += ' 	<d style="cursor: pointer;"><img src="../images/minus.gif" alt="마이너스 버튼"/></d> ';
 								lay_html += ' 	</div> ';
 								lay_html += ' </div> ';
 								$("#lay_"+lay_case+" li").eq(v.lay_area - 1).append(lay_html);
@@ -599,10 +599,10 @@ $(document).ready(function(){
 			lay_html += lay_option;
 			lay_html += ' 	</select> ';
 			lay_html += ' 	<div class="fL mL5"> ';
-			lay_html += ' 	<i style="cursor: pointer;"><img src="../images/plus.gif" /></i> ';
+			lay_html += ' 	<i style="cursor: pointer;"><img src="../images/plus.gif" alt="플러스 버튼"/></i> ';
 			lay_html += ' 	</div> ';
 			lay_html += ' 	<div class="fL mL5"> ';
-			lay_html += ' 	<d style="cursor: pointer;"><img src="../images/minus.gif" /></d> ';
+			lay_html += ' 	<d style="cursor: pointer;"><img src="../images/minus.gif" alt="마이너스 버튼"/></d> ';
 			lay_html += ' 	</div> ';
 			lay_html += ' </div> ';
 			$(e.target).closest("li").append(lay_html);
