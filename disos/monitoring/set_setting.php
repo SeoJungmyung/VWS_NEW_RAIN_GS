@@ -297,7 +297,7 @@ require_once "./head.php";
 						<tr class="hh">
 							<td>상단바 로고</td>
 							<td colspan="6">
-								<input type="text" id="top_img" name="top_img" class="w95 f333_12 pointer" value="<?=top_img?>">
+								<input type="text" id="top_img" name="top_img" class="w95 f333_12 pointer" value="<?=top_img?>" placeholder="5mb 이하, jpeg/png만 가능">
 								<input type="file" id="sel_top_img" name="sel_top_img" style="display: none;">
 								<input type="text" id="top_img_check" name="top_img_check" value="0" style="display: none;">
 								<input type="text" id="mode" name="mode" value="set" style="display: none;">
@@ -306,7 +306,7 @@ require_once "./head.php";
 						<tr class="hh">
 							<td>상단바 제목</td>
 							<td colspan="6">
-								<input type="text" id="top_title" name="top_title" class="w95 f333_12" value="<?=top_title?>" maxlength="12">
+								<input type="text" id="top_title" name="top_title" class="w95 f333_12" value="<?=top_title?>" maxlength="12" placeholder="최대 12자">
 							</td>
 						</tr>
 						<!-- <tr class="hh">
