@@ -1176,7 +1176,7 @@ div#top_img img{padding: 5px;} */
 	.sel_right_n{float:right;text-align:right;}	
 	
 	.sel_left img, .sel_right img{position:relative; top:6px;}
-	.f333_12{font-size:12px;color:#333;text-decoration:none;font-weight:100;background-color:#fff;border:1px solid #aaa;margin:0 3px;padding:2px;height: 26px; text-align: center;}
+	.f333_12{font-size:12px;color:#333;text-decoration:none;font-weight:100;background-color:#fff;border:1px solid #aaa;margin:0 3px;padding:2px;height: 26px; text-align: center; }
 	.f333_12_exf{float:right; margin-right:0;width:50px; font-size:12px; color:#333; text-decoration:none; font-weight:100; background-color:#fff; border:1px solid #aaa; padding:2px;}
 	.f333_12_bm{font-size:12px;color:#333;text-decoration:none;font-weight:100;background-color:#fff;border:1px solid #aaa;margin:5px 3px;padding:2px;height: 26px;}	
 	.fbb_12{font-size:12px; color:#2466e0; text-decoration:none; font-weight:700;}
@@ -1560,6 +1560,8 @@ filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/tvbrd_
 .ulwrap_nh tr:hover{background:#f4f6f9; cursor:pointer;}
 
 /* .spc{cursor:pointer; font-weight: bold;} */
+.spc1{font-size:11px; margin-right: -157px;} 
+.spc2{font-size:11px; margin-right: -84px;} 
 #popSpc{ margin-left: 232px; margin-top: -16px; z-index: 300; background-color: #fff;}
 
 /*문자전광판 메세지 전송 우측 테이블 */

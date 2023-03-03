@@ -118,7 +118,8 @@ require_once "./head.php";
 					<tr>
 						<td class="bg_lb w10 bold al_C bL0">관리자 ID</td>
 						<td colspan="3">
-							<input id="USER_ID" name="USER_ID" type="text" class="f333_12" size="18" maxlength="15" placeholder="영문/숫자 포함 5~15자">
+							<input id="USER_ID" name="USER_ID" type="text" class="f333_12" size="18" maxlength="15">
+							<span> <i class="fa fa-exclamation-circle col_org mR_5"></i><span class="spc">영문/숫자 포함 5~15자</span>
 							<button type="button" id="btn_check"  class="btn_bbr w100p">중복체크</button>
 						</td>
 					</tr>
@@ -127,7 +128,7 @@ require_once "./head.php";
 						<td colspan="3">
 							<input id="USER_PWD_LEN" name="USER_PWD_LEN" type="password" class="f333_12" size="18" maxlength="20" onclick="$(this).val('')">
 							<input id="USER_PWD" name="USER_PWD" type="password" style="display:none" maxlength="20">
-							<span> <i class="fa fa-exclamation-circle col_org mR_5"></i>영어, 숫자, <span class="spc">특수문자(!@#$%^&*)</span>를 적어도 하나씩 사용해서 8자리 이상, 20자리 이하</spna>
+							<span> <i class="fa fa-exclamation-circle col_org mR_5"></i>영어, 숫자, <span class="spc">특수문자(!@#$%^&*)</span>를 적어도 하나씩 사용해서 8자리 이상, 20자리 이하</span>
 							<!-- <div id="popSpc">! @ # $ % ^ & *</div> -->
 						</td>
 					</tr>
