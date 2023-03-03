@@ -439,27 +439,105 @@ $(document).ready(function(){
 	function form_check(kind){
 		if(kind == "I"){
 			if( !$("#ORGAN_NAME").val() ){
-			    swal("체크", "기관명을 입력해 주세요.", "warning");
-			    $("#ORGAN_NAME").focus(); return false;	
+				swal({
+						title: '체크',
+						text: '기관명을 입력해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#ORGAN_NAME").focus(); 
+						});
+				return false;
+			    // swal("체크", "기관명을 입력해 주세요.", "warning");
+			    // $("#ORGAN_NAME").focus(); return false;	
 			}else if( !$("#DEPARTMENT").val() ){
-			    swal("체크", "부서명을 입력해 주세요.", "warning");
-			    $("#DEPARTMENT").focus(); return false;	
+				swal({
+						title: '체크',
+						text: '부서명을 입력해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#DEPARTMENT").focus(); 
+						});
+				return false;
+			    // swal("체크", "부서명을 입력해 주세요.", "warning");
+			    // $("#DEPARTMENT").focus(); return false;	
 			}else if( !$("#AREA_CODE").val() ){
-			    swal("체크", "행정코드를 입력해 주세요.", "warning");
-			    $("#AREA_CODE").focus(); return false;	
+				swal({
+						title: '체크',
+						text: '행정코드를 입력해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#AREA_CODE").focus(); 
+						});
+				return false;
+			    // swal("체크", "행정코드를 입력해 주세요.", "warning");
+			    // $("#AREA_CODE").focus(); return false;	
 			}
 		}else if(kind == "U"){
 			if( !$("#ORGAN_ID").val() ){
 			    swal("체크", "기관을 선택해 주세요.", "warning"); return false;
 			}else if( !$("#ORGAN_NAME").val() ){
-			    swal("체크", "기관명을 입력해 주세요.", "warning");
-			    $("#ORGAN_NAME").focus(); return false;	
+				swal({
+						title: '체크',
+						text: '기관명을 입력해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#ORGAN_NAME").focus(); 
+						});
+				return false;
+			    // swal("체크", "기관명을 입력해 주세요.", "warning");
+			    // $("#ORGAN_NAME").focus(); return false;	
 			}else if( !$("#DEPARTMENT").val() ){
-			    swal("체크", "부서명을 입력해 주세요.", "warning");
-			    $("#DEPARTMENT").focus(); return false;	
+				swal({
+						title: '체크',
+						text: '부서명을 입력해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#DEPARTMENT").focus(); 
+						});
+				return false;
+			    // swal("체크", "부서명을 입력해 주세요.", "warning");
+			    // $("#DEPARTMENT").focus(); return false;	
 			}else if( !$("#AREA_CODE").val() ){
-			    swal("체크", "행정코드를 입력해 주세요.", "warning");
-			    $("#AREA_CODE").focus(); return false;	
+				swal({
+						title: '체크',
+						text: '행정코드를 입력해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#AREA_CODE").focus(); 
+						});
+				return false;
+			    // swal("체크", "행정코드를 입력해 주세요.", "warning");
+			    // $("#AREA_CODE").focus(); return false;	
 			}
 		}else if(kind == "D"){
 			if( !$("#ORGAN_ID").val() ){
