@@ -118,7 +118,7 @@ require_once "./head.php";
 					<tr>
 						<td class="bg_lb w10 bold al_C bL0">관리자 ID</td>
 						<td colspan="3">
-							<input id="USER_ID" name="USER_ID" type="text" class="f333_12" size="18" maxlength="15">
+							<input id="USER_ID" name="USER_ID" type="text" class="f333_12" size="18" maxlength="15" placeholder="영문/숫자 포함 5~15자">
 							<button type="button" id="btn_check"  class="btn_bbr w100p">중복체크</button>
 						</td>
 					</tr>
@@ -780,9 +780,6 @@ crypt.setKey(key);
 			}else if( !$("#EMAIL1").val() || !$("#EMAIL3").val() ){
 				swal("체크", "이메일 주소를 입력해 주세요.", "warning"); 
 				$("#EMAIL1").focus(); return false;
-			}else if($('#EMAIL3').val().length < 4 || $('#EMAIL3').val().length > 20){
-				swal("체크", "이메일 도메인 주소를 4~20자로 입력해 주세요.", "warning");
-				$("#EMAIL3").focus(); return false;
 			}else if( !$("#MOBILE2").val() || !$("#MOBILE3").val() ){
 			    swal("체크", "휴대폰 번호를 입력해 주세요.", "warning"); 
 			    $("#MOBILE2").focus(); return false;
