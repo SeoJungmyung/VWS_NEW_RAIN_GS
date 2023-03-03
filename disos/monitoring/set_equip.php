@@ -1423,28 +1423,106 @@ $(document).ready(function(){
 			//     swal("체크", "장비 ID는 1~9999까지 숫자만 사용해 주세요.", "warning"); 
 			    $("#RTU_ID").focus(); return false;	
 			}else if( id_arr.indexOf($("#RTU_ID").val()) > -1 ){
-			    swal("체크", "이미 사용중인 장비 ID 입니다.", "warning");
-			    $("#RTU_ID").focus(); return false;	
+				swal({
+						title: '체크',
+						text: '이미 사용중인 장비 ID 입니다.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#RTU_ID").focus(); 
+						});
+				return false;
+			    // swal("체크", "이미 사용중인 장비 ID 입니다.", "warning");
+			    // $("#RTU_ID").focus();
 			}else if( !$("#SIGNAL_ID").val() ){
-			    swal("체크", "통신 ID를 입력해 주세요.", "warning");
-			    $("#SIGNAL_ID").focus(); return false;	
+				swal({
+						title: '체크',
+						text: '통신 ID를 입력해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#SIGNAL_ID").focus(); 
+						});
+				return false;	
+			    // swal("체크", "통신 ID를 입력해 주세요.", "warning");
+			    // $("#SIGNAL_ID").focus(); 
 			}else if( !num_check.test( $("#SIGNAL_ID").val() ) ){
 			    swal("체크", "통신 ID는 숫자만 사용해 주세요.", "warning"); 
 			    $("#SIGNAL_ID").focus(); return false;	
 			}else if( cid_arr.indexOf($("#SIGNAL_ID").val()) > -1 ){
-			    swal("체크", "이미 사용중인 통신 ID 입니다.", "warning");
-			    $("#SIGNAL_ID").focus(); return false;	
+				swal({
+						title: '체크',
+						text: '이미 사용중인 통신 ID 입니다.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#SIGNAL_ID").focus(); 
+						});
+				return false;
+			    // swal("체크", "이미 사용중인 통신 ID 입니다.", "warning");
+			    // $("#SIGNAL_ID").focus();
 			}else if( !$("#AREA_CODE").val() ){
-			    swal("체크", "행정 코드를 입력해 주세요.", "warning");
-			    $("#AREA_CODE").focus(); return false;	
+				swal({
+						title: '체크',
+						text: '행정 코드를 입력해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#AREA_CODE").focus(); 
+						});
+				return false;
+			    // swal("체크", "행정 코드를 입력해 주세요.", "warning");
+			    // $("#AREA_CODE").focus(); 	
 			}else if( !area_check.test( $("#AREA_CODE").val() ) ){
 			    swal("체크", "행정 코드는  숫자만 사용하여 10자리로 입력해 주세요.", "warning"); 
 			    $("#AREA_CODE").focus(); return false;	
 			}else if( code_arr.indexOf($("#AREA_CODE").val()) > -1 ){
-			    swal("체크", "이미 사용중인 행정 코드 입니다.", "warning");
-			    $("#AREA_CODE").focus(); return false;	
+				swal({
+						title: '체크',
+						text: '이미 사용중인 행정 코드 입니다.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#AREA_CODE").focus(); 
+						});
+				return false;
+			    // swal("체크", "이미 사용중인 행정 코드 입니다.", "warning");
+			    // $("#AREA_CODE").focus(); 
 			}else if( $("#dup_check").val() == "0" ){
-			    swal("체크", "행정 코드 중복체크를 진행해 주세요.", "warning"); return false;
+				swal({
+						title: '체크',
+						text: '행정 코드 중복체크를 진행해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#AREA_CODE").focus(); 
+						});
+				return false;
+			    // swal("체크", "행정 코드 중복체크를 진행해 주세요.", "warning"); 
 			// }else if( $("#CD_DIST_OBSV").val() != "" ){
 			// 	if( $("#dup_check2").val() == "0" ){
 			//     	swal("체크", "계측기 번호 중복체크를 진행해 주세요.", "warning"); return false;
@@ -1452,17 +1530,66 @@ $(document).ready(function(){
 			// 		return true;
 			// 	}
 			}else if( !$("#RTU_NAME").val() ){
-			    swal("체크", "장비명을 입력해 주세요.", "warning");
-			    $("#RTU_NAME").focus(); return false;	
+				swal({
+						title: '체크',
+						text: '장비명을 입력해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#RTU_NAME").focus(); 
+						});
+				return false;
+			    // swal("체크", "장비명을 입력해 주세요.", "warning");
+			    // $("#RTU_NAME").focus(); 	
 			}else if( !$("#LINE_NO").val() ){
-			    swal("체크", "회선을 선택해 주세요.", "warning");
-			    // $("#LINE_NO").focus(); 
+				swal({
+						title: '체크',
+						text: '회선을 선택해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#LINE_NO").focus(); 
+						});
+				// swal("체크", "회선을 선택해 주세요.", "warning"); 
 				return false;	
 			}else if( !$("#MODEL_NO").val() ){
-			    swal("체크", "모델을 선택해 주세요.", "warning"); 
-			    $("#MODEL_NO").focus(); return false;	
+				swal({
+						title: '체크',
+						text: '모델을 선택해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#MODEL_NO").focus(); 
+						});
+				return false;
+				// swal("체크", "모델을 선택해 주세요.", "warning"); 
+				// $("#MODEL_NO").focus(); 
 			}else if( !$("#RTU_TYPE").val() ){
-			    swal("체크", "장비 구분을 선택해 주세요.", "warning"); 
+				swal({
+						title: '체크',
+						text: '장비 구분을 선택해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#RTU_TYPE").focus(); 
+						});
+			    // swal("체크", "장비 구분을 선택해 주세요.", "warning"); 
 			    // $("#RTU_TYPE").focus(); 
 				return false;	
 			// }else if( $("#VHF_USE").val() == "1" ){
