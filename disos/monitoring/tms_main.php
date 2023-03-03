@@ -473,7 +473,7 @@ $(document).ready(function(){
 								snow_table(1, lay_id);
 								ajax_var += "snow_t,";
 							}else if(v.lay_ival == 5){ // 지도현황
-								if(lay_case == 1 || lay_case == 2){
+								if(lay_case == 1 || lay_case == 2 || lay_case == 5){
 									map_table_full(1, lay_id);
 								}else{
 									map_table(1, lay_id);

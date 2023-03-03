@@ -9,7 +9,7 @@ require_once "./head.php";
 	<!--본문내용섹션-->
 	<div class="product_state">
 	<div id="content">
-	
+
 	<div class="main_contitle">
 	<div class="tit"><img src="../images/board_icon_aws.png" alt="적설자료"> <span>적설자료</span></div>
 			<!-- <img src="../images/title_04_01.png" alt="강우 자료"> -->
@@ -65,14 +65,14 @@ require_once "./head.php";
 						</tr>
 					</thead>
 					<tbody>
-					<? 
+					<?
 					if($data_list){
 						$rowCnt = dtm_cnt;
 						$columCnt = 26;
 						$rowNum = 0;
-						foreach($data_list as $key => $val){ 
+						foreach($data_list as $key => $val){
 					?>
-					<tr class="hh"> 
+					<tr class="hh">
 						<td class="blue_L_1"><?=$val['RTU_NAME']?></td>
 						<? if($val['LIST']){ ?>
 							<? foreach($val['LIST'] as $key2 => $val2){ ?>
@@ -87,7 +87,7 @@ require_once "./head.php";
 						} ?>
 						<td class="mint_L"><?=$val['SUM']?></td>
 					</tr>
-					<? 
+					<?
 							$rowNum++;
 						}
 						for($i=0; $i<($rowCnt-$rowNum); $i++){
@@ -104,12 +104,12 @@ require_once "./head.php";
 					</tr>
 					<? for($i=0; $i<$rowCnt; $i++){?>
 							<tr>
-					<? for($j=0; $j<$columCnt; $j++){?>	
-							<td class="blue_L_1"></td>	
+					<? for($j=0; $j<$columCnt; $j++){?>
+							<td class="blue_L_1"></td>
 					<?}?>
 						</tr>
-					
-					<? 
+
+					<?
 						}
 					}
 					?>
@@ -141,7 +141,7 @@ require_once "./head.php";
 			<div class="pop_stitle">
 				수정 일시 : <span id="sel_date"></span>
 			</div>
-            <table class="tb_data_p2 bL_1gry bg_gry3">
+            <table class="tb_data_p2 bL_1gry mT10 bg_gry3">
               <tr class="tb_data_tbg bT_1blue2">
                 <th>00-09분</th>
                 <th class="bL_1blue2">10-19분</th>
@@ -159,11 +159,11 @@ require_once "./head.php";
                 <td class="bL_1black"><input type="text" id="min_6" name="min[]" class="f333_12 al_c" maxlength="5" oninput="inputCheck(this,'onlyNumber','0.1~9999')"></td>
               </tr>
             </table>
-			<div class="w100 fL al_C">
+			<div class="w100 fL mT10 al_C">
 				<button type="button" id="btn_save" class="btn_bb80">저장</button>
             </div>
             <div id="spin"></div>
-		</form>	
+		</form>
 	</div>
 </div>
 
@@ -188,7 +188,7 @@ $(document).ready(function(){
         $("#sdate").datepicker("setDate", sel_y+"-"+sel_m+"-"+sel_d);
         $("#form_search").submit();
 	});
-	
+
 	// 우측 버튼
 	$("#btn_right").click(function(){
 		var sdate = $("#sdate").val();
@@ -205,7 +205,7 @@ $(document).ready(function(){
 			var sel_m = now.getMonth() + 1;
 			var sel_d = now.getDate();
 			$("#sdate").datepicker("setDate", sel_y+"-"+sel_m+"-"+sel_d);
-			
+
 			$("#form_search").submit();
 		}else{
 			swal("체크", "미래는 검색할 수 없습니다!", "warning");
@@ -220,7 +220,7 @@ $(document).ready(function(){
 			$("#sdate").datepicker("show");
 		}
 	});
-	
+
 	// 달력 버튼
 	$("#btn_img").click(function(){
 		if( $("#ui-datepicker-div").css("display") != "none" ) {
@@ -229,7 +229,7 @@ $(document).ready(function(){
 			$("#sdate").datepicker("show");
 		}
 	});
-	
+
 	// 검색 버튼
 	$("#btn_search").click(function(){
 		$("#form_search").submit();
@@ -239,7 +239,7 @@ $(document).ready(function(){
 	$("#view_table #data").click(function(){
 		bg_color("selected", "#view_table tbody tr", $(this).closest("tr"));
 		popup_open(); // 레이어 팝업 열기
-		
+
 		var area_code = $(this).data("area_code");
 		var hour = $(this).data("hour");
 		var name = $(this).data("name");
@@ -266,10 +266,10 @@ $(document).ready(function(){
 					$("#min_6").val(data.list['MIN'][5]);
 		        }
 	        },
-	        beforeSend : function(data){ 
+	        beforeSend : function(data){
 	   			tmp_spin = spin_start("#dtm_frm #spin", "-40px");
 	        },
-	        complete : function(data){ 
+	        complete : function(data){
 	        	if(tmp_spin){
 	        		spin_stop(tmp_spin, "#dtm_frm #spin");
 	        	}
@@ -295,10 +295,10 @@ $(document).ready(function(){
 					swal("체크", "자료 수정중 오류가 발생 했습니다.", "warning");
 				}
 			},
-			beforeSend : function(data){ 
+			beforeSend : function(data){
 				   tmp_spin = spin_start("#dtm_frm #spin", "-40px");
 			},
-			complete : function(data){ 
+			complete : function(data){
 				if(tmp_spin){
 					spin_stop(tmp_spin, "#dtm_frm #spin");
 				}
@@ -313,5 +313,3 @@ $(document).ready(function(){
 
 </body>
 </html>
-
-
