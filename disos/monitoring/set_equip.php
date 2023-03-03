@@ -1289,6 +1289,7 @@ $(document).ready(function(){
 								sessionStorage.removeItem('list_rtu');
 			                	popup_main_close(); // 레이어 좌측 및 상단 닫기
 								swal.close();
+								$("#btn_re").click();
 								doubleSubmitFlag = false;
 					    		// location.reload(); return false;
 					        }else{
