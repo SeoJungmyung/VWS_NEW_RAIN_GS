@@ -1560,6 +1560,35 @@ $(document).ready(function(){
 				return false;
 			    // swal("체크", "장비명을 입력해 주세요.", "warning");
 			    // $("#RTU_NAME").focus(); 	
+			}else if( !$("#RTU_TYPE").val() ){
+				swal({
+						title: '체크',
+						text: '장비 구분을 선택해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#RTU_TYPE").focus(); 
+						});
+			    // swal("체크", "장비 구분을 선택해 주세요.", "warning"); 
+			    // $("#RTU_TYPE").focus(); 
+				return false;	
+			// }else if( $("#VHF_USE").val() == "1" ){
+				// if( !$("#VHF_SYSTEM_ID").val() ){
+			    // 	swal("체크", "VHF 그룹을 입력해 주세요.", "warning"); 
+			    // 	$("#VHF_SYSTEM_ID").focus(); return false;	
+				// }else if( !$("#VHF_RTU_ID").val() ){
+			    // 	swal("체크", "VHF 통신 ID를 입력해 주세요.", "warning"); 
+			    // 	$("#VHF_RTU_ID").focus(); return false;	
+				// }else if( !$("#VHF_TRANS_ID").val() ){
+			    // 	swal("체크", "VHF 중계국을 입력해 주세요.", "warning"); 
+			    // 	$("#VHF_TRANS_ID").focus(); return false;	
+				// }else{
+				// 	return true;
+				// }
 			}else if( !$("#LINE_NO").val() ){
 				swal({
 						title: '체크',
@@ -1591,35 +1620,6 @@ $(document).ready(function(){
 				return false;
 				// swal("체크", "모델을 선택해 주세요.", "warning"); 
 				// $("#MODEL_NO").focus(); 
-			}else if( !$("#RTU_TYPE").val() ){
-				swal({
-						title: '체크',
-						text: '장비 구분을 선택해 주세요.',
-						showCancelButton: false,
-						confirmButtonColor: '#555555', 
-						confirmButtonText: '확인',
-						closeOnConfirm: false,
-						type: 'warning',
-						}, function(isConfirm) {
-							swal.close();
-							$("#RTU_TYPE").focus(); 
-						});
-			    // swal("체크", "장비 구분을 선택해 주세요.", "warning"); 
-			    // $("#RTU_TYPE").focus(); 
-				return false;	
-			// }else if( $("#VHF_USE").val() == "1" ){
-				// if( !$("#VHF_SYSTEM_ID").val() ){
-			    // 	swal("체크", "VHF 그룹을 입력해 주세요.", "warning"); 
-			    // 	$("#VHF_SYSTEM_ID").focus(); return false;	
-				// }else if( !$("#VHF_RTU_ID").val() ){
-			    // 	swal("체크", "VHF 통신 ID를 입력해 주세요.", "warning"); 
-			    // 	$("#VHF_RTU_ID").focus(); return false;	
-				// }else if( !$("#VHF_TRANS_ID").val() ){
-			    // 	swal("체크", "VHF 중계국을 입력해 주세요.", "warning"); 
-			    // 	$("#VHF_TRANS_ID").focus(); return false;	
-				// }else{
-				// 	return true;
-				// }
 			}else if($("input[name='DANGER_USE']:checked").val() == 1){
 				var result = [];
 				$.each($(".warn"), function(i, v){
