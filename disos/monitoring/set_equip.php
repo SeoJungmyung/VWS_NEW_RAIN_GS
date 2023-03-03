@@ -489,6 +489,13 @@ require_once "./head.php";
 
 <script type="text/javascript">
 $(document).ready(function(){
+	$('#set_frm input[type="text"]').keypress(function(event) {
+    	if (event.which == 13) {
+      		event.preventDefault();
+      		return false;
+    	}
+  	});
+
 	localStorage.setItem("layout","set_equip.php");
 	// 조회
 	$("#btn_search").click(function(){
