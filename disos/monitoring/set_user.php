@@ -295,6 +295,7 @@ crypt.setKey(key);
 
 	// 조회
 	$("#btn_search").click(function(){
+		$("#btn_re").click();
 		var search_col = $("#search_col").val();
 		var search_word = $("#search_word").val();
 		var search_col_id = "";
@@ -528,6 +529,7 @@ crypt.setKey(key);
 								var formData = $('#set_frm').serializeArray();
 								sessionStorage.setItem('list_user', formData[8].value);
 			                	popup_main_close(); // 레이어 좌측 및 상단 닫기
+								doubleSubmitFlag = false;
 					    		location.reload(); return false;
 					        }else{
 						        if(data.msg){
@@ -546,6 +548,7 @@ crypt.setKey(key);
 
 	// 초기화
 	$("#btn_re").click(function(){
+		doubleSubmitFlag = false;
 		// $("#tree").jstree("deselect_all"); // jstree 전체 체크 해제
 		$("#dup_check").val(0); // 아이디 중복체크 리셋
 		sessionStorage.removeItem('list_user');
