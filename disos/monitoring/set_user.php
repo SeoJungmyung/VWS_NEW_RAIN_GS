@@ -365,6 +365,7 @@ crypt.setKey(key);
 		// $("#USER_ID").attr("readonly","true"); // 아이디 중복체크 버튼 비활성화
 		
 		$("#USER_ID").attr('disabled','true');
+		$("#USER_ID").addClass('bg_lgr_d');
 
 		bg_color("selected", "#list_table tbody tr", this); // 리스트 선택 시 배경색
 		if(this.id){
@@ -548,6 +549,7 @@ crypt.setKey(key);
 
 	// 초기화
 	$("#btn_re").click(function(){
+		$("#USER_ID").removeClass('bg_lgr_d');
 		doubleSubmitFlag = false;
 		// $("#tree").jstree("deselect_all"); // jstree 전체 체크 해제
 		$("#dup_check").val(0); // 아이디 중복체크 리셋
