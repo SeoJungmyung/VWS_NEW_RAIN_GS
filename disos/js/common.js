@@ -1195,6 +1195,60 @@
 		var timestamp = ""+ now_y + makeDateForm(now_m) + makeDateForm(now_d) + makeDateForm(now_h) + makeDateForm(now_i) + makeDateForm(now_s);
 		return timestamp;
 	}
+
+	/**
+	 * Speech Synthesis API (TTS)
+	 * 2023.03.02 서정명
+	 */
+	var voices = [];
+	function setVoiceList() {
+		voices = window.speechSynthesis.getVoices();
+	}
+	
+	if (window.speechSynthesis.onvoiceschanged !== undefined) {
+		window.speechSynthesis.onvoiceschanged = setVoiceList;
+	}
+	
+	function speech(txt) {
+		if(!window.speechSynthesis) {
+			swal("체크", "음성 재생을 지원하지 않는 브라우저입니다. \n크롬, 엣지 등의 최신 브라우저를 이용하세요", "warning");
+			return;
+		}
+
+		window.speechSynthesis.cancel(); // 현재 읽고있다면 초기화
+		
+		for(let t of txt){
+			var lang = 'en-US';
+			var utterThis = new SpeechSynthesisUtterance(t);
+			utterThis.onend = function (event) {
+				// console.log('tts end');
+			};
+			utterThis.onerror = function(event) {
+				// console.log('tts error!', event);
+			};
+			var voiceFound = false;
+			for(var i = 0; i < voices.length ; i++) {
+				if(voices[i].lang.indexOf(lang) >= 0 || voices[i].lang.indexOf(lang.replace('-', '_')) >= 0) {
+					utterThis.voice = voices[i];
+					voiceFound = true;
+				}
+			}
+			// console.log(txt, voices);
+			if(!voiceFound) {
+				console.log('voice not found!', voiceFound);
+				return;
+			}
+			utterThis.lang = lang;
+			utterThis.pitch = 1;
+			utterThis.rate = 1;  //속도
+			window.speechSynthesis.speak(utterThis);
+		}
+	}
+
+	function speechOut(){
+      var t = $("#tts_code").val();
+      speech(t);
+  	}
 	
 	// magnific-popup.js
 	function magnific_popup(target){
