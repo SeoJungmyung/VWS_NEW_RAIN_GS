@@ -753,10 +753,11 @@ crypt.setKey(key);
 		}else if( !id_check.test( $("#USER_ID").val() ) ){
 			swal({
 						title: '체크',
-						text: '관리자 ID는 영어와 숫자만 사용하여 5~15자리로 입력해 주세요.',
+						text: '관리자 ID는 영어와 숫자만 사용하여 5~15자리로 입력해 주세요.<br>( 예 : abcd123 )',
 						showCancelButton: false,
 						confirmButtonColor: '#555555', 
 						confirmButtonText: '확인',
+						html: true,
 						closeOnConfirm: false,
 						type: 'warning',
 						}, function(isConfirm) {
@@ -826,10 +827,11 @@ crypt.setKey(key);
 			}else if( !id_check.test( $("#USER_ID").val() ) ){
 				swal({
 						title: '체크',
-						text: '관리자 ID는 영어와 숫자만 사용하여 5~15자리로 입력해 주세요.',
+						text: '관리자 ID는 영어와 숫자만 사용하여 5~15자리로 입력해 주세요.<br>( 예 : abcd123 )',
 						showCancelButton: false,
 						confirmButtonColor: '#555555', 
 						confirmButtonText: '확인',
+						html: true,
 						closeOnConfirm: false,
 						type: 'warning',
 						}, function(isConfirm) {
@@ -905,8 +907,9 @@ crypt.setKey(key);
 			}else if( !$("#EMAIL1").val() || !$("#EMAIL3").val() ){
 				swal({
 						title: '체크',
-						text: '이메일 주소를 입력해 주세요.',
+						text: '이메일 주소를 입력해 주세요.<br>( 예 : abcd123@naver.com )',
 						showCancelButton: false,
+						html: true,
 						confirmButtonColor: '#555555', 
 						confirmButtonText: '확인',
 						closeOnConfirm: false,
@@ -937,7 +940,8 @@ crypt.setKey(key);
 			}else if( $("#MOBILE2").val().length < 3 || $("#MOBILE3").val().length < 4 ){
 				swal({
 						title: '체크',
-						text: '휴대폰 번호를 확인해 주세요.',
+						text: '휴대폰 번호를 확인해 주세요.<br>( 예 : 010-0000-0000 )',
+						html: true,
 						showCancelButton: false,
 						confirmButtonColor: '#555555', 
 						confirmButtonText: '확인',
@@ -992,8 +996,9 @@ crypt.setKey(key);
 			}else if( !id_check.test( $("#USER_ID").val() ) ){
 				swal({
 						title: '체크',
-						text: '관리자 ID는 영어와 숫자만 사용하여 5~15자리로 입력해 주세요.',
+						text: '관리자 ID는 영어와 숫자만 사용하여 5~15자리로 입력해 주세요.<br>( 예 : abcd123 )',
 						showCancelButton: false,
+						html: true,
 						confirmButtonColor: '#555555', 
 						confirmButtonText: '확인',
 						closeOnConfirm: false,
@@ -1040,8 +1045,9 @@ crypt.setKey(key);
 			}else if( !$("#EMAIL1").val() || !$("#EMAIL3").val() ){
 				swal({
 						title: '체크',
-						text: '이메일 주소를 입력해 주세요.',
+						text: '이메일 주소를 입력해 주세요.<br>( 예 : abcd123@naver.com )',
 						showCancelButton: false,
+						html: true,
 						confirmButtonColor: '#555555', 
 						confirmButtonText: '확인',
 						closeOnConfirm: false,
@@ -1072,7 +1078,8 @@ crypt.setKey(key);
 			}else if( $("#MOBILE2").val().length < 3 || $("#MOBILE3").val().length < 4 ){
 				swal({
 						title: '체크',
-						text: '휴대폰 번호를 확인해 주세요.',
+						text: '휴대폰 번호를 확인해 주세요.<br>( 예 : 010-0000-0000 )',
+						html: true,
 						showCancelButton: false,
 						confirmButtonColor: '#555555', 
 						confirmButtonText: '확인',

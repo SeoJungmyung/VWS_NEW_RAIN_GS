@@ -1028,7 +1028,7 @@ $(document).ready(function(){
 						if(ipTest || urlTest) {
 							result.push(true);
 						}else{
-							swal("체크", "팝업메뉴 사이트 주소를 형식에 맞게 입력해 주세요. \n 예) www.naver.com", "warning");
+							swal("체크", "팝업메뉴 사이트 주소를 형식에 맞게 입력해 주세요. \n ( 예 : www.naver.com )", "warning");
 							$(this).find('.popup_url').focus();
 							result.push(false);
 						}
