@@ -331,8 +331,18 @@ $(document).ready(function(){
 							onClick: function(evt, activeElements) {
 								// console.log(this.data.labels[elementIndex]);
 								if(activeElements.length > 0){
+									var today = new Date();
+									var sel_y = today.getFullYear();
+									var sel_m = today.getMonth() + 1;
+									sel_m = sel_m < 10 ? "0"+sel_m : sel_m;
+									var sel_d = today.getDate();
+									sel_d = sel_d < 10 ? "0"+sel_d : sel_d;
+									var date = sel_y+"-"+sel_m+"-"+sel_d;
+
 									var elementIndex = (DATAD.length - 1)- activeElements[0]._index;
-									// console.log(elementIndex);
+									if(date != $("#edate").val()){
+										elementIndex--;
+									}
 									goTarget(elementIndex);
 								}
 							// this.data.datasets[0].backgroundColor[elementIndex] = 'red';
