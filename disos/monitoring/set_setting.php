@@ -298,7 +298,7 @@ require_once "./head.php";
 							<td>상단바 로고</td>
 							<td colspan="6">
 								<input type="text" id="top_img" name="top_img" class="w95 f333_12 pointer" value="<?=top_img?>">
-								<span> <i class="fa fa-exclamation-circle col_org mR_5"></i><span class="spc1">5mb 이하, jpeg/png만 가능</span></span>
+								<span> <i class="fa fa-exclamation-circle col_org mR_5"></i><span class="spc1">5MB 이하, jpeg/png만 가능</span></span>
 								<input type="file" id="sel_top_img" name="sel_top_img" style="display: none;">
 								<input type="text" id="top_img_check" name="top_img_check" value="0" style="display: none;">
 								<input type="text" id="mode" name="mode" value="set" style="display: none;">
