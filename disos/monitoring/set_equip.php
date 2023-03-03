@@ -1168,7 +1168,28 @@ $(document).ready(function(){
 								// 		$(v).closest("tr").find("td:eq(0)").text(search_cnt);
 								// 		search_cnt++;
 								// });
+									console.log(formData);
 
+								if($("tr[name='list_"+list_id+"'] #l_SORT_FLAG").text() != (DANGER_USE == 1 ? formData[19].value : formData[15].value)){
+									sessionStorage.setItem('search_word',$("#search_word").val());
+									sessionStorage.setItem('search_col',$("#search_col").val());
+
+									$("tr[name='list_"+list_id+"'] #l_SORT_FLAG").text((DANGER_USE == 1 ? formData[19].value : formData[15].value));
+
+									const tbody = $("#list_table tbody");
+									const rows = tbody.find("tr:visible").get();
+
+									rows.sort((a, b) => {
+										const aValue = parseInt($(a).find("td:eq(1)").text());
+										const bValue = parseInt($(b).find("td:eq(1)").text());
+										// return aValue.localeCompare(bValue);
+										return aValue - bValue;
+									});
+									$.each(rows, (i, row) => {
+										tbody.append(row);
+										$(row).find("td:eq(0)").text(i + 1);
+									});
+								}
 								if(DANGER_USE == 1){
 									$("tr[name='list_"+list_id+"'] #l_SIGNAL_ID").text(formData[9].value);
 									$("tr[name='list_"+list_id+"'] #l_SORT_FLAG").text(formData[19].value);
@@ -1194,28 +1215,6 @@ $(document).ready(function(){
 									// $("tr[name='list_"+list_id+"'] #l_FLOW_WARNING").text(0);
 									// $("tr[name='list_"+list_id+"'] #l_FLOW_DANGER").text(0);
 								}
-
-								if($("tr[name='list_"+list_id+"'] #l_SORT_FLAG").text() != (DANGER_USE == 1 ? formData[19].value : formData[15].value)){
-									sessionStorage.setItem('search_word',$("#search_word").val());
-									sessionStorage.setItem('search_col',$("#search_col").val());
-
-									$("tr[name='list_"+list_id+"'] #l_SORT_FLAG").text((DANGER_USE == 1 ? formData[19].value : formData[15].value));
-
-									const tbody = $("#list_table tbody");
-									const rows = tbody.find("tr:visible").get();
-
-									rows.sort((a, b) => {
-										const aValue = parseInt($(a).find("td:eq(1)").text());
-										const bValue = parseInt($(b).find("td:eq(1)").text());
-										// return aValue.localeCompare(bValue);
-										return aValue - bValue;
-									});
-									$.each(rows, (i, row) => {
-										tbody.append(row);
-										$(row).find("td:eq(0)").text(i + 1);
-									});
-								}
-								
 							
 								swal.close();
 								doubleSubmitFlag = false;
