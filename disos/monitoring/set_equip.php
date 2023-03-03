@@ -505,15 +505,18 @@ $(document).ready(function(){
 		
 		$("#list_table .not_d").hide();
 		var search_cnt = 1;
+		var view_id = Array();
 		$.each( $("#list_table #"+search_col_id), function(i, v){
 			if( $(v).text().indexOf(search_word) == -1 ){
 				$(v).closest("tr").hide();
 			}else{
+				view_id.push($(v).closest("tr").attr('name').substring(5,10));
 				$(v).closest("tr").show();
 				$(v).closest("tr").find("td:eq(0)").text(search_cnt);
 				search_cnt++;
 			}
 		});
+		sessionStorage.setItem('view_id',view_id);
 	});
 
 	// 엔터키 - 조회버튼
@@ -568,6 +571,16 @@ $(document).ready(function(){
 				autoPrint: true,
 				title: "장비 내역 출력",
 				customize: function(win){
+					$(win.document.body).find("tr td:nth-child(3)").each(function(evt) {
+						var view_id_str = sessionStorage.getItem('view_id');
+						if(view_id_str != ""){
+							var view_id_arr = view_id_str.split(',').map(Number);
+							if (!view_id_arr.includes(parseInt($(this).text()))) {
+								// console.log('view_id contains ' + $(this).text());
+								$(this).parent().remove();
+							}
+						}
+					});
 					$(win.document.body).find("body").css("overflow", "visible");
 					$(win.document.body).find("h1").css("text-align", "center").css("font-size", "18px").css("margin", "20px");
 					$(win.document.body).find("table").css("font-size", "12px").css("margin", "20px").css("width", "97%").css("border-right", "1px solid #C4C4C4");
@@ -599,10 +612,13 @@ $(document).ready(function(){
 					   });
 				}, customizeData: function(data) {
 					// 센서부분 삭제
-					// $.each(data.body, function(i,v){
-					// 	v.pop(11);
-					// });
-					// data.header.pop(11);
+					var view_id_str = sessionStorage.getItem('view_id');
+					if(view_id_str != ""){
+						var view_id_arr = view_id_str.split(',').map(Number);
+						data.body = data.body.filter(function(item) {
+							return view_id_arr.includes(parseInt(item[2]));
+						});
+					}
 				}
 			}
 		]
@@ -612,6 +628,8 @@ $(document).ready(function(){
 	$("#btn_search_all").click(function(){
 		const tbody = $("#list_table tbody");
 		const rows = tbody.find("tr").get();
+
+		sessionStorage.setItem('view_id',''); // 전체목록 선택 시 view_id 배열 초기화
 
 		$.each(rows, (i, row) => {
 			// tbody.append(row);
