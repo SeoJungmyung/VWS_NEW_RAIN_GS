@@ -7,7 +7,7 @@ $login_kind = $_COOKIE['login_kind'] ? $_COOKIE['login_kind'] : 1;
 <!DOCTYPE html>
 <html>
 <head>
-<title>스마트 조기경보 시스템</title>
+<title>스마트 기상관측 시스템</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta charset="utf-8">
 
@@ -78,7 +78,7 @@ if(recaptcha == 0){
 			</div>
 			<div class="input">
 			<? if(recaptcha == 2){ ?>
-				<input type="password" id="user_pwd" name="user_pwd" onkeypress="if( event.keyCode == 13 || event.keyCode == 9 ){$('#speechBtn').click();$('#recaptcha').focus();}" maxlength="20" placeholder="Password" required />
+				<input type="password" id="user_pwd" name="user_pwd" onkeypress="if( event.keyCode == 13 ){$('#recaptcha').focus();}" maxlength="20" placeholder="Password" required />
 			<? }else{ ?>
 				<input type="password" id="user_pwd" name="user_pwd" onkeypress="if( event.keyCode == 13 ){$('#login_ok').click();}" maxlength="20" placeholder="Password" required />
 			<? } ?>
@@ -88,10 +88,10 @@ if(recaptcha == 0){
 			<input type="hidden" id="recaptcha" name="recaptcha" value="1" maxlength="5">
 <? }else if(recaptcha == 2){ ?>
 			<div class="g-recaptcha2">
-				<img src="../func/get_captcha.php" id="captcha" style="" />
-				<button id="speechBtn" onclick="speechOut()"><i class="fa fa-volume-up" style="margin-right: -30px;"></i></button>
-				<img src="../images/refresh.png" id="refresh" width="25" style="position: relative; bottom: 20px;" />
-				<input type="text" id="recaptcha" name="recaptcha" onkeypress="if( event.keyCode == 13 ){$('#login_ok').click();}" maxlength="5" placeholder="" required />
+				<img src="../func/get_captcha.php" id="captcha" style="" tabindex="0" alt="" onfocus="speechOut();"/>
+				<!-- <button id="speechBtn" onclick="speechOut()"><i class="fa fa-volume-up" style="margin-right: -30px;"></i></button> -->
+				<img src="../images/refresh.png" id="refresh" width="25" style="position: relative; bottom: 12px;" />
+				<input type="text" id="recaptcha" name="recaptcha" alt="리캡챠 입력" onkeypress="if( event.keyCode == 13 ){$('#login_ok').click();}" maxlength="5" placeholder="Recaptcha" required />
 			</div>
 <? } ?>
 		</fieldset>
@@ -354,6 +354,8 @@ function captcha_start(){
 				$("#captcha").attr("src", "data:image/png;base64,"+data.base64);
 				$("#tts_code").val(data.string);
 				$("#recaptcha").val("");
+				$("#captcha").attr("alt", data.string);
+				$("#recaptcha").attr("alt", data.string);
 			}
 	});
 }
