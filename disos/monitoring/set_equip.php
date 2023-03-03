@@ -170,7 +170,7 @@ require_once "./head.php";
 					<tr>
 						<td class="bg_lb w10 bold al_C dngr">기준치 사용여부</td>
 						<td>
-							<input type="radio" id="DANGER_USE0" class="DANGER_USE" name="DANGER_USE" value="0" checked>미사용
+							<input type="radio" id="DANGER_USE0" class="DANGER_USE" name="DANGER_USE" value="0">미사용
 							<input type="radio" id="DANGER_USE1" class="DANGER_USE" name="DANGER_USE" value="1">사용
 						</td>
 						<td class="bg_lb w10 bold al_C dngr">경계치 / 위험치</td>
@@ -648,19 +648,46 @@ $(document).ready(function(){
 	// 기준치 사용여부 변경시
 	$(".DANGER_USE").change(function(){
 		if($(this).val() == 1){
-			$.each($(".warn"), function(i, v){
-				if( !$.isNumeric($(v).val()) ){
-					alert("숫자를 넣어주세요!");
-					$(v).focus();
-					$("#DANGER_USE0").prop('checked', true);
-					return false;
-				}else if($(v).val() <= 0){
-					alert("0보다 큰 값을 넣어주세요!");
-					$(v).focus();
-					$("#DANGER_USE0").prop('checked', true);
-					return false;
-				}
-			});
+			sessionStorage.setItem('DANGER_USE',1);
+			$("#FLOW_WARNING").removeClass('bg_lgr_d');
+			$("#FLOW_WARNING_OFF").removeClass('bg_lgr_d');
+			$("#FLOW_DANGER").removeClass('bg_lgr_d');
+			$("#FLOW_DANGER_OFF").removeClass('bg_lgr_d');
+			$("#FLOW_WARNING").prop("disabled", false);
+			$("#FLOW_WARNING_OFF").prop("disabled", false);
+			$("#FLOW_DANGER").prop("disabled", false);
+			$("#FLOW_DANGER_OFF").prop("disabled", false);
+			$("#FLOW_WARNING").prop("readonly", false);
+			$("#FLOW_WARNING_OFF").prop("readonly", false);
+			$("#FLOW_DANGER").prop("readonly", false);
+			$("#FLOW_DANGER_OFF").prop("readonly", false);
+			// $.each($(".warn"), function(i, v){
+			// 	if( !$.isNumeric($(v).val()) ){
+			// 		// alert("숫자를 넣어주세요!");
+			// 		$(v).focus();
+			// 		$("#DANGER_USE0").prop('checked', true);
+			// 		return false;
+			// 	}else if($(v).val() <= 0){
+			// 		// alert("0보다 큰 값을 넣어주세요!");
+			// 		$(v).focus();
+			// 		$("#DANGER_USE0").prop('checked', true);
+			// 		return false;
+			// 	}
+			// });
+		}else{
+			sessionStorage.setItem('DANGER_USE',0);
+			$("#FLOW_WARNING").addClass('bg_lgr_d');
+			$("#FLOW_WARNING_OFF").addClass('bg_lgr_d');
+			$("#FLOW_DANGER").addClass('bg_lgr_d');
+			$("#FLOW_DANGER_OFF").addClass('bg_lgr_d');
+			$("#FLOW_WARNING").prop("disabled", true);
+			$("#FLOW_WARNING_OFF").prop("disabled", true);
+			$("#FLOW_DANGER").prop("disabled", true);
+			$("#FLOW_DANGER_OFF").prop("disabled", true);
+			$("#FLOW_WARNING").prop("readonly", true);
+			$("#FLOW_WARNING_OFF").prop("readonly", true);
+			$("#FLOW_DANGER").prop("readonly", true);
+			$("#FLOW_DANGER_OFF").prop("readonly", true);
 		}
 	});
 
@@ -725,11 +752,15 @@ $(document).ready(function(){
 						$("#FLOW_WARNING").val(data.list.FLOW_WARNING);
 						$("#FLOW_DANGER_OFF").val(data.list.FLOW_DANGER_OFF);
 						$("#FLOW_WARNING_OFF").val(data.list.FLOW_WARNING_OFF);
-						if(data.list.DANGER_USE == 1){
-							$("#DANGER_USE1").prop("checked", true);
-						}else{
-							$("#DANGER_USE0").prop("checked", true);
-						}
+						console.log(data.list.DANGER_USE);
+						$("input[value='"+data.list.DANGER_USE+"']").prop("checked", true);
+						// if(data.list.DANGER_USE == 1){
+						// 	$("#DANGER_USE0").prop("checked", false);
+						// 	$("#DANGER_USE1").prop("checked", true);
+						// }else{
+						// 	$("#DANGER_USE1").prop("checked", false);
+						// 	$("#DANGER_USE0").prop("checked", true);
+						// }
 	
 						$("#AREA_CODE").attr('disabled',true);
 						$("#RTU_ID").attr('readonly',true);
@@ -747,6 +778,37 @@ $(document).ready(function(){
 						// 	$(".dngr").hide();
 						// 	$("#no_dngr").show();
 						// }
+						if(data.list.DANGER_USE == "0"){
+							sessionStorage.setItem('DANGER_USE',0);
+							$("#FLOW_WARNING").addClass('bg_lgr_d');
+							$("#FLOW_WARNING_OFF").addClass('bg_lgr_d');
+							$("#FLOW_DANGER").addClass('bg_lgr_d');
+							$("#FLOW_DANGER_OFF").addClass('bg_lgr_d');
+							$("#FLOW_WARNING").prop("disabled", true);
+							$("#FLOW_WARNING_OFF").prop("disabled", true);
+							$("#FLOW_DANGER").prop("disabled", true);
+							$("#FLOW_DANGER_OFF").prop("disabled", true);
+							$("#FLOW_WARNING").prop("readonly", true);
+							$("#FLOW_WARNING_OFF").prop("readonly", true);
+							$("#FLOW_DANGER").prop("readonly", true);
+							$("#FLOW_DANGER_OFF").prop("readonly", true);
+						}else{
+							sessionStorage.setItem('DANGER_USE',1);
+							$("#FLOW_WARNING").removeClass('bg_lgr_d');
+							$("#FLOW_WARNING_OFF").removeClass('bg_lgr_d');
+							$("#FLOW_DANGER").removeClass('bg_lgr_d');
+							$("#FLOW_DANGER_OFF").removeClass('bg_lgr_d');
+							$("#FLOW_WARNING").prop("disabled", false);
+							$("#FLOW_WARNING_OFF").prop("disabled", false);
+							$("#FLOW_DANGER").prop("disabled", false);
+							$("#FLOW_DANGER_OFF").prop("disabled", false);
+							$("#FLOW_WARNING").prop("readonly", false);
+							$("#FLOW_WARNING_OFF").prop("readonly", false);
+							$("#FLOW_DANGER").prop("readonly", false);
+							$("#FLOW_DANGER_OFF").prop("readonly", false);
+						}
+
+
 					}else{
 						swal("체크", "장비 상세 조회중 오류가 발생 했습니다.", "warning");
 					}
@@ -1096,6 +1158,7 @@ $(document).ready(function(){
 					        if(data.result){
 			                	popup_main_close(); // 레이어 좌측 및 상단 닫기
 								var list_id = sessionStorage.getItem('list_rtu');
+								var DANGER_USE = sessionStorage.getItem('DANGER_USE');
 								$("#list_table tbody tr #list_"+list_id).click();
 								var formData = $('#set_frm').serializeArray();
 								
@@ -1105,11 +1168,38 @@ $(document).ready(function(){
 								// 		$(v).closest("tr").find("td:eq(0)").text(search_cnt);
 								// 		search_cnt++;
 								// });
-								if($("tr[name='list_"+list_id+"'] #l_SORT_FLAG").text() != formData[19].value){
+
+								if(DANGER_USE == 1){
+									$("tr[name='list_"+list_id+"'] #l_SIGNAL_ID").text(formData[9].value);
+									$("tr[name='list_"+list_id+"'] #l_SORT_FLAG").text(formData[19].value);
+									$("tr[name='list_"+list_id+"'] #l_RTU_NAME").text(formData[10].value);
+									$("tr[name='list_"+list_id+"'] #l_RTU_TYPE_NAME").text(formData[11].value == "R00" ? "강우계" : formData[11].value == "F00" ? "수위계" : formData[11].value == "A00" ? "AWS" : formData[11].value == "S00" ? "적설계" : "");
+									$("tr[name='list_"+list_id+"'] #l_LINE_NAME").text(formData[20].value == "0" ? "TCP/IP" : formData[20].value == "3" ? "ODBC" : "");
+									$("tr[name='list_"+list_id+"'] #l_MODEL_NAME").text(formData[21].value == "0" ? "HS920M" : "");
+									$("tr[name='list_"+list_id+"'] #l_CONNECTION_INFO").text(formData[26].value);
+									$("tr[name='list_"+list_id+"'] #l_PORT").text(formData[25].value);
+									$("tr[name='list_"+list_id+"'] #l_BAUDRATE").text(formData[27].value);
+									$("tr[name='list_"+list_id+"'] #l_FLOW_WARNING").text(formData[13].value);
+									$("tr[name='list_"+list_id+"'] #l_FLOW_DANGER").text(formData[14].value);
+								}else{
+									$("tr[name='list_"+list_id+"'] #l_SIGNAL_ID").text(formData[9].value);
+									$("tr[name='list_"+list_id+"'] #l_SORT_FLAG").text(formData[15].value);
+									$("tr[name='list_"+list_id+"'] #l_RTU_NAME").text(formData[10].value);
+									$("tr[name='list_"+list_id+"'] #l_RTU_TYPE_NAME").text(formData[11].value == "R00" ? "강우계" : formData[11].value == "F00" ? "수위계" : formData[11].value == "A00" ? "AWS" : formData[11].value == "S00" ? "적설계" : "");
+									$("tr[name='list_"+list_id+"'] #l_LINE_NAME").text(formData[16].value == "0" ? "TCP/IP" : formData[16].value == "3" ? "ODBC" : "");
+									$("tr[name='list_"+list_id+"'] #l_MODEL_NAME").text(formData[17].value == "0" ? "HS920M" : "");
+									$("tr[name='list_"+list_id+"'] #l_CONNECTION_INFO").text(formData[22].value);
+									$("tr[name='list_"+list_id+"'] #l_PORT").text(formData[21].value);
+									$("tr[name='list_"+list_id+"'] #l_BAUDRATE").text(formData[23].value);
+									// $("tr[name='list_"+list_id+"'] #l_FLOW_WARNING").text(0);
+									// $("tr[name='list_"+list_id+"'] #l_FLOW_DANGER").text(0);
+								}
+
+								if($("tr[name='list_"+list_id+"'] #l_SORT_FLAG").text() != (DANGER_USE == 1 ? formData[19].value : formData[15].value)){
 									sessionStorage.setItem('search_word',$("#search_word").val());
 									sessionStorage.setItem('search_col',$("#search_col").val());
 
-									$("tr[name='list_"+list_id+"'] #l_SORT_FLAG").text(formData[19].value);
+									$("tr[name='list_"+list_id+"'] #l_SORT_FLAG").text((DANGER_USE == 1 ? formData[19].value : formData[15].value));
 
 									const tbody = $("#list_table tbody");
 									const rows = tbody.find("tr:visible").get();
@@ -1126,17 +1216,6 @@ $(document).ready(function(){
 									});
 								}
 								
-								$("tr[name='list_"+list_id+"'] #l_SIGNAL_ID").text(formData[9].value);
-								$("tr[name='list_"+list_id+"'] #l_SORT_FLAG").text(formData[19].value);
-								$("tr[name='list_"+list_id+"'] #l_RTU_NAME").text(formData[10].value);
-								$("tr[name='list_"+list_id+"'] #l_RTU_TYPE_NAME").text(formData[11].value == "R00" ? "강우계" : formData[11].value == "F00" ? "수위계" : formData[11].value == "A00" ? "AWS" : formData[11].value == "S00" ? "적설계" : "");
-								$("tr[name='list_"+list_id+"'] #l_LINE_NAME").text(formData[20].value == "0" ? "TCP/IP" : formData[20].value == "3" ? "ODBC" : "");
-								$("tr[name='list_"+list_id+"'] #l_MODEL_NAME").text(formData[21].value == "0" ? "HS920M" : "");
-								$("tr[name='list_"+list_id+"'] #l_CONNECTION_INFO").text(formData[26].value);
-								$("tr[name='list_"+list_id+"'] #l_PORT").text(formData[25].value);
-								$("tr[name='list_"+list_id+"'] #l_BAUDRATE").text(formData[27].value);
-								$("tr[name='list_"+list_id+"'] #l_FLOW_WARNING").text(formData[13].value);
-								$("tr[name='list_"+list_id+"'] #l_FLOW_DANGER").text(formData[14].value);
 							
 								swal.close();
 								doubleSubmitFlag = false;
