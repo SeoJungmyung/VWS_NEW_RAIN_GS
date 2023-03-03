@@ -66,7 +66,7 @@ require_once "./head.php";
 							<td class="li5"><?=$num?></td>
 							<td id="l_USER_ID" class="li15 bL_1gry"><?=$val['USER_ID']?></td>
 							<td id="l_USER_NAME" class="li25 bL_1gry"><?=$val['USER_NAME']?></td>
-							<td class="li25 bL_1gry"><?=$val['MOBILE']?></td>
+							<td id="l_MOBILE" class="li25 bL_1gry"><?=$val['MOBILE']?></td>
 							<!-- <td class="li15 bL_1gry"><?=$val['USER_TYPE_NAME']?></td> -->
 							<!-- <td class="li15 bL_1gry"><?=$val['IS_PERMIT_NAME']?></td> -->
 						</tr>
@@ -125,7 +125,7 @@ require_once "./head.php";
 					<tr>
 						<td class="bg_lb w10 bold al_C bL0">비밀번호</td>
 						<td colspan="3">
-							<input id="USER_PWD_LEN" name="USER_PWD_LEN" type="password" class="f333_12" size="18" maxlength="20">
+							<input id="USER_PWD_LEN" name="USER_PWD_LEN" type="password" class="f333_12" size="18" maxlength="20" onclick="$(this).val('')">
 							<input id="USER_PWD" name="USER_PWD" type="password" style="display:none" maxlength="20">
 							<span> <i class="fa fa-exclamation-circle col_org mR_5"></i>영어, 숫자, <span class="spc">특수문자(!@#$%^&*)</span>를 적어도 하나씩 사용해서 8자리 이상, 20자리 이하</spna>
 							<!-- <div id="popSpc">! @ # $ % ^ & *</div> -->
@@ -642,9 +642,19 @@ crypt.setKey(key);
 					        if(data.result){
 								var formData = $('#set_frm').serializeArray();
 								sessionStorage.setItem('list_user', formData[1].value);
-
+								$("tr[name='"+formData[1].value+"'] #l_USER_NAME").text(formData[10].value);
+								$("tr[name='"+formData[1].value+"'] #l_MOBILE").text(formData[14].value+'-'+formData[15].value+'-'+formData[16].value);
+								var pwLen = parseInt(formData[8].value);
+								var tmpLen = "";
+								while(pwLen > tmpLen.length){
+									tmpLen += "1"; 
+								}
+								$("#USER_PWD_LEN").val(tmpLen);
+								
 			                	popup_main_close(); // 레이어 좌측 및 상단 닫기
-					    		location.reload(); return false;
+								swal.close();
+								doubleSubmitFlag = false;
+					    		// location.reload(); return false;
 					        }else{
 						        if(data.msg){
 							    	swal("체크", data.msg, "warning");
@@ -689,8 +699,13 @@ crypt.setKey(key);
 				        dataType: "json",
 				        success : function(data){
 					        if(data.result){
+								var del_id = sessionStorage.getItem('list_user');
+								$("tr[id='list_"+del_id+"']").remove();
 			                	popup_main_close(); // 레이어 좌측 및 상단 닫기
-					    		location.reload(); return false;
+								swal.close();
+								$("#btn_re").click();
+								doubleSubmitFlag = false;
+					    		// location.reload(); return false;
 					        }else{
 							    swal("체크", "관리자 삭제중 오류가 발생 했습니다.", "warning");
 								doubleSubmitFlag = false;
