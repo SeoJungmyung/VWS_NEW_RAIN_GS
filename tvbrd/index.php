@@ -121,11 +121,11 @@ require_once "./head.php";
 	          </li>
 	          <li id="sel_type" class="p8 bB_1gry w100">
 	            <ul>
-	            <li class="w50 fL al_C mB5"><img src="img/set_layout_01.png"><br>
+	            <li class="w50 fL al_C mB5"><img src="img/set_layout_01.png" alt="지도만 표시"><br>
 	            <input type="radio" name="sel_type" class="btn_radio" value="1" />지도만 표시
 	            </li>
 	            <li class="w50 fL al_C mB5"><img src="img/set_layout_02.png"><br>
-	            <input type="radio" name="sel_type" class="btn_radio" value="2" />추가데이터 표시
+	            <input type="radio" name="sel_type" class="btn_radio" value="2" alt="추가데이터 표시"/>추가데이터 표시
 	            </li>
 	            </ul>
 	          </li>
@@ -177,19 +177,20 @@ require_once "./head.php";
 	      <ul id="con_ul" class="w100 h100">
 	        <li id="map_wrap" class="w75 h100 fL">
 	        	<div id="legend2"></div>
-	        	<div id="legend"><img src="img/mapcolor_bar.png" alt="범례"/><img id="img_tag" src="img/mapcolor_500.jpg" /></div>
-		    	<!--레프트메뉴-->				
+	        	<div id="legend"><img src="img/mapcolor_bar.png" alt="범례"/><img id="img_tag" src="img/mapcolor_500.jpg" alt="강우범례 0mm부터 250mm까지"/></div>
+		    	<!--레프트메뉴-->
 			    <!--레프트메뉴 끝-->
 
 			    <!--일반위성선택-->
 			    <div class="menu_map">
 					
+
 			      <ul id="sel_skin">
-			        <li><label><img src="img/menu_map_01.png"><input type="radio" name="sel_skin" value="1"></label></li><!--일반-->
-			        <li><label><img src="img/menu_map_02.png"><input type="radio" name="sel_skin" value="2"></label></li><!--위성-->
-					<li><label><img src="img/menu_map_03.png"><input type="radio" name="sel_skin" value="3"></label></li><!--회색-->
-					<li><label><img src="img/menu_map_04.png"><input type="radio" name="sel_skin" value="4"></label></li><!--하이브리드-->
-					<li><label><img src="img/menu_map_05.png"><input type="radio" name="sel_skin" value="5"></label></li><!--야간-->
+			        <li><label><img src="img/menu_map_01.png" alt="지도타입 선택 일반"><input type="radio" name="sel_skin" value="1"></label></li><!--일반-->
+			        <li><label><img src="img/menu_map_02.png" alt="지도타입 선택 위성"><input type="radio" name="sel_skin" value="2"></label></li><!--위성-->
+					<li><label><img src="img/menu_map_03.png" alt="지도타입 선택 하이브리드"><input type="radio" name="sel_skin" value="3"></label></li><!--하이브리드-->
+					<li><label><img src="img/menu_map_04.png" alt="지도타입 선택 회색"><input type="radio" name="sel_skin" value="4"></label></li><!--회색-->
+					<li><label><img src="img/menu_map_05.png" alt="지도타입 선택 야간"><input type="radio" name="sel_skin" value="5"></label></li><!--야간-->
 				  </ul>
 				  
 			    </div>
@@ -374,5 +375,4 @@ $.ajax({
 
 </body>
 </html>
-
 
