@@ -732,7 +732,7 @@ crypt.setKey(key);
 		if( !$("#USER_ID").val() ){
 			swal({
 						title: '체크',
-						text: '회선을 선택해 주세요.',
+						text: '관리자 ID를 입력해 주세요.',
 						showCancelButton: false,
 						confirmButtonColor: '#555555', 
 						confirmButtonText: '확인',
