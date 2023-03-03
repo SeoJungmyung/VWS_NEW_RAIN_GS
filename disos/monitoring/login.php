@@ -15,6 +15,7 @@ $login_kind = $_COOKIE['login_kind'] ? $_COOKIE['login_kind'] : 1;
 <link rel="stylesheet" type="text/css" href="../css/jquery-ui-1.11.4.min.css">
 <link rel="stylesheet" type="text/css" href="../css/outdatedbrowser.min.css">
 <link rel="stylesheet" type="text/css" href="../css/sweet-alert.css">
+<link rel="stylesheet" type="text/css" href="../css/fontawesome/css/font-awesome.min.css">
 
 <script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="../js/jquery-ui-1.11.4.min.js"></script>
@@ -76,7 +77,11 @@ if(recaptcha == 0){
 				<!-- onblur="inputCheck(this,'text','5~15')"/> -->
 			</div>
 			<div class="input">
+			<? if(recaptcha == 2){ ?>
+				<input type="password" id="user_pwd" name="user_pwd" onkeypress="if( event.keyCode == 13 || event.keyCode == 9 ){$('#speechBtn').click();$('#recaptcha').focus();}" maxlength="20" placeholder="Password" required />
+			<? }else{ ?>
 				<input type="password" id="user_pwd" name="user_pwd" onkeypress="if( event.keyCode == 13 ){$('#login_ok').click();}" maxlength="20" placeholder="Password" required />
+			<? } ?>
 			</div>
 			<button type="button" id="login_ok" class="submit">LOGIN</button>
 <? if(recaptcha == 0){ ?>
@@ -84,7 +89,8 @@ if(recaptcha == 0){
 <? }else if(recaptcha == 2){ ?>
 			<div class="g-recaptcha2">
 				<img src="../func/get_captcha.php" id="captcha" style="" />
-				<img src="../images/refresh.png" id="refresh" width="25" style="position: relative; bottom: 10px;" />
+				<button id="speechBtn" onclick="speechOut()"><i class="fa fa-volume-up" style="margin-right: -30px;"></i></button>
+				<img src="../images/refresh.png" id="refresh" width="25" style="position: relative; bottom: 20px;" />
 				<input type="text" id="recaptcha" name="recaptcha" onkeypress="if( event.keyCode == 13 ){$('#login_ok').click();}" maxlength="5" placeholder="" required />
 			</div>
 <? } ?>
@@ -94,12 +100,13 @@ if(recaptcha == 0){
 			<input type="radio" name="login_kind" value="2" <? if($login_kind == 2) echo "checked"; ?>></input>지도상황판 -->
 		</div>
 		<div class="infotxt">
-		<!-- <span style="padding-bottom:15px; display: block;">지도상황판은 <span style="color:#D95700"> Google 크롬</span>에서 더 원할하게 작동 됩니다.</span>
+			<!-- <span style="padding-bottom:15px; display: block;">지도상황판은 <span style="color:#D95700"> Google 크롬</span>에서 더 원할하게 작동 됩니다.</span>
 			<button type="button" id="btn_32bit" class="btn_lbs" style="paddign-right:10px;">32bit 다운로드</button>
 			<button type="button" id="btn_64bit" class="btn_lbs">64bit 다운로드</button> -->
 		</div>
 	</div>
 	<div class="copyright">
+		<input id="tts_code" type="hidden" value="" autocomplete="off">
 		본 시스템은 국민의 재산과 생명을 보호하기 위한 것으로<br>관계자 외 접근은 허용하지 않습니다.
 </div>
 </form>	
@@ -116,9 +123,9 @@ if(recaptcha == 0){
 	}
 	
 <? }else if(recaptcha == 2){ ?>	
+	captcha_start();
 	$("img#refresh").click(function(){
-		$("#captcha").attr( "src", "../func/get_captcha.php?rnd=" + Math.random() );
-		$("#recaptcha").val("");
+		captcha_start();
 	});
 <? } ?>
 
@@ -293,8 +300,7 @@ $(document).ready(function(){
 			    	<? if(recaptcha == 1){ ?>
 			    		grecaptcha.reset();
 			    	<? }else if(recaptcha == 2){ ?>
-					 	$("#captcha").attr( "src", "../func/get_captcha.php?rnd=" + Math.random() );
-					 	$("#recaptcha").val("");
+						captcha_start();
 					<? } ?>
 				}else if(data.result == 3){
 					swal("체크", "로그인 시도 횟수 초과입니다. 5분 후에 다시 시도해 주세요.", "warning");
@@ -317,6 +323,9 @@ $(document).ready(function(){
 		});
 	});
 
+	// TTS를 위해 speechSynthesis voice list setting
+	setVoiceList();
+
 	// 로그인 창 닫기 버튼
 	$(".close_box").click(function(){
 		login_popup_close();
@@ -331,6 +340,23 @@ $(document).ready(function(){
 	// 	iframe.location.href = "../../ChromeStandaloneSetup64.exe";
 	// });
 });
+
+// 리캡챠 이미지, 텍스트 가져옴
+function captcha_start(){
+	$.ajax({
+		    type: "POST",
+		    url: "../func/get_captcha.php",
+			data: { "rnd" : Math.random() },
+		    cache: false,
+		    dataType: "json",
+		    success : function(data){
+				// console.log(data);
+				$("#captcha").attr("src", "data:image/png;base64,"+data.base64);
+				$("#tts_code").val(data.string);
+				$("#recaptcha").val("");
+			}
+	});
+}
 </script>
 	
 </body>

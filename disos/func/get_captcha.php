@@ -42,6 +42,16 @@ imagefilledrectangle($image,0,0,399,99,$gray);
 
 imagettftext ($image, 30, 0, 10, 40, $color, $dir.$font, $_SESSION['random_number']);
 
-header("Content-type: image/png");
+// header("Content-type: image/png");
+
+//write the image to a variable
+ob_start();
 imagepng($image);
+$imagePng = ob_get_contents();
+ob_end_clean();
+
+$imageData = base64_encode($imagePng);
+
+$returnBody = array( 'base64' => $imageData, 'string' => $string );
+echo json_encode( $returnBody );
 ?>
