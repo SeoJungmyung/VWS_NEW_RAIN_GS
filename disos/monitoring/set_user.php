@@ -125,7 +125,7 @@ require_once "./head.php";
 					<tr>
 						<td class="bg_lb w10 bold al_C bL0">비밀번호</td>
 						<td colspan="3">
-							<input id="USER_PWD_LEN" name="USER_PWD_LEN" type="password" class="f333_12" size="18" maxlength="20">
+							<input id="USER_PWD_LEN" name="USER_PWD_LEN" type="password" class="f333_12" size="18" maxlength="20" onclick="$(this).val('')">
 							<input id="USER_PWD" name="USER_PWD" type="password" style="display:none" maxlength="20">
 							<span> <i class="fa fa-exclamation-circle col_org mR_5"></i>영어, 숫자, <span class="spc">특수문자(!@#$%^&*)</span>를 적어도 하나씩 사용해서 8자리 이상, 20자리 이하</spna>
 							<!-- <div id="popSpc">! @ # $ % ^ & *</div> -->
@@ -644,7 +644,12 @@ crypt.setKey(key);
 								sessionStorage.setItem('list_user', formData[1].value);
 								$("tr[name='"+formData[1].value+"'] #l_USER_NAME").text(formData[10].value);
 								$("tr[name='"+formData[1].value+"'] #l_MOBILE").text(formData[14].value+'-'+formData[15].value+'-'+formData[16].value);
-								$("#USER_PWD_LEN").val($("#USER_PWD_LEN").val().length);
+								var pwLen = parseInt(formData[8].value);
+								var tmpLen = "";
+								while(pwLen > tmpLen.length){
+									tmpLen += "1"; 
+								}
+								$("#USER_PWD_LEN").val(tmpLen);
 								
 			                	popup_main_close(); // 레이어 좌측 및 상단 닫기
 								swal.close();
