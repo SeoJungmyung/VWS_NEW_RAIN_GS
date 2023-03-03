@@ -714,11 +714,37 @@ crypt.setKey(key);
 		var id_check = /^[a-zA-Z0-9]{5,15}$/; // 영어 대소문자 또는 숫자이며 5~15자리
 
 		if( !$("#USER_ID").val() ){
-		    swal("체크", "관리자 ID를 입력해 주세요.", "warning");
-		    $("#USER_ID").focus(); return false;	
+			swal({
+						title: '체크',
+						text: '회선을 선택해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#USER_ID").focus(); 
+						});
+				return false;	
+		    // swal("체크", "관리자 ID를 입력해 주세요.", "warning");
+		    // $("#USER_ID").focus(); return false;	
 		}else if( !id_check.test( $("#USER_ID").val() ) ){
-			swal("체크", "관리자 ID는 영어와 숫자만 사용하여 5~15자리로 입력해 주세요.", "warning"); 
-			$("#USER_ID").focus(); return false;	
+			swal({
+						title: '체크',
+						text: '관리자 ID는 영어와 숫자만 사용하여 5~15자리로 입력해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#USER_ID").focus(); 
+						});
+				return false;	
+			// swal("체크", "관리자 ID는 영어와 숫자만 사용하여 5~15자리로 입력해 주세요.", "warning"); 
+			// $("#USER_ID").focus(); return false;	
 		}else{
 			var param = "mode=user_dup&USER_ID="+$("#USER_ID").val()+"&C_USER_ID="+$("#C_USER_ID").val()+"&OTT="+'<?=$ott?>';
 			$.ajax({
@@ -761,69 +787,301 @@ crypt.setKey(key);
 		
 		if(kind == "I"){
 			if( !$("#USER_ID").val() ){
-			    swal("체크", "관리자 ID를 입력해 주세요.", "warning");
-			    $("#USER_ID").focus(); return false;	
+				swal({
+						title: '체크',
+						text: '관리자 ID를 입력해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#USER_ID").focus(); 
+						});
+				return false;
+			    // swal("체크", "관리자 ID를 입력해 주세요.", "warning");
+			    // $("#USER_ID").focus(); 	
 			}else if( !id_check.test( $("#USER_ID").val() ) ){
-			    swal("체크", "관리자 ID는 영어와 숫자만 사용하여 5~15자리로 입력해 주세요.", "warning"); 
-			    $("#USER_ID").focus(); return false;	
+				swal({
+						title: '체크',
+						text: '관리자 ID는 영어와 숫자만 사용하여 5~15자리로 입력해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#USER_ID").focus(); 
+						});
+				return false;
+			    // swal("체크", "관리자 ID는 영어와 숫자만 사용하여 5~15자리로 입력해 주세요.", "warning"); 
+			    // $("#USER_ID").focus(); return false;	
 			}else if( $("#USER_ID").val() == $("#C_USER_ID").val() ){
-			    swal("체크", "이미 사용중인 아이디 입니다.", "warning");
-			    $("#USER_ID").focus(); return false;	
+				swal({
+						title: '체크',
+						text: '이미 사용중인 아이디 입니다.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#USER_ID").focus(); 
+						});
+				return false;
+			    // swal("체크", "이미 사용중인 아이디 입니다.", "warning");
+			    // $("#USER_ID").focus(); return false;	
 			}else if( $("#dup_check").val() == "0" ){
-			    swal("체크", "아이디 중복체크를 진행해 주세요.", "warning"); return false;
+				swal({
+						title: '체크',
+						text: '아이디 중복체크를 진행해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#USER_ID").focus(); 
+						});
+				return false;
+			    // swal("체크", "아이디 중복체크를 진행해 주세요.", "warning"); return false;
 			}else if( !$("#USER_PWD").val() ){
-			    swal("체크", "비밀번호를 입력해 주세요.", "warning");
-			    $("#USER_PWD").focus(); return false;	
+				swal({
+						title: '체크',
+						text: '비밀번호를 입력해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#USER_PWD_LEN").focus(); 
+						});
+				return false;
+			    // swal("체크", "비밀번호를 입력해 주세요.", "warning");
+			    // $("#USER_PWD").focus(); return false;	
 			}else if( !$("#USER_NAME").val() ){
-			    swal("체크", "관리자명을 입력해 주세요.", "warning"); 
-			    $("#USER_NAME").focus(); return false;
+				swal({
+						title: '체크',
+						text: '관리자명을 입력해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#USER_NAME").focus(); 
+						});
+				return false;
+			    // swal("체크", "관리자명을 입력해 주세요.", "warning"); 
+			    // $("#USER_NAME").focus(); return false;
 			}else if( !$("#EMAIL1").val() || !$("#EMAIL3").val() ){
-				swal("체크", "이메일 주소를 입력해 주세요.", "warning"); 
-				$("#EMAIL1").focus(); return false;
+				swal({
+						title: '체크',
+						text: '이메일 주소를 입력해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#EMAIL1").focus(); 
+						});
+				return false;
+				// swal("체크", "이메일 주소를 입력해 주세요.", "warning"); 
+				// $("#EMAIL1").focus(); return false;
 			}else if( !$("#MOBILE2").val() || !$("#MOBILE3").val() ){
-			    swal("체크", "휴대폰 번호를 입력해 주세요.", "warning"); 
-			    $("#MOBILE2").focus(); return false;
+				swal({
+						title: '체크',
+						text: '휴대폰 번호를 입력해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#MOBILE2").focus(); 
+						});
+				return false;
+			    // swal("체크", "휴대폰 번호를 입력해 주세요.", "warning"); 
+			    // $("#MOBILE2").focus(); return false;
 			}else if( $("#MOBILE2").val().length < 3 || $("#MOBILE3").val().length < 4 ){
-				swal("체크", "휴대폰 번호를 확인해 주세요.", "warning"); 
-			    $("#MOBILE2").focus(); return false;
+				swal({
+						title: '체크',
+						text: '휴대폰 번호를 확인해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#MOBILE2").focus(); 
+						});
+				return false;
+				// swal("체크", "휴대폰 번호를 확인해 주세요.", "warning"); 
+			    // $("#MOBILE2").focus(); return false;
 			}
 			if(pwFlag){
 				if( !pwd_check.test( $("#USER_PWD").val() ) ){
-					swal("체크", "비밀번호 형식에 맞게 입력해 주세요.", "warning");
-					$("#USER_PWD").focus(); return false;
+					swal({
+						title: '체크',
+						text: '비밀번호 형식에 맞게 입력해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#USER_PWD_LEN").focus(); 
+						});
+					return false;
+				// 	swal("체크", "비밀번호 형식에 맞게 입력해 주세요.", "warning");
+				// 	$("#USER_PWD").focus(); 
 				}
 			}
 		}else if(kind == "U"){
 			if( !$("#C_USER_ID").val() ){
 			    swal("체크", "관리자를 선택해 주세요.", "warning"); return false;
 			}else if( !$("#USER_ID").val() ){
-			    swal("체크", "관리자 ID를 입력해 주세요.", "warning");
-			    $("#USER_ID").focus(); return false;	
+				swal({
+						title: '체크',
+						text: '관리자 ID를 입력해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#USER_ID").focus(); 
+						});
+				return false;
+			    // swal("체크", "관리자 ID를 입력해 주세요.", "warning");
+			    // $("#USER_ID").focus(); 	
 			}else if( !id_check.test( $("#USER_ID").val() ) ){
-			    swal("체크", "관리자 ID는 영어와 숫자만 사용하여 5~15자리로 입력해 주세요.", "warning"); 
-			    $("#USER_ID").focus(); return false;	
-			// }else if( $("#dup_check").val() == "0" ){
-			//     swal("체크", "아이디 중복체크를 진행해 주세요.", "warning"); return false;
+				swal({
+						title: '체크',
+						text: '관리자 ID는 영어와 숫자만 사용하여 5~15자리로 입력해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#USER_ID").focus(); 
+						});
+				return false;
+			    // swal("체크", "관리자 ID는 영어와 숫자만 사용하여 5~15자리로 입력해 주세요.", "warning"); 
+			    // $("#USER_ID").focus(); return false;	
 			}else if( !$("#USER_PWD").val() ){
-			    swal("체크", "비밀번호를 입력해 주세요.", "warning");
-			    $("#USER_PWD").focus(); return false;	
+				swal({
+						title: '체크',
+						text: '비밀번호를 입력해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#USER_PWD_LEN").focus(); 
+						});
+				return false;
+			    // swal("체크", "비밀번호를 입력해 주세요.", "warning");
+			    // $("#USER_PWD").focus(); return false;	
 			}else if( !$("#USER_NAME").val() ){
-			    swal("체크", "관리자명을 입력해 주세요.", "warning"); 
-			    $("#USER_NAME").focus(); return false;	
+				swal({
+						title: '체크',
+						text: '관리자명을 입력해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#USER_NAME").focus(); 
+						});
+				return false;
+			    // swal("체크", "관리자명을 입력해 주세요.", "warning"); 
+			    // $("#USER_NAME").focus(); return false;
 			}else if( !$("#EMAIL1").val() || !$("#EMAIL3").val() ){
-				swal("체크", "이메일 주소를 입력해 주세요.", "warning"); 
-				$("#EMAIL1").focus(); return false;
+				swal({
+						title: '체크',
+						text: '이메일 주소를 입력해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#EMAIL1").focus(); 
+						});
+				return false;
+				// swal("체크", "이메일 주소를 입력해 주세요.", "warning"); 
+				// $("#EMAIL1").focus(); return false;
 			}else if( !$("#MOBILE2").val() || !$("#MOBILE3").val() ){
-			    swal("체크", "휴대폰 번호를 입력해 주세요.", "warning"); 
-			    $("#MOBILE2").focus(); return false;
+				swal({
+						title: '체크',
+						text: '휴대폰 번호를 입력해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#MOBILE2").focus(); 
+						});
+				return false;
+			    // swal("체크", "휴대폰 번호를 입력해 주세요.", "warning"); 
+			    // $("#MOBILE2").focus(); return false;
 			}else if( $("#MOBILE2").val().length < 3 || $("#MOBILE3").val().length < 4 ){
-			    swal("체크", "휴대폰 번호를 확인해 주세요.", "warning"); 
-			    $("#MOBILE2").focus(); return false;
+				swal({
+						title: '체크',
+						text: '휴대폰 번호를 확인해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#MOBILE2").focus(); 
+						});
+				return false;
+				// swal("체크", "휴대폰 번호를 확인해 주세요.", "warning"); 
+			    // $("#MOBILE2").focus(); return false;
 			}
 			if(pwFlag){
 				if( !pwd_check.test( $("#USER_PWD").val() ) ){
-					swal("체크", "비밀번호 형식에 맞게 입력해 주세요.", "warning");
-					$("#USER_PWD").focus(); return false;
+					swal({
+						title: '체크',
+						text: '비밀번호 형식에 맞게 입력해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#USER_PWD_LEN").focus(); 
+						});
+					return false;
+				// 	swal("체크", "비밀번호 형식에 맞게 입력해 주세요.", "warning");
+				// 	$("#USER_PWD").focus(); 
 				}
 			}
 		}else if(kind == "D"){
