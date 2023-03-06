@@ -309,7 +309,7 @@ require_once "./head.php";
 							<td>상단바 제목</td>
 							<td colspan="6">
 								<input type="text" id="top_title" name="top_title" class="w95 f333_12" value="<?=top_title?>" maxlength="12">
-								<span> <i class="fa fa-exclamation-circle col_org mR_5"></i><span class="spc2">최대 1-12자</span></span>
+								<span> <i class="fa fa-exclamation-circle col_org mR_5"></i><span class="spc2">최대 1-12자 (공백포함)</span></span>
 							</td>
 						</tr>
 						<!-- <tr class="hh">
