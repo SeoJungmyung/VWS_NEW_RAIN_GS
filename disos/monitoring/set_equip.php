@@ -1297,10 +1297,8 @@ $(document).ready(function(){
 								$("tr[name="+del_row+"]").remove();
 								sessionStorage.removeItem('list_rtu');
 			                	popup_main_close(); // 레이어 좌측 및 상단 닫기
-								swal.close();
-								$("#btn_re").click();
 								doubleSubmitFlag = false;
-					    		// location.reload(); return false;
+					    		location.reload(); return false;
 					        }else{
 							    swal("체크", "장비 삭제중 오류가 발생 했습니다.", "warning");
 								doubleSubmitFlag = false;
