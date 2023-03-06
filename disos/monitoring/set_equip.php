@@ -1187,7 +1187,10 @@ $(document).ready(function(){
 								// 		$(v).closest("tr").find("td:eq(0)").text(search_cnt);
 								// 		search_cnt++;
 								// });
-									console.log(formData);
+								// console.log(formData);
+
+								$('#list_table').DataTable().destroy();
+								table_load();
 
 								if($("tr[name='list_"+list_id+"'] #l_SORT_FLAG").text() != (DANGER_USE == 1 ? formData[19].value : formData[15].value)){
 									sessionStorage.setItem('search_word',$("#search_word").val());
@@ -1237,8 +1240,6 @@ $(document).ready(function(){
 							
 								swal.close();
 								doubleSubmitFlag = false;
-								$('#list_table').DataTable().destroy();
-								table_load();
 								// location.reload(); return false;
 					        }else{
 						        if(data.msg){
