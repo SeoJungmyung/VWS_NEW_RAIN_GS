@@ -134,7 +134,7 @@ require_once "./head.php";
 						<td class="bg_lb w10 bold al_C bL0">장비 ID</td>
 						<td class="w20"><input type="text" id="RTU_ID" name="RTU_ID" class="f333_12" size="10" value="<?=$data_id?>" oninput="inputCheck(this,'onlyNumber','1~9999')"></td>
 						<td class="bg_lb w10 bold al_C">통신 ID</td>
-						<td><input type="text" id="SIGNAL_ID" name="SIGNAL_ID" class="f333_12" size="10" oninput="inputCheck(this,'onlyNumber','1~9999')"></td>
+						<td><input type="text" id="SIGNAL_ID" name="SIGNAL_ID" class="f333_12" size="10" placeholder="예시) 0~9999" oninput="inputCheck(this,'onlyNumber','1~9999')"></td>
 						<td class="bg_lb w10 bold al_C">행정 코드</td>
 						<td colspan="3">
 							<input type="text" id="AREA_CODE" name="AREA_CODE" class="f333_12 bg_lgr_d" size="12" maxlength="10" readonly>
@@ -145,7 +145,7 @@ require_once "./head.php";
 					<tr>
 						<td class="bg_lb w10 bold al_C">장비명</td>
 						<td>
-							<input type="text" id="RTU_NAME" name="RTU_NAME" class="f333_12" size="22" maxlength="30" onblur="inputCheck(this,'text','1~30')">
+							<input type="text" id="RTU_NAME" name="RTU_NAME" class="f333_12" size="22" maxlength="30" placeholder="예시) 강우계 " onblur="inputCheck(this,'text','1~30')">
 						</td>
 						<td class="bg_lb w10 bold al_C">장비 구분</td>
 						<td colspan="5">
@@ -175,15 +175,15 @@ require_once "./head.php";
 						</td>
 						<td class="bg_lb w10 bold al_C dngr">경계치 / 위험치</td>
 						<td class="">
-							<input type="text" id="FLOW_WARNING" name="FLOW_WARNING" class="warn f333_12" size="10" maxlength="5" oninput="inputCheck(this,'onlyNumber','0.1~9999')">
+							<input type="text" id="FLOW_WARNING" name="FLOW_WARNING" class="warn f333_12" size="10" maxlength="5" placeholder="예시) 0.1~9999 " oninput="inputCheck(this,'onlyNumber','0.1~9999')">
 							 / 
-							<input type="text" id="FLOW_DANGER" name="FLOW_DANGER" class="warn f333_12" size="10" maxlength="5" oninput="inputCheck(this,'onlyNumber','0.1~9999')">
+							<input type="text" id="FLOW_DANGER" name="FLOW_DANGER" class="warn f333_12" size="10" maxlength="5" placeholder="예시) 0.1~9999 " oninput="inputCheck(this,'onlyNumber','0.1~9999')">
 						</td>
 						<td class="bg_lb w10 bold al_C dngr">경계치 해제 / 위험치 해제</td>
 						<td class=""  colspan="3">
-							<input type="text" id="FLOW_WARNING_OFF" name="FLOW_WARNING_OFF" class="warn f333_12" size="10" maxlength="5" oninput="inputCheck(this,'onlyNumber','0.1~9999')">
+							<input type="text" id="FLOW_WARNING_OFF" name="FLOW_WARNING_OFF" class="warn f333_12" size="10" maxlength="5" placeholder="예시) 0.1~9999 " oninput="inputCheck(this,'onlyNumber','0.1~9999')">
 							 / 
-							<input type="text" id="FLOW_DANGER_OFF" name="FLOW_DANGER_OFF" class="warn f333_12" size="10" maxlength="5" oninput="inputCheck(this,'onlyNumber','0.1~9999')">
+							<input type="text" id="FLOW_DANGER_OFF" name="FLOW_DANGER_OFF" class="warn f333_12" size="10" maxlength="5" placeholder="예시) 0.1~9999 " oninput="inputCheck(this,'onlyNumber','0.1~9999')">
 						</td>
 					</tr>
 					<tr>
