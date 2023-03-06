@@ -1776,24 +1776,7 @@ $(document).ready(function(){
 			}
 		}else if(kind == "U"){
 			if( !$("#C_RTU_ID").val() ){
-				swal({
-						title: '체크',
-						text: '장비 ID를 입력해 주세요.',
-						showCancelButton: false,
-						confirmButtonColor: '#555555', 
-						confirmButtonText: '확인',
-						closeOnConfirm: false,
-						type: 'warning',
-						}, function(isConfirm) {
-							swal.close();
-							$("#RTU_ID").focus(); 
-						});
-				return false;
-			    // swal("체크", "장비 ID를 입력해 주세요.", "warning");
-			    // $("#RTU_ID").focus(); return false;	
-			// }else if( !num_length_check.test( $("#RTU_ID").val() ) ){
-			//     swal("체크", "장비 ID는 1~9999까지 숫자만 사용해 주세요.", "warning"); 
-			    $("#RTU_ID").focus(); return false;	
+			    swal("체크", "장비를 선택해 주세요.", "warning"); return false;
 			}else if( !$("#SIGNAL_ID").val() ){
 				swal({
 						title: '체크',
