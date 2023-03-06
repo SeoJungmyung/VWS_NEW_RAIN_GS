@@ -534,111 +534,122 @@ $(document).ready(function(){
      }
 	});
 
-	var now_client_time = new Date();
 	
-	var now_date = now_client_time;
-	var now_y = now_date.getFullYear();
-	var now_m = now_date.getMonth() + 1;
-	var now_d = now_date.getDate();
-	var now_h = now_date.getHours();
-	var now_i = now_date.getMinutes();
-	var date_text = now_y + "년 " + now_m + "월 " + now_d + "일 "
+	table_load();
 
-	var timestamp = makeTimestamp();
-	
-	// 테이블 호출
-	var table = $("#list_table").DataTable({
-		processing: true,
-		paging: false,
-		ordering: false,
-		searching: false,
-		info: false,
-		autoWidth: false,
-		columnDefs: [
-			{className: "dt-center", targets: "_all"}
-		],
-		language: {
-			"emptyTable": "데이터가 없습니다.",       
-			  "loadingRecords": "로딩중...", 
-			  "processing": "처리중...",
-			"search" : "검색 : ",
-			  "paginate": {
-				  "previous": "<",
-				  "next": ">",
-			  },
-			  "zeroRecords": "검색 결과 데이터가 없습니다."
-		}
-	});
-	var button = new $.fn.dataTable.Buttons(table, {
-		buttons: [
-			   {
-				extend: "print",
-				text: "인쇄",
-				className: "btn_lbb80_s",
-				autoPrint: true,
-				title: "장비 내역 출력",
-				customize: function(win){
-					var view_id_str = sessionStorage.getItem('view_id');
-					$(win.document.body).find("tr td:nth-child(3)").each(function(evt) {
+	function table_load(){
+		var now_client_time = new Date();
+		
+		var now_date = now_client_time;
+		var now_y = now_date.getFullYear();
+		var now_m = now_date.getMonth() + 1;
+		var now_d = now_date.getDate();
+		var now_h = now_date.getHours();
+		var now_i = now_date.getMinutes();
+		var date_text = now_y + "년 " + now_m + "월 " + now_d + "일 "
+		var timestamp = makeTimestamp();
+		// 테이블 호출
+		var table = $("#list_table").DataTable({
+			processing: true,
+			paging: false,
+			ordering: false,
+			searching: false,
+			info: false,
+			autoWidth: false,
+			columnDefs: [
+				{className: "dt-center", targets: "_all"}
+			],
+			language: {
+				"emptyTable": "데이터가 없습니다.",       
+				  "loadingRecords": "로딩중...", 
+				  "processing": "처리중...",
+				"search" : "검색 : ",
+				  "paginate": {
+					  "previous": "<",
+					  "next": ">",
+				  },
+				  "zeroRecords": "검색 결과 데이터가 없습니다."
+			}
+		});
+		var button = new $.fn.dataTable.Buttons(table, {
+			buttons: [
+				   {
+					extend: "print",
+					text: "인쇄",
+					className: "btn_lbb80_s",
+					autoPrint: true,
+					title: "장비 내역 출력",
+					customize: function(win){
+						var view_id_str = sessionStorage.getItem('view_id');
+						$(win.document.body).find("tr td:nth-child(3)").each(function(evt) {
+							if(view_id_str === null){
+								console.log("print");
+							}else{
+								var view_id_arr = view_id_str.split(',').map(Number);
+								if (!view_id_arr.includes(parseInt($(this).text()))) {
+									// console.log('view_id contains ' + $(this).text());
+									$(this).parent().remove();
+								}
+							}
+							// if(view_id_str || view_id_str != "" || view_id_str !== null){
+							// 	var view_id_arr = view_id_str.split(',').map(Number);
+							// 	if (!view_id_arr.includes(parseInt($(this).text()))) {
+							// 		// console.log('view_id contains ' + $(this).text());
+							// 		$(this).parent().remove();
+							// 	}
+							// }
+						});
+						$(win.document.body).find("body").css("overflow", "visible");
+						$(win.document.body).find("h1").css("text-align", "center").css("font-size", "18px").css("margin", "20px");
+						$(win.document.body).find("table").css("font-size", "12px").css("margin", "20px").css("width", "97%").css("border-right", "1px solid #C4C4C4");
+						$(win.document.body).find("table").attr("border", "1");
+						$(win.document.body).find("tr").css("text-align", "center");
+					}
+				},
+				   {
+					extend: "excel",
+					text: "엑셀변환",
+					className: "btn_lbb80_s",
+					filename: '장비목록조회_' + timestamp, 
+					title: "장비 목록",
+					messageTop: date_text,
+					customize: function(xlsx){
+						var sheet = xlsx.xl.worksheets["sheet1.xml"];
+						//$("row:first c", sheet).attr("s", "42");
+						$("row c", sheet).attr("s", "51");
+						$("row:eq(1) c", sheet).attr("s", "52");
+						var col = $("col", sheet);
+						col.each(function(){
+								// 센서 버튼 삭제?
+							  $(col[0]).attr("width", 10);
+							  $(col[1]).attr("width", 10);
+							  $(col[2]).attr("width", 10);
+							  $(col[3]).attr("width", 35);
+							  $(col[4]).attr("width", 20);
+							  $(col[5]).attr("width", 20);
+						   });
+					}, customizeData: function(data) {
+						// 센서부분 삭제
+						var view_id_str = sessionStorage.getItem('view_id');
+						// if(view_id_str != ""){
+						// 	var view_id_arr = view_id_str.split(',').map(Number);
+						// 	data.body = data.body.filter(function(item) {
+						// 		return view_id_arr.includes(parseInt(item[2]));
+						// 	});
+						// }
 						if(view_id_str === null){
-							console.log("print");
+								console.log("print");
 						}else{
 							var view_id_arr = view_id_str.split(',').map(Number);
-							if (!view_id_arr.includes(parseInt($(this).text()))) {
-								// console.log('view_id contains ' + $(this).text());
-								$(this).parent().remove();
-							}
+							data.body = data.body.filter(function(item) {
+								return view_id_arr.includes(parseInt(item[2]));
+							});
 						}
-						// if(view_id_str || view_id_str != "" || view_id_str !== null){
-						// 	var view_id_arr = view_id_str.split(',').map(Number);
-						// 	if (!view_id_arr.includes(parseInt($(this).text()))) {
-						// 		// console.log('view_id contains ' + $(this).text());
-						// 		$(this).parent().remove();
-						// 	}
-						// }
-					});
-					$(win.document.body).find("body").css("overflow", "visible");
-					$(win.document.body).find("h1").css("text-align", "center").css("font-size", "18px").css("margin", "20px");
-					$(win.document.body).find("table").css("font-size", "12px").css("margin", "20px").css("width", "97%").css("border-right", "1px solid #C4C4C4");
-					$(win.document.body).find("table").attr("border", "1");
-					$(win.document.body).find("tr").css("text-align", "center");
-				}
-			},
-			   {
-				extend: "excel",
-				text: "엑셀변환",
-				className: "btn_lbb80_s",
-				filename: '장비목록조회_' + timestamp, 
-				title: "장비 목록",
-				messageTop: date_text,
-				customize: function(xlsx){
-					var sheet = xlsx.xl.worksheets["sheet1.xml"];
-					//$("row:first c", sheet).attr("s", "42");
-					$("row c", sheet).attr("s", "51");
-					$("row:eq(1) c", sheet).attr("s", "52");
-					var col = $("col", sheet);
-					col.each(function(){
-							// 센서 버튼 삭제?
-						  $(col[0]).attr("width", 10);
-						  $(col[1]).attr("width", 10);
-						  $(col[2]).attr("width", 10);
-						  $(col[3]).attr("width", 35);
-						  $(col[4]).attr("width", 20);
-						  $(col[5]).attr("width", 20);
-					   });
-				}, customizeData: function(data) {
-					// 센서부분 삭제
-					var view_id_str = sessionStorage.getItem('view_id');
-					if(view_id_str != ""){
-						var view_id_arr = view_id_str.split(',').map(Number);
-						data.body = data.body.filter(function(item) {
-							return view_id_arr.includes(parseInt(item[2]));
-						});
 					}
 				}
-			}
-		]
-	}).container().appendTo($("#button"));
+			]
+		}).container().appendTo($("#button"));
+	}
 	
 	// 전체목록
 	$("#btn_search_all").click(function(){
@@ -1226,6 +1237,8 @@ $(document).ready(function(){
 							
 								swal.close();
 								doubleSubmitFlag = false;
+								$('#list_table').DataTable().destroy();
+								table_load();
 								// location.reload(); return false;
 					        }else{
 						        if(data.msg){
