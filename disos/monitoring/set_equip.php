@@ -133,9 +133,11 @@ require_once "./head.php";
 					<tr>
 						<td class="bg_lb w10 bold al_C bL0">장비 ID</td>
 						<td class="w20"><input type="text" id="RTU_ID" name="RTU_ID" class="f333_12" size="10" value="<?=$data_id?>" oninput="inputCheck(this,'onlyNumber','1~9999')"></td>
-						<td class="bg_lb w10 bold al_C">통신 ID</td>
+						<td class="bg_lb w10 bold al_C">통신 ID<img src="../images/icon_star_orange.png" alt="필수 항목">
+						</td>
 						<td><input type="text" id="SIGNAL_ID" name="SIGNAL_ID" class="f333_12" size="10" placeholder="예시) 0~9999" oninput="inputCheck(this,'onlyNumber','1~9999')"></td>
-						<td class="bg_lb w10 bold al_C">행정 코드</td>
+						<td class="bg_lb w10 bold al_C">행정 코드<img src="../images/icon_star_orange.png" alt="필수 항목">
+						</td>
 						<td colspan="3">
 							<input type="text" id="AREA_CODE" name="AREA_CODE" class="f333_12 bg_lgr_d" size="12" maxlength="10" readonly>
 							<button type="button" id="btn_area" class="btn_bbr w100p">행정구역 조회</button>
@@ -143,11 +145,13 @@ require_once "./head.php";
 						</td>
 					</tr>
 					<tr>
-						<td class="bg_lb w10 bold al_C">장비명</td>
+						<td class="bg_lb w10 bold al_C">장비명<img src="../images/icon_star_orange.png" alt="필수 항목">
+						</td>
 						<td>
 							<input type="text" id="RTU_NAME" name="RTU_NAME" class="f333_12" size="22" maxlength="30" placeholder="예시) 강우계 " onblur="inputCheck(this,'text','1~30')">
 						</td>
-						<td class="bg_lb w10 bold al_C">장비 구분</td>
+						<td class="bg_lb w10 bold al_C">장비 구분<img src="../images/icon_star_orange.png" alt="필수 항목">
+						</td>
 						<td colspan="5">
 							<select id="RTU_TYPE" name="RTU_TYPE" size="1" class="gaigi12">
 								<option value="">장비구분 선택</option>
@@ -196,7 +200,7 @@ require_once "./head.php";
 						</td>
 						<td class="bg_lb w10 bold al_C">지역 정렬 번호</td>
 						<td><input id="SORT_FLAG" name="SORT_FLAG" type="text" class="f333_12" size="6" value="0" oninput="inputCheck(this,'onlyNumber','0~9999')"></td>
-						<td class="bg_lb w10 bold al_C bT_1gry">회선 / 모델</td>
+						<td class="bg_lb w10 bold al_C bT_1gry">회선 / 모델	<img src="../images/icon_star_orange.png" alt="필수 항목"></td>
 						<td class="bT_1gry" colspan="3">
 							<select id="LINE_NO" name="LINE_NO" size="1" class="f333_12">
 								<option value="">회선 선택</option>
@@ -285,9 +289,11 @@ require_once "./head.php";
 						<td class="bg_lb w10 bold al_C">VHF 중계국</td>
 						<td><input id="VHF_TRANS_ID" name="VHF_TRANS_ID" type="text" class="f333_12" size="6"></td>
 					</tr> -->
+					
 				</table>
 			</li>
 		</ul>
+		<div class="item_txt"> <img src="../images/icon_star_orange.png" alt="필수 항목"><ul><li class="txt02">필수입력항목</li></ul></div>
 		<div class="guide_btn"> 
 					<button type="button" id="btn_in" class="btn_bb80"><i class="fa fa-plus mR5 font15"></i>등록</button>
 					<button type="button" id="btn_re" class="btn_lbb80_s"><i class="fa fa-repeat mR5 font15"></i>초기화</button>

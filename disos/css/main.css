@@ -871,6 +871,10 @@ div#top_img img{padding: 5px;} */
 
 .guide_btn {width: 100%; border-radius: 0 0 10px 10px; background-color: #F2F3F8; display: inline-flex; justify-content: center; padding: 10px;}
 
+.item_txt {width: 100%; border-radius: 0 0 10px 10px; display: inline-flex; align-items: center;  font-size: 1.6rem; margin-left: 1.1%; margin-top: -1%;}
+.item_txt ul {width: 100%; display: inline-flex; margin-right: 20px;}
+.item_txt .intro{justify-content: flex-start;}
+.item_txt .txt02 {font-size: 1.2rem; color: #fb6600; font-weight: 500;}
 
 
 .tit_unit {width: 40%; height: 46px; display: inline-flex; align-items: center;  font-size: 1.6rem;}
