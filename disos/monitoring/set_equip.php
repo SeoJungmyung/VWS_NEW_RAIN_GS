@@ -578,15 +578,24 @@ $(document).ready(function(){
 				autoPrint: true,
 				title: "장비 내역 출력",
 				customize: function(win){
+					var view_id_str = sessionStorage.getItem('view_id');
 					$(win.document.body).find("tr td:nth-child(3)").each(function(evt) {
-						var view_id_str = sessionStorage.getItem('view_id');
-						if(view_id_str != ""){
+						if(view_id_str === null){
+							console.log("print");
+						}else{
 							var view_id_arr = view_id_str.split(',').map(Number);
 							if (!view_id_arr.includes(parseInt($(this).text()))) {
 								// console.log('view_id contains ' + $(this).text());
 								$(this).parent().remove();
 							}
 						}
+						// if(view_id_str || view_id_str != "" || view_id_str !== null){
+						// 	var view_id_arr = view_id_str.split(',').map(Number);
+						// 	if (!view_id_arr.includes(parseInt($(this).text()))) {
+						// 		// console.log('view_id contains ' + $(this).text());
+						// 		$(this).parent().remove();
+						// 	}
+						// }
 					});
 					$(win.document.body).find("body").css("overflow", "visible");
 					$(win.document.body).find("h1").css("text-align", "center").css("font-size", "18px").css("margin", "20px");
