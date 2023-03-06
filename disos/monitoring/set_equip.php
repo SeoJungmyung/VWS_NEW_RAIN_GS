@@ -1531,7 +1531,9 @@ $(document).ready(function(){
 	// });
 
 	// 달력 호출
-	datepicker(1, "#CALL_LAST_D", "../images/icon_cal.png", "yy-mm-dd");
+	datepicker(1, "#CALL_LAST_D", "../images/icon_cal_gray.png", "yy-mm-dd");
+	$(".ui-datepicker-trigger").attr('alt','');
+	$(".ui-datepicker-trigger").attr('title','');
 
 	// 폼 체크
 	function form_check(kind){
