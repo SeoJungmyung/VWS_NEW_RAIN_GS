@@ -1509,10 +1509,8 @@ $(document).ready(function(){
 							$("#RTU_ID").focus(); 
 						});
 				return false;
-			    // swal("체크", "이미 사용중인 장비 ID 입니다.", "warning");
-			    // $("#RTU_ID").focus();
-			    swal("체크", "장비 ID를 입력해 주세요.", "warning");
-			    $("#RTU_ID").focus(); return false;	
+			    // swal("체크", "장비 ID를 입력해 주세요.", "warning");
+			    // $("#RTU_ID").focus(); return false;	
 			// }else if( !num_length_check.test( $("#RTU_ID").val() ) ){
 			//     swal("체크", "장비 ID는 1~9999까지 숫자만 사용해 주세요.", "warning"); 
 			    $("#RTU_ID").focus(); return false;	
@@ -1736,10 +1734,8 @@ $(document).ready(function(){
 							$("#RTU_ID").focus(); 
 						});
 				return false;
-			    // swal("체크", "이미 사용중인 장비 ID 입니다.", "warning");
-			    // $("#RTU_ID").focus();			}else if( !$("#RTU_ID").val() ){
-			    swal("체크", "장비 ID를 입력해 주세요.", "warning");
-			    $("#RTU_ID").focus(); return false;	
+			    // swal("체크", "장비 ID를 입력해 주세요.", "warning");
+			    // $("#RTU_ID").focus(); return false;	
 			// }else if( !num_length_check.test( $("#RTU_ID").val() ) ){
 			//     swal("체크", "장비 ID는 1~9999까지 숫자만 사용해 주세요.", "warning"); 
 			    $("#RTU_ID").focus(); return false;	
