@@ -572,6 +572,8 @@ crypt.setKey(key);
 			$("#EMAIL1").val("");
 			$("#EMAIL2").val(0);
 			$("#EMAIL3").val("");
+			$("#EMAIL3").attr('readonly',false);
+			$("#EMAIL3").removeClass('bg_lgr_d');
 			$("#MOBILE1").val("010");
 			$("#MOBILE2").val("");
 			$("#MOBILE3").val("");
