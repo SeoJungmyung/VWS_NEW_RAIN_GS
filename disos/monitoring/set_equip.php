@@ -170,7 +170,7 @@ require_once "./head.php";
 					<tr>
 						<td class="bg_lb w10 bold al_C dngr">기준치 사용여부</td>
 						<td>
-							<input type="radio" id="DANGER_USE0" class="DANGER_USE" name="DANGER_USE" value="0">미사용
+							<input type="radio" id="DANGER_USE0" class="DANGER_USE" name="DANGER_USE" value="0" checked>미사용
 							<input type="radio" id="DANGER_USE1" class="DANGER_USE" name="DANGER_USE" value="1">사용
 						</td>
 						<td class="bg_lb w10 bold al_C dngr">경계치 / 위험치</td>
@@ -761,7 +761,6 @@ $(document).ready(function(){
 						$("#FLOW_WARNING").val(data.list.FLOW_WARNING);
 						$("#FLOW_DANGER_OFF").val(data.list.FLOW_DANGER_OFF);
 						$("#FLOW_WARNING_OFF").val(data.list.FLOW_WARNING_OFF);
-						console.log(data.list.DANGER_USE);
 						$("input[value='"+data.list.DANGER_USE+"']").prop("checked", true);
 						// if(data.list.DANGER_USE == 1){
 						// 	$("#DANGER_USE0").prop("checked", false);
