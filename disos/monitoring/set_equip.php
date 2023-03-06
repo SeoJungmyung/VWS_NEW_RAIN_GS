@@ -595,7 +595,7 @@ $(document).ready(function(){
 					customize: function(win){
 						var view_id_str = sessionStorage.getItem('view_id');
 						var view_id_arr = view_id_str === null ? "" : view_id_str.split(',').map(Number);
-						if(view_id_str !== null){
+						if(view_id_str != null){
 							$(win.document.body).find("tr td:nth-child(3)").each(function(evt) {
 									if (!view_id_arr.includes(parseInt($(this).text()))) {
 										$(this).parent().remove();
