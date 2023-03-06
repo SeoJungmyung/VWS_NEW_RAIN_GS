@@ -1141,7 +1141,7 @@
 				if (!ipformat.test(obj.value)) {
 					swal({
 						title: '<div class="alpop_top_r">IP 입력</div><div class="alpop_mes_r">유효한 범위의 값이 아닙니다.</div>',
-						text: '정상적인 값을 입력해주세요.<br>( 예 : 12.12.12.12 )',
+						text: '정상적인 값을 입력해주세요.<br>( 예 : ***.***.***.*** )',
 						confirmButtonColor: '#ca4726',
 						confirmButtonText: '확인',
 						html: true
