@@ -489,6 +489,22 @@ require_once "./head.php";
 
 <script type="text/javascript">
 $(document).ready(function(){
+
+	// 장비정렬순서 소수점 방지
+	var SORT_FLAG = document.getElementById('SORT_FLAG');
+	SORT_FLAG.addEventListener('input', function() {
+		var value = this.value;
+		if (isNaN(value)) {
+			this.value = this.oldValue || '';
+			return;
+		}
+		if (value.indexOf('.') !== -1) {
+			this.value = this.oldValue || '';
+			return;
+		}
+		this.oldValue = value;
+	});
+
 	$('#set_frm input[type="text"]').keypress(function(event) {
     	if (event.which == 13) {
       		event.preventDefault();
