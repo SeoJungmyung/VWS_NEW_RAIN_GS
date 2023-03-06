@@ -119,7 +119,7 @@ require_once "./head.php";
 						<td class="bg_lb w10 bold al_C bL0">관리자 ID</td>
 						<td colspan="3">
 							<input id="USER_ID" name="USER_ID" type="text" class="f333_12" size="18" maxlength="15">
-							<span> <i class="fa fa-exclamation-circle col_org mR_5"></i><span class="spc">영문/숫자 포함 5~15자</span>
+							<span> <i class="fa fa-exclamation-circle col_org mR_5"></i><span class="spc">영어/숫자 포함 5~15자</span>
 							<button type="button" id="btn_check"  class="btn_bbr w100p">중복체크</button>
 						</td>
 					</tr>
@@ -138,7 +138,9 @@ require_once "./head.php";
 					</tr> -->
 					<tr>
 						<td class="bg_lb w10 bold al_C bL0">관리자명</td>
-						<td colspan="3"><input id="USER_NAME" name="USER_NAME" type="text" class="f333_12" size="18" maxlength="10"></td>
+						<td colspan="3"><input id="USER_NAME" name="USER_NAME" type="text" class="f333_12" size="18" maxlength="10">
+						<span> <i class="fa fa-exclamation-circle col_org mR_5"></i>영어/숫자 포함 1~10자</span>
+					</td>
 					</tr>
 					<tr>
 						<td height="35" class="bg_lb w10 bold al_C bL0">이메일</td>
@@ -153,6 +155,7 @@ require_once "./head.php";
 								<option value="0">직접입력</option>
 							</select> / 
 							<input id="EMAIL3" name="EMAIL3" type="text" class="f333_12" size="32" maxlength="20" onblur="inputCheck(this,'onlyEmail','')">
+							<span> <i class="fa fa-exclamation-circle col_org mR_5"></i>ID 1~20자 ( 예 : abcd123@naver.com )</span>
 						</td>
 					</tr>
 					<tr>
