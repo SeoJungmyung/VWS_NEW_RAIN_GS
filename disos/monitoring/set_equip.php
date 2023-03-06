@@ -1313,8 +1313,9 @@ $(document).ready(function(){
 	$("#btn_de").click(function(){
 		if( form_check("D") ){
 			var C_RTU_ID = $("#C_RTU_ID").val();
+			var del_row = "list_"+sessionStorage.getItem('list_rtu');
 			swal({
-				title: '<div class="alpop_top_b">장비 삭제 확인</div><div class="alpop_mes_b">삭제 하시겠습니까?</div>',
+				title: '<div class="alpop_top_b">장비 삭제 확인</div><div class="alpop_mes_b">'+$("tr[name="+del_row+"] td:nth-child(5)").text()+' 삭제 하시겠습니까?</div>',
 				text: '확인 시 장비가 삭제 됩니다.',
 				showCancelButton: true,
 				confirmButtonColor: '#5b7fda',
@@ -1339,7 +1340,6 @@ $(document).ready(function(){
 				        success : function(data){
 					        if(data.result){
 								sessionStorage.setItem('list_row', '');
-								var del_row = "list_"+sessionStorage.getItem('list_rtu');
 								$("tr[name="+del_row+"]").remove();
 								sessionStorage.removeItem('list_rtu');
 			                	popup_main_close(); // 레이어 좌측 및 상단 닫기
