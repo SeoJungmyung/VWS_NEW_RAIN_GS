@@ -138,8 +138,8 @@ require_once "./head.php";
 						<td class="bg_lb w10 bold al_C">행정 코드</td>
 						<td colspan="3">
 							<input type="text" id="AREA_CODE" name="AREA_CODE" class="f333_12 bg_lgr_d" size="12" maxlength="10" readonly>
-							<button type="button" id="btn_check" class="btn_bbr">중복체크</button>
 							<button type="button" id="btn_area" class="btn_bbr w100p">행정구역 조회</button>
+							<button type="button" id="btn_check" class="btn_bbr">중복체크</button>
 						</td>
 					</tr>
 					<tr>
