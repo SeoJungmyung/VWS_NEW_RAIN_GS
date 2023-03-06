@@ -322,10 +322,12 @@
 			    	$("#map_data").load("map_data.php?sel_sub="+map_sub, function(response, status, xhr){
             			if(status == "success"){
 	                        if(map_sub == 1){
+								radar();
 	                        	callRadar();
 	                        	heroes();
 	                        }else if(map_sub == 2){
-	                        	callRadar();
+								radar();
+								callRadar();
 	                        }else if(map_sub == 3){
 	                        	heroes();
 	                        }else if(map_sub == 4){
