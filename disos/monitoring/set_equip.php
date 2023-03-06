@@ -1099,6 +1099,20 @@ $(document).ready(function(){
 		// $("#dup_check2").val(0); // 계측기코드 중복체크 리셋
 		sessionStorage.removeItem('list_id');
 		sessionStorage.removeItem('list_rtu');
+
+		sessionStorage.setItem('DANGER_USE',0);
+		$("#FLOW_WARNING").addClass('bg_lgr_d');
+		$("#FLOW_WARNING_OFF").addClass('bg_lgr_d');
+		$("#FLOW_DANGER").addClass('bg_lgr_d');
+		$("#FLOW_DANGER_OFF").addClass('bg_lgr_d');
+		$("#FLOW_WARNING").prop("disabled", true);
+		$("#FLOW_WARNING_OFF").prop("disabled", true);
+		$("#FLOW_DANGER").prop("disabled", true);
+		$("#FLOW_DANGER_OFF").prop("disabled", true);
+		$("#FLOW_WARNING").prop("readonly", true);
+		$("#FLOW_WARNING_OFF").prop("readonly", true);
+		$("#FLOW_DANGER").prop("readonly", true);
+		$("#FLOW_DANGER_OFF").prop("readonly", true);
 		$("#search_word").val('');
 		$("#search_col").val(0);
 		$("#btn_search_all").click();
