@@ -1008,7 +1008,7 @@ div#new{
 
 .sidr-class-btn_wbb:hover{background-color:#e1eef5; cursor:pointer;}
 
-.windImg{height: 20px; margin-bottom: -5px; margin-right: 5px;}
+.windImg{ margin-bottom: -5px; margin-right: 5px;}
 
 .still_photo{width:100%; height:100%;}
 .still_photo img{width:100%; height:100%;}
