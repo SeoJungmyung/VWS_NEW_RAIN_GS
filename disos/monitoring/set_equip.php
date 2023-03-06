@@ -659,7 +659,7 @@ $(document).ready(function(){
 		const tbody = $("#list_table tbody");
 		const rows = tbody.find("tr").get();
 
-		sessionStorage.setItem('view_id',''); // 전체목록 선택 시 view_id 배열 초기화
+		sessionStorage.removeItem('view_id',''); // 전체목록 선택 시 view_id 배열 초기화
 
 		$.each(rows, (i, row) => {
 			// tbody.append(row);
