@@ -1921,12 +1921,12 @@ $(document).ready(function(){
 					if( !$.isNumeric($(v).val()) ){
 						swal("체크", "경계치/위험치에 숫자를 넣어주세요!", "warning");
 						$(v).focus();
-						$("#DANGER_USE0").prop("checked", true);
+						// $("#DANGER_USE0").prop("checked", true);
 						result[i] = "false";
 					}else if($(v).val() <= 0){
 						swal("체크", "경계치/위험치에 0보다 큰 값을 넣어주세요!", "warning");
 						$(v).focus();
-						$("#DANGER_USE0").prop("checked", true);
+						// $("#DANGER_USE0").prop("checked", true);
 						result[i] = "false";
 					}else{
 						result[i] = "true";
