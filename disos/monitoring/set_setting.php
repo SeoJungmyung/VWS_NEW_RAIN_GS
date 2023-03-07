@@ -1016,6 +1016,8 @@ $(document).ready(function(){
 								}
 							}
 						}else{
+							// if($(this).find('.popup_url').val() == "localhost") return false;
+							if($(this).find('.popup_url').val().includes("localhost")) return false;
 							ipTest = ipPattern.test($(this).find('.popup_url').val());
 							let urlTest1 = urlPattern1.test($(this).find('.popup_url').val());
 							if(!urlTest1){
