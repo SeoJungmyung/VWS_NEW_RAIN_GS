@@ -615,13 +615,17 @@ $(document).ready(function(){
 					autoPrint: true,
 					title: "장비 내역 출력",
 					customize: function(win){
+						var idx = 1;
 						var view_id_str = sessionStorage.getItem('view_id');
 						var view_id_arr = view_id_str === null ? "" : view_id_str.split(',').map(Number);
 						if(view_id_str != null){
-							$(win.document.body).find("tr td:nth-child(3)").each(function(evt) {
-									if (!view_id_arr.includes(parseInt($(this).text()))) {
+							$(win.document.body).find("tr td:nth-child(3)").each(function(index, row) {
+								if (!view_id_arr.includes(parseInt($(this).text()))) {
 										$(this).parent().remove();
-									}
+								}else{
+									$(this).prev().prev().text(idx);
+									idx++;
+								}
 							});
 						}
 						$(win.document.body).find("body").css("overflow", "visible");
@@ -656,18 +660,17 @@ $(document).ready(function(){
 					}, customizeData: function(data) {
 						// 센서부분 삭제
 						var view_id_str = sessionStorage.getItem('view_id');
-						// if(view_id_str != ""){
-						// 	var view_id_arr = view_id_str.split(',').map(Number);
-						// 	data.body = data.body.filter(function(item) {
-						// 		return view_id_arr.includes(parseInt(item[2]));
-						// 	});
-						// }
 						if(view_id_str === null){
 								console.log("print");
 						}else{
+							// 데이터 필터링
 							var view_id_arr = view_id_str.split(',').map(Number);
 							data.body = data.body.filter(function(item) {
 								return view_id_arr.includes(parseInt(item[2]));
+							});
+							// 순서항목 재설정
+							data.body.forEach(function(item, index) {
+								item[0] = index + 1;
 							});
 						}
 					}
