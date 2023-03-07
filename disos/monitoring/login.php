@@ -87,6 +87,9 @@ if(recaptcha == 0){
 <? if(recaptcha == 0){ ?>
 			<input type="hidden" id="recaptcha" name="recaptcha" value="1" maxlength="5">
 <? }else if(recaptcha == 2){ ?>
+			<div class="captchaT">
+				아래 보안문자를 정확하게 입력해주세요.
+			</div>
 			<div class="g-recaptcha2">
 				<img src="" id="captcha" style="" tabindex="0" alt="보안 문자" onfocus="speechOut();"/>
 				<button id="speechBtn" onclick="speechOut()"><i class="fa fa-volume-up" style="margin-right: -34px;"></i></button>
