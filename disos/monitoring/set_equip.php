@@ -148,7 +148,7 @@ require_once "./head.php";
 						<td class="bg_lb w10 bold al_C">장비명<img src="../images/icon_star_orange.png" alt="필수 항목">
 						</td>
 						<td>
-							<input type="text" id="RTU_NAME" name="RTU_NAME" class="f333_12" size="22" maxlength="30" placeholder="예) 강우계 " onblur="inputCheck(this,'text','1~30')">
+							<input type="text" id="RTU_NAME" name="RTU_NAME" class="f333_12" size="22" maxlength="30" placeholder="예) 1~15자리 " onblur="inputCheck(this,'text','1~15')">
 						</td>
 						<td class="bg_lb w10 bold al_C">장비 구분<img src="../images/icon_star_orange.png" alt="필수 항목">
 						</td>
