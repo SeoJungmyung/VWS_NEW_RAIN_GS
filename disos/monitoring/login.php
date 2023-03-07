@@ -88,9 +88,9 @@ if(recaptcha == 0){
 			<input type="hidden" id="recaptcha" name="recaptcha" value="1" maxlength="5">
 <? }else if(recaptcha == 2){ ?>
 			<div class="g-recaptcha2">
-				<img src="../func/get_captcha.php" id="captcha" style="" tabindex="0" alt="" onfocus="speechOut();"/>
-				<!-- <button id="speechBtn" onclick="speechOut()"><i class="fa fa-volume-up" style="margin-right: -30px;"></i></button> -->
-				<img src="../images/refresh.png" id="refresh" width="25" style="position: relative; bottom: 12px;" />
+				<img src="" id="captcha" style="" tabindex="0" alt="" onfocus="speechOut();"/>
+				<button id="speechBtn" onclick="speechOut()"><i class="fa fa-volume-up" style="margin-right: -34px;"></i></button>
+				<img src="../images/refresh.png" id="refresh" width="25" style="position: relative; bottom: 22px;" />
 				<input type="text" id="recaptcha" name="recaptcha" alt="리캡챠 입력" onkeypress="if( event.keyCode == 13 ){$('#login_ok').click();}" maxlength="5" placeholder="Recaptcha" required />
 			</div>
 <? } ?>
