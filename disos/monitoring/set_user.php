@@ -702,7 +702,7 @@ crypt.setKey(key);
 			$("#mode").val("user_de");
 			var C_USER_ID = $("#C_USER_ID").val();
 			swal({
-				title: '<div class="alpop_top_b">관리자 삭제 확인</div><div class="alpop_mes_b">['+C_USER_ID+']을 삭제하실 겁니까?</div>',
+				title: '<div class="alpop_top_b">관리자 삭제 확인</div><div class="alpop_mes_b">['+C_USER_ID+']을 삭제 하시겠습니까?</div>',
 				text: '확인 시 관리자가 삭제 됩니다.',
 				showCancelButton: true,
 				confirmButtonColor: '#5b7fda',
