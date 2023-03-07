@@ -258,7 +258,9 @@ $(document).ready(function(){
 								DEG_KO[idx] = v.DATA_DEG_KO;
 								if(mode == 'wind'){
 									DATADEG[idx] = new Image();
-									DATADEG[idx].src = "../../tvbrd/img/wind_small/"+v.DATA_DEG;
+									if(v.DATA_DEG){
+										DATADEG[idx].src = "../../tvbrd/img/wind_small/"+v.DATA_DEG;
+									}
 								}
 								// LEGD[idx] = tmpLeg;
 							}
@@ -612,16 +614,20 @@ $(document).ready(function(){
         var now = new Date(now_y, now_m, now_d);
         now.setDate(now.getDate() + 1);
 
-		// 내일로 넘어가지 않도록 제한
-		var today = new Date();
-		if(today.getTime() >= now.getTime()){
-			var sel_y = now.getFullYear();
-			var sel_m = now.getMonth() + 1;
-			var sel_d = now.getDate();
+		var sel_y = now.getFullYear();
+		var sel_m = now.getMonth() + 1;
+		var sel_d = now.getDate();
+		
+		var e_edate = $("#edate").val();
+		var e_now_y = e_edate.substring(0, 4);
+		var e_now_m = e_edate.substring(5, 7) - 1;
+		var e_now_d = e_edate.substring(8, 10);
+        var e_now = new Date(e_now_y, e_now_m, e_now_d);
+
+		if(e_now.getTime() >= now.getTime()){
 			$("#sdate").datepicker("setDate", sel_y+"-"+sel_m+"-"+sel_d);
-			
 		}else{
-			swal("체크", "미래는 검색할 수 없습니다!", "warning");
+			swal("체크", "이후 날짜는 검색할 수 없습니다!", "warning");
 		}
 	});
 	
