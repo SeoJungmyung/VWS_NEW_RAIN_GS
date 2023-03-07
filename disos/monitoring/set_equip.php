@@ -135,7 +135,7 @@ require_once "./head.php";
 						<td class="w20"><input type="text" id="RTU_ID" name="RTU_ID" class="f333_12" size="10" value="<?=$data_id?>" oninput="inputCheck(this,'onlyNumber','1~9999')"></td>
 						<td class="bg_lb w10 bold al_C">통신 ID<img src="../images/icon_star_orange.png" alt="필수 항목">
 						</td>
-						<td><input type="text" id="SIGNAL_ID" name="SIGNAL_ID" class="f333_12" size="10" placeholder="예시) 0~9999" oninput="inputCheck(this,'onlyNumber','1~9999')"></td>
+						<td><input type="text" id="SIGNAL_ID" name="SIGNAL_ID" class="f333_12" size="10" placeholder="예) 1~9999" oninput="inputCheck(this,'onlyNumber','1~9999')"></td>
 						<td class="bg_lb w10 bold al_C">행정 코드<img src="../images/icon_star_orange.png" alt="필수 항목">
 						</td>
 						<td colspan="3">
@@ -148,7 +148,7 @@ require_once "./head.php";
 						<td class="bg_lb w10 bold al_C">장비명<img src="../images/icon_star_orange.png" alt="필수 항목">
 						</td>
 						<td>
-							<input type="text" id="RTU_NAME" name="RTU_NAME" class="f333_12" size="22" maxlength="30" placeholder="예시) 강우계 " onblur="inputCheck(this,'text','1~30')">
+							<input type="text" id="RTU_NAME" name="RTU_NAME" class="f333_12" size="22" maxlength="30" placeholder="예) 강우계 " onblur="inputCheck(this,'text','1~30')">
 						</td>
 						<td class="bg_lb w10 bold al_C">장비 구분<img src="../images/icon_star_orange.png" alt="필수 항목">
 						</td>
@@ -179,15 +179,15 @@ require_once "./head.php";
 						</td>
 						<td class="bg_lb w10 bold al_C dngr">경계치 / 위험치</td>
 						<td class="">
-							<input type="text" id="FLOW_WARNING" name="FLOW_WARNING" class="warn f333_12" size="10" maxlength="5" placeholder="예시) 0.1~9999 " oninput="inputCheck(this,'onlyNumber','0.1~9999')">
+							<input type="text" id="FLOW_WARNING" name="FLOW_WARNING" class="warn f333_12" size="10" maxlength="5" placeholder="예) 0.1~9999 " oninput="inputCheck(this,'onlyNumber','0.1~9999')">
 							 / 
-							<input type="text" id="FLOW_DANGER" name="FLOW_DANGER" class="warn f333_12" size="10" maxlength="5" placeholder="예시) 0.1~9999 " oninput="inputCheck(this,'onlyNumber','0.1~9999')">
+							<input type="text" id="FLOW_DANGER" name="FLOW_DANGER" class="warn f333_12" size="10" maxlength="5" placeholder="예) 0.1~9999 " oninput="inputCheck(this,'onlyNumber','0.1~9999')">
 						</td>
 						<td class="bg_lb w10 bold al_C dngr">경계치 해제 / 위험치 해제</td>
 						<td class=""  colspan="3">
-							<input type="text" id="FLOW_WARNING_OFF" name="FLOW_WARNING_OFF" class="warn f333_12" size="10" maxlength="5" placeholder="예시) 0.1~9999 " oninput="inputCheck(this,'onlyNumber','0.1~9999')">
+							<input type="text" id="FLOW_WARNING_OFF" name="FLOW_WARNING_OFF" class="warn f333_12" size="10" maxlength="5" placeholder="예) 0.1~9999 " oninput="inputCheck(this,'onlyNumber','0.1~9999')">
 							 / 
-							<input type="text" id="FLOW_DANGER_OFF" name="FLOW_DANGER_OFF" class="warn f333_12" size="10" maxlength="5" placeholder="예시) 0.1~9999 " oninput="inputCheck(this,'onlyNumber','0.1~9999')">
+							<input type="text" id="FLOW_DANGER_OFF" name="FLOW_DANGER_OFF" class="warn f333_12" size="10" maxlength="5" placeholder="예) 0.1~9999 " oninput="inputCheck(this,'onlyNumber','0.1~9999')">
 						</td>
 					</tr>
 					<tr>
@@ -257,7 +257,7 @@ require_once "./head.php";
 						<td class="bg_lb w10 bold al_C">PORT</td>
 						<td><input type="text" id="PORT" name="PORT" class="f333_12" size="6" maxlength="5" value="0" oninput="inputCheck(this,'onlyPort','')"></td>
 						<td class="bg_lb w10 bold al_C">통신정보</td>
-						<td><input type="text" id="CONNECTION_INFO" name="CONNECTION_INFO" class="f333_12" size="18" onblur="inputCheck(this,'onlyIp','')" maxlength="16" placeholder="IP 예시)  ***.***.***.***"></td>
+						<td><input type="text" id="CONNECTION_INFO" name="CONNECTION_INFO" class="f333_12" size="18" onblur="inputCheck(this,'onlyIp','')" maxlength="16" placeholder="IP 예)  ***.***.***.***"></td>
 						<td class="bg_lb w10 bold al_C">Baudrate</td>
 						<td>
 							<select id="BAUDRATE" name="BAUDRATE" size="1" class="f333_12">
