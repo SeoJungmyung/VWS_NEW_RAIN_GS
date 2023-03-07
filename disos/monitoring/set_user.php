@@ -278,7 +278,17 @@ require_once "./head.php";
 $(document).ready(function(){
 	localStorage.setItem("layout","set_user.php");
 	$("#popSpc").hide();
-	
+	// 이메일 @ 방지
+	var SORT_FLAG = document.getElementById('EMAIL1');
+	SORT_FLAG.addEventListener('input', function() {
+		var value = this.value;
+		if (value.indexOf('@') !== -1) {
+			this.value = this.oldValue || '';
+			return;
+		}
+		this.oldValue = value;
+	});
+
 // 객체 생성
 var crypt = new JSEncrypt();
 
