@@ -145,7 +145,7 @@ require_once "./head.php";
 					<tr>
 						<td height="35" class="bg_lb w10 bold al_C bL0">이메일</td>
 						<td colspan="3">
-							<input id="EMAIL1" name="EMAIL1" type="text" class="f333_12" size="10" maxlength="20"> @ 
+							<input id="EMAIL1" name="EMAIL1" type="text" class="f333_12 preventFloatInput" size="10" maxlength="20"> @ 
 							<select id="EMAIL2" name="EMAIL2" class="f333_12">
 								<option value="naver.com">naver.com</option>
 								<option value="hanmail.net">hanmail.net</option>
@@ -154,7 +154,7 @@ require_once "./head.php";
 								<option value="gmail.com">gmail.com</option>
 								<option value="0">직접입력</option>
 							</select> / 
-							<input id="EMAIL3" name="EMAIL3" type="text" class="f333_12" size="32" maxlength="20" onblur="inputCheck(this,'onlyEmail','')">
+							<input id="EMAIL3" name="EMAIL3" type="text" class="f333_12 preventFloatInput" size="32" maxlength="20" onblur="inputCheck(this,'onlyEmail','')">
 							<span> <i class="fa fa-exclamation-circle col_org mR_5"></i>ID 1~20자 ( 예 : abcd123@naver.com )</span>
 						</td>
 					</tr>
@@ -278,11 +278,16 @@ require_once "./head.php";
 $(document).ready(function(){
 	localStorage.setItem("layout","set_user.php");
 	$("#popSpc").hide();
-	// 이메일 @ 방지
-	var SORT_FLAG = document.getElementById('EMAIL1');
-	SORT_FLAG.addEventListener('input', function() {
+	// 이메일 특수문자 방지
+	$('.preventFloatInput').on('input', function() {
 		var value = this.value;
-		if (value.indexOf('@') !== -1) {
+		// 맨앞과 맨끝에 마침표가 입력되는 경우 제거
+		if (value.startsWith('.')) {
+			this.value = this.oldValue || '';
+			return;
+		}
+		// 알파벳 대소문자, 숫자, 마침표만 입력 가능하도록 제한
+		if (/[^a-zA-Z0-9.]/.test(value)) {
 			this.value = this.oldValue || '';
 			return;
 		}
