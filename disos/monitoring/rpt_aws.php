@@ -1416,9 +1416,9 @@ $(document).ready(function(){
 			var edt = new Date(now_y, now_m, now_d);
 
 			edt.setDate(edt.getDate() - 7);
-			if(sdt.getDate() > edt.getDate()){
+			if(sdt.getTime() > edt.getTime()){
 				// 7일전으로 변경
-				sdt.setDate(edt.getDate());
+				sdt.setTime(edt.getTime());
 				var sel_y = sdt.getFullYear();
 				var sel_m = sdt.getMonth() + 1;
 				var sel_d = sdt.getDate();
