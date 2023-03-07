@@ -163,10 +163,10 @@ require_once "./head.php";
 						<td colspan="3" class="w400p">
 							<select id="MOBILE1" name="MOBILE1" size="1" class="f333_12">
 								<option value="010">010</option>
-								<option value="011">011</option>
+								<!-- <option value="011">011</option>
 								<option value="016">016</option>
 								<option value="017">017</option>
-								<option value="019">019</option>
+								<option value="019">019</option> -->
 							</select>
 							- 
 							<input id="MOBILE2" name="MOBILE2" type="text" class="f333_12" size="6" maxlength="4" oninput="inputCheck(this,'onlyNumber','0~9999')">
