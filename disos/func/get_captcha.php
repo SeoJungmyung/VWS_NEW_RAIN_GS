@@ -9,13 +9,14 @@ for ($i = 0; $i < 5; $i++) {
 
 $_SESSION['random_number'] = $string;
 
-$dir = 'fonts/';
+$root_dir = str_replace("/", "\\", $_SERVER['DOCUMENT_ROOT']);
+$dir = $root_dir.'/disos/func/fonts/';
 
 //$image = imagecreatetruecolor(165, 50);
 $image = imagecreatetruecolor(170, 50);
 
 // random number 1 or 2
-$num = rand(1,2);
+$num = 2;
 if($num==1)
 {
 	$font = "Capture it 2.ttf"; // font style
@@ -40,7 +41,7 @@ $white = imagecolorallocate($image, 255, 255, 255); // background color white
 $gray = imagecolorallocate($image, 233, 233, 233); // background color white
 imagefilledrectangle($image,0,0,399,99,$gray);
 
-imagettftext ($image, 30, 0, 10, 40, $color, $dir.$font, $_SESSION['random_number']);
+imagettftext($image, 30, 0, 25, 40, $color, $dir.$font, $string);
 
 // header("Content-type: image/png");
 
@@ -49,6 +50,7 @@ ob_start();
 imagepng($image);
 $imagePng = ob_get_contents();
 ob_end_clean();
+imagedestroy($image);
 
 $imageData = base64_encode($imagePng);
 
