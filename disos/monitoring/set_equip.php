@@ -131,7 +131,7 @@ require_once "./head.php";
 			<li class="li100_nor">
 				<table class="set_tb">
 					<tr>
-						<td class="bg_lb w10 bold al_C bL0">장비 ID</td>
+						<td class="bg_lb w10 bold al_C bL0">장비 ID<img src="../images/icon_star_orange.png" alt="필수 항목"></td>
 						<td class="w20"><input type="text" id="RTU_ID" name="RTU_ID" class="f333_12" size="10" value="<?=$data_id?>" oninput="inputCheck(this,'onlyNumber','1~9999')"></td>
 						<td class="bg_lb w10 bold al_C">통신 ID<img src="../images/icon_star_orange.png" alt="필수 항목">
 						</td>
