@@ -132,10 +132,10 @@ require_once "./head.php";
 				<table class="set_tb">
 					<tr>
 						<td class="bg_lb w10 bold al_C bL0">장비 ID<img src="../images/icon_star_orange.png" alt="필수 항목"></td>
-						<td class="w20"><input type="text" id="RTU_ID" name="RTU_ID" class="f333_12" size="10" value="<?=$data_id?>" oninput="inputCheck(this,'onlyNumber','1~9999')"></td>
+						<td class="w20"><input type="text" id="RTU_ID" name="RTU_ID" class="f333_12 preventFloatInput" size="10" value="<?=$data_id?>" oninput="inputCheck(this,'onlyNumber','1~9999')"></td>
 						<td class="bg_lb w10 bold al_C">통신 ID<img src="../images/icon_star_orange.png" alt="필수 항목">
 						</td>
-						<td><input type="text" id="SIGNAL_ID" name="SIGNAL_ID" class="f333_12" size="10" placeholder="예) 1~9999" oninput="inputCheck(this,'onlyNumber','1~9999')"></td>
+						<td><input type="text" id="SIGNAL_ID" name="SIGNAL_ID" class="f333_12 preventFloatInput" size="10" placeholder="예) 1~9999" oninput="inputCheck(this,'onlyNumber','1~9999')"></td>
 						<td class="bg_lb w10 bold al_C">행정 코드<img src="../images/icon_star_orange.png" alt="필수 항목">
 						</td>
 						<td colspan="3">
@@ -199,7 +199,7 @@ require_once "./head.php";
 								value="<? echo $data_organ[0]['ORGAN_NAME'] ?>" readonly>
 						</td>
 						<td class="bg_lb w10 bold al_C">지역 정렬 번호</td>
-						<td><input id="SORT_FLAG" name="SORT_FLAG" type="text" class="f333_12" size="6" value="0" oninput="inputCheck(this,'onlyNumber','0~9999')"></td>
+						<td><input id="SORT_FLAG" name="SORT_FLAG" type="text" class="f333_12 preventFloatInput" size="6" value="0" oninput="inputCheck(this,'onlyNumber','0~9999')"></td>
 						<td class="bg_lb w10 bold al_C bT_1gry">회선 / 모델	<img src="../images/icon_star_orange.png" alt="필수 항목"></td>
 						<td class="bT_1gry" colspan="3">
 							<select id="LINE_NO" name="LINE_NO" size="1" class="f333_12">
@@ -255,7 +255,7 @@ require_once "./head.php";
 							</select>분
 						</td>
 						<td class="bg_lb w10 bold al_C">PORT</td>
-						<td><input type="text" id="PORT" name="PORT" class="f333_12" size="6" maxlength="5" value="0" oninput="inputCheck(this,'onlyPort','')"></td>
+						<td><input type="text" id="PORT" name="PORT" class="f333_12 preventFloatInput" size="6" maxlength="5" value="0" oninput="inputCheck(this,'onlyPort','')"></td>
 						<td class="bg_lb w10 bold al_C">통신정보</td>
 						<td><input type="text" id="CONNECTION_INFO" name="CONNECTION_INFO" class="f333_12" size="18" onblur="inputCheck(this,'onlyIp','')" maxlength="16" placeholder="IP 예)  ***.***.***.***"></td>
 						<td class="bg_lb w10 bold al_C">Baudrate</td>
@@ -496,9 +496,8 @@ require_once "./head.php";
 <script type="text/javascript">
 $(document).ready(function(){
 
-	// 장비정렬순서 소수점 방지
-	var SORT_FLAG = document.getElementById('SORT_FLAG');
-	SORT_FLAG.addEventListener('input', function() {
+	// 장비ID,통신ID,장비정렬순서 소수점 방지
+	$('.preventFloatInput').on('input', function() {
 		var value = this.value;
 		if (isNaN(value)) {
 			this.value = this.oldValue || '';
@@ -510,7 +509,6 @@ $(document).ready(function(){
 		}
 		this.oldValue = value;
 	});
-
 	$('#set_frm input[type="text"]').keypress(function(event) {
     	if (event.which == 13) {
       		event.preventDefault();
