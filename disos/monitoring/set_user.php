@@ -693,6 +693,11 @@ crypt.setKey(key);
 
 	// 삭제
 	$("#btn_de").click(function(){
+		var userId = $("#user_id",parent.document).text().split(":")[1].trim();
+		if(userId == $("#C_USER_ID").val()){
+			swal("체크", "자신의 계정은 삭제할 수 없습니다.", "warning");
+			return false;
+		}
 		if( form_check("D") ){
 			$("#mode").val("user_de");
 			var C_USER_ID = $("#C_USER_ID").val();
