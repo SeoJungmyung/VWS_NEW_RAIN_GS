@@ -38,7 +38,7 @@ fieldset{position:relative; width:100%;}
 .close_box:hover {background-color: #2789e6;}
 .g-recaptcha{margin: 15px 0 0 75px;}
 .g-recaptcha2{margin: 15px 8px 0 0; text-align: center;}
-.g-recaptcha2 input {width: 80px; height: 50px; padding: 15px 10px; border: 1px solid #EDEDED;transition: 0.2s ease-out;color: #a1a1a1; vertical-align: top;}
+.g-recaptcha2 input {width: 95px; height: 50px; padding: 15px 10px; border: 1px solid #EDEDED;transition: 0.2s ease-out;color: #a1a1a1; vertical-align: top;}
 .g-recaptcha2 input:focus {padding: 15px 10px;outline: 0;border:1px solid #2466e0;}
 
 .input {position: relative;width: 60%;margin: 5px auto;}
