@@ -364,6 +364,7 @@ function aws(kind, arr_area_code){ // AWS - AWS 장비
 						}
 						if(arr_rtu[item]['overlay_on']){
 							$("#aws_"+item).hide();
+							$("#aws_"+item).next().hide();
 							$("#aws_labal_"+item).hide();
 							
 							if( (map_kind == 1 || map_kind == 2) && jQuery.inArray("1", map_data) != "-1" ){
@@ -383,6 +384,7 @@ function aws(kind, arr_area_code){ // AWS - AWS 장비
 							arr_rtu[item]['overlay_on'] = false;
 						}else{
 							$("#aws_"+item).show();
+							$("#aws_"+item).next().show();
 							$("#aws_labal_"+item).show();
 							if( (map_kind == 1 || map_kind == 2) && jQuery.inArray("1", map_data) != "-1" ){
 								$("#rain_"+item).show();
