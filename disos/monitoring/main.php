@@ -176,8 +176,7 @@ $(document).ready(function(){
 		// 	}else{
 		// 	}
 		// }
-
-		if(localStorage.getItem("layout") == "tms_main.php"){
+		if(tmp_src == "tms_main.php"){
 			$("#btn_layout").removeClass('dp0');
 		}else{
 			$("#btn_layout").addClass('dp0');

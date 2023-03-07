@@ -817,13 +817,34 @@
 
 
 	function quick_button(mode){
-		if(mode == 1) location.href = "../monitoring/rpt_10m.php"; //강우현황
-		if(mode == 2) location.href = "../monitoring/rpt_10m.php?option=1"; //수위현황
-		if(mode == 3) location.href = "../monitoring/rpt_10m.php?option=3"; //AWS현황
-		if(mode == 4) location.href = "../monitoring/rpt_10m.php?option=2"; // 적설현황
-		if(mode == 5) location.href = "../monitoring/rpt_brhist.php"; // 방송현황
-		if(mode == 6) location.href = "../monitoring/rpt_alarmlog.php"; // 경보현황
-		if(mode == 7) location.href = "../monitoring/tms_equip.php"; // 장비상태
+		if(mode == 1) {
+			$("#main",parent.document).attr("src","rpt_10m.php");
+			location.href = "../monitoring/rpt_10m.php"; //강우현황
+		}
+		if(mode == 2) {
+			$("#main",parent.document).attr("src","rpt_10m.php");
+			location.href = "../monitoring/rpt_10m.php?option=1"; //수위현황
+		}
+		if(mode == 3) {
+			$("#main",parent.document).attr("src","rpt_10m.php");
+			location.href = "../monitoring/rpt_10m.php?option=3"; //AWS현황
+		}
+		if(mode == 4) {
+			$("#main",parent.document).attr("src","rpt_10m.php");
+			location.href = "../monitoring/rpt_10m.php?option=2"; // 적설현황
+		}
+		if(mode == 5) {
+			$("#main",parent.document).attr("src","rpt_brhist.php");
+			location.href = "../monitoring/rpt_brhist.php"; // 방송현황
+		}
+		if(mode == 6) {
+			$("#main",parent.document).attr("src","rpt_alarmlog.php");
+			location.href = "../monitoring/rpt_alarmlog.php"; // 경보현황
+		}
+		if(mode == 7) {
+			$("#main",parent.document).attr("src","tms_equip.php");
+			location.href = "../monitoring/tms_equip.php"; // 장비상태
+		}
 	}
 
 		function datepicker(type, target, image, format, submit){
