@@ -624,10 +624,17 @@ $(document).ready(function(){
 		var e_now_d = e_edate.substring(8, 10);
         var e_now = new Date(e_now_y, e_now_m, e_now_d);
 
+		var today = new Date();
+		var today_y = today.getFullYear();
+		var today_m = today.getMonth() + 1 < 10 ? "0"+(today.getMonth()+1) : (today.getMonth()+1);
+		var today_d = today.getDate() < 10 ? "0"+today.getDate() : today.getDate();
+        var t_day = today_y+"-"+today_m+"-"+today_d;
+		
 		if(e_now.getTime() >= now.getTime()){
 			$("#sdate").datepicker("setDate", sel_y+"-"+sel_m+"-"+sel_d);
 		}else{
-			swal("체크", "이후 날짜는 검색할 수 없습니다!", "warning");
+			if(t_day == e_edate) swal("체크", "미래는 검색할 수 없습니다!", "warning");
+			else swal("체크", "이후 날짜는 검색할 수 없습니다!", "warning");
 		}
 	});
 	
