@@ -44,7 +44,7 @@ fieldset{position:relative; width:100%;}
 .g-recaptcha2-table {width: 100%; border: 1px solid #ddd; border-collapse: collapse; background-color: #fff; }
 .g-recaptcha2-table th, td{ border: 1px solid #ddd; }
 .g-recaptcha2-icon {width:90px; padding: 5px 10px; font-size:12px; color: #808080; letter-spacing: -0.5px;}
-.g-recaptcha2 .fa-rotate-right:before , .fa-volume-up:before { color: #808080; background-color: #fff; padding-right: 5px;}
+.g-recaptcha2 .fa-rotate-right:before , .fa-volume-up:before { color: #808080; background-color: #fff; padding-right: 5px; border: 1px solid #fff; }
 
 
 .input {position: relative;width: 60%;margin: 5px auto;}
