@@ -71,6 +71,9 @@ $(document).ready(function(){
 				$(".radar img").attr("src", image.src);
 			}
 			$("#r_img img").remove();
+			setTimeout(function() {
+				callRadar();
+			}, 60000);
 		};
 
 		image.onerror = function(e) {

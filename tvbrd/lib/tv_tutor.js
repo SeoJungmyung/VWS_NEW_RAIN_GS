@@ -140,7 +140,7 @@
 			udate = (response.setting.udate) ? response.setting.udate : 60000;
 
             localStorage.setItem('API_KEY',api_key);
-			console.log(udate);
+			// console.log(udate);
         	// $("#view_top_img").val(top_img);
         	$("#sel_top_text").val(top_text);
 			$("#update_time").val(udate * 0.001);
@@ -322,11 +322,9 @@
 			    	$("#map_data").load("map_data.php?sel_sub="+map_sub, function(response, status, xhr){
             			if(status == "success"){
 	                        if(map_sub == 1){
-								radar();
 	                        	callRadar();
 	                        	heroes();
 	                        }else if(map_sub == 2){
-								radar();
 								callRadar();
 	                        }else if(map_sub == 3){
 	                        	heroes();
@@ -2037,6 +2035,9 @@
 		image.onload = function(e){
 			$("#radar img").attr("src", image.src);
 			$("#r_img img").remove();
+			setTimeout(function() {
+				callRadar();
+			}, 60000);
 		};
 
 		image.onerror = function(e) {
