@@ -322,14 +322,14 @@ require_once "./head.php";
 						<tr class="hh hd">
 							<td>로그인 리캡차</td>
 							<td>
-								사용여부 :
-								<select id="recaptcha" name="recaptcha">
+								<select id="recaptcha" name="recaptcha" class="spc3">
 									<option value="0" <?if(recaptcha=="0"){echo "selected";}?>>미사용</option>
 									<!-- <option value="1" <?if(recaptcha=="1"){echo "selected";}?>>구글</option> -->
 									<option value="2" <?if(recaptcha=="2"){echo "selected";}?>>기본</option>
 								</select>
-							</td>
-						</tr>
+									<span> <i class="fa fa-exclamation-circle col_org mR_5"></i><span>사용여부</span></span>
+								</td>
+							</tr>
 						<!-- <tr class="hh hd"> -->
 							<!-- <td>경계 단계</td> -->
 							<!-- <td> -->
@@ -346,8 +346,7 @@ require_once "./head.php";
 						<tr class="hh hd">
 							<td>현황 Refresh 간격</td>
 							<td>
-								시간 : 
-								<select id="load_time" name="load_time">
+								<select id="load_time" name="load_time" class="spc4">
 									<option value="30" <?if(load_time*0.001=="30"){echo "selected";}?>>30</option>
 									<option value="60" <?if(load_time*0.001=="60"){echo "selected";}?>>60</option>
 								</select>

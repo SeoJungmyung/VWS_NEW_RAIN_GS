@@ -1564,8 +1564,10 @@ filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/tvbrd_
 .ulwrap_nh tr:hover{background:#f4f6f9; cursor:pointer;}
 
 /* .spc{cursor:pointer; font-weight: bold;} */
-.spc1{font-size:11px; margin-right: -224px;} 
-.spc2{font-size:11px; margin-right: -84px;} 
+.spc1{font-size:11px; margin-right: -22px;} 
+.spc2{font-size:11px; margin-right: 118px;} 
+.spc3{font-size:11px; margin-left: -274px;} 
+.spc4{font-size:11px; margin-left: -347px;} 
 #popSpc{ margin-left: 232px; margin-top: -16px; z-index: 300; background-color: #fff;}
 
 /*문자전광판 메세지 전송 우측 테이블 */
