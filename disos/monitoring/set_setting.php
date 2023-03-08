@@ -975,7 +975,8 @@ $(document).ready(function(){
 		// var urlPattern = /^([^\/]*)(\.)(com|net|kr|my|shop|php|html|htm)/;
 		var urlPattern1 = /^(www)?(\.)+([0-9a-zA-Z\-]+\.)+[a-zA-Z]{2,6}(\:[0-9]+)?(\/\S*)?/;
 		var urlPattern2 = /^(?!www)([0-9a-zA-Z\-]+\.)+[a-zA-Z]{2,6}(\:[0-9]+)?(\/\S*)?/;
-
+		var portPattern = /^[0-9]{1,5}$/;
+		var filePattern = /^[a-zA-Z0-9_\-\.]+$/;
 		if(kind == "I"){
 			if( $("#load_time").val() < 10 ){
 				swal("체크", "현황 Refresh 간격을 10초 이상으로 입력해 주세요.", "warning");
@@ -1000,13 +1001,25 @@ $(document).ready(function(){
 					}else{
 						let ipTest, urlTest = false;
 						// 사이트 주소 유효성 체크
-						if($(this).find('.popup_url').val().split('/').length > 1){
-							var ip = $(this).find('.popup_url').val().split('/')[0];
-							ipTest = ipPattern.test(ip);
-							if(ipTest){
-								var url = $(this).find('.popup_url').val().replace(ip, '');
-								let urlTest = urlPattern2.test(url);
+						if(!$(this).find('.popup_url').val().includes("localhost")){
+							if($(this).find('.popup_url').val().split('/').length > 1){
+								var ip = $(this).find('.popup_url').val().split('/')[0];
+								ipTest = ipPattern.test(ip);
+								if(ipTest){
+									var url = $(this).find('.popup_url').val().replace(ip, '');
+									let urlTest = urlPattern2.test(url);
+								}else{
+									let urlTest1 = urlPattern1.test($(this).find('.popup_url').val());
+									if(!urlTest1){
+										let urlTest2 = urlPattern2.test($(this).find('.popup_url').val());
+										if(urlTest2) urlTest = true;
+									}else{
+										urlTest = true;
+									}
+								}
 							}else{
+								// if($(this).find('.popup_url').val().includes("localhost")) return false;
+								ipTest = ipPattern.test($(this).find('.popup_url').val());
 								let urlTest1 = urlPattern1.test($(this).find('.popup_url').val());
 								if(!urlTest1){
 									let urlTest2 = urlPattern2.test($(this).find('.popup_url').val());
@@ -1016,15 +1029,85 @@ $(document).ready(function(){
 								}
 							}
 						}else{
-							// if($(this).find('.popup_url').val() == "localhost") return false;
-							if($(this).find('.popup_url').val().includes("localhost")) return false;
-							ipTest = ipPattern.test($(this).find('.popup_url').val());
-							let urlTest1 = urlPattern1.test($(this).find('.popup_url').val());
-							if(!urlTest1){
-								let urlTest2 = urlPattern2.test($(this).find('.popup_url').val());
-								if(urlTest2) urlTest = true;
-							}else{
-								urlTest = true;
+							// localhost가 입력된 경우
+							if($(this).find('.popup_url').val().startsWith("localhost")){					
+								if ($(this).find('.popup_url').val() == "localhost") {
+									urlTest = true;
+								} else {
+									var portIndex = $(this).find('.popup_url').val().indexOf(":");
+									var inIndex = $(this).find('.popup_url').val().indexOf("/");
+									
+									if(inIndex !== -1){
+										var inTarget = $(this).find('.popup_url').val().split('/');
+										console.log(inTarget.length);
+										console.log(inTarget);
+										var portStr = inTarget[0];
+										var fileStr = inTarget[1];
+										
+										if(inTarget[0] == "localhost"){
+											// ex) /index.php
+											// 파일명 패턴검사
+											if (inTarget.length > 2) {
+												urlTest = true;
+												for (var i = 1; i < inTarget.length; i++) {
+													if (!filePattern.test(inTarget[i])) {
+														urlTest = false;
+														break;
+													}
+												}
+											} else {
+												// inTarget이 1개인 경우 처리 로직
+												if (filePattern.test(fileStr)) {
+													urlTest = true;
+												}
+											}
+										}else{
+											// ex) :2222/index.php
+											if (portIndex !== -1) {
+												// :이 입력된 경우
+												portIndex = portStr.indexOf(":");
+												portStr = portStr.slice(portIndex + 1);
+												var port_ok = false;
+												var file_ok = true;
+
+												if (portPattern.test(portStr)) {
+													port_ok = true;
+												}
+												if (inTarget.length > 2) {
+													for (var i = 1; i < inTarget.length; i++) {
+														if (!filePattern.test(inTarget[i])) {
+															file_ok = false;
+															break;
+														}
+													}
+												} else {
+													// inTarget이 1개인 경우 처리 로직
+													if (filePattern.test(fileStr)) {
+														file_ok = true;
+													}else{
+														file_ok = false;
+													}
+												}
+												if(port_ok && file_ok){
+													urlTest = true;
+												}
+											}
+										}
+									}else{
+										if (portIndex !== -1) {
+											// :이 입력된 경우
+											var portStr = $(this).find('.popup_url').val().slice(portIndex + 1);
+											console.log(portStr);
+											if (portPattern.test(portStr)) {
+												urlTest = true;
+											}else{
+	
+											}
+										}else{
+											urlTest = false;
+										}
+									}
+								}
 							}
 						}
 						if(ipTest || urlTest) {
