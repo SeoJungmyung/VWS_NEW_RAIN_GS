@@ -1011,7 +1011,7 @@
 		var dateDiff = Math.ceil((edt.getTime()-sdt.getTime())/(1000*3600*24));
 
 		if( dateDiff >= arg){
-			swal("체크", arg + "일 이상 조회할 수 없습니다!", "warning");
+			swal("체크", arg + "일을 초과해서 검색할 수 없습니다!", "warning");
 			return false;
 		}else{
 			return true;
