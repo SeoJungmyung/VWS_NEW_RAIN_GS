@@ -42,14 +42,14 @@ wd+TfN++aIZJivncuQIDAQAB
 <div id="outdated"></div><!-- 브라우져 체크 -->
 
 
-<? 
+<?
 if(recaptcha == 0){
 	$tmp = "";
 // }else if(recaptcha == 1){
 // 	$tmp = "1";
 // }else if(recaptcha == 2){
 // 	$tmp = "2";
-} 
+}
 ?>
 <form id="login_frm" class="login<?=$tmp?>" autocomplete="off">
 	<input type="hidden" name="mode" value="login">
@@ -72,7 +72,7 @@ if(recaptcha == 0){
 		</div>
 		<fieldset style="margin-bottom:20px;">
 			<div class="input">
-				<input type="id" id="user_id" name="user_id" onkeypress="if( event.keyCode == 13 ){$('#user_pwd').focus();}" maxlength="15" placeholder="ID" required 
+				<input type="id" id="user_id" name="user_id" onkeypress="if( event.keyCode == 13 ){$('#user_pwd').focus();}" maxlength="15" placeholder="ID" required
 				/>
 				<!-- onblur="inputCheck(this,'text','5~15')"/> -->
 			</div>
@@ -87,15 +87,33 @@ if(recaptcha == 0){
 <? if(recaptcha == 0){ ?>
 			<input type="hidden" id="recaptcha" name="recaptcha" value="1" maxlength="5">
 <? }else if(recaptcha == 2){ ?>
-			<div class="captchaT">
-				아래 보안문자를 정확하게 입력해주세요.
-			</div>
+			<!-- 20230308 수정 start -->
 			<div class="g-recaptcha2">
-				<img src="" id="captcha" style="" tabindex="0" alt="보안 문자" onfocus="speechOut();"/>
-				<button id="speechBtn" onclick="speechOut()"><i class="fa fa-volume-up" style="margin-right: -34px;"></i></button>
-				<img src="../images/refresh.png" id="refresh" width="25" style="position: relative; bottom: 22px;" />
-				<input type="text" id="recaptcha" name="recaptcha" alt="보안 문자 입력" onkeypress="if( event.keyCode == 13 ){$('#login_ok').click();}" maxlength="5" placeholder="보안문자입력" required />
+				<table class="g-recaptcha2-table">
+					<tr>
+						<div class="captchaT">
+							아래 보안문자를 정확하게 입력해주세요.
+						</div>
+					</tr>
+					<tr>
+						<td rowspan="2"><img src="" id="captcha" class="captcha" style="" tabindex="0" alt="보안 문자" onfocus="speechOut();"/></td>
+						<td class="g-recaptcha2-icon refresh" id="refresh">
+							<button><i class="fa fa-rotate-right"></i></button>새로고침
+						</td>
+					</tr>
+					<tr>
+						<td onclick="speechOut()" class="g-recaptcha2-icon speechBtn">
+							<button><i class="fa fa-volume-up"></i></button>음성듣기
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<input type="text" id="recaptcha" name="recaptcha" alt="보안 문자 입력" onkeypress="if( event.keyCode == 13 ){$('#login_ok').click();}" maxlength="5" placeholder="보안문자입력" required />
+						</td>
+					</tr>
+				</table>
 			</div>
+			<!-- 20230308 수정 end -->
 <? } ?>
 		</fieldset>
 		<div id="login_kind" class="whereto">
@@ -112,11 +130,11 @@ if(recaptcha == 0){
 		<input id="tts_code" type="hidden" value="" autocomplete="off">
 		본 시스템은 국민의 재산과 생명을 보호하기 위한 것으로<br>관계자 외 접근은 허용하지 않습니다.
 </div>
-</form>	
+</form>
 
 <script type="text/javascript">
 // 리캡차 체크 여부
-<? if(recaptcha == 1){ ?>	
+<? if(recaptcha == 1){ ?>
 	function recaptcha(){
 		tmp_val = $("#g-recaptcha-response").val();
 		$("#recaptcha").val(tmp_val);
@@ -124,12 +142,18 @@ if(recaptcha == 0){
 	function recaptcha_re(){
 		$("#recaptcha").val("");
 	}
-	
-<? }else if(recaptcha == 2){ ?>	
+
+<? }else if(recaptcha == 2){ ?>
 	captcha_start();
-	$("img#refresh").click(function(){
+	$("#refresh").click(function(){
 		captcha_start();
 	});
+<? } ?>
+
+// 리캡차 사용 안할 때 css
+<? if(recaptcha == 0){ ?>
+	$('.submit').css('margin', '22px auto auto auto');
+	$('.copyright').attr('style', 'margin-top: 0px;padding-top:6px;');
 <? } ?>
 
 $(document).ready(function(){
@@ -149,7 +173,7 @@ $(document).ready(function(){
 	logoDisChange();
 
 	$("#user_id").focus();
-	
+
 	var login_session;
 	// 브라우져 체크
     outdatedBrowser({
@@ -158,12 +182,12 @@ $(document).ready(function(){
         lowerThan: 'transform',
         languagePath: 'browser.html'
     })
-    
+
 	// 공용 변수 관련 스크립트
 	if(common_top_img) $("#top_img").html('<img src="../images/top/'+common_top_img+'">');
 	if(common_top_title) $("#top_title").html(common_top_title);
 	if(common_top_text) $("#top_text").html(common_top_text);
-	
+
 	// 쿠키 생성 arg(이름, 값, 시간)
 	function createCookie(name, value, hours) {
 		var expires;
@@ -183,10 +207,10 @@ $(document).ready(function(){
 		var login_kind = $("#login_kind input:checked").val();
 		var recaptcha = $("#recaptcha").val();
 		var date = new Date();
-		
+
 		date = date.setHours(date.getHours() + 1); // 세션 유효시간 (시간단위)
 		localStorage.setItem("time", date);
-		
+
 		if(!user_id){
 		    swal("체크", "아이디를 입력해 주세요.", "warning");
 			return false;
@@ -225,7 +249,7 @@ $(document).ready(function(){
 		$("#l_id").val(l_id);
 		$("#l_pw").val(l_pw);
 
-		// frm.serialize() 대신 serializeArray() 써서 JSON으로 생성 
+		// frm.serialize() 대신 serializeArray() 써서 JSON으로 생성
 		jQuery.fn.serializeObject = function() {
 			var obj = null;
 			try {
@@ -245,11 +269,11 @@ $(document).ready(function(){
 			return obj;
 		};
 
-		// JSON 합침 
+		// JSON 합침
 		// Object.assign(data,  $("#login_frm").serializeObject());
-		
+
 		data = $("#login_frm").serializeObject();
-		
+
 		var tmp_spin = null;
 		// var param = "mode=login&"+$("#login_frm").serializeArray()+"&l_id="+l_id+"&l_pw="+l_pw;
 		$.ajax({
@@ -264,15 +288,15 @@ $(document).ready(function(){
 							var ms = new Date().getTime() + 3600000;
 							var session_time = new Date(ms);
 
-							localStorage.setItem('ms', ms);	
+							localStorage.setItem('ms', ms);
 							// localStorage.setItem('set_login_'+ms, 1);
 							// localStorage.setItem('session_time_'+ms, session_time);
 							createCookie("set_login_"+ms,"1","1");
 							createCookie("session_time_"+ms,"1","1");
-							
+
 							// createCookie("set_login","1","1");
 							// createCookie("session_time",session_time,"2");
-							
+
 							// var user_text = window.parent.parent.document.getElementById("user_id");
 							// $(user_text).text("사용자 : "+user_id);
 
@@ -282,15 +306,15 @@ $(document).ready(function(){
 									parent.parent.location.reload();
 									parent.parent.opener.parent.parent.location.reload();
 									parent.parent.opener.parent.parent.localStorage.setItem('ms', ms);
-									parent.parent.opener.parent.parent.localStorage.setItem('set_login_'+ms, 1);	
-									parent.parent.opener.parent.parent.localStorage.setItem('session_time_'+ms, session_time);									
+									parent.parent.opener.parent.parent.localStorage.setItem('set_login_'+ms, 1);
+									parent.parent.opener.parent.parent.localStorage.setItem('session_time_'+ms, session_time);
 								}else{
 									parent.parent.location.href = "main.php?target="+$("#target").val();
 								}
 							}else{
 								parent.parent.location.href = "main.php";
 							}
-							
+
 							// window.frameElement.parentNode
 							// opener.parent.location.reload("main.php?target="+$("#target").val());
 							// console.log(window.parent.parent.document.getElementById("user_id"));
@@ -315,10 +339,10 @@ $(document).ready(function(){
 					swal("체크", "로그인에 실패하였습니다.", "warning");
 				}
 		    },
-	        beforeSend : function(data){ 
+	        beforeSend : function(data){
 	   			tmp_spin = spin_start("#login_wrapper #spin", "230px");
 	        },
-	        complete : function(data){ 
+	        complete : function(data){
 	        	if(tmp_spin){
 	        		spin_stop(tmp_spin, "#login_wrapper #spin");
 	        	}
@@ -361,8 +385,6 @@ function captcha_start(){
 	});
 }
 </script>
-	
+
 </body>
 </html>
-
-

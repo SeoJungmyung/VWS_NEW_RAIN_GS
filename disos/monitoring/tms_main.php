@@ -313,6 +313,8 @@ require_once "./head.php";
 <script type="text/javascript">
 $(document).ready(function(){
 	localStorage.setItem("layout","tms_main.php");
+	localStorage.setItem("recaptcha",<?= recaptcha ?>);
+
     var lay_option = ''; // 영역 내 표시 항목 옵션
 
     layout_option(); // 레이아웃 옵션 호출
