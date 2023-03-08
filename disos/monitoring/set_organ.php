@@ -99,7 +99,7 @@ require_once "./head.php";
 			<li class="li100_nor">
 				<table class="set_tb">
 					<tr>
-						<td class="bg_lb w10 bold al_C bL_1gry_n">기관명</td>
+						<td class="bg_lb w10 bold al_C bL_1gry_n">기관명<img src="../images/icon_star_orange.png" alt="필수 항목"></td>
 						<td><input type="text" id="ORGAN_NAME" name="ORGAN_NAME" class="f333_12" size="20" maxlength="20"
 							value="<? echo $data_list[0]['ORGAN_NAME'] ?>">
 						</td>
@@ -108,13 +108,13 @@ require_once "./head.php";
 							value="<? echo $data_list[0]['DEPARTMENT'] ?>"></td>
 					</tr>
 					<tr>
-						<td class="bg_lb w10 bold al_C bL_1gry_n">행정코드</td>
+						<td class="bg_lb w10 bold al_C bL_1gry_n">행정코드<img src="../images/icon_star_orange.png" alt="필수 항목"></td>
 						<td>
 							<input type="text" id="AREA_CODE" name="AREA_CODE" class="f333_12 bg_lgr_d" size="20" 
 							value="<? echo $data_list[0]['AREA_CODE'] ?>" readonly>
 							<button type="button" id="btn_area" class="btn_bbr w100p">행정구역 조회</button>
 						</td>
-						<td class="bg_lb w10 bold al_C">지역 정렬 기준</td>
+						<td class="bg_lb w10 bold al_C">지역 정렬 기준<img src="../images/icon_star_orange.png" alt="필수 항목"></td>
 						<td>
 							<select id="SORT_BASE" name="SORT_BASE" class="f333_12" size="1">
 								<option value="2" <? if($data_list[0]['SORT_BASE'] == 2){echo "selected";} ?> >장비이름</option>
@@ -126,6 +126,12 @@ require_once "./head.php";
 				</table>
 			</li>
 		</ul>
+		<div class="item_txt">
+			<img src="../images/icon_star_orange.png" alt="필수 항목">
+			<ul>
+				<li class="txt02">필수입력항목</li>
+			</ul>
+		</div>
 		<div class="guide_btn"> 
 					<!-- <button type="button" id="btn_in" class="btn_bb80"><i class="fa fa-plus mR5 font15"></i>등록</button> -->
 					<!-- <button type="button" id="btn_re" class="btn_lbb80_s"><i class="fa fa-repeat mR5 font15"></i>초기화</button> -->
