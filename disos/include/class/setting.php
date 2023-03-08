@@ -229,7 +229,7 @@ Class ClassSetting {
 	function getUserList(){
 		if(DB == "0"){
 			$sql = " SELECT a.USER_IDX, a.USER_ID, a.USER_NAME, (SELECT ORGAN_NAME FROM ORGAN_INFO WHERE ORGAN_ID = a.ORGAN_ID) AS ORGAN_NAME,
-							a.USER_TYPE, a.IS_PERMIT , a.MOBILE
+							a.USER_TYPE, a.IS_PERMIT , a.MOBILE , a.EMAIL
 					 FROM USER_INFO AS a";
 			if(ss_user_type == "1"){
 				$sql.= " WHERE (a.USER_TYPE != 0 AND a.USER_TYPE != 1) OR a.USER_ID = '".$_SESSION['user_id']."' ";
@@ -251,6 +251,7 @@ Class ClassSetting {
 				$data[$i]['ORGAN_NAME'] = $rs[$i]['ORGAN_NAME'];
 				$data[$i]['USER_TYPE'] = $rs[$i]['USER_TYPE'];
 				$data[$i]['MOBILE'] = $this->rsa_decrypt($rs[$i]['MOBILE']);
+				$data[$i]['EMAIL'] = $rs[$i]['EMAIL'];
 				if($rs[$i]['USER_TYPE'] == "0"){
 					$data[$i]['USER_TYPE_NAME'] = "관리자";
 				}else if($rs[$i]['USER_TYPE'] == "1"){

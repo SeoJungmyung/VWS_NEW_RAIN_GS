@@ -49,6 +49,7 @@ require_once "./head.php";
 							<th class="li5">순서</th>
 							<th class="li15 bL_1gry">관리자 ID</th>
 							<th class="li25 bL_1gry">관리자명</th>
+							<th class="li25 bL_1gry">이메일</th>
 							<th class="li25 bL_1gry">휴대폰 번호</th>
 							<!-- <th class="li15 bL_1gry">사용자 구분</th> -->
 							<!-- <th class="li15 bL_1gry">문자 알림</th> -->
@@ -66,7 +67,8 @@ require_once "./head.php";
 							<td class="li5"><?=$num?></td>
 							<td id="l_USER_ID" class="li15 bL_1gry"><?=$val['USER_ID']?></td>
 							<td id="l_USER_NAME" class="li25 bL_1gry"><?=$val['USER_NAME']?></td>
-							<td id="l_MOBILE" class="li25 bL_1gry"><?=$val['MOBILE']?></td>
+							<td id="l_EMAIL" class="li25 bL_1gry"><?=($val['EMAIL'] == "" ? "-" : $val['EMAIL'])?></td>
+							<td id="l_MOBILE" class="li25 bL_1gry"><?=($val['MOBILE'] == "" ? "-" : $val['MOBILE'])?></td>
 							<!-- <td class="li15 bL_1gry"><?=$val['USER_TYPE_NAME']?></td> -->
 							<!-- <td class="li15 bL_1gry"><?=$val['IS_PERMIT_NAME']?></td> -->
 						</tr>
@@ -670,6 +672,7 @@ crypt.setKey(key);
 								sessionStorage.setItem('list_user', formData[1].value);
 								$("tr[name='"+formData[1].value+"'] #l_USER_NAME").text(formData[10].value);
 								$("tr[name='"+formData[1].value+"'] #l_MOBILE").text(formData[14].value+'-'+formData[15].value+'-'+formData[16].value);
+								$("tr[name='"+formData[1].value+"'] #l_EMAIL").text(formData[11].value+'@'+formData[13].value);
 								var pwLen = parseInt(formData[8].value);
 								var tmpLen = "";
 								while(pwLen > tmpLen.length){
