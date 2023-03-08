@@ -976,7 +976,8 @@ $(document).ready(function(){
 		var urlPattern1 = /^(www)?(\.)+([0-9a-zA-Z\-]+\.)+[a-zA-Z]{2,6}(\:[0-9]+)?(\/\S*)?/;
 		var urlPattern2 = /^(?!www)([0-9a-zA-Z\-]+\.)+[a-zA-Z]{2,6}(\:[0-9]+)?(\/\S*)?/;
 		var portPattern = /^[0-9]{1,5}$/;
-		var filePattern = /^[a-zA-Z0-9_\-\.]+$/;
+		// var filePattern = /^[a-zA-Z0-9_\-\.]+$/;
+		var filePattern = /^[a-zA-Z0-9_\-\.?&=]+$/;
 		if(kind == "I"){
 			if( $("#load_time").val() < 10 ){
 				swal("체크", "현황 Refresh 간격을 10초 이상으로 입력해 주세요.", "warning");
