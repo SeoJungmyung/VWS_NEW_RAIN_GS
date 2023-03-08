@@ -35,6 +35,25 @@ body.stop-scrolling {
     /* display: none !important; */
     z-index: 99999 !important;}
 
+.swal-wide-recaptcha  {
+  background-color: white !important;
+  border: 3px solid #6EADFF !important;
+  background-color: #E4EFFF !important;
+  font-family: '맑은 고딕','Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  width: 451px !important;
+  height:575px !important;
+  padding: 0 !important;
+  border-radius: 5px !important;
+  text-align: center !important;
+  position: fixed !important;
+  left: 46% !important;
+  top: 46% !important;
+  margin-left: -150px !important;
+  margin-top: -200px !important;
+  overflow: hidden !important;
+  /* display: none !important; */
+  z-index: 99999 !important;}
+  
 .sweet-alert {
   background-color: white;
   border:1px solid #333;
