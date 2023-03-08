@@ -97,7 +97,7 @@ if(recaptcha == 0){
 					</tr>
 					<tr>
 						<td rowspan="2"><img src="" id="captcha" class="captcha" style="" tabindex="0" alt="보안 문자" onfocus="speechOut();"/></td>
-						<td class="g-recaptcha2-icon refresh" id="refresh">
+						<td class="g-recaptcha2-icon refresh" id="refresh" onclick="captcha_start()">
 							<button><i class="fa fa-rotate-right"></i></button>새로고침
 						</td>
 					</tr>
@@ -145,9 +145,6 @@ if(recaptcha == 0){
 
 <? }else if(recaptcha == 2){ ?>
 	captcha_start();
-	$("#refresh").click(function(){
-		captcha_start();
-	});
 <? } ?>
 
 // 리캡차 사용 안할 때 css
