@@ -543,14 +543,7 @@ $(document).ready(function(){
 	            text: "검색",
 	            className: "btn_bb80",
                 action: function(dt){
-					var sd = new Date($("#sdate").val());
-					var ed = new Date($("#edate").val());
-					if((ed - sd)/(1000*60*60*24) > 30){
-						alert("한달 이상 검색할 수 없습니다.");
-						return false;
-					}else{
-						$("#form_search").submit();
-					}
+					if(termCheck(30)) $("#form_search").submit();
                 }
 	        },
 	   		/* {
