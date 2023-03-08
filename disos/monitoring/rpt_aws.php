@@ -589,14 +589,14 @@ $(document).ready(function(){
 
 	$("#area_code").change(function(){
 		area_code = $("#area_code").val();
-		graph_on();
+		$("#form_search").submit();
 	});
 	
 	$(".tr_rtu").click(function(){
 		var rtu_n = $(this).attr('data-id');
 		$("#area_code").val(rtu_n).attr("selected", true);
 		area_code = $("#area_code").val();
-		graph_on();
+		$("#form_search").submit();
 	});
 	
 	// 달력 호출
@@ -703,7 +703,7 @@ $(document).ready(function(){
 					if(type == "A"){
 						if(termCheck(30)) $("#form_search").submit();
 					}else{
-						$("#form_search").submit()
+						$("#form_search").submit();
 					}
                 }
 	        },
