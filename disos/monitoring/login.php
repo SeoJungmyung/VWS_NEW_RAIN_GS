@@ -91,7 +91,7 @@ if(recaptcha == 0){
 				아래 보안문자를 정확하게 입력해주세요.
 			</div>
 			<div class="g-recaptcha2">
-				<img src="" id="captcha" style="" tabindex="0" alt="보안 문자" onfocus="speechOut();"/>
+				<img src="" id="captcha" style="" tabindex="0" alt="보안 문자"/>
 				<button id="speechBtn" onclick="speechOut()"><i class="fa fa-volume-up" style="margin-right: -34px;"></i></button>
 				<img src="../images/refresh.png" id="refresh" width="25" style="position: relative; bottom: 22px;" />
 				<input type="text" id="recaptcha" name="recaptcha" alt="보안 문자 입력" onkeypress="if( event.keyCode == 13 ){$('#login_ok').click();}" maxlength="5" placeholder="보안문자입력" required />
