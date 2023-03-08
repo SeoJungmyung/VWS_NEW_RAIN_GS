@@ -118,7 +118,7 @@ require_once "./head.php";
 					</tr>
 					
 					<tr>
-						<td class="bg_lb w10 bold al_C bL0">관리자 ID</td>
+						<td class="bg_lb w10 bold al_C bL0">관리자 ID<img src="../images/icon_star_orange.png" alt="필수 항목"></td>
 						<td colspan="3">
 							<input id="USER_ID" name="USER_ID" type="text" class="f333_12" size="18" maxlength="15">
 							<span> <i class="fa fa-exclamation-circle col_org mR_5"></i><span class="spc">영어/숫자 포함 5~15자</span>
@@ -126,7 +126,7 @@ require_once "./head.php";
 						</td>
 					</tr>
 					<tr>
-						<td class="bg_lb w10 bold al_C bL0">비밀번호</td>
+						<td class="bg_lb w10 bold al_C bL0">비밀번호<img src="../images/icon_star_orange.png" alt="필수 항목"></td>
 						<td colspan="3">
 							<input id="USER_PWD_LEN" name="USER_PWD_LEN" type="password" class="f333_12" size="18" maxlength="20" onclick="$(this).val('')">
 							<input id="USER_PWD" name="USER_PWD" type="password" style="display:none" maxlength="20">
@@ -139,7 +139,7 @@ require_once "./head.php";
 						<td colspan="3"><input id="USER_PWD_RE" type="password" class="f333_12" size="18"></td>
 					</tr> -->
 					<tr>
-						<td class="bg_lb w10 bold al_C bL0">관리자명</td>
+						<td class="bg_lb w10 bold al_C bL0">관리자명<img src="../images/icon_star_orange.png" alt="필수 항목"></td>
 						<td colspan="3"><input id="USER_NAME" name="USER_NAME" type="text" class="f333_12" size="18" maxlength="10">
 						<span> <i class="fa fa-exclamation-circle col_org mR_5"></i>영어/숫자 포함 1~10자</span>
 					</td>
@@ -174,6 +174,7 @@ require_once "./head.php";
 							<input id="MOBILE2" name="MOBILE2" type="text" class="f333_12" size="6" maxlength="4" oninput="inputCheck(this,'onlyNumber','0~9999')">
 							-
 							<input id="MOBILE3" name="MOBILE3" type="text" class="f333_12" size="6" maxlength="4" oninput="inputCheck(this,'onlyNumber','0~9999')">
+							<span> <i class="fa fa-exclamation-circle col_org mR_5"></i>예 : 010-0000-0000</span>
 						</td>
 						<!-- <td class="bg_lb w10 bold al_C">장비 상태 알림</td>
 						<td>
@@ -209,6 +210,7 @@ require_once "./head.php";
 				</table>
 			</li>
 		</ul>
+		<div class="item_txt"> <img src="../images/icon_star_orange.png" alt="필수 항목"><ul><li class="txt02">필수입력항목</li></ul></div>
 		<div class="guide_btn"> 
 					<button type="button" id="btn_in" class="btn_bb80"><i class="fa fa-plus mR5 font15"></i>등록</button>
 					<button type="button" id="btn_re" class="btn_lbb80_s"><i class="fa fa-repeat mR5 font15"></i>초기화</button>
