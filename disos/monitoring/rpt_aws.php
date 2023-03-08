@@ -937,6 +937,9 @@ $(document).ready(function(){
 				dataType: "json",
 				success : function(data){
 					var LEGD, DATAD = new Array();
+					var DATADEG = new Array();
+					var DATADEG_TRASH = new Array();
+					var DEG_KO = new Array();
 					var DATA1 = new Array();
 					var DATA2 = new Array();
 					var DATA3 = new Array();
@@ -963,7 +966,23 @@ $(document).ready(function(){
 						}
 						// LEGD = Object.keys(data.list);
 						// 객체 -> 배열로 변환 map 함수
-						DATAD = data.list.map(function(a){ return a.DATA });
+						var idx = 0;
+						DATAD = data.list.map(function(a){ 
+							// 풍향 아이콘 사전작업
+							if($("#option").val() == 2){
+								if(a.DATA != '-' || !(a.DATA)){
+									// console.log(a.DATA_DEG_KO, a.DATA_DEG);
+									DATADEG_TRASH[idx] = 0;
+									DEG_KO[idx] = a.DATA_DEG_KO;
+									DATADEG[idx] = new Image();
+									if(a.DATA_DEG){
+										DATADEG[idx].src = "../../tvbrd/img/wind_small/"+a.DATA_DEG;
+									}
+								}
+							}
+							idx++;
+							return a.DATA 
+						});
 						LEGD = data.list.map(function(a){ return a.LEG });
 						// 월 표출
 						MONTH = data.list.map(function(a){ return a.MON });
@@ -1036,7 +1055,7 @@ $(document).ready(function(){
 					}else if($("#option").val() == 2){
 						dtset = 
 							[{
-								label: getSensorKind()+"(현재)",
+								label: "풍속(현재)",
 								data: DATAD,
 								yAxisID: 'y_aws',
 								backgroundColor: 'rgba(255,255,255,0.1)',
@@ -1052,7 +1071,18 @@ $(document).ready(function(){
 								borderColor: '#ff8017',
 								borderWidth: 2,
 								fill: false
-							}];
+							},{
+								label: "풍향",
+								data: DATADEG_TRASH,
+								subdata: DEG_KO,
+								yAxisID: 'y_aws',
+								backgroundColor: '#c3dcf5',
+								borderColor: '#c3dcf5',
+								borderWidth: 2,
+								fill: false,
+								pointStyle: DATADEG
+							}
+						];
 					}
 					chart = new Chart($("#graph"), {
 						type: getGraphKind(),
@@ -1080,6 +1110,16 @@ $(document).ready(function(){
 									return !isNaN(data) && data !== null;
 								},
 								callbacks: {
+									label: function(tooltipItem, data) {
+										var datasetLabel = data.datasets[tooltipItem.datasetIndex].label || '';
+										var label;
+										if(data.datasets[tooltipItem.datasetIndex].subdata){
+											label = data.datasets[tooltipItem.datasetIndex].subdata[tooltipItem.index];
+										}else{
+											label = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+										}
+										return datasetLabel + ': ' + label;
+									},
 									labelColor: function(tooltipItem, chart){
 										if($("#option").val() == 1 || $("#option").val() == 4){
 											if(tooltipItem.datasetIndex == 1){
@@ -1182,6 +1222,9 @@ $(document).ready(function(){
 					// console.log(data.list);
 					var LEG, DATA, DATA2, DATA3 = [];		
 					var MAX, MIN, INCRE = null;
+					var DATADEG = new Array();
+					var DATADEG_TRASH = new Array();
+					var DEG_KO = new Array();
 
 					if(data.list){
 						if($("#option").val() == 1 || $("#option").val() == 4){
@@ -1192,6 +1235,20 @@ $(document).ready(function(){
 						}
 						LEG = data.list.LEG;
 						DATA = data.list.DATA;
+						var idx = 0;
+						// 풍향 아이콘 사전작업
+						if($("#option").val() == 2){
+							$.each(data.list.DATA_DEG, function(i, v){
+								if(v != '-'){
+									DATADEG_TRASH[i] = data.list.DATADEG_TRASH[i];
+									DEG_KO[i] = data.list.DATA_DEG_KO[i];
+									if(v){
+										DATADEG[i] = new Image();
+										DATADEG[i].src = "../../tvbrd/img/wind_small/"+v;
+									}
+								}
+							});
+						}
 						MAX = data.list.MAX;
 						MIN = data.list.MIN;
 						$("#rtu_name").text(data.list.RTU_NAME);
@@ -1255,7 +1312,7 @@ $(document).ready(function(){
 					}else if($("#option").val() == 2){
 						dtset = 
 							[{
-								label: '<?=$chart_name?>'+"(현재)",
+								label: "풍속(현재)",
 								data: DATA,
 								yAxisID: 'y_aws',
 								backgroundColor: 'rgba(255,255,255,0.1)',
@@ -1271,6 +1328,16 @@ $(document).ready(function(){
 								borderColor: '#ff8017',
 								borderWidth: 2,
 								fill: false
+							},{
+								label: "풍향",
+								data: DATADEG_TRASH,
+								subdata: DEG_KO,
+								yAxisID: 'y_aws',
+								backgroundColor: '#c3dcf5',
+								borderColor: '#c3dcf5',
+								borderWidth: 2,
+								fill: false,
+								pointStyle: DATADEG
 							}];
 					}
 
@@ -1305,6 +1372,16 @@ $(document).ready(function(){
 									return !isNaN(data) && data !== null;
 								},
 								callbacks: {
+									label: function(tooltipItem, data) {
+										var datasetLabel = data.datasets[tooltipItem.datasetIndex].label || '';
+										var label;
+										if(data.datasets[tooltipItem.datasetIndex].subdata){
+											label = data.datasets[tooltipItem.datasetIndex].subdata[tooltipItem.index];
+										}else{
+											label = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+										}
+										return datasetLabel + ': ' + label;
+									},
 									labelColor: function(tooltipItem, chart){
 										if($("#option").val() == 1 || $("#option").val() == 4){
 											if(tooltipItem.datasetIndex == 1){

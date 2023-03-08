@@ -866,6 +866,9 @@ switch($mode){
 			foreach($ClassAwsInfo->rsWindRpt as $key => $val){
 				$data_list['LEG'][] = $val['NUM'];
 				$data_list['DATA'][] = (round_data($val['VEL'], 0.01, 10) == "-") ? null : round_data($val['VEL'], 0.01, 10);
+				$data_list['DATADEG_TRASH'][] = 0;
+				$data_list['DATA_DEG'][] = $val['DEG_EN'];
+				$data_list['DATA_DEG_KO'][] = $val['DEG_KO'];
 				$data_list['DATA3'][] = (round_data($val['VEL_MAX'], 0.01, 10) == "-") ? null : round_data($val['VEL_MAX'], 0.01, 10);
 				if(round_data($val['VEL'], 0.01, 10) != "-"){
 					$data_list['MAX'] = ($data_list['MAX'] < round_data($val['VEL_MAX'], 0.01, 10) || !$data_list['MAX']) ? round_data($val['VEL_MAX'], 0.01, 10) : $data_list['MAX'];
