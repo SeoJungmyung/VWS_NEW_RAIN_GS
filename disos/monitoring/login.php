@@ -72,18 +72,18 @@ if(recaptcha == 0){
 		</div>
 		<fieldset style="margin-bottom:20px;">
 			<div class="input">
-				<input type="id" id="user_id" name="user_id" onkeypress="if( event.keyCode == 13 ){$('#user_pwd').focus();}" maxlength="15" placeholder="ID" required
+				<input type="id" id="user_id" name="user_id" onkeypress="if( event.keyCode == 13 ){$('#user_pwd').focus(); return false;}" maxlength="15" placeholder="아이디" required
 				/>
 				<!-- onblur="inputCheck(this,'text','5~15')"/> -->
 			</div>
 			<div class="input">
 			<? if(recaptcha == 2){ ?>
-				<input type="password" id="user_pwd" name="user_pwd" onkeypress="if( event.keyCode == 13 ){$('#recaptcha').focus();}" maxlength="20" placeholder="Password" required />
+				<input type="password" id="user_pwd" name="user_pwd" onkeypress="if( event.keyCode == 13 ){$('#recaptcha').focus(); return false;}" maxlength="20" placeholder="비밀번호" required />
 			<? }else{ ?>
-				<input type="password" id="user_pwd" name="user_pwd" onkeypress="if( event.keyCode == 13 ){$('#login_ok').click();}" maxlength="20" placeholder="Password" required />
+				<input type="password" id="user_pwd" name="user_pwd" onkeypress="if( event.keyCode == 13 ){$('#login_ok').click(); return false;}" maxlength="20" placeholder="비밀번호" required />
 			<? } ?>
 			</div>
-			<button type="button" id="login_ok" class="submit">LOGIN</button>
+			<button type="button" id="login_ok" class="submit">로그인</button>
 <? if(recaptcha == 0){ ?>
 			<input type="hidden" id="recaptcha" name="recaptcha" value="1" maxlength="5">
 <? }else if(recaptcha == 2){ ?>
@@ -108,7 +108,7 @@ if(recaptcha == 0){
 					</tr>
 					<tr>
 						<td colspan="2">
-							<input type="text" id="recaptcha" name="recaptcha" alt="보안 문자 입력" onkeypress="if( event.keyCode == 13 ){$('#login_ok').click();}" maxlength="5" placeholder="보안문자입력" required />
+							<input type="text" id="recaptcha" name="recaptcha" alt="보안 문자 입력" onkeypress="if( event.keyCode == 13 ){$('#login_ok').click(); return false;}" maxlength="5" placeholder="보안문자입력" required />
 						</td>
 					</tr>
 				</table>
