@@ -649,10 +649,10 @@ $(document).ready(function(){
 						col.each(function(){
 								// 센서 버튼 삭제?
 							  $(col[0]).attr("width", 10);
-							  $(col[1]).attr("width", 10);
+							  $(col[1]).attr("width", 15);
 							  $(col[2]).attr("width", 10);
-							  $(col[3]).attr("width", 35);
-							  $(col[4]).attr("width", 20);
+							  $(col[3]).attr("width", 10);
+							  $(col[4]).attr("width", 35);
 							  $(col[5]).attr("width", 20);
 						   });
 					}, customizeData: function(data) {
