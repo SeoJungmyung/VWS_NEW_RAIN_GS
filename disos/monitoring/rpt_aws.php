@@ -979,7 +979,7 @@ $(document).ready(function(){
 									DEG_KO[idx] = a.DATA_DEG_KO;
 									DATADEG[idx] = new Image();
 									if(a.DATA_DEG){
-										DATADEG[idx].src = "../../tvbrd/img/wind_small/"+a.DATA_DEG;
+										DATADEG[idx].src = "../../tvbrd/img/wind/"+a.DATA_DEG;
 									}
 								}
 							}
