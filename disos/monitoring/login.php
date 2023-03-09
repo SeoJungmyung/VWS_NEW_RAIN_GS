@@ -96,7 +96,7 @@ if(recaptcha == 0){
 						</div>
 					</tr>
 					<tr>
-						<td rowspan="2"><img src="" id="captcha" class="captcha" style="" tabindex="0" alt="보안 문자" onfocus="speechOut();"/></td>
+						<td rowspan="2"><img src="" id="captcha" class="captcha" style="" tabindex="0" alt="보안 문자"/></td>
 						<td class="g-recaptcha2-icon refresh" id="refresh" onclick="captcha_start()">
 							<button><i class="fa fa-rotate-right"></i></button>새로고침
 						</td>
