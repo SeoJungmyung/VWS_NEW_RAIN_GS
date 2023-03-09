@@ -1252,7 +1252,7 @@ $(document).ready(function(){
 									DEG_KO[i] = data.list.DATA_DEG_KO[i];
 									if(v){
 										DATADEG[i] = new Image();
-										DATADEG[i].src = "../../tvbrd/img/wind_small/"+v;
+										DATADEG[i].src = "../../tvbrd/img/wind/"+v;
 									}
 								}
 							});
