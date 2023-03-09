@@ -168,15 +168,8 @@ $(document).ready(function(){
 		var ms_token = localStorage.getItem("ms");
 		var session_time = getCookie("session_time_"+ms_token);
 		var tmp_src = $("#main").attr("src");
-		
-		// if(session_time){
-		// 	if($("#btn_logout").hasClass('dp0')){
-		// 		location.href = "./main.php";
-		// 		return false;
-		// 	}else{
-		// 	}
-		// }
-		if(tmp_src == "tms_main.php"){
+
+		if(tmp_src == "tms_main.php" || $('#main').contents().find('.main_twrap').length > 0){
 			$("#btn_layout").removeClass('dp0');
 		}else{
 			$("#btn_layout").addClass('dp0');
