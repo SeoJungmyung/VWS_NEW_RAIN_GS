@@ -361,7 +361,8 @@ $(document).ready(function(){
 		var now_m = sdate.substring(5, 7) - 1;
 		var now_d = sdate.substring(8, 10);
         var now = new Date(now_y, now_m, now_d);
-        now.setDate(now.getDate() - 1);
+
+        moveDate(now, -1);
 
 		var sel_y = now.getFullYear();
 		var sel_m = now.getMonth() + 1;
@@ -376,7 +377,8 @@ $(document).ready(function(){
 		var now_m = sdate.substring(5, 7) - 1;
 		var now_d = sdate.substring(8, 10);
         var now = new Date(now_y, now_m, now_d);
-        now.setDate(now.getDate() + 1);
+        
+		moveDate(now, 1);
 
 		var sel_y = now.getFullYear();
 		var sel_m = now.getMonth() + 1;

@@ -1302,6 +1302,22 @@
       var t = $("#tts_code").val();
       speech(t);
   	}
+
+	/**
+	 * 검색기간 라디오 버튼에 따라 일, 월, 년 이동을 다르게 함
+	 * now : 변경할 Date 객체, 
+	 * tick : -1, 1 등 이동할 만큼
+	 * 2023.03.09 서정명
+	 */
+	function moveDate(now, tick){
+		if($('input[name="sel_date"]:checked').val() == "D"){
+			now.setMonth(now.getMonth() + tick);
+		}else if($('input[name="sel_date"]:checked').val() == "N"){
+			now.setFullYear(now.getFullYear() + tick);
+		}else{
+			now.setDate(now.getDate() + tick);
+		}
+	}
 	
 	// magnific-popup.js
 	function magnific_popup(target){
