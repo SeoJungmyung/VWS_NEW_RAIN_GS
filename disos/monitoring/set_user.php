@@ -157,7 +157,7 @@ require_once "./head.php";
 								<option value="0">직접입력</option>
 							</select> / 
 							<input id="EMAIL3" name="EMAIL3" type="text" class="f333_12 preventFloatInput" size="32" maxlength="20" onblur="inputCheck(this,'onlyEmail','')">
-							<span> <i class="fa fa-exclamation-circle col_org mR_5"></i>ID 1~20자 ( 예 : abcd123@naver.com )</span>
+							<span> <i class="fa fa-exclamation-circle col_org mR_5"></i>( 예 : abcd123@naver.com )</span>
 						</td>
 					</tr>
 					<tr>
