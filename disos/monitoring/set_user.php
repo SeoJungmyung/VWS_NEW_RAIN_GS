@@ -673,8 +673,8 @@ crypt.setKey(key);
 								var formData = $('#set_frm').serializeArray();
 								sessionStorage.setItem('list_user', formData[1].value);
 								$("tr[name='"+formData[1].value+"'] #l_USER_NAME").text(formData[10].value);
-								$("tr[name='"+formData[1].value+"'] #l_MOBILE").text(formData[14].value+'-'+formData[15].value+'-'+formData[16].value);
-								$("tr[name='"+formData[1].value+"'] #l_EMAIL").text(formData[11].value+'@'+formData[13].value);
+								$("tr[name='"+formData[1].value+"'] #l_MOBILE").text(formData[14].value+formData[15].value+formData[16].value == "" ? "-" : formData[14].value+'-'+formData[15].value+'-'+formData[16].value);
+								$("tr[name='"+formData[1].value+"'] #l_EMAIL").text(formData[11].value+formData[13].value == "" ? "-" : formData[11].value+'@'+formData[13].value);
 								var pwLen = parseInt(formData[8].value);
 								var tmpLen = "";
 								while(pwLen > tmpLen.length){
