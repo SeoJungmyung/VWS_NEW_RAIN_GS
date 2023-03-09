@@ -125,7 +125,7 @@ if($_SESSION["OTT"] == $_POST["OTT"]){
 				// }
 			}else{
 				$result = false;
-				$msg = "등록하려는 사용자 ID 또는 휴대폰 번호는 이미 사용중 입니다.";
+				$msg = "등록하려는 관리자 ID 또는 휴대폰 번호는 이미 사용중 입니다.";
 			}
 			
 			$returnBody = array( 'result' => $result, 'msg' => $msg );
@@ -156,7 +156,7 @@ if($_SESSION["OTT"] == $_POST["OTT"]){
 					}
 				}else{
 					$result = false;
-					$msg = "수정하려는 사용자 ID 또는 휴대폰 번호는 이미 사용중 입니다.";
+					$msg = "수정하려는 관리자 ID 또는 휴대폰 번호는 이미 사용중 입니다.";
 				}
 			// }
 			
