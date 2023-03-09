@@ -83,7 +83,6 @@ if(recaptcha == 0){
 				<input type="password" id="user_pwd" name="user_pwd" onkeypress="if( event.keyCode == 13 ){$('#login_ok').click(); return false;}" maxlength="20" placeholder="비밀번호" required />
 			<? } ?>
 			</div>
-			<button type="button" id="login_ok" class="submit" aria-label="로그인">로그인</button>
 <? if(recaptcha == 0){ ?>
 			<input type="hidden" id="recaptcha" name="recaptcha" value="1" maxlength="5">
 <? }else if(recaptcha == 2){ ?>
@@ -115,6 +114,7 @@ if(recaptcha == 0){
 			</div>
 			<!-- 20230308 수정 end -->
 <? } ?>
+		<button type="button" id="login_ok" class="submit" aria-label="로그인">로그인</button>
 		</fieldset>
 		<div id="login_kind" class="whereto">
 			<!-- <input type="radio" name="login_kind" value="1" <? if($login_kind == 1) echo "checked"; ?>></input>통합방재 &nbsp;
