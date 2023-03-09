@@ -115,35 +115,41 @@ Class WindInfo {
 				AND t2.num = DATE_FORMAT(b.wind_date, '%i') 
 				group by numC
 				ORDER BY b.wind_date DESC ";
-		$rs = $this->DB->execute($sql);
-	
-		for($i=0; $i<$this->DB->NUM_ROW(); $i++){
-			$this->TimeListValue[$i]     = ($rs[$i]['avr_vel1'] != "-") ? $rs[$i]['avr_vel1']*$this->getCalc : "-";
-			$this->TimeListDegValue[$i]     = ($this->windAngle($rs[$i]['avr_deg1']) != "-") ? ($this->windAngle($rs[$i]['avr_deg1'])) : "-";
-			$this->TimeListDateValue[$i] = $rs[$i]['wind_date'];
-			$this->Num[$i] 				 = $rs[$i]['numC'];
+				$rs = $this->DB->execute($sql);
+		
+		$this->AVR_VEL = 0;
+		$this->MAX_DEG = "-";
+		$this->MAX_VEL = "-";	
+		$this->MAX_VEL_TIME = "-"; 
+		if($this->DB->NUM_ROW() > 0){
+			for($i=0; $i<$this->DB->NUM_ROW(); $i++){
+				$this->TimeListValue[$i]     = ($rs[$i]['avr_vel1'] != "-") ? $rs[$i]['avr_vel1']*$this->getCalc : "-";
+				$this->TimeListDegValue[$i]     = ($this->windAngle($rs[$i]['avr_deg1']) != "-") ? ($this->windAngle($rs[$i]['avr_deg1'])) : "-";
+				$this->TimeListDateValue[$i] = $rs[$i]['wind_date'];
+				$this->Num[$i] 				 = $rs[$i]['numC'];
 
-			$this->AVR_VEL += $rs[$i]['avr_vel1'];
+				$this->AVR_VEL += $rs[$i]['avr_vel1'];
 
-			if($this->MAX_VEL){
-				if($rs[$i]['max_vel']*$this->getCalc > $this->MAX_VEL){
-					$this->MAX_DEG 			 = ($this->windAngle($rs[$i]['max_deg']) != "-") ? ($this->windAngle($rs[$i]['max_deg'])) : "-";
-					$this->MAX_VEL			 = $rs[$i]['max_vel']*$this->getCalc;
-					$this->MAX_VEL_TIME 	 = $rs[$i]['max_vel_time'];
-				}else if($rs[$i]['max_vel']*$this->getCalc == $this->MAX_VEL){
-					if($rs[$i]['max_vel_time'] > $this->MAX_VEL_TIME){
+				if($this->MAX_VEL){
+					if($rs[$i]['max_vel']*$this->getCalc > $this->MAX_VEL){
 						$this->MAX_DEG 			 = ($this->windAngle($rs[$i]['max_deg']) != "-") ? ($this->windAngle($rs[$i]['max_deg'])) : "-";
 						$this->MAX_VEL			 = $rs[$i]['max_vel']*$this->getCalc;
 						$this->MAX_VEL_TIME 	 = $rs[$i]['max_vel_time'];
+					}else if($rs[$i]['max_vel']*$this->getCalc == $this->MAX_VEL){
+						if($rs[$i]['max_vel_time'] > $this->MAX_VEL_TIME){
+							$this->MAX_DEG 			 = ($this->windAngle($rs[$i]['max_deg']) != "-") ? ($this->windAngle($rs[$i]['max_deg'])) : "-";
+							$this->MAX_VEL			 = $rs[$i]['max_vel']*$this->getCalc;
+							$this->MAX_VEL_TIME 	 = $rs[$i]['max_vel_time'];
+						}
 					}
+				}else{
+					$this->MAX_DEG 			 = ($this->windAngle($rs[$i]['max_deg']) != "-") ? ($this->windAngle($rs[$i]['max_deg'])) : "-";
+					$this->MAX_VEL			 = $rs[$i]['max_vel']*$this->getCalc;
+					$this->MAX_VEL_TIME 	 = $rs[$i]['max_vel_time'];
 				}
-			}else{
-				$this->MAX_DEG 			 = ($this->windAngle($rs[$i]['max_deg']) != "-") ? ($this->windAngle($rs[$i]['max_deg'])) : "-";
-				$this->MAX_VEL			 = $rs[$i]['max_vel']*$this->getCalc;
-				$this->MAX_VEL_TIME 	 = $rs[$i]['max_vel_time'];
 			}
+			$this->AVR_VEL = $this->AVR_VEL / $this->DB->NUM_ROW() * $this->getCalc;
 		}
-		$this->AVR_VEL = $this->AVR_VEL / $this->DB->NUM_ROW() *$this->getCalc;
 	
 		unset($rs);
 		$this->rsCnt = $i;
