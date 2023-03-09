@@ -83,7 +83,7 @@ if(recaptcha == 0){
 				<input type="password" id="user_pwd" name="user_pwd" onkeypress="if( event.keyCode == 13 ){$('#login_ok').click(); return false;}" maxlength="20" placeholder="비밀번호" required />
 			<? } ?>
 			</div>
-			<button type="button" id="login_ok" class="submit">로그인</button>
+			<button type="button" id="login_ok" class="submit" aria-label="로그인">로그인</button>
 <? if(recaptcha == 0){ ?>
 			<input type="hidden" id="recaptcha" name="recaptcha" value="1" maxlength="5">
 <? }else if(recaptcha == 2){ ?>
@@ -98,12 +98,12 @@ if(recaptcha == 0){
 					<tr>
 						<td rowspan="2"><img src="" id="captcha" class="captcha" style="" tabindex="0" alt="보안 문자"/></td>
 						<td class="g-recaptcha2-icon refresh" id="refresh" onclick="captcha_start()">
-							<button><i class="fa fa-rotate-right"></i></button>새로고침
+							<button aria-label="새로고침"><i class="fa fa-rotate-right"></i></button>새로고침
 						</td>
 					</tr>
 					<tr>
 						<td onclick="speechOut()" class="g-recaptcha2-icon speechBtn">
-							<button><i class="fa fa-volume-up"></i></button>음성듣기
+							<button aria-label="음성듣기"><i class="fa fa-volume-up"></i></button>음성듣기
 						</td>
 					</tr>
 					<tr>
