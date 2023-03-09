@@ -58,7 +58,7 @@ require_once "./head.php";
 					<tbody>
 				<? 
 				if($data_list){
-					$rowCnt = set_cnt - 3;
+					$rowCnt = set_cnt;
 					$num = 0;
 					foreach($data_list as $key => $val){ 
 							$num++;
@@ -381,6 +381,9 @@ crypt.setKey(key);
 	// 목록 선택
 	$("#list_table tbody tr").click(function(){
 		// $("#tree").jstree("deselect_all"); // jstree 전체 체크 해제
+		if($(this).hasClass('not_d')){
+			return false;
+		}
 		$("#dup_check").val(1); // 아이디 중복체크 리셋
 		pwFlag = false;	// 비밀번호 체크 리셋
 		// $("#btn_check").css("display","none"); // 아이디 중복체크 버튼 비활성화
