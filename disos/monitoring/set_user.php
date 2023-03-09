@@ -938,53 +938,59 @@ crypt.setKey(key);
 			    // swal("체크", "관리자명을 입력해 주세요.", "warning"); 
 			    // $("#USER_NAME").focus(); return false;
 			}else if( !$("#EMAIL1").val() || !$("#EMAIL3").val() ){
-				swal({
-						title: '체크',
-						text: '이메일 주소를 입력해 주세요.<br>( 예 : abcd123@naver.com )',
-						showCancelButton: false,
-						html: true,
-						confirmButtonColor: '#555555', 
-						confirmButtonText: '확인',
-						closeOnConfirm: false,
-						type: 'warning',
-						}, function(isConfirm) {
-							swal.close();
-							$("#EMAIL1").focus(); 
-						});
-				return false;
+				if($("#EMAIL1").val() != "" || $("#EMAIL3").val() != "" ){
+					swal({
+							title: '체크',
+							text: '이메일 주소를 입력해 주세요.<br>( 예 : abcd123@naver.com )',
+							showCancelButton: false,
+							html: true,
+							confirmButtonColor: '#555555', 
+							confirmButtonText: '확인',
+							closeOnConfirm: false,
+							type: 'warning',
+							}, function(isConfirm) {
+								swal.close();
+								$("#EMAIL1").focus(); 
+							});
+					return false;
+				}
 				// swal("체크", "이메일 주소를 입력해 주세요.", "warning"); 
 				// $("#EMAIL1").focus(); return false;
 			}else if( !$("#MOBILE2").val() || !$("#MOBILE3").val() ){
-				swal({
-						title: '체크',
-						text: '휴대폰 번호를 입력해 주세요.',
-						showCancelButton: false,
-						confirmButtonColor: '#555555', 
-						confirmButtonText: '확인',
-						closeOnConfirm: false,
-						type: 'warning',
-						}, function(isConfirm) {
-							swal.close();
-							$("#MOBILE2").focus(); 
-						});
-				return false;
+				if($("#MOBILE2").val() != "" || $("#MOBILE3").val() != "" ){
+					swal({
+							title: '체크',
+							text: '휴대폰 번호를 입력해 주세요.',
+							showCancelButton: false,
+							confirmButtonColor: '#555555', 
+							confirmButtonText: '확인',
+							closeOnConfirm: false,
+							type: 'warning',
+							}, function(isConfirm) {
+								swal.close();
+								$("#MOBILE2").focus(); 
+							});
+					return false;
+				}
 			    // swal("체크", "휴대폰 번호를 입력해 주세요.", "warning"); 
 			    // $("#MOBILE2").focus(); return false;
 			}else if( $("#MOBILE2").val().length < 3 || $("#MOBILE3").val().length < 4 ){
-				swal({
-						title: '체크',
-						text: '휴대폰 번호를 확인해 주세요.<br>( 예 : 010-0000-0000 )',
-						html: true,
-						showCancelButton: false,
-						confirmButtonColor: '#555555', 
-						confirmButtonText: '확인',
-						closeOnConfirm: false,
-						type: 'warning',
-						}, function(isConfirm) {
-							swal.close();
-							$("#MOBILE2").focus(); 
-						});
-				return false;
+				if($("#MOBILE2").val() != "" || $("#MOBILE3").val() != "" ){
+					swal({
+							title: '체크',
+							text: '휴대폰 번호를 확인해 주세요.<br>( 예 : 010-0000-0000 )',
+							html: true,
+							showCancelButton: false,
+							confirmButtonColor: '#555555', 
+							confirmButtonText: '확인',
+							closeOnConfirm: false,
+							type: 'warning',
+							}, function(isConfirm) {
+								swal.close();
+								$("#MOBILE2").focus(); 
+							});
+					return false;
+				}
 				// swal("체크", "휴대폰 번호를 확인해 주세요.", "warning"); 
 			    // $("#MOBILE2").focus(); return false;
 			}
