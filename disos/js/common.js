@@ -862,7 +862,7 @@
 				dateFormat: format, // 'yymmdd'
 				//firstDay: '6', 
 				//yearRange: 'c-0:c+1',
-				minDate: new Date('2010-01-01'),
+				minDate: new Date('1990-01-01'),
 				maxDate: '0',
 				showButtonPanel: true, 
 			    nextText: '다음 달',
@@ -891,7 +891,7 @@
 				dateFormat: format, // 'yymmdd'
 				//firstDay: '6', 
 				//yearRange: 'c-0:c+1',
-				minDate: new Date('2010-01-01'),
+				minDate: new Date('1990-01-01'),
 				maxDate: '0',
 				showButtonPanel: true, 
 			    nextText: '다음 달',
@@ -924,7 +924,7 @@
 				dateFormat: format, // 'yymmdd'
 				//firstDay: '6', 
 				//yearRange: 'c-0:c+1',
-				minDate: new Date('2010-01-01'),
+				minDate: new Date('1990-01-01'),
 				maxDate: '+1Y',
 				showButtonPanel: true, 
 			    nextText: '다음 달',
