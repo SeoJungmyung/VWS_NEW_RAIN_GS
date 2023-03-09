@@ -1238,32 +1238,64 @@
 
 		window.speechSynthesis.cancel(); // 현재 읽고있다면 초기화
 		
-		for(let t of txt){
-			var lang = 'en-US';
-			var utterThis = new SpeechSynthesisUtterance(t);
-			utterThis.onend = function (event) {
-				// console.log('tts end');
-			};
-			utterThis.onerror = function(event) {
-				// console.log('tts error!', event);
-			};
-			var voiceFound = false;
-			for(var i = 0; i < voices.length ; i++) {
-				if(voices[i].lang.indexOf(lang) >= 0 || voices[i].lang.indexOf(lang.replace('-', '_')) >= 0) {
-					utterThis.voice = voices[i];
-					voiceFound = true;
+		// 오디오 파일을 불러옵니다.
+		const audioContext = new AudioContext();
+		const request = new XMLHttpRequest();
+		request.open('GET', '../func/noise.wav', true);
+		request.responseType = 'arraybuffer';
+
+		request.onload = function() {
+		// 오디오 파일의 데이터를 ArrayBuffer로 가져옵니다.
+		const audioData = request.response;
+
+			// ArrayBuffer를 디코딩하여 AudioBuffer 객체를 만듭니다.
+			audioContext.decodeAudioData(audioData, function(buffer) {
+
+				// SpeechSynthesisUtterance 객체 생성
+				const utterance = new SpeechSynthesisUtterance();
+
+				// AudioBufferSourceNode를 만들고, SpeechSynthesisUtterance와 믹싱합니다.
+				const source = audioContext.createBufferSource();
+				const mixedBuffer = 
+					audioContext.createBuffer(2, buffer.length, audioContext.sampleRate);
+
+				for (let channel = 0; channel < buffer.numberOfChannels; channel++) {
+					mixedBuffer.copyToChannel(buffer.getChannelData(channel), channel);
 				}
-			}
-			// console.log(txt, voices);
-			if(!voiceFound) {
-				console.log('voice not found!', voiceFound);
-				return;
-			}
-			utterThis.lang = lang;
-			utterThis.pitch = 1;
-			utterThis.rate = 1;  //속도
-			window.speechSynthesis.speak(utterThis);
-		}
+
+				source.buffer = mixedBuffer;
+				source.connect(audioContext.destination);
+				source.start();
+
+				var lang = 'en-US';
+				const textArray = txt.split('');
+				utterance.text = textArray[0];
+				utterance.lang = lang;
+				utterance.rate = 1.2;  //속도
+				// console.log(speechSynthesis.getVoices());
+				window.speechSynthesis.speak(utterance);
+
+				let index = 1;
+				// SpeechSynthesisUtterance 재생
+				utterance.onend = function() {
+					// 모든 글자를 읽었으면, utterance 객체를 정리하고 종료합니다.
+					if (index >= textArray.length) {
+					  utterance.onend = null;
+					  window.speechSynthesis.cancel();
+					  return;
+					}
+				  
+					// 다음 글자를 읽도록 utterance 객체에 할당합니다.
+					utterance.text = textArray[index];
+					index++;
+					// 일정한 지연시간을 두고 다음 글자를 읽도록 지시합니다.
+					setTimeout(function() {
+					  window.speechSynthesis.speak(utterance);
+					}, 5); // 0.005초 지연
+				};
+			});
+		};
+		request.send();
 	}
 
 	function speechOut(){
