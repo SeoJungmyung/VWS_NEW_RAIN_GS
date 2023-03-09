@@ -86,7 +86,7 @@ require_once "./head.php";
 							<td id="l_AREA_CODE" class="li10 bL_1gry"><?=$val['AREA_CODE']?></td>
 							<td id="l_LINE_NAME"class="li5 bL_1gry"><?=$val['LINE_NAME']?></td>
 							<td id="l_MODEL_NAME"class="li5 bL_1gry"><?=$val['MODEL_NAME']?></td>
-							<td id="l_CONNECTION_INFO"class="li10 bL_1gry"><?=$val['CONNECTION_INFO']?></td>
+							<td id="l_CONNECTION_INFO"class="li10 bL_1gry"><?=($val['CONNECTION_INFO'] == "" ? "-" : $val['CONNECTION_INFO'])?></td>
 							<td id="l_PORT"class="li5 bL_1gry"><?=$val['PORT']?></td>
 							<td id="l_BAUDRATE"class="li5 bL_1gry"><?=$val['BAUDRATE']?></td>
 							<td id="l_FLOW_WARNING"class="li5 bL_1gry"><?=$val['FLOW_WARNING']?></td>
