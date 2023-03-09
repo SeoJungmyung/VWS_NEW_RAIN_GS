@@ -1144,6 +1144,11 @@ $(document).ready(function(){
 													backgroundColor : '#ff8017',
 													borderColor: '#ff8017'
 												}
+											}else if(tooltipItem.datasetIndex == 2){
+												return {
+													backgroundColor : '#c3dcf5',
+													borderColor: '#c3dcf5'
+												}
 											}else{
 												return {
 													backgroundColor : '#69F',
@@ -1405,6 +1410,11 @@ $(document).ready(function(){
 												return {
 													backgroundColor : '#ff8017',
 													borderColor: '#ff8017'
+												}
+											}else if(tooltipItem.datasetIndex == 2){
+												return {
+													backgroundColor : '#c3dcf5',
+													borderColor: '#c3dcf5'
 												}
 											}else{
 												return {
