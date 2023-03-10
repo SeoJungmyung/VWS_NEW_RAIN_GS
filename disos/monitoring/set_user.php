@@ -147,7 +147,7 @@ require_once "./head.php";
 					<tr>
 						<td height="35" class="bg_lb w10 bold al_C bL0">이메일</td>
 						<td colspan="3">
-							<input id="EMAIL1" name="EMAIL1" type="text" class="f333_12 preventFloatInput" size="10" maxlength="20"> @ 
+							<input id="EMAIL1" name="EMAIL1" type="text" class="f333_12 preventFloatInput" size="10"> @ 
 							<select id="EMAIL2" name="EMAIL2" class="f333_12">
 								<option value="naver.com">naver.com</option>
 								<option value="hanmail.net">hanmail.net</option>
@@ -654,7 +654,7 @@ crypt.setKey(key);
 								}//if ( arr ) {
 							}
 						} catch (e) {
-							alert(e.message);
+							console.log(e.message);
 						} finally {
 						}
 						return obj;
@@ -676,7 +676,7 @@ crypt.setKey(key);
 								var formData = $('#set_frm').serializeArray();
 								sessionStorage.setItem('list_user', formData[1].value);
 								$("tr[name='"+formData[1].value+"'] #l_USER_NAME").text(formData[10].value);
-								$("tr[name='"+formData[1].value+"'] #l_MOBILE").text(formData[14].value+formData[15].value+formData[16].value == "" ? "-" : formData[14].value+'-'+formData[15].value+'-'+formData[16].value);
+								$("tr[name='"+formData[1].value+"'] #l_MOBILE").text((formData[15].value+formData[16].value).length <= 0 ? "-" : formData[14].value+'-'+formData[15].value+'-'+formData[16].value);
 								$("tr[name='"+formData[1].value+"'] #l_EMAIL").text(formData[11].value+formData[13].value == "" ? "-" : formData[11].value+'@'+formData[13].value);
 								var pwLen = parseInt(formData[8].value);
 								var tmpLen = "";
@@ -744,7 +744,7 @@ crypt.setKey(key);
 								swal.close();
 								$("#btn_re").click();
 								doubleSubmitFlag = false;
-					    		// location.reload(); return false;
+					    		location.reload(); return false;
 					        }else{
 							    swal("체크", "관리자 삭제중 오류가 발생 했습니다.", "warning");
 								doubleSubmitFlag = false;
@@ -956,8 +956,9 @@ crypt.setKey(key);
 				}
 				// swal("체크", "이메일 주소를 입력해 주세요.", "warning"); 
 				// $("#EMAIL1").focus(); return false;
-			}else if( !$("#MOBILE2").val() || !$("#MOBILE3").val() ){
-				if($("#MOBILE2").val() != "" || $("#MOBILE3").val() != "" ){
+			}
+			if( ($("#MOBILE2").val() || $("#MOBILE3").val()).length > 0 ){
+				if($("#MOBILE2").val() == "" || $("#MOBILE3").val() == "" ){
 					swal({
 							title: '체크',
 							text: '휴대폰 번호를 입력해 주세요.',
@@ -971,11 +972,7 @@ crypt.setKey(key);
 								$("#MOBILE2").focus(); 
 							});
 					return false;
-				}
-			    // swal("체크", "휴대폰 번호를 입력해 주세요.", "warning"); 
-			    // $("#MOBILE2").focus(); return false;
-			}else if( $("#MOBILE2").val().length < 3 || $("#MOBILE3").val().length < 4 ){
-				if($("#MOBILE2").val() != "" || $("#MOBILE3").val() != "" ){
+				}else if( $("#MOBILE2").val().length < 3 || $("#MOBILE3").val().length < 4 ){
 					swal({
 							title: '체크',
 							text: '휴대폰 번호를 확인해 주세요.<br>( 예 : 010-0000-0000 )',
@@ -991,7 +988,7 @@ crypt.setKey(key);
 							});
 					return false;
 				}
-				// swal("체크", "휴대폰 번호를 확인해 주세요.", "warning"); 
+			    // swal("체크", "휴대폰 번호를 입력해 주세요.", "warning"); 
 			    // $("#MOBILE2").focus(); return false;
 			}
 			if(pwFlag){
@@ -1082,6 +1079,7 @@ crypt.setKey(key);
 			    // swal("체크", "관리자명을 입력해 주세요.", "warning"); 
 			    // $("#USER_NAME").focus(); return false;
 			}else if( !$("#EMAIL1").val() || !$("#EMAIL3").val() ){
+				if($("#EMAIL1").val() != "" || $("#EMAIL3").val() != "" ){
 				swal({
 						title: '체크',
 						text: '이메일 주소를 입력해 주세요.<br>( 예 : abcd123@naver.com )',
@@ -1095,27 +1093,28 @@ crypt.setKey(key);
 							swal.close();
 							$("#EMAIL1").focus(); 
 						});
-				return false;
+					return false;
+				}
 				// swal("체크", "이메일 주소를 입력해 주세요.", "warning"); 
 				// $("#EMAIL1").focus(); return false;
-			}else if( !$("#MOBILE2").val() || !$("#MOBILE3").val() ){
-				swal({
-						title: '체크',
-						text: '휴대폰 번호를 입력해 주세요.',
-						showCancelButton: false,
-						confirmButtonColor: '#555555', 
-						confirmButtonText: '확인',
-						closeOnConfirm: false,
-						type: 'warning',
-						}, function(isConfirm) {
-							swal.close();
-							$("#MOBILE2").focus(); 
-						});
-				return false;
-			    // swal("체크", "휴대폰 번호를 입력해 주세요.", "warning"); 
-			    // $("#MOBILE2").focus(); return false;
-			}else if( $("#MOBILE2").val().length < 3 || $("#MOBILE3").val().length < 4 ){
-				swal({
+			}
+			if( ($("#MOBILE2").val() || $("#MOBILE3").val()).length > 0 ){
+				if($("#MOBILE2").val() == "" || $("#MOBILE3").val() == "" ){
+					swal({
+							title: '체크',
+							text: '휴대폰 번호를 입력해 주세요.',
+							showCancelButton: false,
+							confirmButtonColor: '#555555', 
+							confirmButtonText: '확인',
+							closeOnConfirm: false,
+							type: 'warning',
+							}, function(isConfirm) {
+								swal.close();
+								$("#MOBILE2").focus(); 
+							});
+					return false;
+				}else if( $("#MOBILE2").val().length < 3 || $("#MOBILE3").val().length < 4 ){
+					swal({
 						title: '체크',
 						text: '휴대폰 번호를 확인해 주세요.<br>( 예 : 010-0000-0000 )',
 						html: true,
@@ -1128,8 +1127,9 @@ crypt.setKey(key);
 							swal.close();
 							$("#MOBILE2").focus(); 
 						});
-				return false;
-				// swal("체크", "휴대폰 번호를 확인해 주세요.", "warning"); 
+					return false;
+				}
+			    // swal("체크", "휴대폰 번호를 입력해 주세요.", "warning"); 
 			    // $("#MOBILE2").focus(); return false;
 			}
 			if(pwFlag){
