@@ -327,7 +327,7 @@ $(document).ready(function(){
 						        if(data.msg){
 							    	swal("체크", data.msg, "warning");
 						        }else{
-							    	swal("체크", "기관정보 수정중 오류가 발생 했습니다.", "warning");
+							    	swal("체크", "기관정보 저장중 오류가 발생 했습니다.", "warning");
 						        }
 								doubleSubmitFlag = false;
 					        }
