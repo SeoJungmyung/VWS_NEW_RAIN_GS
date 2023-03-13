@@ -122,7 +122,7 @@ require_once "./head.php";
 								<?if($option == "4"){ ?>
 									<td class="li9_5 bL_1gry">
 										<span class="effect">
-											<img src="<?=$val['DEG']?>"/>
+											<img src="<?=$val['DEG']?>" alt="<?=$val['DEG_KO']?>"/>
 										</span>
 									</td>
 									<td class="li8_5 bL_1gry">
@@ -565,14 +565,49 @@ $(document).ready(function(){
 				filename: '상세 보고서_'+$("#option option:selected").text()+"_"+$('#area_code option:selected').html()+'_'+timestamp, 
 	            title: "",
 				messageTop: seText,
+				exportOptions: {
+					format: {
+						body: function(data, row, column, node) {
+							// console.log(column);
+							var altValue;
+							if(column == 0){
+								return data;
+							}else{
+								var imgNode = node.firstChild.nextSibling.querySelector('img');
+								// console.log(imgNode);
+								if(imgNode){
+									altValue = imgNode.getAttribute('alt');
+									// console.log(altValue);
+								}else{
+									if (typeof data === 'string') {
+										altValue = data.replace(/<[^>]+>/g, ''); // HTML 태그 제거
+									}
+								}
+								return altValue;
+							}
+						}
+					}
+				},
 	            customize: function(xlsx){
-	                var sheet = xlsx.xl.worksheets["sheet1.xml"];
-	                //$("row:first c", sheet).attr("s", "42");
-	                $("row c", sheet).attr("s", "51");
+					var sheet = xlsx.xl.worksheets["sheet1.xml"];
+					if(mode == "wind"){
+						$("row:eq(1)", sheet).append("<c t='inlinestr' r='A2'><is><t>시간</t></is></c>");
+						$("row:eq(1)", sheet).append("<c t='inlinestr' r='B2'><is><t>풍향</t></is></c>");
+						$("row:eq(1)", sheet).append("<c t='inlinestr' r='c2'><is><t>풍속</t></is></c>");
+					}else{
+						$("row:eq(1)", sheet).append("<c t='inlinestr' r='A2'><is><t>시간</t></is></c>");
+						$("row:eq(1)", sheet).append("<c t='inlinestr' r='B2'><is><t>자료</t></is></c>");
+					}
+					$("row c", sheet).attr("s", "25");
+					$("row:first", sheet).attr("ht", 25);
+					$("row:first", sheet).attr('customHeight', 1);
+					$("row:eq(0) c", sheet).attr("s", "52");
+					// $("row:eq(1) c", sheet).attr("s", "51");
 	                var col = $("col", sheet);
 	                col.each(function(){
 	                      $(col[0]).attr("width", 30);
 	                      $(col[1]).attr("width", 20);
+	                      $(col[2]).attr("width", 20);
 	               	});
 	            }
 	        }
