@@ -642,10 +642,71 @@ $(document).ready(function(){
 					messageTop: date_text,
 					customize: function(xlsx){
 						var sheet = xlsx.xl.worksheets["sheet1.xml"];
-						//$("row:first c", sheet).attr("s", "42");
+						var col = $("col", sheet);
+						var row = $("row", sheet);
 						$("row c", sheet).attr("s", "51");
 						$("row:eq(1) c", sheet).attr("s", "52");
-						var col = $("col", sheet);
+						// $("row:first c", sheet).addClass('bg-grey');
+						// $("row:first c", sheet).attr("s", "42");
+						var styles = xlsx.xl["styles.xml"];
+						var firstColumnStyleIndex;
+						var borderStyleIndex;
+
+						$(styles).find('cellXfs xf').each(function(index, element) {
+							var border = $(element).find('border');
+							if (border.length > 0) {
+								borderStyleIndex = index;
+								return false;
+							}
+						});
+						if (!borderStyleIndex) {
+							borderStyleIndex = $(styles).find('cellXfs xf').length;
+							$(styles).find('cellXfs').append(
+								'<xf numFmtId="0" fontId="0" fillId="0" borderId="1" applyBorder="1" xfId="0">' +
+									'<alignment horizontal="center" vertical="center"/>' +
+									'<border><left style="thin"/><right style="thin"/><top style="thin"/><bottom style="thin"/></border>' +
+								'</xf>'
+							);
+						}
+						// 스타일 시트에서 적용할 스타일 인덱스를 찾습니다.
+						$(styles).find('cellXfs xf').each(function(index, element) {
+							var alignment = $(element).find('alignment');
+							var fill = $(element).find('fill');
+							if (alignment.attr('horizontal') === 'center' && fill.attr('patternType') === 'solid' && fill.find('fgColor').attr('rgb') === 'FFFFC7CE') {
+							firstColumnStyleIndex = index;
+							return false;
+							}
+						});
+						
+						// 스타일 시트에 해당 스타일이 없을 경우, 새로 추가합니다.
+						if (!firstColumnStyleIndex) {
+							firstColumnStyleIndex = $(styles).find('cellXfs xf').length;
+							$(styles).find('cellXfs').append(
+							'<xf numFmtId="0" fontId="0" fillId="4" borderId="1" applyFill="1" xfId="0">' +
+							'<alignment horizontal="center" vertical="center"/>' +
+							'<fill><patternFill patternType="none"><fgColor rgb="BEBEBE"/></patternFill></fill>' +
+							'</xf>'
+							);
+						}
+						
+						// sheet1.xml 파일에서 첫 번째 열의 모든 셀에 스타일을 적용합니다.
+						var sheet = xlsx.xl.worksheets['sheet1.xml'];
+						$(sheet).find('row').each(function(rowIndex, rows) {
+							$(rows).find('c').each(function(cellIndex, cell) {
+							if (cellIndex === 0) {
+								$(cell).attr('s', firstColumnStyleIndex);
+							}else {
+								// 전체 셀에 border을 1로 적용합니다.
+								$(cell).attr('s', borderStyleIndex);
+							}
+							});
+						});
+						
+
+						row.each(function(){
+							$(row).attr("customHeight", "true");
+							$(row).attr("ht", "30");
+						});
 						col.each(function(){
 								// 센서 버튼 삭제?
 							  $(col[0]).attr("width", 10);
@@ -654,7 +715,7 @@ $(document).ready(function(){
 							  $(col[3]).attr("width", 10);
 							  $(col[4]).attr("width", 35);
 							  $(col[5]).attr("width", 20);
-						   });
+						});
 					}, customizeData: function(data) {
 						// 센서부분 삭제
 						var view_id_str = sessionStorage.getItem('view_id');
