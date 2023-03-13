@@ -1217,6 +1217,16 @@
 		return timestamp;
 	}
 
+	// Date 객체를 받아서 yyyy-mm-dd 형식의 문자열로 반환한다.
+	function getDateFormat(date) {
+		const getDate = date; // 현재 날짜와 시간을 가져온다
+		const year = getDate.getFullYear(); // 현재 연도를 가져온다
+		const month = String(getDate.getMonth() + 1).padStart(2, '0'); // 현재 월을 가져오고, 2자리로 만든다
+		const day = String(getDate.getDate()).padStart(2, '0'); // 현재 일자를 가져오고, 2자리로 만든다
+		const currentDate = `${year}-${month}-${day}`; // yyyy-mm-dd 형식으로 날짜를 만든다
+		return currentDate; // 날짜를 반환한다
+	}
+	
 	/**
 	 * Speech Synthesis API (TTS)
 	 * 2023.03.02 서정명

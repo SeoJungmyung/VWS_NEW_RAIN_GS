@@ -366,12 +366,9 @@ $(document).ready(function(){
 		var now_d = sdate.substring(8, 10);
         var now = new Date(now_y, now_m, now_d);
 
-        moveDate(now, -1);
+		moveDate(now, -1);
 
-		var sel_y = now.getFullYear();
-		var sel_m = now.getMonth() + 1;
-		var sel_d = now.getDate();
-        $("#sdate").datepicker("setDate", sel_y+"-"+sel_m+"-"+sel_d);
+        $("#sdate").datepicker("setDate", getDateFormat(now));
 	});
 	
 	// 우측 버튼
@@ -381,27 +378,20 @@ $(document).ready(function(){
 		var now_m = sdate.substring(5, 7) - 1;
 		var now_d = sdate.substring(8, 10);
         var now = new Date(now_y, now_m, now_d);
+        now.setDate(now.getDate() + 1);
 
 		moveDate(now, 1);
-		
-		var sel_y = now.getFullYear();
-		var sel_m = now.getMonth() + 1;
-		var sel_d = now.getDate();
-		
+
 		var e_edate = $("#edate").val();
 		var e_now_y = e_edate.substring(0, 4);
 		var e_now_m = e_edate.substring(5, 7) - 1;
 		var e_now_d = e_edate.substring(8, 10);
         var e_now = new Date(e_now_y, e_now_m, e_now_d);
 
-		var today = new Date();
-		var today_y = today.getFullYear();
-		var today_m = today.getMonth() + 1 < 10 ? "0"+(today.getMonth()+1) : (today.getMonth()+1);
-		var today_d = today.getDate() < 10 ? "0"+today.getDate() : today.getDate();
-        var t_day = today_y+"-"+today_m+"-"+today_d;
+        var t_day = getDateFormat(new Date());
 		
 		if(e_now.getTime() >= now.getTime()){
-			$("#sdate").datepicker("setDate", sel_y+"-"+sel_m+"-"+sel_d);
+			$("#sdate").datepicker("setDate", getDateFormat(now));
 		}else{
 			if(t_day == e_edate) swal("체크", "미래는 검색할 수 없습니다!", "warning");
 			else swal("체크", "이후 날짜는 검색할 수 없습니다!", "warning");
@@ -417,10 +407,6 @@ $(document).ready(function(){
         var now = new Date(now_y, now_m, now_d);
         now.setDate(now.getDate() - 1);
 
-		var sel_y = now.getFullYear();
-		var sel_m = now.getMonth() + 1;
-		var sel_d = now.getDate();
-       
 		var s_sdate = $("#sdate").val();
 		var s_now_y = s_sdate.substring(0, 4);
 		var s_now_m = s_sdate.substring(5, 7) - 1;
@@ -428,7 +414,7 @@ $(document).ready(function(){
         var s_now = new Date(s_now_y, s_now_m, s_now_d);
 
 		if(s_now.getTime() <= now.getTime()){
-			$("#edate").datepicker("setDate", sel_y+"-"+sel_m+"-"+sel_d);
+			$("#edate").datepicker("setDate", getDateFormat(now));
 		}else{
 			swal("체크", "이전 날짜는 검색할 수 없습니다!", "warning");
 		}
@@ -446,10 +432,7 @@ $(document).ready(function(){
 		// 내일로 넘어가지 않도록 제한
 		var today = new Date();
 		if(today.getTime() >= now.getTime()){
-			var sel_y = now.getFullYear();
-			var sel_m = now.getMonth() + 1;
-			var sel_d = now.getDate();
-			$("#edate").datepicker("setDate", sel_y+"-"+sel_m+"-"+sel_d);
+			$("#edate").datepicker("setDate", getDateFormat(now));
 			
 		}else{
 			swal("체크", "미래는 검색할 수 없습니다!", "warning");
