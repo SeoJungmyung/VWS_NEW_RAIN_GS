@@ -225,6 +225,8 @@ $(document).ready(function(){
 				var tmpMax = 0;
 				var tmpMin = 0;
 				
+				var today_date = getDateFormat(new Date());
+
 				// console.log(data.list);
 				if(data.area){
 					if(data.area.MAX !=null && tmpMax < data.area.MAX) tmpMax = data.area.MAX;
@@ -333,16 +335,8 @@ $(document).ready(function(){
 							onClick: function(evt, activeElements) {
 								// console.log(this.data.labels[elementIndex]);
 								if(activeElements.length > 0){
-									var today = new Date();
-									var sel_y = today.getFullYear();
-									var sel_m = today.getMonth() + 1;
-									sel_m = sel_m < 10 ? "0"+sel_m : sel_m;
-									var sel_d = today.getDate();
-									sel_d = sel_d < 10 ? "0"+sel_d : sel_d;
-									var date = sel_y+"-"+sel_m+"-"+sel_d;
-
 									var elementIndex = (DATAD.length - 1)- activeElements[0]._index;
-									if(date != $("#edate").val()){
+									if(today_date != $("#edate").val()){
 										elementIndex--;
 									}
 									goTarget(elementIndex);
@@ -419,8 +413,10 @@ $(document).ready(function(){
 												// if ( xLabels[i].substr(3,2) != '01' )
 												// 	xLabels[i] = xLabels[i].substr(3);
 											}
-											if(i == (xLabels.length-1)){
-												xLabels[i] = xLabels[(i-1)];
+											if(today_date != $("#edate").val()){
+												if(i == (xLabels.length-1)){
+													xLabels[i] = xLabels[(i-1)];
+												}
 											}
 											// console.log(xLabels.length);
 										}
