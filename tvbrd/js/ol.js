@@ -10077,10 +10077,10 @@
 									o = void 0 !== r.tipLabel ? r.tipLabel : "Attributions",
 									s = void 0 !== r.expandClassName ? r.expandClassName : i + "-expand",
 									// a = void 0 !== r.collapseLabel ? r.collapseLabel : "좌표 초기화",
-                                    a = void 0 !== "좌표" ? "초기화" : "좌표 초기화",
+                                    // a = void 0 !== "" ? "" : "",
 									u = void 0 !== r.collapseClassName ? r.collapseClassName : i + "-collpase";
-								    "string" == typeof a ? (e.Tr = document.createElement("span"), e.Tr.textContent = a, e.Tr.className = u) : e.Tr = a;
-								var c = void 0 !== r.label ? r.label : "i";
+								    // "string" == typeof a ? (e.Tr = document.createElement("span"), e.Tr.textContent = a, e.Tr.className = u) : e.Tr = a;
+								var c = void 0 !== r.label ? r.label : "";
 								"string" == typeof c ? (e.Er = document.createElement("span"), e.Er.textContent = c, e.Er.className = s) : e.Er = c;
 								var f = e.jr && !e._r ? e.Tr : e.Er;
 								e.Ar = document.createElement("button"), e.Ar.setAttribute("type", "button"), e.Ar.setAttribute("aria-expanded", String(!e._r)), e.Ar.title = o, e.Ar.appendChild(f), e.Ar.addEventListener(F, e.Cr.bind(e), !1);

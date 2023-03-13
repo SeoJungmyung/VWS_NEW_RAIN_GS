@@ -397,16 +397,16 @@
 				$(".ol-zoomslider").css('top','55px');
 			}
 
-			$(".ol-attribution button").click(function(){
-				if($(".ol-attribution button").attr("aria-expanded") == "false"){
-					view.animate({
-						duration: 700,
-						easing: elastic,
-						center: ol.proj.transform([Number(map_cent[1]), Number(map_cent[0])], 'EPSG:4326', 'EPSG:900913'),
-						zoom : ori_map_level
-					});
-				}
-			})
+			// $(".ol-attribution button").click(function(){
+			// 	if($(".ol-attribution button").attr("aria-expanded") == "false"){
+			// 		view.animate({
+			// 			duration: 700,
+			// 			easing: elastic,
+			// 			center: ol.proj.transform([Number(map_cent[1]), Number(map_cent[0])], 'EPSG:4326', 'EPSG:900913'),
+			// 			zoom : ori_map_level
+			// 		});
+			// 	}
+			// })
 			
 			// 속성 타이틀 제거 
 			$(".ol-attribution button").removeAttr("title");
