@@ -257,7 +257,7 @@ require_once "./head.php";
 						<td class="bg_lb w10 bold al_C">PORT</td>
 						<td><input type="text" id="PORT" name="PORT" class="f333_12 preventFloatInput" size="6" maxlength="5" value="0" oninput="inputCheck(this,'onlyPort','')"></td>
 						<td class="bg_lb w10 bold al_C">통신정보</td>
-						<td><input type="text" id="CONNECTION_INFO" name="CONNECTION_INFO" class="f333_12" size="18" onblur="inputCheck(this,'onlyIp','')" maxlength="16" placeholder="IP 예)  ***.***.***.***"></td>
+						<td><input type="text" id="CONNECTION_INFO" name="CONNECTION_INFO" class="f333_12" size="18" maxlength="16" placeholder="IP 예)  ***.***.***.***"></td>
 						<td class="bg_lb w10 bold al_C">Baudrate</td>
 						<td>
 							<select id="BAUDRATE" name="BAUDRATE" size="1" class="f333_12">
@@ -1776,7 +1776,17 @@ $(document).ready(function(){
 						result[i] = "true";
 					}
 				});
-				if(result.indexOf("false") == -1) return true;
+				if(result.indexOf("false") == -1) {
+					if($("#CONNECTION_INFO").val().length > 0){
+						if(inputCheck($("#CONNECTION_INFO"),'onlyIp','')) return true;
+						else return false;
+					}else{
+						return true;
+					}
+				}
+				else return false;
+			}else if($("#CONNECTION_INFO").val().length > 0){
+				if(inputCheck($("#CONNECTION_INFO"),'onlyIp','')) return true;
 				else return false;
 			}else{
 				return true;
@@ -1930,7 +1940,17 @@ $(document).ready(function(){
 						result[i] = "true";
 					}
 				});
-				if(result.indexOf("false") == -1) return true;
+				if(result.indexOf("false") == -1) {
+					if($("#CONNECTION_INFO").val().length > 0){
+						if(inputCheck($("#CONNECTION_INFO"),'onlyIp','')) return true;
+						else return false;
+					}else{
+						return true;
+					}
+				}
+				else return false;
+			}else if($("#CONNECTION_INFO").val().length > 0){
+				if(inputCheck($("#CONNECTION_INFO"),'onlyIp','')) return true;
 				else return false;
 			}else{
 				return true;

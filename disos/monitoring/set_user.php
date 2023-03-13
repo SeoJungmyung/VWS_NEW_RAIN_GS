@@ -156,7 +156,7 @@ require_once "./head.php";
 								<option value="gmail.com">gmail.com</option>
 								<option value="0">직접입력</option>
 							</select> / 
-							<input id="EMAIL3" name="EMAIL3" type="text" class="f333_12 preventFloatInput" size="32" maxlength="20" onblur="inputCheck(this,'onlyEmail','')">
+							<input id="EMAIL3" name="EMAIL3" type="text" class="f333_12 preventFloatInput" size="32" maxlength="20">
 							<span> <i class="fa fa-exclamation-circle col_org mR_5"></i>( 예 : abcd123@naver.com )</span>
 						</td>
 					</tr>
@@ -953,6 +953,9 @@ crypt.setKey(key);
 								$("#EMAIL1").focus(); 
 							});
 					return false;
+				}else{
+					if(inputCheck(this,'onlyEmail','')) return true;
+					else return false;
 				}
 				// swal("체크", "이메일 주소를 입력해 주세요.", "warning"); 
 				// $("#EMAIL1").focus(); return false;
@@ -1094,9 +1097,15 @@ crypt.setKey(key);
 							$("#EMAIL1").focus(); 
 						});
 					return false;
+				}else{
+					if(inputCheck($("#EMAIL3"),'onlyEmail','')) return true;
+					else return false;
 				}
 				// swal("체크", "이메일 주소를 입력해 주세요.", "warning"); 
 				// $("#EMAIL1").focus(); return false;
+			}else if($("#EMAIL3").val().length > 0 ){
+				if(inputCheck($("#EMAIL3"),'onlyEmail','')) return true;
+				else return false;
 			}
 			if( ($("#MOBILE2").val() || $("#MOBILE3").val()).length > 0 ){
 				if($("#MOBILE2").val() == "" || $("#MOBILE3").val() == "" ){

@@ -1155,39 +1155,48 @@
 				$(obj).unbind('blur');
 			}
 		}else if(type == 'onlyIp'){ // ip 체크 : 숫자값만, ip 정규식 체크
-			obj.value = obj.value.replace(/[^0-9.]/g, '');
+			$(obj).val($(obj).val().replace(/[^0-9.]/g, ''));
 			// let ipformat = /^(?!.*\.$)((?!0\d)(1?\d?\d|25[0-5]|2[0-4]\d)(\.|$)){4}$/;
 			let ipformat = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
-			if(obj.value.length > 0){
-				if (!ipformat.test(obj.value)) {
+			if($(obj).val().length > 0){
+				if (!ipformat.test($(obj).val())) {
 					swal({
 						title: '<div class="alpop_top_r">IP 입력</div><div class="alpop_mes_r">유효한 범위의 값이 아닙니다.</div>',
 						text: '정상적인 값을 입력해주세요.<br>( 예 : ***.***.***.*** )',
 						confirmButtonColor: '#ca4726',
 						confirmButtonText: '확인',
 						html: true
+					}, function(res) {
+						swal.close();
+						$(obj).focus();
 					});
-					obj.focus();
+					return false;
+				}else{
+					return true;
 				}
 			}else{
-				$(obj).unbind('blur');
+				return true;
 			}
 		}else if(type == 'onlyEmail'){ // 이메일 체크 : 정규식 체크
 			let regex = /[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-			if(obj.value.length > 0){
-				// console.log(regex.test(obj.value));
-				if (!regex.test(obj.value)) {
+			if($(obj).val().length > 0){
+				if (!regex.test($(obj).val())) {
 					swal({
 						title: '<div class="alpop_top_r">도메인 입력</div><div class="alpop_mes_r">유효한 범위의 값이 아닙니다.</div>',
 						text: '정상적인 값을 입력해주세요. (예 : abcd123@naver.com )',
 						confirmButtonColor: '#ca4726',
 						confirmButtonText: '확인',
 						html: true
+					}, function(res) {
+						swal.close();
+						$(obj).focus();
 					});
-					obj.focus();
+					return false;
+				}else{
+					return true;
 				}
 			}else{
-				$(obj).unbind('blur');
+				return true;
 			}
 		}else if(type == 'onlyPort'){ // port값 범위 체크(0~65535)
 			let range1 = 0;
