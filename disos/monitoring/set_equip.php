@@ -254,9 +254,9 @@ require_once "./head.php";
 							?>
 							</select>분
 						</td>
-						<td class="bg_lb w10 bold al_C">PORT</td>
-						<td><input type="text" id="PORT" name="PORT" class="f333_12 preventFloatInput" size="6" maxlength="5" value="0" oninput="inputCheck(this,'onlyPort','')"></td>
-						<td class="bg_lb w10 bold al_C">통신정보</td>
+						<td class="bg_lb w10 bold al_C">PORT<img src="../images/icon_star_orange.png" alt="필수 항목"></td>
+						<td><input type="text" id="PORT" name="PORT" class="f333_12 preventFloatInput" size="6" maxlength="5" value="" oninput="inputCheck(this,'onlyPort','')"></td>
+						<td class="bg_lb w10 bold al_C">통신정보<img src="../images/icon_star_orange.png" alt="필수 항목"></td>
 						<td><input type="text" id="CONNECTION_INFO" name="CONNECTION_INFO" class="f333_12" size="18" maxlength="16" placeholder="IP 예)  ***.***.***.***"></td>
 						<td class="bg_lb w10 bold al_C">Baudrate</td>
 						<td>
@@ -1224,7 +1224,7 @@ $(document).ready(function(){
 			$("#CALL_LAST_H").val("00");
 			$("#CALL_LAST_M").val("00");
 			$("#SORT_FLAG").val("0");
-			$("#PORT").val("0");
+			$("#PORT").val("20000");
 			$("#BAUDRATE").val("300");
 			$("#FLOW_DANGER").val("");
 			$("#FLOW_WARNING").val("");
@@ -1613,6 +1613,8 @@ $(document).ready(function(){
 		var num_check = /^[0-9]*$/; // 숫자만
 		var num_length_check = /^[0-9]{1,4}$/; // 숫자이면서 10자리
 		var area_check = /^[0-9]*$/; // 숫자만
+		var rs_flag = false;
+		var rs2_flag = false;
 		var id_arr = [];
 		var cid_arr = [];
 		var code_arr = [];
@@ -1844,18 +1846,52 @@ $(document).ready(function(){
 				});
 				if(result.indexOf("false") == -1) {
 					if($("#CONNECTION_INFO").val().length > 0){
-						if(inputCheck($("#CONNECTION_INFO"),'onlyIp','')) return true;
-						else return false;
+						if(inputCheck($("#CONNECTION_INFO"),'onlyIp','')) rs_flag = true; //return true;
+						else rs_flag = false; //return false;
 					}else{
-						return true;
+						rs_flag = true; //return true;
 					}
 				}
-				else return false;
-			}else if($("#CONNECTION_INFO").val().length > 0){
-				if(inputCheck($("#CONNECTION_INFO"),'onlyIp','')) return true;
-				else return false;
+				else rs_flag = false; //return false;
+			}else if(!$("#CONNECTION_INFO").val()){
+				swal({
+						title: '체크',
+						text: '통신정보를 입력해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#CONNECTION_INFO").focus(); 
+						});
+				return false;
+			}else if(!$("#PORT").val()){
+				swal({
+						title: '체크',
+						text: 'PORT를 입력해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#PORT").focus(); 
+						});
+				return false;
 			}else{
+				rs_flag = true;  //return true;
+			}
+			if($("#CONNECTION_INFO").val().length > 0){
+				if(inputCheck($("#CONNECTION_INFO"),'onlyIp','')) rs_flag = true ; //return true;
+				else rs_flag = false; //return false;
+			}
+			if(rs_flag){
 				return true;
+			}else{
+				return false;
 			}
 		}else if(kind == "U"){
 			if( !$("#C_RTU_ID").val() ){
@@ -2008,18 +2044,52 @@ $(document).ready(function(){
 				});
 				if(result.indexOf("false") == -1) {
 					if($("#CONNECTION_INFO").val().length > 0){
-						if(inputCheck($("#CONNECTION_INFO"),'onlyIp','')) return true;
-						else return false;
+						if(inputCheck($("#CONNECTION_INFO"),'onlyIp','')) rs_flag = true; //return true;
+						else rs_flag = false; //return false;
 					}else{
-						return true;
+						rs_flag = true; //return true;
 					}
 				}
-				else return false;
-			}else if($("#CONNECTION_INFO").val().length > 0){
-				if(inputCheck($("#CONNECTION_INFO"),'onlyIp','')) return true;
-				else return false;
+				else rs_flag = false; //return false;
+			}else if(!$("#CONNECTION_INFO").val()){
+				swal({
+						title: '체크',
+						text: '통신정보를 입력해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#CONNECTION_INFO").focus(); 
+						});
+				return false;
+			}else if(!$("#PORT").val()){
+				swal({
+						title: '체크',
+						text: 'PORT를 입력해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#PORT").focus(); 
+						});
+				return false;
 			}else{
+				rs_flag = true; //return true;
+			}
+			if($("#CONNECTION_INFO").val().length > 0){
+				if(inputCheck($("#CONNECTION_INFO"),'onlyIp','')) rs_flag = true; //return true;
+				else rs_flag = false; //return false;
+			}
+			if(rs_flag){
 				return true;
+			}else{
+				return false;
 			}
 		}else if(kind == "D"){
 			if( !$("#C_RTU_ID").val() ){
@@ -2052,7 +2122,7 @@ $(document).ready(function(){
 	$("#CALL_LAST_H").val("00");
 	$("#CALL_LAST_M").val("00");
 	$("#SORT_FLAG").val("0");
-	$("#PORT").val("0");
+	$("#PORT").val("20000");
 	$("#BAUDRATE").val("300");
 	// $("#VHF_USE").val("0");
 	// $("#VHF_SYSTEM_ID").val("");
