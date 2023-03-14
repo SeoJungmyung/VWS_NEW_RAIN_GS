@@ -3,17 +3,14 @@
 <head></head>
 <body>
 	<center>
-		<div>
-			<img style="width: 800px; height: 800px;" src="../images/ie_out.jpg">
-			<img style="position:absolute; top : 560px; left : 430px; cursor:pointer;" 
-			src="../images/btn_edge.png"
-			onclick="downloadFile(1)"
-			/>
-			<img style="position:absolute; top : 630px; left : 430px; cursor:pointer;" 
-			src="../images/btn_chrome.png"
-			onclick="downloadFile(2)"
-			/>
-		</div>
+	<div style="position:relative; width: 800px; height: 800px;">
+		<img style="position:absolute; top:0; left:0; z-index:1; width: 800px; height: 800px;" 
+		src="../images/ie_out.jpg">
+		<img style="position:absolute; top:550; left:250; z-index:2; cursor:pointer;" 
+		src="../images/btn_edge.png" onclick="downloadFile(1)">
+		<img style="position:absolute; top:630; left:250; z-index:2; cursor:pointer;" 
+		src="../images/btn_chrome.png" onclick="downloadFile(2)">
+  	</div>
 	</center>
 </body>
 <script type="text/javascript">
