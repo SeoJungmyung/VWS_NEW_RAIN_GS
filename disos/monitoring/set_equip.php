@@ -626,11 +626,16 @@ $(document).ready(function(){
 								}
 							});
 						}
+						$(win.document.body).css("height","100px");
+						$(win.document.body).css("background-color", "white");
 						$(win.document.body).find("body").css("overflow", "visible");
 						$(win.document.body).find("h1").css("text-align", "center").css("font-size", "18px").css("margin", "20px");
 						$(win.document.body).find("table").css("font-size", "12px").css("margin", "20px").css("width", "97%").css("border-right", "1px solid #C4C4C4");
 						$(win.document.body).find("table").attr("border", "1");
 						$(win.document.body).find("tr").css("text-align", "center");
+						
+						$(win.document.body).find("thead tr").css("background-color", "#c6efce");
+						$(win.document.body).find("tbody tr td:nth-child(1)").css("background-color", "#c6efce");
 					}
 				},
 				   {
@@ -709,12 +714,12 @@ $(document).ready(function(){
 						});
 						col.each(function(){
 								// 센서 버튼 삭제?
-							  $(col[0]).attr("width", 10);
+							  $(col[0]).attr("width", 5);
 							  $(col[1]).attr("width", 15);
-							  $(col[2]).attr("width", 10);
-							  $(col[3]).attr("width", 10);
-							  $(col[4]).attr("width", 35);
-							  $(col[5]).attr("width", 20);
+							  $(col[2]).attr("width", 8);
+							  $(col[3]).attr("width", 8);
+							  $(col[4]).attr("width", 20);
+							  $(col[5]).attr("width", 15);
 						});
 					}, customizeData: function(data) {
 						// 센서부분 삭제
