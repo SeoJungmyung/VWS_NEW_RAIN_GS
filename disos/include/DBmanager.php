@@ -31,8 +31,8 @@ CLASS DBmanager extends mysqli{
 	******************/
 	public FUNCTION SET_CONNECT(){
 		$this->db['conn'] = @mysqli_connect($this->db['host'], $this->db['user'], $this->db['passwd'], $this->db['database'], $this->db['port']);
-		if(!$this->db['conn']){die("연결 실패 : ".mysqli_connect_error());}
-		else{mysqli_set_charset($this->db['conn'],"utf8");}
+		if(!$this->db['conn']){die("Connection to the server is not available at this time.");}
+		else{@mysqli_set_charset($this->db['conn'],"utf8");}
 	}
 
 	/******************
