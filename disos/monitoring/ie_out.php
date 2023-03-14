@@ -6,11 +6,11 @@
 	<div style="position:relative; width: 800px; height: 800px;">
 		<img style="
       position:absolute; 
-      top:0; 
-      left:0; 
+      top:130; 
+      left:100; 
       z-index:1; 
-      width: 800px; 
-      height: 800px;" 
+      width: 600px; 
+      height: 600px;" 
 		src="../images/ie_out.jpg">
 		<img style="
       position:absolute; 
@@ -28,14 +28,14 @@
 		src="../images/btn_chrome.png" onclick="downloadFile(2)">
 		<img style="
       position:absolute; 
-      top:680; 
+      top:660; 
       left:150;
       z-index:3; 
       cursor:pointer;" 
 		src="../images/btn_edge_dwn.png" onclick="downloadFile(3)">
 		<img style="
       position:absolute; 
-      top:680; 
+      top:660; 
       left:410;
       z-index:4; 
       cursor:pointer;" 

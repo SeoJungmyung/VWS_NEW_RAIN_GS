@@ -57,7 +57,7 @@ require_once ROOT_DIR."/disos/include/class/common.php";
 
 if (is_ie()) {
 	// 인터넷 익스플로러에서 실행되는 코드
-	echo '<script>window.location.href="../monitoring/ie_out.php";</script>';
+	echo '<script>window.location.href="'.HOST.'/disos/monitoring/ie_out.php";</script>';
 	exit;
 }
 
