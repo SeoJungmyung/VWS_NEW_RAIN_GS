@@ -937,8 +937,8 @@ crypt.setKey(key);
 				return false;
 			    // swal("체크", "관리자명을 입력해 주세요.", "warning"); 
 			    // $("#USER_NAME").focus(); return false;
-			}else if( !$("#EMAIL1").val() || !$("#EMAIL3").val() ){
-				if($("#EMAIL1").val() != "" || $("#EMAIL3").val() != "" ){
+			}else if( !($("#EMAIL1").val()=='' && $("#EMAIL3").val()=='') ){
+				if($("#EMAIL1").val() == "" || $("#EMAIL3").val() == "" ){
 					swal({
 							title: '체크',
 							text: '이메일 주소를 입력해 주세요.<br>( 예 : abcd123@naver.com )',
@@ -954,11 +954,14 @@ crypt.setKey(key);
 							});
 					return false;
 				}else{
-					if(inputCheck(this,'onlyEmail','')) return true;
+					if(inputCheck($("#EMAIL3"),'onlyEmail','')) return true;
 					else return false;
 				}
 				// swal("체크", "이메일 주소를 입력해 주세요.", "warning"); 
 				// $("#EMAIL1").focus(); return false;
+			}else if($("#EMAIL3").val().length > 0 ){
+				if(inputCheck($("#EMAIL3"),'onlyEmail','')) return true;
+				else return false;
 			}
 			if( ($("#MOBILE2").val() || $("#MOBILE3").val()).length > 0 ){
 				if($("#MOBILE2").val() == "" || $("#MOBILE3").val() == "" ){
@@ -1081,8 +1084,8 @@ crypt.setKey(key);
 				return false;
 			    // swal("체크", "관리자명을 입력해 주세요.", "warning"); 
 			    // $("#USER_NAME").focus(); return false;
-			}else if( !$("#EMAIL1").val() || !$("#EMAIL3").val() ){
-				if($("#EMAIL1").val() != "" || $("#EMAIL3").val() != "" ){
+			}else if( !($("#EMAIL1").val()=='' && $("#EMAIL3").val()=='') ){
+				if($("#EMAIL1").val() == "" || $("#EMAIL3").val() == "" ){
 				swal({
 						title: '체크',
 						text: '이메일 주소를 입력해 주세요.<br>( 예 : abcd123@naver.com )',
