@@ -47637,7 +47637,7 @@ WHERE area_code = areacode1 and data_type = 'M' order by atmo_date desc limit 1;
 
 INSERT INTO realtime_data (AREA_CODE, SENSOR_TYPE, REALTIME, REALDATA) VALUES (areacode1, 'A', atmodate, atmo)
 
-ON DUPLICATE KEY UPDATE REALTIME=NEW.ATMO_DATE, REALDATA=NEW.AVR_VAL;
+ON DUPLICATE KEY UPDATE REALTIME=atmodate, REALDATA=atmo;
 
 END;
 
@@ -47666,7 +47666,7 @@ WHERE area_code = areacode1 and data_type = 'M' order by atmo_date desc limit 1;
 
 INSERT INTO realtime_data (AREA_CODE, SENSOR_TYPE, REALTIME, REALDATA) VALUES (areacode1, 'A', atmodate, atmo)
 
-ON DUPLICATE KEY UPDATE REALTIME=NEW.ATMO_DATE, REALDATA=NEW.AVR_VAL;
+ON DUPLICATE KEY UPDATE REALTIME=atmodate, REALDATA=atmo;
 
 END;
 
@@ -47703,7 +47703,7 @@ WHERE area_code = areacode1 and data_type = 'M' order by flow_date desc limit 1;
 
 INSERT INTO realtime_data (AREA_CODE, SENSOR_TYPE, REALTIME, REALDATA) VALUES (areacode1, '1', flowdate, flow)
 
-ON DUPLICATE KEY UPDATE REALTIME=NEW.FLOW_DATE, REALDATA=NEW.FLOW_AVR;
+ON DUPLICATE KEY UPDATE REALTIME=flowdate, REALDATA=flow;
 
 END;
 
@@ -47732,7 +47732,7 @@ WHERE area_code = areacode1 and data_type = 'M' order by flow_date desc limit 1;
 
 INSERT INTO realtime_data (AREA_CODE, SENSOR_TYPE, REALTIME, REALDATA) VALUES (areacode1, '1', flowdate, flow)
 
-ON DUPLICATE KEY UPDATE REALTIME=NEW.FLOW_DATE, REALDATA=NEW.FLOW_AVR;
+ON DUPLICATE KEY UPDATE REALTIME=flowdate, REALDATA=flow;
 
 END;
 
@@ -47769,7 +47769,7 @@ WHERE area_code = areacode1 and data_type = 'M' order by humi_date desc limit 1;
 
 INSERT INTO realtime_data (AREA_CODE, SENSOR_TYPE, REALTIME, REALDATA) VALUES (areacode1, 'H', humidate, humi)
 
-ON DUPLICATE KEY UPDATE REALTIME=NEW.HUMI_DATE, REALDATA=NEW.AVR_VAL;
+ON DUPLICATE KEY UPDATE REALTIME=humidate, REALDATA=humi;
 
 END;
 
@@ -47798,28 +47798,13 @@ WHERE area_code = areacode1 and data_type = 'M' order by humi_date desc limit 1;
 
 INSERT INTO realtime_data (AREA_CODE, SENSOR_TYPE, REALTIME, REALDATA) VALUES (areacode1, 'H', humidate, humi)
 
-ON DUPLICATE KEY UPDATE REALTIME=NEW.HUMI_DATE, REALDATA=NEW.AVR_VAL;
+ON DUPLICATE KEY UPDATE REALTIME=humidate, REALDATA=humi;
 
 END;
 
 END IF;
 
 END */$$
-
-
-DELIMITER ;
-
-
-/*Trigger structure for table `organ_info` */
-
-DELIMITER $$
-
-
-/*!50003 CREATE TRIGGER `TR_ORGAN_EDIT_USER` AFTER UPDATE ON `organ_info` FOR EACH ROW BEGIN
-		UPDATE	USER_INFO 
-		SET	AREA_CODE		= NEW.AREA_CODE
-		WHERE	ORGAN_ID		= NEW.ORGAN_ID;
-	END */$$
 
 
 DELIMITER ;
@@ -47850,7 +47835,7 @@ WHERE area_code = areacode1 and data_type = 'H' order by rain_date desc limit 1;
 
 INSERT INTO realtime_data (AREA_CODE, SENSOR_TYPE, REALTIME, REALDATA) VALUES (areacode1, '0', raindate, rain1)
 
-ON DUPLICATE KEY UPDATE REALTIME=NEW.RAIN_DATE, REALDATA=NEW.RAIN;
+ON DUPLICATE KEY UPDATE REALTIME=raindate, REALDATA=rain1;
 
 END;
 
@@ -47879,7 +47864,7 @@ WHERE area_code = areacode1 and data_type = 'H' order by rain_date desc limit 1;
 
 INSERT INTO realtime_data (AREA_CODE, SENSOR_TYPE, REALTIME, REALDATA) VALUES (areacode1, '0', raindate, rain1)
 
-ON DUPLICATE KEY UPDATE REALTIME=NEW.RAIN_DATE, REALDATA=NEW.RAIN;
+ON DUPLICATE KEY UPDATE REALTIME=raindate, REALDATA=rain1;
 
 END;
 
@@ -47916,7 +47901,7 @@ WHERE area_code = areacode1 and data_type = 'H' order by snow_date desc limit 1;
 
 INSERT INTO realtime_data (AREA_CODE, SENSOR_TYPE, REALTIME, REALDATA) VALUES (areacode1, '2', snowdate, snow1)
 
-ON DUPLICATE KEY UPDATE REALTIME=NEW.SNOW_DATE, REALDATA=NEW.SNOW;
+ON DUPLICATE KEY UPDATE REALTIME=snowdate, REALDATA=snow1;
 
 END;
 
@@ -47945,7 +47930,7 @@ WHERE area_code = areacode1 and data_type = 'H' order by snow_date desc limit 1;
 
 INSERT INTO realtime_data (AREA_CODE, SENSOR_TYPE, REALTIME, REALDATA) VALUES (areacode1, '2', snowdate, snow1)
 
-ON DUPLICATE KEY UPDATE REALTIME=NEW.SNOW_DATE, REALDATA=NEW.SNOW;
+ON DUPLICATE KEY UPDATE REALTIME=snowdate, REALDATA=snow1;
 
 END;
 
@@ -47982,7 +47967,7 @@ WHERE area_code = areacode1 and data_type = 'M' order by temp_date desc limit 1;
 
 INSERT INTO realtime_data (AREA_CODE, SENSOR_TYPE, REALTIME, REALDATA) VALUES (areacode1, 'T', tempdate, temp)
 
-ON DUPLICATE KEY UPDATE REALTIME=NEW.TEMP_DATE, REALDATA=NEW.AVR_VAL;
+ON DUPLICATE KEY UPDATE REALTIME=tempdate, REALDATA=temp;
 
 END;
 
@@ -48011,7 +47996,7 @@ WHERE area_code = areacode1 and data_type = 'M' order by temp_date desc limit 1;
 
 INSERT INTO realtime_data (AREA_CODE, SENSOR_TYPE, REALTIME, REALDATA) VALUES (areacode1, 'T', tempdate, temp)
 
-ON DUPLICATE KEY UPDATE REALTIME=NEW.TEMP_DATE, REALDATA=NEW.AVR_VAL;
+ON DUPLICATE KEY UPDATE REALTIME=tempdate, REALDATA=temp;
 
 END;
 
@@ -48033,23 +48018,19 @@ DELIMITER $$
 IF NEW.DATA_TYPE = 'M' THEN
 
 BEGIN
-
-DECLARE areacode1 char(10);
-
-DECLARE wind int(11);
-
-DECLARE winddate datetime;
-
+DECLARE areacode1 CHAR(10);
+DECLARE wind INT(11);
+DECLARE wind_deg INT(11);
+DECLARE winddate DATETIME;
 SET areacode1 = NEW.AREA_CODE;
-
 SELECT AREA_CODE, AVR_VEL1, WIND_DATE INTO areacode1, wind, winddate FROM wind_hist 
-
-WHERE area_code = areacode1 and data_type = 'M' order by wind_date desc limit 1;
-
+WHERE area_code = areacode1 AND data_type = 'M' ORDER BY wind_date DESC LIMIT 1;
 INSERT INTO realtime_data (AREA_CODE, SENSOR_TYPE, REALTIME, REALDATA) VALUES (areacode1, 'W', winddate, wind)
-
-ON DUPLICATE KEY UPDATE REALTIME=NEW.WIND_DATE, REALDATA=NEW.AVR_VEL1;
-
+ON DUPLICATE KEY UPDATE REALTIME=winddate, REALDATA=wind;
+SELECT AREA_CODE, AVR_DEG1, WIND_DATE INTO areacode1, wind_deg, winddate FROM wind_hist 
+WHERE area_code = areacode1 AND data_type = 'M' ORDER BY wind_date DESC LIMIT 1;
+INSERT INTO realtime_data (AREA_CODE, SENSOR_TYPE, REALTIME, REALDATA) VALUES (areacode1, 'WD', winddate, wind_deg)
+ON DUPLICATE KEY UPDATE REALTIME=winddate, REALDATA=wind_deg;
 END;
 
 END IF;
@@ -48063,23 +48044,19 @@ END */$$
 IF NEW.DATA_TYPE = 'M' THEN
 
 BEGIN
-
-DECLARE areacode1 char(10);
-
-DECLARE wind int(11);
-
-DECLARE winddate datetime;
-
+DECLARE areacode1 CHAR(10);
+DECLARE wind INT(11);
+DECLARE wind_deg INT(11);
+DECLARE winddate DATETIME;
 SET areacode1 = NEW.AREA_CODE;
-
 SELECT AREA_CODE, AVR_VEL1, WIND_DATE INTO areacode1, wind, winddate FROM wind_hist 
-
-WHERE area_code = areacode1 and data_type = 'M' order by wind_date desc limit 1;
-
+WHERE area_code = areacode1 AND data_type = 'M' ORDER BY wind_date DESC LIMIT 1;
 INSERT INTO realtime_data (AREA_CODE, SENSOR_TYPE, REALTIME, REALDATA) VALUES (areacode1, 'W', winddate, wind)
-
-ON DUPLICATE KEY UPDATE REALTIME=NEW.WIND_DATE, REALDATA=NEW.AVR_VEL1;
-
+ON DUPLICATE KEY UPDATE REALTIME=winddate, REALDATA=wind;
+SELECT AREA_CODE, AVR_DEG1, WIND_DATE INTO areacode1, wind_deg, winddate FROM wind_hist 
+WHERE area_code = areacode1 AND data_type = 'M' ORDER BY wind_date DESC LIMIT 1;
+INSERT INTO realtime_data (AREA_CODE, SENSOR_TYPE, REALTIME, REALDATA) VALUES (areacode1, 'WD', winddate, wind_deg)
+ON DUPLICATE KEY UPDATE REALTIME=winddate, REALDATA=wind_deg;
 END;
 
 END IF;
@@ -48089,6 +48066,21 @@ END */$$
 
 DELIMITER ;
 
+
+
+/*Trigger structure for table `organ_info` */
+
+DELIMITER $$
+
+
+/*!50003 CREATE TRIGGER `TR_ORGAN_EDIT_USER` AFTER UPDATE ON `organ_info` FOR EACH ROW BEGIN
+		UPDATE	USER_INFO 
+		SET	AREA_CODE		= NEW.AREA_CODE
+		WHERE	ORGAN_ID		= NEW.ORGAN_ID;
+	END */$$
+
+
+DELIMITER ;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
