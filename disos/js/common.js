@@ -1205,6 +1205,8 @@
 			if(range1 > obj.value || range2 < obj.value) {
 				obj.value = obj.value.slice(0, obj.value.length-1);
 			}
+		}else if(type == 'notGap'){ // 공백제거
+			obj.value = obj.value.replace(/ /g,"");
 		}
 	}
 			
