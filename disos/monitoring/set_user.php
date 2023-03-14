@@ -147,7 +147,7 @@ require_once "./head.php";
 					<tr>
 						<td height="35" class="bg_lb w10 bold al_C bL0">이메일</td>
 						<td colspan="3">
-							<input id="EMAIL1" name="EMAIL1" type="text" class="f333_12 preventFloatInput" size="10"> @ 
+							<input id="EMAIL1" name="EMAIL1" type="text" class="f333_12 preventFloatInput" size="10" maxlength="64"> @ 
 							<select id="EMAIL2" name="EMAIL2" class="f333_12">
 								<option value="naver.com">naver.com</option>
 								<option value="hanmail.net">hanmail.net</option>
@@ -156,7 +156,7 @@ require_once "./head.php";
 								<option value="gmail.com">gmail.com</option>
 								<option value="0">직접입력</option>
 							</select> / 
-							<input id="EMAIL3" name="EMAIL3" type="text" class="f333_12 preventFloatInput" size="32" maxlength="20">
+							<input id="EMAIL3" name="EMAIL3" type="text" class="f333_12 preventFloatInput" size="32" maxlength="255">
 							<span> <i class="fa fa-exclamation-circle col_org mR_5"></i>( 예 : abcd123@naver.com )</span>
 						</td>
 					</tr>

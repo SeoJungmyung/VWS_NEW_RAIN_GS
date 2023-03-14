@@ -811,7 +811,7 @@ CREATE TABLE `user_info` (
   `USER_NAME` varchar(50) NOT NULL,
   `USER_PWD` varchar(300) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '비밀번호',
   `MOBILE` varchar(300) DEFAULT NULL,
-  `EMAIL` varchar(50) DEFAULT NULL,
+  `EMAIL` varchar(320) DEFAULT NULL,
   `REG_DATE` datetime DEFAULT NULL,
   `FAIL_CNT` int(10) DEFAULT '0',
   `IS_PERMIT` char(1) DEFAULT '0' COMMENT '사용자상태 0:신청 1:승인대기',
