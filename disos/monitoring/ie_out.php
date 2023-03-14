@@ -4,12 +4,42 @@
 <body>
 	<center>
 	<div style="position:relative; width: 800px; height: 800px;">
-		<img style="position:absolute; top:0; left:0; z-index:1; width: 800px; height: 800px;" 
+		<img style="
+      position:absolute; 
+      top:0; 
+      left:0; 
+      z-index:1; 
+      width: 800px; 
+      height: 800px;" 
 		src="../images/ie_out.jpg">
-		<img style="position:absolute; top:550; left:250; z-index:2; cursor:pointer;" 
+		<img style="
+      position:absolute; 
+      top:520; 
+      left:250; 
+      z-index:2; 
+      cursor:pointer;" 
 		src="../images/btn_edge.png" onclick="downloadFile(1)">
-		<img style="position:absolute; top:630; left:250; z-index:2; cursor:pointer;" 
+		<img style="
+      position:absolute; 
+      top:590; 
+      left:250;
+      z-index:2; 
+      cursor:pointer;" 
 		src="../images/btn_chrome.png" onclick="downloadFile(2)">
+		<img style="
+      position:absolute; 
+      top:680; 
+      left:150;
+      z-index:3; 
+      cursor:pointer;" 
+		src="../images/btn_edge_dwn.png" onclick="downloadFile(3)">
+		<img style="
+      position:absolute; 
+      top:680; 
+      left:410;
+      z-index:4; 
+      cursor:pointer;" 
+		src="../images/btn_chrome_dwn.png" onclick="downloadFile(4)">
   	</div>
 	</center>
 </body>
@@ -17,10 +47,14 @@
 function downloadFile(type) {
   // 파일 다운로드 주소
   var fileUrl;
-  if(type == 1){
-	fileUrl = "https://www.example.com/file.pdf";
-	}else if(type == 2){
-	fileUrl = "https://www.example.com/file.pdf";
+  if(type == 1){ //엣지 브라우저 설치페이지 바로가기
+	fileUrl = "https://www.microsoft.com/ko-kr/edge/download?form=MA13FJ";
+	}else if(type == 2){ //크롬 브라우저 설치페이지 바로가기
+	fileUrl = "https://www.google.co.kr/chrome/";
+  }else if(type == 3){ //엣지 브라우저 설치 다운로드 
+	fileUrl = "../MicrosoftEdgeSetup.zip";
+  }else if(type == 4){ //크롬 브라우저 설치 다운로드
+	fileUrl = "../ChromeSetup.zip";
   }else{
 	fileUrl = "";
   }
