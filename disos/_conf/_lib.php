@@ -228,5 +228,13 @@ function getToken(){
 	return preg_replace("/[ #\&\+%@=\/\\\:;,\.'\"\^`~\!\?\*$#<>()\[\]\{\}]/i", "", base64_encode($hash));
 }
 
+function is_ie() {
+	if (isset($_SERVER['HTTP_USER_AGENT']) && 
+	(strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== false ||
+	strpos($_SERVER['HTTP_USER_AGENT'], 'Trident') !== false))
+	  return true;
+	else
+	  return false;
+  }
 
 ?>
