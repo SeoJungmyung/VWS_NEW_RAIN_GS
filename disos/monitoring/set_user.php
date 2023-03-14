@@ -140,7 +140,7 @@ require_once "./head.php";
 					</tr> -->
 					<tr>
 						<td class="bg_lb w10 bold al_C bL0">관리자명<img src="../images/icon_star_orange.png" alt="필수 항목"></td>
-						<td colspan="3"><input id="USER_NAME" name="USER_NAME" type="text" class="f333_12" size="18" maxlength="10">
+						<td colspan="3"><input id="USER_NAME" name="USER_NAME" type="text" class="f333_12" size="18" maxlength="10" oninput="inputCheck(this,'notGap','')">
 						<span> <i class="fa fa-exclamation-circle col_org mR_5"></i>영어/숫자 포함 1~10자</span>
 					</td>
 					</tr>
