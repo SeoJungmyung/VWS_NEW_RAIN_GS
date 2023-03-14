@@ -839,7 +839,9 @@ crypt.setKey(key);
 		var id_check = /^[a-zA-Z0-9]{5,15}$/; // 영어 대소문자 또는 숫자이며 5~15자리
 		var pwd_check = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,20}$/; // 영어, 숫자, 특수문자가 들어가며 8자리 이상 20자리 이하
 		var mobile_check = /^\d{2,3}(-?)\d{3,4}(-?)\d{4}$/; // 전화번호 형식
-		
+		var rs_flag = false;
+		var rs2_flag = false;
+
 		if(kind == "I"){
 			if( !$("#USER_ID").val() ){
 				swal({
@@ -952,16 +954,18 @@ crypt.setKey(key);
 								swal.close();
 								$("#EMAIL1").focus(); 
 							});
-					return false;
+					rs_flag =  false;
 				}else{
-					if(inputCheck($("#EMAIL3"),'onlyEmail','')) return true;
-					else return false;
+					if(inputCheck($("#EMAIL3"),'onlyEmail','')) rs_flag = true;
+					else rs_flag = false;
 				}
 				// swal("체크", "이메일 주소를 입력해 주세요.", "warning"); 
 				// $("#EMAIL1").focus(); return false;
 			}else if($("#EMAIL3").val().length > 0 ){
-				if(inputCheck($("#EMAIL3"),'onlyEmail','')) return true;
-				else return false;
+				if(inputCheck($("#EMAIL3"),'onlyEmail','')) rs_flag = true;
+				else rs_flag = false;
+			}else{
+				rs_flag = true;
 			}
 			if( ($("#MOBILE2").val() || $("#MOBILE3").val()).length > 0 ){
 				if($("#MOBILE2").val() == "" || $("#MOBILE3").val() == "" ){
@@ -977,7 +981,7 @@ crypt.setKey(key);
 								swal.close();
 								$("#MOBILE2").focus(); 
 							});
-					return false;
+					rs2_flag = false;
 				}else if( $("#MOBILE2").val().length < 3 || $("#MOBILE3").val().length < 4 ){
 					swal({
 							title: '체크',
@@ -992,10 +996,14 @@ crypt.setKey(key);
 								swal.close();
 								$("#MOBILE2").focus(); 
 							});
-					return false;
+					rs2_flag = false;
+				}else{
+					rs2_flag = true;
 				}
 			    // swal("체크", "휴대폰 번호를 입력해 주세요.", "warning"); 
 			    // $("#MOBILE2").focus(); return false;
+			}else{
+				rs2_flag = true;
 			}
 			if(pwFlag){
 				if( !pwd_check.test( $("#USER_PWD").val() ) ){
@@ -1015,6 +1023,11 @@ crypt.setKey(key);
 				// 	swal("체크", "비밀번호 형식에 맞게 입력해 주세요.", "warning");
 				// 	$("#USER_PWD").focus(); 
 				}
+			}
+			if(rs_flag && rs2_flag){
+				return true;
+			}else{
+				return false;
 			}
 		}else if(kind == "U"){
 			if( !$("#C_USER_ID").val() ){
@@ -1099,16 +1112,18 @@ crypt.setKey(key);
 							swal.close();
 							$("#EMAIL1").focus(); 
 						});
-					return false;
+					rs_flag = false;
 				}else{
-					if(inputCheck($("#EMAIL3"),'onlyEmail','')) return true;
-					else return false;
+					if(inputCheck($("#EMAIL3"),'onlyEmail','')) rs_flag = true;
+					else rs_flag = false;
 				}
 				// swal("체크", "이메일 주소를 입력해 주세요.", "warning"); 
 				// $("#EMAIL1").focus(); return false;
 			}else if($("#EMAIL3").val().length > 0 ){
-				if(inputCheck($("#EMAIL3"),'onlyEmail','')) return true;
-				else return false;
+				if(inputCheck($("#EMAIL3"),'onlyEmail','')) rs_flag = true;
+				else rs_flag = false;
+			}else{
+				rs_flag = true;
 			}
 			if( ($("#MOBILE2").val() || $("#MOBILE3").val()).length > 0 ){
 				if($("#MOBILE2").val() == "" || $("#MOBILE3").val() == "" ){
@@ -1124,7 +1139,7 @@ crypt.setKey(key);
 								swal.close();
 								$("#MOBILE2").focus(); 
 							});
-					return false;
+					rs2_flag = false;
 				}else if( $("#MOBILE2").val().length < 3 || $("#MOBILE3").val().length < 4 ){
 					swal({
 						title: '체크',
@@ -1139,10 +1154,14 @@ crypt.setKey(key);
 							swal.close();
 							$("#MOBILE2").focus(); 
 						});
-					return false;
+					rs2_flag = false;
+				}else{
+					rs2_flag = true;
 				}
 			    // swal("체크", "휴대폰 번호를 입력해 주세요.", "warning"); 
 			    // $("#MOBILE2").focus(); return false;
+			}else{
+				rs2_flag = true;
 			}
 			if(pwFlag){
 				if( !pwd_check.test( $("#USER_PWD").val() ) ){
@@ -1162,6 +1181,12 @@ crypt.setKey(key);
 				// 	swal("체크", "비밀번호 형식에 맞게 입력해 주세요.", "warning");
 				// 	$("#USER_PWD").focus(); 
 				}
+			}
+			console.log(rs_flag && rs2_flag);
+			if(rs_flag && rs2_flag){
+				return true;
+			}else{
+				return false;
 			}
 		}else if(kind == "D"){
 			if( !$("#C_USER_ID").val() ){
