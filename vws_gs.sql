@@ -47376,7 +47376,7 @@ insert  into `rtu_group`(`rtu_id`,`group_id`,`organ_id`,`SORT_FLAG`) values (9,'
 
 /*Data for the table `user_info` */
 
-insert  into `user_info`(`USER_ID`,`ORGAN_ID`,`AREA_CODE`,`USER_TYPE`,`USER_PERMIT`,`USER_NAME`,`USER_PWD`,`MOBILE`,`EMAIL`,`REG_DATE`,`FAIL_CNT`,`IS_PERMIT`,`MENU_TYPE`,`SMART_MOBILE`,`SMART_USE`,`LAST_FAIL_DATE`,`USER_PWD_LEN`) values ('admin',1,'1111010700','','','화진티엔아이','a576cb54be4e445e0b33d36b9d52c5c0b2fb5dd96d39ec834b830eb8d79c1b9e','yAou+GB/85rGGKfHBnkiD7nLss3aTurs8i4G1im4Ejcc5g+HazUXcBMMskBs6ER8gN+8oCrNQlekya62y2k9aFc3aPiC1nH7xQ9FT6Qf4htw7ZgpP+oXclrfb/ghITkOopl5xmoVVDBlMJezU2/pLxSBQin+xEn5gOWVysyid+w=','admin@hwajin.co.kr','2023-01-10 14:23:19',0,'','','1z1lh2wxIJwrSlYQNxcIOYFL2j6GUJKtmZGwl4RmXn8b42DG1Jd8odRgO0cp77xiflUgMWYSdxqRTTCfpmM6CRWF6XXeTBVxkkZIiEjbKfnCZhXSm2Pp+YBKnGiYJY9bmqZh3mWs4V6jnGavyuIxDrHMpqmIXdLAuu9R8ZVrZ4k=','',NULL,9);
+insert  into `user_info`(`USER_ID`,`ORGAN_ID`,`AREA_CODE`,`USER_TYPE`,`USER_PERMIT`,`USER_NAME`,`USER_PWD`,`MOBILE`,`EMAIL`,`REG_DATE`,`FAIL_CNT`,`IS_PERMIT`,`MENU_TYPE`,`SMART_MOBILE`,`SMART_USE`,`LAST_FAIL_DATE`,`USER_PWD_LEN`) values ('adminuser',1,'','','','화진티엔아이','8fbfecce12f68bb2b58ca5574e8e099abecf9db12dbee7a65e464aef8863d63d','','',now(),0,'','','','',NULL,11);
 
 /*Data for the table `user_log` */
 

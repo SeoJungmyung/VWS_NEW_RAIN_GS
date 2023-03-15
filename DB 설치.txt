@@ -1,3 +1,10 @@
 mysql -uroot -p --default-character-set=utf8
 SET names 'utf8';
-SOURCE vws_20230109.sql;
+
+insert  into `user_info`
+(`USER_ID`,`ORGAN_ID`,`AREA_CODE`,`USER_TYPE`,`USER_PERMIT`,`USER_NAME`,
+`USER_PWD`,`MOBILE`,`EMAIL`,`REG_DATE`,`FAIL_CNT`,`IS_PERMIT`,`MENU_TYPE`,
+`SMART_MOBILE`,`SMART_USE`,`LAST_FAIL_DATE`,`USER_PWD_LEN`) 
+values ('adminuser',1,'','','','화진티엔아이',
+'8fbfecce12f68bb2b58ca5574e8e099abecf9db12dbee7a65e464aef8863d63d',
+'','',now(),0,'','','','',NULL,11);
