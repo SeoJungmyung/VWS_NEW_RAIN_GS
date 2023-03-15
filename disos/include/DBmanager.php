@@ -31,7 +31,10 @@ CLASS DBmanager extends mysqli{
 	******************/
 	public FUNCTION SET_CONNECT(){
 		$this->db['conn'] = @mysqli_connect($this->db['host'], $this->db['user'], $this->db['passwd'], $this->db['database'], $this->db['port']);
-		if(!$this->db['conn']){die("Connection to the server is not available at this time.");}
+		if(!$this->db['conn']){
+			// die("Connection to the server is not available at this time.");
+			exit(header('Location: /errorpage.html'));
+		}
 		else{@mysqli_set_charset($this->db['conn'],"utf8");}
 	}
 
@@ -156,8 +159,7 @@ CLASS DBmanager extends mysqli{
 		if(isset($sql))$this->query_result=mysqli_query($this->db['conn'],$sql);
 		if(!$this->query_result){
 			$this->updaterTrace($sql, mysqli_error($this->db['conn']));
-			require_once "../../monitoring/error.html"; 
-			exit;
+			exit(header('Location: /errorpage.html'));
 		}else{
 			$this->updaterTrace($sql, $this->query_result);
 			return $this->query_result;
