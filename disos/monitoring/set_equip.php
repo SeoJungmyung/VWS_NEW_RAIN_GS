@@ -1251,8 +1251,9 @@ $(document).ready(function(){
 	$("#btn_up").click(function(){
 		if( form_check("U") ){
 			var C_RTU_ID = $("#C_RTU_ID").val();
+			var del_row = "list_"+sessionStorage.getItem('list_rtu');
 			swal({
-				title: '<div class="alpop_top_b">장비 수정 확인</div><div class="alpop_mes_b">수정 하시겠습니까?</div>',
+				title: '<div class="alpop_top_b">장비 수정 확인</div><div class="alpop_mes_b">['+$("tr[name="+del_row+"] td:nth-child(5)").text()+']을 수정 하시겠습니까?</div>',
 				text: '확인 시 장비가 수정 됩니다.',
 				showCancelButton: true,
 				confirmButtonColor: '#5b7fda',
@@ -1393,7 +1394,7 @@ $(document).ready(function(){
 			var C_RTU_ID = $("#C_RTU_ID").val();
 			var del_row = "list_"+sessionStorage.getItem('list_rtu');
 			swal({
-				title: '<div class="alpop_top_b">장비 삭제 확인</div><div class="alpop_mes_b">'+$("tr[name="+del_row+"] td:nth-child(5)").text()+' 삭제 하시겠습니까?</div>',
+				title: '<div class="alpop_top_b">장비 삭제 확인</div><div class="alpop_mes_b">['+$("tr[name="+del_row+"] td:nth-child(5)").text()+']을 삭제 하시겠습니까?</div>',
 				text: '확인 시 장비가 삭제 됩니다.',
 				showCancelButton: true,
 				confirmButtonColor: '#5b7fda',
@@ -1832,6 +1833,34 @@ $(document).ready(function(){
 				return false;
 				// swal("체크", "모델을 선택해 주세요.", "warning"); 
 				// $("#MODEL_NO").focus(); 
+			}else if(!$("#PORT").val()){
+				swal({
+						title: '체크',
+						text: 'PORT를 입력해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#PORT").focus(); 
+						});
+				return false;
+			}else if(!$("#CONNECTION_INFO").val()){
+				swal({
+						title: '체크',
+						text: '통신정보를 입력해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#CONNECTION_INFO").focus(); 
+						});
+				return false;
 			}else if($("input[name='DANGER_USE']:checked").val() == 1){
 				var result = [];
 				$.each($(".warn"), function(i, v){
@@ -1858,40 +1887,13 @@ $(document).ready(function(){
 					}
 				}
 				else rs_flag = false; //return false;
-			}else if(!$("#CONNECTION_INFO").val()){
-				swal({
-						title: '체크',
-						text: '통신정보를 입력해 주세요.',
-						showCancelButton: false,
-						confirmButtonColor: '#555555', 
-						confirmButtonText: '확인',
-						closeOnConfirm: false,
-						type: 'warning',
-						}, function(isConfirm) {
-							swal.close();
-							$("#CONNECTION_INFO").focus(); 
-						});
-				return false;
-			}else if(!$("#PORT").val()){
-				swal({
-						title: '체크',
-						text: 'PORT를 입력해 주세요.',
-						showCancelButton: false,
-						confirmButtonColor: '#555555', 
-						confirmButtonText: '확인',
-						closeOnConfirm: false,
-						type: 'warning',
-						}, function(isConfirm) {
-							swal.close();
-							$("#PORT").focus(); 
-						});
-				return false;
 			}else{
-				rs_flag = true;  //return true;
-			}
-			if($("#CONNECTION_INFO").val().length > 0){
-				if(inputCheck($("#CONNECTION_INFO"),'onlyIp','')) rs_flag = true ; //return true;
-				else rs_flag = false; //return false;
+				if($("#CONNECTION_INFO").val().length > 0){
+					if(inputCheck($("#CONNECTION_INFO"),'onlyIp','')) rs_flag = true ; //return true;
+					else rs_flag = false; //return false;
+				}else{
+					rs_flag = true;  //return true;
+				}
 			}
 			if(rs_flag){
 				return true;
@@ -2030,6 +2032,35 @@ $(document).ready(function(){
 			// 	}else{
 			// 		return true;
 			// 	}
+				return false;
+			}else if(!$("#PORT").val()){
+				swal({
+						title: '체크',
+						text: 'PORT를 입력해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#PORT").focus(); 
+						});
+				return false;
+			}else if(!$("#CONNECTION_INFO").val()){
+				swal({
+						title: '체크',
+						text: '통신정보를 입력해 주세요.',
+						showCancelButton: false,
+						confirmButtonColor: '#555555', 
+						confirmButtonText: '확인',
+						closeOnConfirm: false,
+						type: 'warning',
+						}, function(isConfirm) {
+							swal.close();
+							$("#CONNECTION_INFO").focus(); 
+						});
+				return false; 
 			}else if($("input[name='DANGER_USE']:checked").val() == 1){
 				var result = [];
 				$.each($(".warn"), function(i, v){
@@ -2056,40 +2087,13 @@ $(document).ready(function(){
 					}
 				}
 				else rs_flag = false; //return false;
-			}else if(!$("#CONNECTION_INFO").val()){
-				swal({
-						title: '체크',
-						text: '통신정보를 입력해 주세요.',
-						showCancelButton: false,
-						confirmButtonColor: '#555555', 
-						confirmButtonText: '확인',
-						closeOnConfirm: false,
-						type: 'warning',
-						}, function(isConfirm) {
-							swal.close();
-							$("#CONNECTION_INFO").focus(); 
-						});
-				return false;
-			}else if(!$("#PORT").val()){
-				swal({
-						title: '체크',
-						text: 'PORT를 입력해 주세요.',
-						showCancelButton: false,
-						confirmButtonColor: '#555555', 
-						confirmButtonText: '확인',
-						closeOnConfirm: false,
-						type: 'warning',
-						}, function(isConfirm) {
-							swal.close();
-							$("#PORT").focus(); 
-						});
-				return false;
 			}else{
-				rs_flag = true; //return true;
-			}
-			if($("#CONNECTION_INFO").val().length > 0){
-				if(inputCheck($("#CONNECTION_INFO"),'onlyIp','')) rs_flag = true; //return true;
-				else rs_flag = false; //return false;
+				if($("#CONNECTION_INFO").val().length > 0){
+					if(inputCheck($("#CONNECTION_INFO"),'onlyIp','')) rs_flag = true; //return true;
+					else rs_flag = false; //return false;
+				}else{
+					rs_flag = true; //return true;
+				}
 			}
 			if(rs_flag){
 				return true;
