@@ -636,6 +636,9 @@ $(document).ready(function(){
 						
 						$(win.document.body).find("thead tr").css("background-color", "#c6efce");
 						$(win.document.body).find("tbody tr td:nth-child(1)").css("background-color", "#c6efce");
+						// Baudrate 숨김처리
+						$(win.document.body).find("thead tr:first-child th:nth-child(12)").css("display", "none");
+						$(win.document.body).find("tbody tr td:nth-child(12)").css("display", "none");
 					}
 				},
 				   {
@@ -720,6 +723,8 @@ $(document).ready(function(){
 							  $(col[3]).attr("width", 8);
 							  $(col[4]).attr("width", 20);
 							  $(col[5]).attr("width", 15);
+
+							  $(col[11]).attr('width', 0); //BAUDRATE 숨김처리
 						});
 					}, customizeData: function(data) {
 						// 센서부분 삭제
