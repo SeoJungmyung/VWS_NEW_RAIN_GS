@@ -757,7 +757,9 @@ $(document).ready(function(){
 
 		$.each(rows, (i, row) => {
 			// tbody.append(row);
-			$(row).find("td:eq(0)").text(i + 1);
+			if(!$(row).hasClass('not_d')){
+				$(row).find("td:eq(0)").text(i + 1);
+			}
 		});
 		$("#list_table tr").show();
 	});
