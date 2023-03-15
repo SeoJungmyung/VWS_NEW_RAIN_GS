@@ -535,6 +535,10 @@ $(document).ready(function(){
 		var search_col = $("#search_col").val();
 		var search_word = $("#search_word").val();
 		var search_col_id = "";
+		if(search_word == ''){
+			$("#btn_search_all").click();
+			return false;
+		}
 		if(search_col == "0"){ // 장비명
 			search_col_id = "l_RTU_NAME";
 		}else if(search_col == "1"){ // 장비구분
@@ -1867,12 +1871,18 @@ $(document).ready(function(){
 				var result = [];
 				$.each($(".warn"), function(i, v){
 					if( !$.isNumeric($(v).val()) ){
-						swal("체크", "경계치/위험치에 숫자를 넣어주세요!", "warning");
+						if(v.id == 'FLOW_WARNING' || v.id == 'FLOW_DANGER')
+							swal("체크", "경계치/위험치에 숫자를 넣어주세요!", "warning");
+						else
+							swal("체크", "경계치 해제/위험치 해제에 숫자를 넣어주세요!", "warning");
 						$(v).focus();
 						// $("#DANGER_USE0").prop("checked", true);
 						result[i] = "false";
 					}else if($(v).val() <= 0){
-						swal("체크", "경계치/위험치에 0보다 큰 값을 넣어주세요!", "warning");
+						if(v.id == 'FLOW_WARNING' || v.id == 'FLOW_DANGER')
+							swal("체크", "경계치/위험치에 0보다 큰 값을 넣어주세요!", "warning");
+						else
+							swal("체크", "경계치 해제/위험치 해제에 0보다 큰 값을 넣어주세요!", "warning");
 						$(v).focus();
 						// $("#DANGER_USE0").prop("checked", true);
 						result[i] = "false";
@@ -2066,13 +2076,20 @@ $(document).ready(function(){
 			}else if($("input[name='DANGER_USE']:checked").val() == 1){
 				var result = [];
 				$.each($(".warn"), function(i, v){
+					console.log(v);
 					if( !$.isNumeric($(v).val()) ){
-						swal("체크", "경계치/위험치에 숫자를 넣어주세요!", "warning");
+						if(v.id == 'FLOW_WARNING' || v.id == 'FLOW_DANGER')
+							swal("체크", "경계치/위험치에 숫자를 넣어주세요!", "warning");
+						else
+							swal("체크", "경계치 해제/위험치 해제에 숫자를 넣어주세요!", "warning");
 						$(v).focus();
 						// $("#DANGER_USE0").prop("checked", true);
 						result[i] = "false";
 					}else if($(v).val() <= 0){
-						swal("체크", "경계치/위험치에 0보다 큰 값을 넣어주세요!", "warning");
+						if(v.id == 'FLOW_WARNING' || v.id == 'FLOW_DANGER')
+							swal("체크", "경계치/위험치에 0보다 큰 값을 넣어주세요!", "warning");
+						else
+							swal("체크", "경계치 해제/위험치 해제에 0보다 큰 값을 넣어주세요!", "warning");
 						$(v).focus();
 						// $("#DANGER_USE0").prop("checked", true);
 						result[i] = "false";

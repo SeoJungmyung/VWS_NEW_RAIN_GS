@@ -321,6 +321,10 @@ crypt.setKey(key);
 		var search_col = $("#search_col").val();
 		var search_word = $("#search_word").val();
 		var search_col_id = "";
+		if(search_word == ''){
+			$("#btn_search_all").click();
+			return false;
+		}
 		if(search_col == "0"){ // 사용자 ID
 			search_col_id = "l_USER_ID";
 		}else if(search_col == "1"){ // 사용자명
