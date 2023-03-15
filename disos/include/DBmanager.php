@@ -33,7 +33,8 @@ CLASS DBmanager extends mysqli{
 		$this->db['conn'] = @mysqli_connect($this->db['host'], $this->db['user'], $this->db['passwd'], $this->db['database'], $this->db['port']);
 		if(!$this->db['conn']){
 			// die("Connection to the server is not available at this time.");
-			exit(header('Location: /errorpage.html'));
+			header('Location: /errorpage.html');
+			exit();
 		}
 		else{@mysqli_set_charset($this->db['conn'],"utf8");}
 	}
@@ -97,9 +98,15 @@ CLASS DBmanager extends mysqli{
 	쿼리전송
 	******************/
 	public FUNCTION QUERY_LiNE($sql) {
-		if(isset($sql))$this->query_result=mysqli_query($this->db['conn'],$sql) or die(mysqli_error($this->db['conn']));
-		$this->num_rows = mysqli_num_rows($this->query_result);
-		$this->recordcount = $this->num_rows;
+		if(isset($sql)){
+			$this->query_result=@mysqli_query($this->db['conn'],$sql);
+			if(!$this->query_result){
+				header('Location: /errorpage.html');
+				exit();
+			}
+			$this->num_rows = mysqli_num_rows($this->query_result);
+			$this->recordcount = $this->num_rows;
+		}
 	}
 	
 	/******************
@@ -156,10 +163,11 @@ CLASS DBmanager extends mysqli{
 	}
 	
 	public FUNCTION QUERYONE($sql) {
-		if(isset($sql))$this->query_result=mysqli_query($this->db['conn'],$sql);
+		if(isset($sql))$this->query_result=@mysqli_query($this->db['conn'],$sql);
 		if(!$this->query_result){
 			$this->updaterTrace($sql, mysqli_error($this->db['conn']));
-			exit(header('Location: /errorpage.html'));
+			header('Location: /errorpage.html');
+			exit();
 		}else{
 			$this->updaterTrace($sql, $this->query_result);
 			return $this->query_result;
