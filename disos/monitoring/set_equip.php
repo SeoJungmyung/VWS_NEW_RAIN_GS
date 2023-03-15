@@ -63,7 +63,7 @@ require_once "./head.php";
 							<th class="li5 bL_1gry">모델</th>
 							<th class="li10 bL_1gry">통신정보</th>
 							<th class="li5 bL_1gry">Port</th>
-							<th class="li5 bL_1gry">Baudrate</th>
+							<th class="li5 bL_1gry dp0">Baudrate</th>
 							<th class="li5 bL_1gry">경계치</th>
 							<th class="li5 bL_1gry">위험치</th>
 							<!-- <th class="li5 bL_1gry">센서</th> -->
@@ -88,7 +88,7 @@ require_once "./head.php";
 							<td id="l_MODEL_NAME"class="li5 bL_1gry"><?=$val['MODEL_NAME']?></td>
 							<td id="l_CONNECTION_INFO"class="li10 bL_1gry"><?=($val['CONNECTION_INFO'] == "" ? "-" : $val['CONNECTION_INFO'])?></td>
 							<td id="l_PORT"class="li5 bL_1gry"><?=$val['PORT']?></td>
-							<td id="l_BAUDRATE"class="li5 bL_1gry"><?=$val['BAUDRATE']?></td>
+							<td id="l_BAUDRATE"class="li5 bL_1gry dp0"><?=$val['BAUDRATE']?></td>
 							<td id="l_FLOW_WARNING"class="li5 bL_1gry"><?=$val['FLOW_WARNING']?></td>
 							<td id="l_FLOW_DANGER"class="li5 bL_1gry"><?=$val['FLOW_DANGER']?></td>
 							<!-- <td class="li5 bL_1gry">
@@ -258,9 +258,9 @@ require_once "./head.php";
 						<td><input type="text" id="PORT" name="PORT" class="f333_12 preventFloatInput" size="6" maxlength="5" value="" oninput="inputCheck(this,'onlyPort','')"></td>
 						<td class="bg_lb w10 bold al_C">통신정보<img src="../images/icon_star_orange.png" alt="필수 항목"></td>
 						<td><input type="text" id="CONNECTION_INFO" name="CONNECTION_INFO" class="f333_12" size="18" maxlength="16" placeholder="IP 예)  ***.***.***.***"></td>
-						<td class="bg_lb w10 bold al_C">Baudrate</td>
-						<td>
-							<select id="BAUDRATE" name="BAUDRATE" size="1" class="f333_12">
+						<td class="bg_lb w10 bold al_C dp0">Baudrate</td>
+						<td class="dp0">
+							<select id="BAUDRATE" name="BAUDRATE" size="1" class="f333_12 dp0">
 								<option value="300">300</option>
 								<option value="600">600</option>
 								<option value="1200">1200</option>
