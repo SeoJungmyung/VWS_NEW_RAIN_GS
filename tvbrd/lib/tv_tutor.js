@@ -286,7 +286,7 @@
 				$("#new").click( function(){
 					window.open('./index.php?','');
 				});
-				$("#sel_move").lcs_off(); // 미니모드일 경우에는 무조건 장비이동 끄도록 설정
+				if(map_move == 2) $("#sel_move").lcs_off(); // 미니모드일 경우에는 무조건 장비이동 끄도록 설정
 				// $("#sel_move").lcs_on();
 			}else{
 				$("#top").show();
@@ -1340,11 +1340,11 @@
 			});
 				
     		// 지도 장비 이동 가능 여부
-        	if(map_move == 1){
-        		$("#sel_move").lcs_off();
-        	}else if(map_move == 2){
-        		$("#sel_move").lcs_on();
-        	}
+        	// if(map_move == 1){
+        	// 	$("#sel_move").lcs_off();
+        	// }else if(map_move == 2){
+        	// 	$("#sel_move").lcs_on();
+        	// }
         	
 			state_update(1);
     	});
