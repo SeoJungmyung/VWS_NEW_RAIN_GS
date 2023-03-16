@@ -306,7 +306,19 @@ $(document).ready(function(){
 									parent.parent.opener.parent.parent.localStorage.setItem('set_login_'+ms, 1);
 									parent.parent.opener.parent.parent.localStorage.setItem('session_time_'+ms, session_time);
 								}else{
-									parent.parent.location.href = "main.php?target="+$("#target").val();
+									let f = document.createElement('form');
+									let obj;
+									obj = document.createElement('input');
+									obj.setAttribute('type', 'hidden');
+									obj.setAttribute('name', 'target');
+									obj.setAttribute('value', $("#target").val());
+
+									f.appendChild(obj);
+									f.setAttribute('method', 'post');
+									f.setAttribute('action', 'main.php');
+									parent.parent.document.body.appendChild(f);
+									f.submit();
+									// parent.parent.location.href = "main.php?target="+$("#target").val();
 								}
 							}else{
 								parent.parent.location.href = "main.php";
