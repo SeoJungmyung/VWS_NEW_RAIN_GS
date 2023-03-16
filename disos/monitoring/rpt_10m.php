@@ -122,7 +122,9 @@ require_once "./head.php";
 								<?if($option == "4"){ ?>
 									<td class="li9_5 bL_1gry">
 										<span class="effect">
+										<? if($val['DATA'] != '-') {?>
 											<img src="<?=$val['DEG']?>" alt="<?=$val['DEG_KO']?>"/>
+										<? }else{ echo "-"; } ?>
 										</span>
 									</td>
 									<td class="li8_5 bL_1gry">
