@@ -144,22 +144,6 @@ for($i=0; $i<$LocalDB->rsCnt; $i++){
 	}
 }
 
-for($i=0; $i<$tcnt; $i++){
-	$j = ($type == "H") ? $i : $i + 1;
-	$data_row['MAX'][$i] = ($row_cnt[$j] == 0) ? "-" : sprintf("%.2f", $max[$j]);
-	$data_row['MIN'][$i] = ($row_cnt[$j] == 0) ? "-" : sprintf("%.2f", $min[$j]);
-	$data_row['AVR'][$i] = ($row_cnt[$j] == 0) ? "-" : sprintf("%.2f", $row[$j]/$row_cnt[$j]);
-	if($row_cnt[$i] != 0){
-		$sum_max += $data_row['MAX'][$i];
-		$sum_min += $data_row['MIN'][$i];
-		$sum_avr += $data_row['AVR'][$i];
-		$sum_cnt ++;
-	}
-}
-$data_row['MAX_SUM'] = ($sum_cnt == 0) ? "-" : sprintf("%.2f", $sum_max);
-$data_row['MIN_SUM'] = ($sum_cnt == 0) ? "-" : sprintf("%.2f", $sum_min);
-$data_row['AVR_SUM'] = ($sum_cnt == 0) ? "-" : sprintf("%.2f", $sum_avr);
-
 $DB->CLOSE();
 ?>
 
