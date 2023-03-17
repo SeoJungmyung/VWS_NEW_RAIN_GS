@@ -5,6 +5,11 @@ session_start();
 $dvUtil   = new Divas_Util();
 
 if($_SESSION['is_login'] != 1){
+	define("keyUserID", "");
+	define("keyOrganID", "");
+	define("keyTosRtuID", "");
+	define("keyOrganName", "");
+	define("keyIsLogin", "");
 }else{
 	$user_setting = (array) json_decode($dvUtil->rsa_decrypt($_SESSION['user_setting']));
 	define("keyUserID", $user_setting['user_id']);

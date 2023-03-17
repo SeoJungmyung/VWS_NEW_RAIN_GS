@@ -25,10 +25,14 @@ define('DB_USER',		"root");
 define('DB_PASSWORD',	"123456");
 define('DB_DATABASE',	"vws"); 
 
-/* define('DB_HOST',		"192.168.1.63");
-define('DB_USER',		"root");  
-define('DB_PASSWORD',	"2412");
-define('DB_DATABASE',	"divas_new");  */
+define("DIFF", ""); // 해당 수치만큼 뺀 기준으로 데이터 표출
+// define("DIFF", "-1 hour");
+define("TEST", "0"); // 테스트(open : 0, test : 1)
+define("TEST_y", "2019");
+define("TEST_m", "05");
+define("TEST_d", "31");
+define("TEST_h", "23");
+define("DISP_GROUP", "0"); // 0 : rtu_info에 변위센서 전부 등록, 1 : rtu_info에는 대표 하나만 등록 후 displacement_group에 자식 센서 등록
 
 // 시간 정보
 if(TEST == "0"){

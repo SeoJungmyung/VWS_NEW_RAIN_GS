@@ -14,14 +14,6 @@ if(ROOT_USE == "0"){
 }
 define("IMG_DIR", ROOT."/disos/images/"); // 이미지 경로
 define("IMG_DIR2", ROOT."/disos/mobile/images/"); // 이미지 경로
-define("DIFF", ""); // 해당 수치만큼 뺀 기준으로 데이터 표출
-// define("DIFF", "-1 hour");
-define("TEST", "0"); // 테스트(open : 0, test : 1)
-define("TEST_y", "2019");
-define("TEST_m", "05");
-define("TEST_d", "31");
-define("TEST_h", "23");
-define("DISP_GROUP", "0"); // 0 : rtu_info에 변위센서 전부 등록, 1 : rtu_info에는 대표 하나만 등록 후 displacement_group에 자식 센서 등록
 
 /**
  *  전체 줄 수
@@ -73,6 +65,11 @@ $ClassCommon->getSession();
 $ClassCommon->getSetting();
 
 if($_SESSION['is_login'] != 1){
+	define("keyUserID", "");
+	define("keyOrganID", "");
+	define("keyTosRtuID", "");
+	define("keyOrganName", "");
+	define("keyIsLogin", "");
 }else{
 	$user_setting = (array) json_decode($ClassCommon->rsa_decrypt($_SESSION['user_setting']));
 	define("keyUserID", $user_setting['user_id']);
