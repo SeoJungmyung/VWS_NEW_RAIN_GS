@@ -475,6 +475,7 @@ crypt.setKey(key);
 			});
 		}
 	});
+	
 	if(sessionStorage.getItem('list_user')){
 		var row_item = sessionStorage.getItem('list_user');
 		if($("tr[name="+row_item+"]").attr('id')){
@@ -488,13 +489,9 @@ crypt.setKey(key);
 			if(offset){
 				$('.s_scroll').animate({scrollTop : offset.top - firstOffset.top}, 400);
 			}
-			
-			// 전체 blink 클래스 삭제 후 blink 클래스 추가
-			$("#list_table tr .effect").removeClass('blink');
-			$("#list_table tr").eq(row_item_idx).find('.effect').addClass('blink');
 		}
-
-	  }
+	}
+	
 	// 등록
 	$("#btn_in").click(function(){
 		if( form_check("I") ){

@@ -1295,6 +1295,7 @@ $(document).ready(function(){
 					        if(data.result){
 			                	popup_main_close(); // 레이어 좌측 및 상단 닫기
 								var list_id = sessionStorage.getItem('list_rtu');
+								sessionStorage.setItem('list_id', list_id);
 								var DANGER_USE = sessionStorage.getItem('DANGER_USE');
 								$("#list_table tbody tr #list_"+list_id).click();
 								var formData = $('#set_frm').serializeArray();
@@ -1367,7 +1368,9 @@ $(document).ready(function(){
 					        	}
 								doubleSubmitFlag = false;
 					        }
-				        }
+				        },complete : function(data){
+							moveSelectRow();
+						}
 				    });	
 					$("#AREA_CODE").attr('disabled',true);
 				}
@@ -1375,24 +1378,21 @@ $(document).ready(function(){
 		}
 	});
 
-	if(sessionStorage.getItem('list_id')){
-		var row_item_id = "list_"+sessionStorage.getItem('list_id');
-		$("tr[name="+row_item_id+"]").addClass('selected');
-		$("tr[name="+row_item_id+"]").click();
-		if($("tr[name="+row_item_id+"]").attr('id')){
-			var row_item = $("tr[name="+row_item_id+"]").attr('id').substring(5,10);
-				//클릭 시 스크롤 이동
-			var firstOffset = $("#list_table tr").eq(0).offset();
-			var offset = $("#list_table tr").eq(row_item).offset();
-			$('.s_scroll').animate({scrollTop : offset.top - firstOffset.top}, 400);
-			
-			// 전체 blink 클래스 삭제 후 blink 클래스 추가
-			$("#list_table tr .effect").removeClass('blink');
-			$("#list_table tr").eq(row_item).find('.effect').addClass('blink');
+	moveSelectRow();
+	function moveSelectRow(){
+		if(sessionStorage.getItem('list_id')){
+			var row_item_id = "list_"+sessionStorage.getItem('list_id');
+			$("tr[name="+row_item_id+"]").addClass('selected');
+			$("tr[name="+row_item_id+"]").click();
+			if($("tr[name="+row_item_id+"]").attr('id')){
+				var row_item = $("tr[name="+row_item_id+"]").index() + 1;
+				// 스크롤 이동
+				var firstOffset = $("#list_table tr").eq(0).offset();
+				var offset = $("#list_table tr").eq(row_item).offset();
+				$('.s_scroll').animate({scrollTop : offset.top - firstOffset.top}, 400);
+			}
 		}
-
-
-	  }
+	}
 
 	// 삭제
 	$("#btn_de").click(function(){
