@@ -25,13 +25,9 @@ $(document).ready(function(){
 	// console.log(type);
 	
 	$(".tv_subcon").addClass(type);
-	var radar = setInterval(function(){
-		callRadar();
-	},180000);
 	if(type == "radar"){
 		$(".tv_subtitle").text("레이더");
 		callRadar();
-		radar;
 	}else if(type == "heroes"){
 		$(".tv_subtitle").text("위성");
 		heroes();
