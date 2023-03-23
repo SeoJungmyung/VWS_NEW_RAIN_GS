@@ -479,7 +479,7 @@ crypt.setKey(key);
 	if(sessionStorage.getItem('list_user')){
 		var row_item = sessionStorage.getItem('list_user');
 		if($("tr[name="+row_item+"]").attr('id')){
-			var row_item_idx = $("tr[name="+row_item+"]").attr('id').substring(5,10);
+			var row_item_idx = $("tr[name="+row_item+"]").index() + 1;
 			$("tr[name="+row_item+"]").addClass('selected');
 			$("tr[name="+row_item+"]").click();
 	
