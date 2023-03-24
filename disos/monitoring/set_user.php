@@ -76,7 +76,7 @@ require_once "./head.php";
 					}
 					for($i=0; $i<($rowCnt-$num); $i++){
 						echo "<tr class='not_d'>
-						<td></td><td></td><td></td><td></td><td>
+						<td></td><td></td><td></td><td></td><td></td>
 						</tr>";
 					}
 				}
