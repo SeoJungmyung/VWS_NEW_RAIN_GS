@@ -221,6 +221,11 @@ Class ClassCommon {
 					'is_login' => $_SESSION['is_login']
 				);
 				$_SESSION['user_setting'] = $this->rsa_encrypt(json_encode($user_set),public_key);
+
+				$sql = " INSERT INTO user_log (LOG_DATE, USER_ID, LOG_CODE) 
+				VALUES ( NOW(), '".$_SESSION['user_id']."', 1 ) ";
+			
+				if($this->DB->QUERYONE($sql)) $sqlReturn = true;
 			}else{
 				$_SESSION['is_login'] = 0;
 
@@ -266,6 +271,10 @@ Class ClassCommon {
 	 */
 	function setLogout(){
 		// session_destroy();
+		$sql = " INSERT INTO user_log (LOG_DATE, USER_ID, LOG_CODE) 
+					VALUES ( NOW(), '".ss_user_id."', 0 ) ";
+				
+		if($this->DB->QUERYONE($sql)) $sqlReturn = true;
 		session_unset();
 	}
 	
