@@ -560,8 +560,10 @@ $(document).ready(function(){
 								labels: {
 									generateLabels: function(chart){
 										labels = Chart.defaults.global.legend.labels.generateLabels(chart);
-										labels[0].fillStyle = '#96c6f7';
-										labels[0].strokeStyle = '#96c6f7';
+										labels[0].fillStyle = '#008000';
+										labels[0].strokeStyle = '#008000';
+										labels[1].fillStyle = '#ff8017';
+										labels[1].strokeStyle = '#ff8017';
 										return labels;
 									}
 								}
@@ -576,9 +578,21 @@ $(document).ready(function(){
 								},
 								callbacks: {
 									labelColor: function(tooltipItem, chart){
-										return {
-											borderColor: '#9bc9f7',
-											backgroundColor : '#9bc9f7'
+										if(tooltipItem.datasetIndex == 1){
+											return {
+												backgroundColor : '#ff8017',
+												borderColor: '#ff8017'
+											}
+										}else if(tooltipItem.datasetIndex == 2){
+											return {
+												backgroundColor : '#69F',
+												borderColor: '#69F'
+											}
+										}else{
+											return {
+												backgroundColor : '#008000',
+												borderColor: '#008000'
+											}
 										}
 									}
 								}
@@ -711,8 +725,10 @@ $(document).ready(function(){
 								labels: {
 									generateLabels: function(chart){
 										labels = Chart.defaults.global.legend.labels.generateLabels(chart);
-										labels[0].fillStyle = '#96c6f7';
-										labels[0].strokeStyle = '#96c6f7';
+										labels[0].fillStyle = '#008000';
+										labels[0].strokeStyle = '#008000';
+										labels[1].fillStyle = '#ff8017';
+										labels[1].strokeStyle = '#ff8017';
 										return labels;
 									}
 								}
@@ -727,9 +743,21 @@ $(document).ready(function(){
 								},
 								callbacks: {
 									labelColor: function(tooltipItem, chart){
-										return {
-											borderColor: '#9bc9f7',
-											backgroundColor : '#9bc9f7'
+										if(tooltipItem.datasetIndex == 1){
+											return {
+												backgroundColor : '#ff8017',
+												borderColor: '#ff8017'
+											}
+										}else if(tooltipItem.datasetIndex == 2){
+											return {
+												backgroundColor : '#69F',
+												borderColor: '#69F'
+											}
+										}else{
+											return {
+												backgroundColor : '#008000',
+												borderColor: '#008000'
+											}
 										}
 									}
 								}
