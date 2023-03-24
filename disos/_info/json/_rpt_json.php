@@ -229,17 +229,31 @@ switch($mode){
 		$data_list['RTU_NAME'] = $LocalDB->RTU_NAME;
 		$data_list['MAX'] = null; // 최고
 		$data_list['MIN'] = null; // 최저
+		$data_list['RISK_1'] = ($LocalDB->FLOW_WARNING[0] == 0) ? null : $LocalDB->FLOW_WARNING[0];
+		$data_list['RISK_2'] = ($LocalDB->FLOW_DANGER[0] == 0) ? null : $LocalDB->FLOW_DANGER[0];
 		
 		if($ClassRainInfo->rsRainRpt){
 			foreach($ClassRainInfo->rsRainRpt as $key => $val){
 				$data_list['LEG'][] = $val['NUM'];
 				$data_list['DATA'][] = (round_data($val['RAIN'], 0.01, 10) == "-") ? null : round_data($val['RAIN'], 0.01, 10);
+				$data_list['DATA1'][] = $data_list['RISK_1'];
+				$data_list['DATA2'][] = $data_list['RISK_2'];
 				if(round_data($val['RAIN'], 0.01, 10) != "-"){
 					$data_list['MAX'] = ($data_list['MAX'] < round_data($val['RAIN'], 0.01, 10) || !$data_list['MAX']) ? round_data($val['RAIN'], 0.01, 10) : $data_list['MAX'];
 					$data_list['MIN'] = ($data_list['MIN'] > round_data($val['RAIN'], 0.01, 10) || !$data_list['MIN']) ? round_data($val['RAIN'], 0.01, 10) : $data_list['MIN'];
 				}
 			}
 		}
+		if(level_cnt == 2){
+			$data_list['MAX'] = ($data_list['MAX'] < $data_list['RISK_2']) ? $data_list['RISK_2'] : $data_list['MAX'];
+		}else if(level_cnt == 3){
+			$data_list['MAX'] = ($data_list['MAX'] < $data_list['RISK_3']) ? $data_list['RISK_3'] : $data_list['MAX'];
+		}else if(level_cnt == 4){
+			$data_list['MAX'] = ($data_list['MAX'] < $data_list['RISK_3']) ? $data_list['RISK_3'] : $data_list['MAX'];
+		}else if(level_cnt == 5){
+			$data_list['MAX'] = ($data_list['MAX'] < $data_list['RISK_5']) ? $data_list['RISK_5'] : $data_list['MAX'];
+		}
+		$data_list['MIN'] = ($data_list['MIN'] > $data_list['RISK_1']) ? $data_list['RISK_1'] : $data_list['MIN'];
 			
 		$returnBody = array( 'list' => $data_list );
 		echo json_encode( $returnBody );
@@ -303,17 +317,31 @@ switch($mode){
 		$data_list['RTU_NAME'] = $LocalDB->RTU_NAME;
 		$data_list['MAX'] = null; // 최고
 		$data_list['MIN'] = null; // 최저
+		$data_list['RISK_1'] = ($LocalDB->FLOW_WARNING[0] == 0) ? null : $LocalDB->FLOW_WARNING[0];
+		$data_list['RISK_2'] = ($LocalDB->FLOW_DANGER[0] == 0) ? null : $LocalDB->FLOW_DANGER[0];
 		
 		if($ClassSnowInfo->rsSnowRpt){
 			foreach($ClassSnowInfo->rsSnowRpt as $key => $val){
 				$data_list['LEG'][] = $val['NUM'];
 				$data_list['DATA'][] = (round_data($val['SNOW'], 0.001, 10) == "-") ? null : round_data($val['SNOW'], 0.001, 10);
+				$data_list['DATA1'][] = $data_list['RISK_1'];
+				$data_list['DATA2'][] = $data_list['RISK_2'];
 				if(round_data($val['SNOW'], 0.001, 10) != "-"){
 					$data_list['MAX'] = ($data_list['MAX'] < round_data($val['SNOW'], 0.001, 10) || !$data_list['MAX']) ? round_data($val['SNOW'], 0.001, 10) : $data_list['MAX'];
 					$data_list['MIN'] = ($data_list['MIN'] > round_data($val['SNOW'], 0.001, 10) || !$data_list['MIN']) ? round_data($val['SNOW'], 0.001, 10) : $data_list['MIN'];
 				}
 			}
 		}
+		if(level_cnt == 2){
+			$data_list['MAX'] = ($data_list['MAX'] < $data_list['RISK_2']) ? $data_list['RISK_2'] : $data_list['MAX'];
+		}else if(level_cnt == 3){
+			$data_list['MAX'] = ($data_list['MAX'] < $data_list['RISK_3']) ? $data_list['RISK_3'] : $data_list['MAX'];
+		}else if(level_cnt == 4){
+			$data_list['MAX'] = ($data_list['MAX'] < $data_list['RISK_3']) ? $data_list['RISK_3'] : $data_list['MAX'];
+		}else if(level_cnt == 5){
+			$data_list['MAX'] = ($data_list['MAX'] < $data_list['RISK_5']) ? $data_list['RISK_5'] : $data_list['MAX'];
+		}
+		$data_list['MIN'] = ($data_list['MIN'] > $data_list['RISK_1']) ? $data_list['RISK_1'] : $data_list['MIN'];
 		
 		$returnBody = array( 'list' => $data_list );
 		echo json_encode( $returnBody );
@@ -391,7 +419,10 @@ switch($mode){
 		$LocalDB->getRtuInfo($area_code);
 
 		$ClassRainInfo = new ClassRainInfo($DB);
-
+		
+		$area_data['RISK_1'] = ($LocalDB->FLOW_WARNING[0] == 0) ? null : $LocalDB->FLOW_WARNING[0];
+		$area_data['RISK_2'] = ($LocalDB->FLOW_DANGER[0] == 0) ? null : $LocalDB->FLOW_DANGER[0];
+		
 		if($type == 'S'){
 			$data_list = getDateAndArray1m($sTdate, $eTdate, $area_data);
 		}else if($type == 'D'){
@@ -435,7 +466,10 @@ switch($mode){
 					}
 				}
 			}
-		}	
+		}
+		// min max 바꿈
+		$area_data['MAX'] = ($area_data['MAX'] < $area_data['RISK_2']) ? $area_data['RISK_2'] : $area_data['MAX'];
+		$area_data['MIN'] = ($area_data['MIN'] > $area_data['RISK_1']) ? $area_data['RISK_1'] : $area_data['MIN'];	
 		
 		$returnBody = array( 'list' => $data_list, 'area' => $area_data  );
 		echo json_encode( $returnBody );
@@ -499,7 +533,7 @@ switch($mode){
 			}
 		}
 		// min max 바꿈
-		$area_data['MAX'] = ($area_data['MAX'] < $area_data['RISK_5']) ? $area_data['RISK_5'] : $area_data['MAX'];
+		$area_data['MAX'] = ($area_data['MAX'] < $area_data['RISK_2']) ? $area_data['RISK_2'] : $area_data['MAX'];
 		$area_data['MIN'] = ($area_data['MIN'] > $area_data['RISK_1']) ? $area_data['RISK_1'] : $area_data['MIN'];
 			
 		$returnBody = array( 'list' => $data_list, 'area' => $area_data  );
@@ -512,6 +546,9 @@ switch($mode){
 		//적설
 		$LocalDB = new ClassRtuInfo($DB, 2);
 		$LocalDB->getRtuInfo($area_code);
+
+		$area_data['RISK_1'] = ($LocalDB->FLOW_WARNING[0] == 0) ? null : $LocalDB->FLOW_WARNING[0];
+		$area_data['RISK_2'] = ($LocalDB->FLOW_DANGER[0] == 0) ? null : $LocalDB->FLOW_DANGER[0];
 
 		if($type == 'S'){
 			$data_list = getDateAndArray1m($sTdate, $eTdate, $area_data);
@@ -560,7 +597,10 @@ switch($mode){
 				}
 			}
 		}
-			
+		// min max 바꿈
+		$area_data['MAX'] = ($area_data['MAX'] < $area_data['RISK_2']) ? $area_data['RISK_2'] : $area_data['MAX'];
+		$area_data['MIN'] = ($area_data['MIN'] > $area_data['RISK_1']) ? $area_data['RISK_1'] : $area_data['MIN'];
+				
 		// var_dump($data_list);
 		$returnBody = array( 'list' => $data_list, 'area' => $area_data  );
 		echo json_encode( $returnBody );

@@ -947,6 +947,9 @@ $(document).ready(function(){
 							DATA3 = data.list.map(function(a){ return a.DATA3 });
 						}else if($("#option").val() == 2){
 							DATA3 = data.list.map(function(a){ return a.DATA3 });
+						}else if($("#option").val() == 0){
+							DATA1 = data.list.map(function(a){ return a.DATA1 });
+							DATA2 = data.list.map(function(a){ return a.DATA2 });
 						}
 						// LEGD = Object.keys(data.list);
 						// 객체 -> 배열로 변환 map 함수
@@ -1065,6 +1068,38 @@ $(document).ready(function(){
 								borderWidth: 2,
 								fill: false,
 								pointStyle: DATADEG
+							}
+						];
+					}else if($("#option").val() == 0){
+						dtset = 
+							[{
+								type: 'line',
+								label: '<?=level_1?>',
+								data: DATA1,
+								yAxisID: 'y_aws',
+								backgroundColor: '#008000',
+								borderColor: '#008000',
+								borderWidth: 2,
+								fill: false,
+								pointRadius: 0
+							}, {
+								type: 'line',
+								label: '<?=level_2?>',
+								data: DATA2,
+								yAxisID: 'y_aws',
+								backgroundColor: '#ff8017',
+								borderColor: '#ff8017',
+								borderWidth: 2,
+								fill: false,
+								pointRadius: 0
+							}, {
+								type: 'bar',
+								label: '강우',
+								data: DATAD,
+								yAxisID: 'y_aws',
+								backgroundColor: '#c3dcf5',
+								borderColor: '#69F',
+								borderWidth: 1
 							}
 						];
 					}
@@ -1209,7 +1244,7 @@ $(document).ready(function(){
 				dataType: "json",
 				success : function(data){
 					// console.log(data.list);
-					var LEG, DATA, DATA2, DATA3 = [];		
+					var LEG, DATA, DATA1, DATA2, DATA3 = [];		
 					var MAX, MIN, INCRE = null;
 					var DATADEG = new Array();
 					var DATADEG_TRASH = new Array();
@@ -1221,6 +1256,9 @@ $(document).ready(function(){
 							DATA3 = data.list.DATA3;
 						}else if($("#option").val() == 2){
 							DATA3 = data.list.DATA3;
+						}else if($("#option").val() == 0){
+							DATA1 = data.list.DATA1;
+							DATA2 = data.list.DATA2;
 						}
 						LEG = data.list.LEG;
 						DATA = data.list.DATA;
@@ -1327,6 +1365,37 @@ $(document).ready(function(){
 								borderWidth: 2,
 								fill: false,
 								pointStyle: DATADEG
+							}];
+					}else if($("#option").val() == 0){
+						dtset = 
+							[{
+								type: 'line',
+								label: '<?=level_1?>',
+								data: DATA1,
+								yAxisID: 'y_aws',
+								backgroundColor: '#008000',
+								borderColor: '#008000',
+								borderWidth: 2,
+								fill: false,
+								pointRadius: 0
+							}, {
+								type: 'line',
+								label: '<?=level_2?>',
+								data: DATA2,
+								yAxisID: 'y_aws',
+								backgroundColor: '#ff8017',
+								borderColor: '#ff8017',
+								borderWidth: 2,
+								fill: false,
+								pointRadius: 0
+							}, {
+								type: 'bar',
+								label: '강우',
+								data: DATA,
+								yAxisID: 'y_aws',
+								backgroundColor: '#c3dcf5',
+								borderColor: '#69F',
+								borderWidth: 1
 							}];
 					}
 

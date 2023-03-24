@@ -343,6 +343,8 @@ $(document).ready(function(){
 						// LEGD = Object.keys(data.list);
 						// 객체 -> 배열로 변환 map 함수
 						DATAD = data.list.map(function(a){ return a.DATA });
+						DATA1 = data.list.map(function(a){ return a.DATA1 });
+						DATA2 = data.list.map(function(a){ return a.DATA2 });
 						LEGD = data.list.map(function(a){ return a.LEG });
 						// 월 표출
 						MONTH = data.list.map(function(a){ return a.MON });

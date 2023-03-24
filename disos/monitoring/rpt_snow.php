@@ -488,6 +488,8 @@ $(document).ready(function(){
 						// LEGD = Object.keys(data.list);
 						// 객체 -> 배열로 변환 map 함수
 						DATAD = data.list.map(function(a){ return a.DATA });
+						DATA1 = data.list.map(function(a){ return a.DATA1 });
+						DATA2 = data.list.map(function(a){ return a.DATA2 });
 						LEGD = data.list.map(function(a){ return a.LEG });
 						// 월 표출
 						MONTH = data.list.map(function(a){ return a.MON });
@@ -520,6 +522,27 @@ $(document).ready(function(){
 						data: {
 							labels: LEGD,
 							datasets: [{
+								type: 'line',
+								label: '<?=level_1?>',
+								data: DATA1,
+								yAxisID: 'y_snow',
+								backgroundColor: '#008000',
+								borderColor: '#008000',
+								borderWidth: 2,
+								fill: false,
+								pointRadius: 0
+							}, {
+								type: 'line',
+								label: '<?=level_2?>',
+								data: DATA2,
+								yAxisID: 'y_snow',
+								backgroundColor: '#ff8017',
+								borderColor: '#ff8017',
+								borderWidth: 2,
+								fill: false,
+								pointRadius: 0
+							}, {
+								type: 'bar',
 								label: '적설',
 								data: DATAD,
 								yAxisID: 'y_snow',
@@ -622,6 +645,8 @@ $(document).ready(function(){
 					if(data.list){
 						LEG = data.list.LEG;
 						DATA = data.list.DATA;
+						DATA1 = data.list.DATA1;
+						DATA2 = data.list.DATA2;
 						MAX = data.list.MAX;
 						MIN = data.list.MIN;
 						$("#rtu_name").text(data.list.RTU_NAME);
@@ -647,6 +672,27 @@ $(document).ready(function(){
 						data: {
 							labels: LEG,
 							datasets: [{
+								type: 'line',
+								label: '<?=level_1?>',
+								data: DATA1,
+								yAxisID: 'y_snow',
+								backgroundColor: '#008000',
+								borderColor: '#008000',
+								borderWidth: 2,
+								fill: false,
+								pointRadius: 0
+							}, {
+								type: 'line',
+								label: '<?=level_2?>',
+								data: DATA2,
+								yAxisID: 'y_snow',
+								backgroundColor: '#ff8017',
+								borderColor: '#ff8017',
+								borderWidth: 2,
+								fill: false,
+								pointRadius: 0
+							}, {
+								type: 'bar',
 								label: '적설',
 								data: DATA,
 								yAxisID: 'y_snow',

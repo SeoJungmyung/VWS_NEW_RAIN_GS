@@ -2076,7 +2076,7 @@ $(document).ready(function(){
 			}else if($("input[name='DANGER_USE']:checked").val() == 1){
 				var result = [];
 				$.each($(".warn"), function(i, v){
-					console.log(v);
+					// console.log(v);
 					if( !$.isNumeric($(v).val()) ){
 						if(v.id == 'FLOW_WARNING' || v.id == 'FLOW_DANGER')
 							swal("체크", "경계치/위험치에 숫자를 넣어주세요!", "warning");
