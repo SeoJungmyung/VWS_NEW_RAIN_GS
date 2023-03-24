@@ -272,7 +272,7 @@ Class ClassCommon {
 	function setLogout(){
 		// session_destroy();
 		$sql = " INSERT INTO user_log (LOG_DATE, USER_ID, LOG_CODE) 
-					VALUES ( NOW(), '".ss_user_id."', 0 ) ";
+					VALUES ( NOW(), '".$_SESSION['user_id']."', 0 ) ";
 				
 		if($this->DB->QUERYONE($sql)) $sqlReturn = true;
 		session_unset();
