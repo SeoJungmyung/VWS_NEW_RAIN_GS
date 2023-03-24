@@ -113,12 +113,12 @@
 				tmp_html += '</tr>';
 
 				$.each(hour, function(index, item){
+					console.log(item);
 					var tmp_num = Number(hour.length - (index+1)); // 그래프 인덱스 거꾸로
 					var tmp_date = item['date'];
 					var tmp_deg = item['deg_data'];
 					// tmp_date = (tmp_num < 10) ? "0"+item['num'] : item['num'];
 					var tmp_data = item['data'] == "-" ? "-" : Number(item['data']);
-
 					data1[tmp_num] = item['data1'] == "-" ? "-" : Number(item['data1']);
 					data2[tmp_num] = item['data2'] == "-" ? "-" : Number(item['data2']);
 
@@ -287,6 +287,24 @@
 						data: {
 							labels: LEG,
 							datasets: [{
+								type: 'line',
+								label: '경계치',
+								data: data1,
+								backgroundColor: '#008000',
+								borderColor: '#008000',
+								borderWidth: 2,
+								fill: false,
+								pointRadius: 0
+							}, {
+								type: 'line',
+								label: '위험치',
+								data: data2,
+								backgroundColor: '#ff8017',
+								borderColor: '#ff8017',
+								borderWidth: 2,
+								fill: false,
+								pointRadius: 0
+							},{
 								label: tmp_title,
 								data: DATA,
 								backgroundColor: 'rgb(54, 162, 235)',

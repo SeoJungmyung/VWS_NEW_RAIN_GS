@@ -356,7 +356,7 @@ Class RtuInfo {
                 FROM rtu_info AS A
                 LEFT JOIN RTU_SENSOR AS B ON A.RTU_ID = B.RTU_ID 
                 WHERE A.area_code = '".$area_code." '
-                AND B.SENSOR_TYPE IN ('1', 'DP') ";
+                AND B.SENSOR_TYPE IN ('0','1','2') ";
          
     	$rs = $this->DB->execute($sql);
     	$this->RTU_NAME = $rs[0]['RTU_NAME'];

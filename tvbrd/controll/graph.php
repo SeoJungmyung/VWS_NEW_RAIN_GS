@@ -53,7 +53,7 @@ $dvUtil   = new Divas_Util();
 	    case 'graph_slide':
 	    $RtuInfo = new RtuInfo($DB);
 	    
-		if($kind == "flow" || $kind == "disp"){
+		if($kind == "rain" || $kind == "flow" || $kind == "snow"){
 			$RtuInfo->getRtuNameAndLevel($area_code);
 		} else {
 			$RtuInfo->getRtuName($area_code);
@@ -91,13 +91,10 @@ $dvUtil   = new Divas_Util();
 	    }else if($kind == "pres"){
 	    	$AtmoInfo = new AtmoInfo($DB,$DM, $dvUtil); // 기압
 	    	$tmpInfo = $AtmoInfo;
-	    }else if($kind == "disp"){
-	    	$AtmoInfo = new DisplaceInfo($DB,$DM, $dvUtil); // 기압
-	    	$tmpInfo = $AtmoInfo;
-		}
+	    }
 		$calc = 1;
 	    if($tmpInfo){
-			if($kind == "flow" || $kind == "disp"){
+			if($kind == "rain" || $kind == "flow" || $kind == "snow"){
 				if($kind == "disp"){
 					$calc = 0.01;
 				}
