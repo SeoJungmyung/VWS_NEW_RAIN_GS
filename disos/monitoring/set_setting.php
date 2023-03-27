@@ -334,7 +334,7 @@ require_once "./head.php";
 							<!-- <td>경계 단계</td> -->
 							<!-- <td> -->
 								<!-- 단계 : -->
-								<select id="level_cnt" name="level_cnt" style="display:none;">
+								<!-- <select id="level_cnt" name="level_cnt" style="display:none;">
 									<option type="hidden" value="2" <?if(level_cnt=="2"){echo "selected";}?>>2</option>
 									<option type="hidden" value="3" <?if(level_cnt=="3"){echo "selected";}?>>3</option>
 									<option type="hidden" value="4" <?if(level_cnt=="4"){echo "selected";}?>>4</option>
