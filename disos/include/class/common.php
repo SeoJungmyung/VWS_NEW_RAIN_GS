@@ -692,7 +692,7 @@ Class ClassCommon {
 		$file_size = $_FILES[$name]['size'];           // 업로드한 파일의 크기
 		$file_type = $_FILES[$name]['type'];           // 업로드한 파일의 타입
 		
-		if($file_size > 5000000){
+		if($file_size > 5242880 ){
 			return array(2, "이미지는 5mb 이하만 등록하실 수 있습니다.");
 		}else if($file_type != "image/jpeg" && $file_type != "image/png"){
 			return array(2, "jpeg 또는 png만 등록하실 수 있습니다.");
