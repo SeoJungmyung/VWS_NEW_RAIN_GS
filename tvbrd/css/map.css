@@ -506,7 +506,7 @@ div#new{
   .waves:before, .waves:after {
     content: "";
     position: absolute;
-    background: rgba(235, 118, 172, 0.856);
+    background: rgba(255, 154, 54 ,0.856);
     margin-left: -13px;
     margin-top: -20px;
     width: 50px;
@@ -562,7 +562,7 @@ div#new{
   .waves2:before, .waves2:after {
     content: "";
     position: absolute;
-    background: rgb(245, 28, 28);
+    background: rgba(231, 46, 52,0.856);
     margin-left: -13px;
     margin-top: -20px;
     width: 50px;
