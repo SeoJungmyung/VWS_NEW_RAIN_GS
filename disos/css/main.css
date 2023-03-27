@@ -868,6 +868,7 @@ div#top_img img{padding: 5px;} */
 .guide_txt .intro{justify-content: flex-start;}
 .guide_txt .txt02 {font-size: 1.2rem;  padding-top:5px;color: #4E4E4E; font-weight: 500;}
 .guide_txt .icon {width: 20px; font-size: 1.6rem; padding: 3px 20px 0 20px; color: #2caf88;}
+.guide_txt .version {font-size: 1.2rem;  padding-top:5px;color: #4E4E4E; font-weight: 500; margin-left:18px;}
 
 .guide_btn {width: 100%; border-radius: 0 0 10px 10px; background-color: #F2F3F8; display: inline-flex; justify-content: center; padding: 10px;}
 
@@ -875,7 +876,6 @@ div#top_img img{padding: 5px;} */
 .item_txt ul {width: 100%; display: inline-flex; margin-right: 20px;}
 .item_txt .intro{justify-content: flex-start;}
 .item_txt .txt02 {font-size: 1.2rem; color: #fb6600; font-weight: 500;}
-
 
 .tit_unit {width: 40%; height: 46px; display: inline-flex; align-items: center;  font-size: 1.6rem;}
 .tit_unit ul {width: 100%; display: inline-flex; justify-content: flex-end; margin-right: 20px;}

@@ -577,6 +577,11 @@ require_once "./head.php";
 			</li>
 		</ul>	
 		<!-- <div class="guide_btn"> <button type="button" id="btn_save" class="btn_bb80">저장</button></div>	 -->
+		<div class="guide_txt">
+			<ul>
+				<li class="version">  ※ 스마트 기상관측 시스템 v3.0</li>
+			</ul>
+		</div>
 		</div>
 		<!-- <div class="main_contitle">
 					<div class="tit"><img src="../images/board_icon_aws.png"> <span>메뉴 설정</span>
@@ -643,7 +648,12 @@ require_once "./head.php";
 				</table>
 			</li>
 		</ul>
-				</div>
+		<div class="guide_txt">
+			<ul>
+				<li class="version">  ※ 스마트 기상관측 시스템 v3.0</li>
+			</ul>
+		</div>
+		</div>
 
 		<div id="sub-tab" class="right_bg2 hd">
 		<ul class="system_tit">
@@ -711,7 +721,12 @@ require_once "./head.php";
 				</table>
 			</li>
 		</ul>
-				</div>
+		<div class="guide_txt">
+			<ul>
+				<li class="version">  ※ 스마트 기상관측 시스템 v3.0</li>
+			</ul>
+		</div>
+		</div>
 
 		<div id="popup-tab" class="right_bg2 hd">
 		<ul class="system_tit">
@@ -786,6 +801,11 @@ require_once "./head.php";
 				</table>
 			</li>
 		</ul>
+		<div class="guide_txt">
+			<ul>
+				<li class="version">  ※ 스마트 기상관측 시스템 v3.0</li>
+			</ul>
+		</div>
 		</div>
 
 		<div id="report-tab" class="right_bg2 hd">
