@@ -45,6 +45,6 @@
 <!-- <script type="text/javascript" src="../js/es6-promise.min.js"></script> 문자전광판 IE 동작관련 추가 -->
 <!-- <script type="text/javascript" src="../js/es6-promise.auto.min.js"></script> 문자전광판 IE 동작관련 추가 -->
 </head>
-<body style="min-width:1185px; overflow-x:auto;">
+<body>
 
 

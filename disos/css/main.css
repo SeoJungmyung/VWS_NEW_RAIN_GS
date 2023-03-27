@@ -39,7 +39,19 @@
 	  html {-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box; width:100%; height:100%;}
 	  *, *:before, *:after {-webkit-box-sizing: inherit;-moz-box-sizing: inherit;box-sizing: inherit;}
 
-	  body{margin:0;padding:0;border:0;overflow:hidden; height: 100%; max-height: 100%; font-family:'¸¼Àº°íµñ','Nanum Gothic','¸¼Àº°íµñ','µ¸¿ò','malgun gothic','dotum','arial','NanumSquare','sans-serif'; background-color:#C8C9CE;}
+	  body{
+		margin:0;
+		padding:0;
+		border:0;
+		/* overflow:hidden; */
+		height: 100%;
+		max-height: 100%;
+		font-family:'¸¼Àº°íµñ','Nanum Gothic','¸¼Àº°íµñ','µ¸¿ò','malgun gothic','dotum','arial','NanumSquare','sans-serif';
+		background-color:#C8C9CE;
+		overflow:hidden;
+		min-width: 1100px;
+		overflow-y: hidden;
+		}
 	  img{border:0; text-decoration:none; outline:none;}
 	  li{list-style-type:none; padding: 0px; margin: 0;}
 	  a{width:100%; height:100%; text-decoration: none;}
@@ -132,7 +144,7 @@
   .font12 {font-size: 1.2rem !important;}
   .col_sky {color: #a6f9ff !important;}
 
-	  #top_layout { z-index: 55; position: absolute; width: 100%; min-width: 1185px;}
+	  #top_layout { z-index: 55; position: absolute; width: 100%; min-width: 1100px;}
 	  #top {background-color: #162A45; width: 100%; display: inline-flex; align-items: flex-end;}
 	  #logo {width: 20%; background-color: #fff; height: 60px; vertical-align: middle;  padding-left: 10px; display: flex; align-items: center; font-size: 2.3rem; letter-spacing: -2px;}
 	  #logo span:last-child {width: 100%; text-align: center; color: #0050AB; font-weight: 800;  letter-spacing: -2px; padding:  0 5px; font-family:'nanumsquare', 'Dotum', 'Gulim', 'Arial', sans-serif !important;}
@@ -231,7 +243,17 @@
 #slideToggle{margin:200px 0 0 -15px; padding-right:10px;}
 
 /* ¿ìÃø ½½¶óÀÌµåÃß°¡ W:910 */
-.product_state {/*display:inline-flex;*/position: fixed;top: 100px;left: 0px;right: 0;bottom: 0; overflow-y: scroll; padding: 0px 15px 15px 15px;margin:0;}
+.product_state {
+	/*display:inline-flex;*/
+	position: fixed;
+	top: 100px;
+	left: 0px;
+	right: 0;
+	bottom: 0;
+	overflow-y: scroll;
+	padding: 0px 15px 15px 15px;
+	margin:0;
+}
 .product_state .slide {width:910px;background-color:#050505;margin: 12px 0 0 -10px;padding: 20px;}
 
 .s_box01 {border-radius: 3px;display: inline-flex;width: 100%; position: relative; margin-bottom: 10px;}

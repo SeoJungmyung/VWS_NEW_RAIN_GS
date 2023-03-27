@@ -1,7 +1,7 @@
 <?
 require_once "../_conf/_common.php";
 require_once "../_info/_set_setting.php";
-require_once "./head.php";
+//require_once "./head.php";
 ?>
 <div id="top_layout">
   <div id="top"> 
