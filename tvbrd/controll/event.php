@@ -141,34 +141,6 @@ switch($mode) {
 						array_push($event['SNOW_WARNING'], $arr_data[$key]['AREA_CODE']);
 					}
 				}
-			}else if($arr_data[$key]['REALDATA'] <= $arr_data[$key]['FLOW_WARNING_OFF']){
-				if($arr_data[$key]['RTU_TYPE'] == "R00"){
-					array_push($event['RAIN_CANCEL'], $arr_data[$key]['AREA_CODE']);
-				}else if($arr_data[$key]['RTU_TYPE'] == "F00"){
-					array_push($event['FLOW_CANCEL'], $arr_data[$key]['AREA_CODE']);
-				}else if($arr_data[$key]['RTU_TYPE'] == "A00"){
-					array_push($event['AWS_CANCEL'], $arr_data[$key]['AREA_CODE']);
-				}else if($arr_data[$key]['RTU_TYPE'] == "S00"){
-					array_push($event['SNOW_CANCEL'], $arr_data[$key]['AREA_CODE']);
-				}
-			}else if($arr_data[$key]['REALDATA'] > $arr_data[$key]['FLOW_WARNING_OFF'] && $arr_data[$key]['REALDATA'] < $arr_data[$key]['FLOW_WARNING']){
-				if($arr_data[$key]['RTU_TYPE'] == "R00"){
-					$key_index = array_search( $arr_data[$key]['AREA_CODE'] , $event['RAIN_CANCEL'] );
-					array_splice( $event['RAIN_CANCEL'], $key_index, 1 );
-					array_push($event['RAIN_WARNING'], $arr_data[$key]['AREA_CODE']);
-				}else if($arr_data[$key]['RTU_TYPE'] == "F00"){
-					$key_index = array_search( $arr_data[$key]['AREA_CODE'] , $event['FLOW_CANCEL'] );
-					array_splice( $event['FLOW_CANCEL'], $key_index, 1 );
-					array_push($event['FLOW_WARNING'], $arr_data[$key]['AREA_CODE']);
-				}else if($arr_data[$key]['RTU_TYPE'] == "A00"){
-					$key_index = array_search( $arr_data[$key]['AREA_CODE'] , $event['AWS_CANCEL'] );
-					array_splice( $event['AWS_CANCEL'], $key_index, 1 );
-					array_push($event['AWS_WARNING'], $arr_data[$key]['AREA_CODE']);
-				}else if($arr_data[$key]['RTU_TYPE'] == "S00"){
-					$key_index = array_search( $arr_data[$key]['AREA_CODE'] , $event['SNOW_CANCEL'] );
-					array_splice( $event['SNOW_CANCEL'], $key_index, 1 );
-					array_push($event['SNOW_WARNING'], $arr_data[$key]['AREA_CODE']);
-				}
 			}
 
     	}
