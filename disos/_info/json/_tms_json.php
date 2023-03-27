@@ -48,18 +48,21 @@ switch($mode){
 		echo json_encode( $returnBody );
 	break;
 
-	case 'sub_login':
-		// $IdInfo = $ClassCommon->getLoginIdInfo();
-		// if( $IdInfo['result'] ){
-		if( $ClassCommon->setLogin() ){
-			$result = 0;
-		}else{
-			$result = 1;
+	case 'recheck_pass':
+		$IdInfo = $ClassCommon->getLoginIdInfo();
+		if( $IdInfo['result'] ){
+			if( $ClassCommon->checkPassword() == 1){
+				$result = 0;
+			}else{
+				$result = 1;
+			}
+		} else {
+			if($IdInfo['msg']){
+				$result = 4;
+			}else{
+				$result = 3;
+			}
 		}
-		// // 폼 토큰 추가
-		// if($result == 0){
-		// 	$_SESSION["OTT"] = getToken();
-		// }
 		
 		$returnBody = array( 'result' => $result );
 		echo json_encode( $returnBody );

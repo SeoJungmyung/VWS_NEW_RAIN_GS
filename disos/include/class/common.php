@@ -112,7 +112,7 @@ Class ClassCommon {
 			// openssl 모듈 체크
 			if(extension_loaded("openssl")){
 
-				$l_id = $this->rsa_decrypt($_REQUEST['l_id']);
+				$l_id = $_REQUEST['l_id'] ? $this->rsa_decrypt($_REQUEST['l_id']) : keyUserID;
 				
 				$sql = " SELECT a.user_id, a.user_pwd, a.FAIL_CNT, a.LAST_FAIL_DATE
 						 FROM user_info AS a
@@ -144,6 +144,55 @@ Class ClassCommon {
 				$returnBody = array( 'result' => false, 'msg' => "php_openssl loading failed!" );
 			}
 			return $returnBody;
+		}else if(DB == "1"){
+			// ORACLE
+		}
+	}
+	
+	/**
+	 *   비밀번호 확인
+	 */
+	function checkPassword(){
+		if(DB == "0"){
+			
+			$l_id = keyUserID;
+			$l_pw = $this->rsa_decrypt($_REQUEST['l_pw']);
+			
+			$sql = " SELECT a.user_id, a.user_pwd, a.user_type, a.user_name, 
+							a.organ_id, b.area_code, b.organ_name, b.sort_base
+					 FROM user_info AS a
+					 LEFT JOIN organ_info AS b ON a.organ_id = b.organ_id
+					 WHERE a.user_id = '".$this->DB->html_encode($l_id)."' AND a.user_pwd = '".$this->DB->html_encode($l_pw)."' ";
+						
+			$rs = $this->DB->execute($sql);
+			
+			if($this->DB->num_rows){
+				$sqlReturn = true;
+				$result = 1;
+			}else{
+				$IdInfo = $this->getLoginIdInfo();
+				
+				$tmp_id = $IdInfo['user_id'];
+				$FAIL_CNT = $IdInfo['FAIL_CNT'] + 1;
+				$LAST_FAIL_DATE = $IdInfo['LAST_FAIL_DATE'];
+
+				if( strtotime($LAST_FAIL_DATE) < strtotime(date("Y-m-d H:i", strtotime('-5 minutes')).":00") ){ // 얼마안에 fail_cnt를 초기화할 것인지
+					$FAIL_CNT = 1;
+					$sql = " UPDATE user_info SET FAIL_CNT = ".$FAIL_CNT.", LAST_FAIL_DATE = DATE_FORMAT(now(), '%Y-%m-%d %H:%i')
+							 WHERE user_id = '".$tmp_id."' ";
+				}else{
+					$sql = " UPDATE user_info SET FAIL_CNT = ".$FAIL_CNT."
+							 WHERE user_id = '".$tmp_id."' ";
+				}
+				
+				if($this->DB->QUERYONE($sql)) $sqlReturn = true;
+				$result = 2;
+			}
+			
+			unset($rs);
+			$this->DB->parseFree();
+			
+			return $result;
 		}else if(DB == "1"){
 			// ORACLE
 		}

@@ -298,91 +298,14 @@ $(document).ready(function(){
 		this.oldValue = value;
 	});
 
-// 객체 생성
-var crypt = new JSEncrypt();
+	// 객체 생성
+	var crypt = new JSEncrypt();
 
-var key = $("#publicKey").val();
-// 키 설정
-crypt.setKey(key);
+	var key = $("#publicKey").val();
+	// 키 설정
+	crypt.setKey(key);
 
 	var pwFlag = false;
-
-	$("#content").hide();
-	swal({
-		title: "<div class='alpop_top'><div class='alpop_title'>비밀번호 확인</div>\n\
-				<div id='btn_emer_del' class='alpop_btn'>취소</div></div>\n\
-				<div class='alpop_mes'><span style='color:#f30'>비밀번호 확인</div>",
-		text: "로그인시 사용한 비밀번호를 입력해 주세요",
-		type: 'input',
-		showCancelButton: true,
-		confirmButtonColor: "#DD6B55",
-		confirmButtonText: "확인",
-		cancelButtonText: "취소",
-		closeOnConfirm: false,
-		html: true,
-		inputPlaceholder: "비밀번호 입력",
-	}, function(inputValue){
-		// 암호화
-		// var l_id = crypt.encrypt(user_id);
-		var l_pw = CryptoJS.CRT(inputValue).toString();
-		// console.log(l_pw);
-        l_pw = crypt.encrypt(l_pw);
-		// console.log(l_pw);
-		data = {
-			"mode" : "sub_login",
-			"l_pw" : l_pw
-		}
-		$.ajax({
-		    type: "POST",
-		    url: "../_info/json/_tms_json.php",
-			data: data,
-		    cache: false,
-		    dataType: "json",
-		    success : function(data){
-		    	if(data.result == 0){
-					
-				}else if(data.result == 1){
-					swal({
-						title: "체크",
-						text: "아이디와 비밀번호를 다시 확인해 주세요.",
-						type: "warning",
-						confirmButtonText: "확인"
-					}, function() {
-						location.reload();
-					});
-		    	}else if(data.result == 3){
-					swal({
-						title: "체크",
-						text: "로그인 시도 횟수 초과입니다. 5분 후에 다시 시도해 주세요.",
-						type: "warning",
-						confirmButtonText: "확인"
-					}, function() {
-						location.reload();
-					});
-				}else if(data.result == 4){
-					swal({
-						title: "체크",
-						text: data.msg,
-						type: "warning",
-						confirmButtonText: "확인"
-					}, function() {
-						location.reload();
-					});
-				}else if(data.result == 5){
-					location.reload();
-		    	}else{
-					swal({
-						title: "체크",
-						text: "로그인에 실패하였습니다.",
-						type: "warning",
-						confirmButtonText: "확인"
-					}, function() {
-						location.reload();
-					});
-				}
-			}
-		});
-	});
 
 	// 엔터키 - 조회버튼
 	$('input[name=search_word]').keydown(function(key){
