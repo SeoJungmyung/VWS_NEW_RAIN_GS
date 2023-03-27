@@ -47,6 +47,23 @@ switch($mode){
 		$returnBody = array( 'result' => $result , "msg" => $IdInfo['msg']);
 		echo json_encode( $returnBody );
 	break;
+
+	case 'sub_login':
+		// $IdInfo = $ClassCommon->getLoginIdInfo();
+		// if( $IdInfo['result'] ){
+		if( $ClassCommon->setLogin() ){
+			$result = 0;
+		}else{
+			$result = 1;
+		}
+		// // 폼 토큰 추가
+		// if($result == 0){
+		// 	$_SESSION["OTT"] = getToken();
+		// }
+		
+		$returnBody = array( 'result' => $result );
+		echo json_encode( $returnBody );
+	break;
 	
 	// 로그아웃 세션 처리
 	case 'logout':
