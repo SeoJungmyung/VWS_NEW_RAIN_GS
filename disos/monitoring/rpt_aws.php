@@ -1073,26 +1073,6 @@ $(document).ready(function(){
 					}else if($("#option").val() == 0){
 						dtset = 
 							[{
-								type: 'line',
-								label: '<?=level_1?>',
-								data: DATA1,
-								yAxisID: 'y_aws',
-								backgroundColor: '#008000',
-								borderColor: '#008000',
-								borderWidth: 2,
-								fill: false,
-								pointRadius: 0
-							}, {
-								type: 'line',
-								label: '<?=level_2?>',
-								data: DATA2,
-								yAxisID: 'y_aws',
-								backgroundColor: '#ff8017',
-								borderColor: '#ff8017',
-								borderWidth: 2,
-								fill: false,
-								pointRadius: 0
-							}, {
 								type: 'bar',
 								label: '강우',
 								data: DATAD,
@@ -1100,8 +1080,7 @@ $(document).ready(function(){
 								backgroundColor: '#c3dcf5',
 								borderColor: '#69F',
 								borderWidth: 1
-							}
-						];
+							}];
 					}
 					chart = new Chart($("#graph"), {
 						type: getGraphKind(),
@@ -1115,10 +1094,8 @@ $(document).ready(function(){
 									generateLabels: function(chart){
 										labels = Chart.defaults.global.legend.labels.generateLabels(chart);
 										if($("#option").val() == 0){
-											labels[0].fillStyle = '#008000';
-											labels[0].strokeStyle = '#008000';
-											labels[1].fillStyle = '#ff8017';
-											labels[1].strokeStyle = '#ff8017';
+											labels[0].fillStyle = '#96c6f7';
+											labels[0].strokeStyle = '#96c6f7';
 										}else{
 											labels[0].fillStyle = '#96c6f7';
 											labels[0].strokeStyle = '#96c6f7';
@@ -1391,36 +1368,49 @@ $(document).ready(function(){
 								pointStyle: DATADEG
 							}];
 					}else if($("#option").val() == 0){
-						dtset = 
-							[{
-								type: 'line',
-								label: '<?=level_1?>',
-								data: DATA1,
-								yAxisID: 'y_aws',
-								backgroundColor: '#008000',
-								borderColor: '#008000',
-								borderWidth: 2,
-								fill: false,
-								pointRadius: 0
-							}, {
-								type: 'line',
-								label: '<?=level_2?>',
-								data: DATA2,
-								yAxisID: 'y_aws',
-								backgroundColor: '#ff8017',
-								borderColor: '#ff8017',
-								borderWidth: 2,
-								fill: false,
-								pointRadius: 0
-							}, {
-								type: 'bar',
-								label: '강우',
-								data: DATA,
-								yAxisID: 'y_aws',
-								backgroundColor: '#c3dcf5',
-								borderColor: '#69F',
-								borderWidth: 1
-							}];
+						if($('input[name="sel_date"]:checked').val() == "H"){
+							dtset = 
+								[{
+									type: 'line',
+									label: '<?=level_1?>',
+									data: DATA1,
+									yAxisID: 'y_aws',
+									backgroundColor: '#008000',
+									borderColor: '#008000',
+									borderWidth: 2,
+									fill: false,
+									pointRadius: 0
+								}, {
+									type: 'line',
+									label: '<?=level_2?>',
+									data: DATA2,
+									yAxisID: 'y_aws',
+									backgroundColor: '#ff8017',
+									borderColor: '#ff8017',
+									borderWidth: 2,
+									fill: false,
+									pointRadius: 0
+								}, {
+									type: 'bar',
+									label: '강우',
+									data: DATA,
+									yAxisID: 'y_aws',
+									backgroundColor: '#c3dcf5',
+									borderColor: '#69F',
+									borderWidth: 1
+								}];
+						}else{
+							dtset = 
+								[{
+									type: 'bar',
+									label: '강우',
+									data: DATA,
+									yAxisID: 'y_aws',
+									backgroundColor: '#c3dcf5',
+									borderColor: '#69F',
+									borderWidth: 1
+								}];
+						}
 					}
 
 					chart = new Chart($("#graph"), {
@@ -1440,10 +1430,15 @@ $(document).ready(function(){
 									generateLabels: function(chart){
 										labels = Chart.defaults.global.legend.labels.generateLabels(chart);
 										if($("#option").val() == 0){
-											labels[0].fillStyle = '#008000';
-											labels[0].strokeStyle = '#008000';
-											labels[1].fillStyle = '#ff8017';
-											labels[1].strokeStyle = '#ff8017';
+											if($('input[name="sel_date"]:checked').val() == "H"){
+												labels[0].fillStyle = '#008000';
+												labels[0].strokeStyle = '#008000';
+												labels[1].fillStyle = '#ff8017';
+												labels[1].strokeStyle = '#ff8017';
+											}else{
+												labels[0].fillStyle = '#96c6f7';
+												labels[0].strokeStyle = '#96c6f7';
+											}
 										}else{
 											labels[0].fillStyle = '#96c6f7';
 											labels[0].strokeStyle = '#96c6f7';

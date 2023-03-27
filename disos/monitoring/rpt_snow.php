@@ -457,7 +457,7 @@ $(document).ready(function(){
 	var chart = null;
 	function graph_on(){
     	if(chart) chart.destroy();
-
+		console.log($('input[name="sel_date"]:checked').val());
     	if($('input[name="sel_date"]:checked').val() == "A"){
 			$.ajax({
 				type: "POST",
@@ -516,50 +516,32 @@ $(document).ready(function(){
 						MIN = Number(MIN) - Number(INCRE);
 					}
 					MIN = MIN < 0 ? 0 : MIN;
-	
+
+					var dtset;
+					dtset = 
+						[{
+							type: 'bar',
+							label: '적설',
+							data: DATAD,
+							yAxisID: 'y_snow',
+							backgroundColor: '#c3dcf5',
+							borderColor: '#c3dcf5',
+							borderWidth: 1
+						}];
+
 					chart = new Chart($("#graph"), {
 						type: 'bar',
 						data: {
 							labels: LEGD,
-							datasets: [{
-								type: 'line',
-								label: '<?=level_1?>',
-								data: DATA1,
-								yAxisID: 'y_snow',
-								backgroundColor: '#008000',
-								borderColor: '#008000',
-								borderWidth: 2,
-								fill: false,
-								pointRadius: 0
-							}, {
-								type: 'line',
-								label: '<?=level_2?>',
-								data: DATA2,
-								yAxisID: 'y_snow',
-								backgroundColor: '#ff8017',
-								borderColor: '#ff8017',
-								borderWidth: 2,
-								fill: false,
-								pointRadius: 0
-							}, {
-								type: 'bar',
-								label: '적설',
-								data: DATAD,
-								yAxisID: 'y_snow',
-								backgroundColor: '#c3dcf5',
-								borderColor: '#c3dcf5',
-								borderWidth: 1
-							}]
+							datasets: dtset
 						},
 						options: {
 							legend: {
 								labels: {
 									generateLabels: function(chart){
 										labels = Chart.defaults.global.legend.labels.generateLabels(chart);
-										labels[0].fillStyle = '#008000';
-										labels[0].strokeStyle = '#008000';
-										labels[1].fillStyle = '#ff8017';
-										labels[1].strokeStyle = '#ff8017';
+										labels[0].fillStyle = '#96c6f7';
+										labels[0].strokeStyle = '#96c6f7';
 										return labels;
 									}
 								}
@@ -680,12 +662,10 @@ $(document).ready(function(){
 					}
 					MIN = MIN < 0 ? 0 : MIN;
 					//console.log("MAX:"+MAX, "MIN:"+MIN, "INC:"+INCRE);
-
-					chart = new Chart($("#graph"), {
-						type: 'bar',
-						data: {
-							labels: LEG,
-							datasets: [{
+					var dtset;
+					if($('input[name="sel_date"]:checked').val() == "H"){
+						dtset = 
+							[{
 								type: 'line',
 								label: '<?=level_1?>',
 								data: DATA1,
@@ -713,7 +693,25 @@ $(document).ready(function(){
 								backgroundColor: '#c3dcf5',
 								borderColor: '#c3dcf5',
 								borderWidth: 1
-							}]
+							}];
+					}else{
+						dtset = 
+							[{
+								type: 'bar',
+								label: '적설',
+								data: DATA,
+								yAxisID: 'y_snow',
+								backgroundColor: '#c3dcf5',
+								borderColor: '#c3dcf5',
+								borderWidth: 1
+							}];
+					}
+
+					chart = new Chart($("#graph"), {
+						type: 'bar',
+						data: {
+							labels: LEG,
+							datasets: dtset
 						},
 						options: {
 							responsive: false,
@@ -721,10 +719,15 @@ $(document).ready(function(){
 								labels: {
 									generateLabels: function(chart){
 										labels = Chart.defaults.global.legend.labels.generateLabels(chart);
-										labels[0].fillStyle = '#008000';
-										labels[0].strokeStyle = '#008000';
-										labels[1].fillStyle = '#ff8017';
-										labels[1].strokeStyle = '#ff8017';
+										if($('input[name="sel_date"]:checked').val() == "H"){
+											labels[0].fillStyle = '#008000';
+											labels[0].strokeStyle = '#008000';
+											labels[1].fillStyle = '#ff8017';
+											labels[1].strokeStyle = '#ff8017';
+										}else{
+											labels[0].fillStyle = '#96c6f7';
+											labels[0].strokeStyle = '#96c6f7';
+										}
 										return labels;
 									}
 								}
