@@ -140,7 +140,7 @@ $(document).ready(function(){
 		}
 	});
 	$('#btn_emer_del').click(function(){
-		parent.location.reload();
+		parent.location.href = "main.php";
 	});
 });
 </script>

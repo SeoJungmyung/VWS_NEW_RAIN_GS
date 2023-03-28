@@ -190,7 +190,7 @@ $(document).ready(function(){
 							obj = document.createElement('input');
 							obj.setAttribute('type', 'hidden');
 							obj.setAttribute('name', 'target');
-							obj.setAttribute('value', 'set_user.php');
+							obj.setAttribute('value', 'check_password.php');
 			
 							f.appendChild(obj);
 							f.setAttribute('method', 'post');

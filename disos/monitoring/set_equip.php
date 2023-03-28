@@ -873,8 +873,8 @@ $(document).ready(function(){
 						// $("#VHF_TRANS_ID").val(data.list.VHF_TRANS_ID);
 						$("#FLOW_DANGER").val(data.list.FLOW_DANGER);
 						$("#FLOW_WARNING").val(data.list.FLOW_WARNING);
-						$("#FLOW_DANGER_OFF").val(data.list.FLOW_DANGER_OFF);
-						$("#FLOW_WARNING_OFF").val(data.list.FLOW_WARNING_OFF);
+						// $("#FLOW_DANGER_OFF").val(data.list.FLOW_DANGER_OFF);
+						// $("#FLOW_WARNING_OFF").val(data.list.FLOW_WARNING_OFF);
 						$("input[value='"+data.list.DANGER_USE+"']").prop("checked", true);
 						// if(data.list.DANGER_USE == 1){
 						// 	$("#DANGER_USE0").prop("checked", false);
