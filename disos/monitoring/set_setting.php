@@ -916,7 +916,8 @@ $(document).ready(function(){
 				cache: false,
 				dataType: "json",
 				success : function(data){
-					if(data.result){
+					console.log(data);
+					if(data.result == true || data.result[0] == 1){
 						swal({
 							title: "시스템 설정 완료",
 							text: "설정이 완료 됐습니다.", 
@@ -929,7 +930,18 @@ $(document).ready(function(){
 						}); 
 						return false;
 					}else{
-						swal("체크", "시스템 설정중 오류가 발생 했습니다.", "warning");
+						swal({
+							title: "시스템 설정중 오류가 발생 했습니다.",
+							text: data.result[1], 
+							type: "warning",
+							timer: 1300,
+							showConfirmButton: true,
+							allowOutsideClick: false
+						}, function(){
+							// parent.location.reload();
+							return false;
+						}); 
+						// swal("체크", "시스템 설정중 오류가 발생 했습니다.", "warning");
 					}
 				}
 			});

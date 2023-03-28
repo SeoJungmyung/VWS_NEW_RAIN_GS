@@ -785,6 +785,9 @@ Class ClassCommon {
 			$sql = " UPDATE dn_setting SET ";
 			if($this->DB->html_encode($_REQUEST['top_img_check']) == 1){
 				$rs_img = $this->imgUpload(1, "sel_top_img", null);
+				if($rs_img[0] != 1){
+					return $rs_img;
+				}
 				$sql .= " top_img = '".$rs_img[1]."',";
 			}else{
 				$sql .= " top_img = '".$this->DB->html_encode($_REQUEST['top_img'])."',";
@@ -792,7 +795,7 @@ Class ClassCommon {
 			$sql .= " top_title = '".$this->DB->html_encode($_REQUEST['top_title'])."',";
 			$sql .= " top_text = '".$this->DB->html_encode($_REQUEST['top_text'])."',";
 			$sql .= " recaptcha = ".$this->DB->html_encode($_REQUEST['recaptcha']).",";
-			$sql .= " level_cnt = ".$this->DB->html_encode($_REQUEST['level_cnt']).",";
+			$sql .= " level_cnt = 2,";
 			$sql .= " load_time = ".$this->DB->html_encode($_REQUEST['load_time'])."";
 			$sql .= " WHERE set_idx = ".ss_organ_id." ";
 
