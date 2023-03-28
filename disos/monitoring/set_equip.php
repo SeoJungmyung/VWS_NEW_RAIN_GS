@@ -178,17 +178,17 @@ require_once "./head.php";
 							<input type="radio" id="DANGER_USE1" class="DANGER_USE" name="DANGER_USE" value="1">사용
 						</td>
 						<td class="bg_lb w10 bold al_C dngr">경계치 / 위험치</td>
-						<td class="">
+						<td class="" colspan="5">
 							<input type="text" id="FLOW_WARNING" name="FLOW_WARNING" class="warn f333_12" size="10" maxlength="5" placeholder="예) 0.1~9999 " oninput="inputCheck(this,'onlyNumber','0.1~9999')">
 							 / 
 							<input type="text" id="FLOW_DANGER" name="FLOW_DANGER" class="warn f333_12" size="10" maxlength="5" placeholder="예) 0.1~9999 " oninput="inputCheck(this,'onlyNumber','0.1~9999')">
 						</td>
-						<td class="bg_lb w10 bold al_C dngr">경계치 해제 / 위험치 해제</td>
+						<!-- <td class="bg_lb w10 bold al_C dngr">경계치 해제 / 위험치 해제</td>
 						<td class=""  colspan="3">
 							<input type="text" id="FLOW_WARNING_OFF" name="FLOW_WARNING_OFF" class="warn f333_12" size="10" maxlength="5" placeholder="예) 0.1~9999 " oninput="inputCheck(this,'onlyNumber','0.1~9999')">
 							 / 
 							<input type="text" id="FLOW_DANGER_OFF" name="FLOW_DANGER_OFF" class="warn f333_12" size="10" maxlength="5" placeholder="예) 0.1~9999 " oninput="inputCheck(this,'onlyNumber','0.1~9999')">
-						</td>
+						</td> -->
 					</tr>
 					<tr>
 						<td class="bg_lb w10 bold al_C">소속 기관</td>
@@ -1333,14 +1333,14 @@ $(document).ready(function(){
 								}
 								if(DANGER_USE == 1){
 									$("tr[name='list_"+list_id+"'] #l_SIGNAL_ID").text(formData[9].value);
-									$("tr[name='list_"+list_id+"'] #l_SORT_FLAG").text(formData[19].value);
+									$("tr[name='list_"+list_id+"'] #l_SORT_FLAG").text(formData[17].value);
 									$("tr[name='list_"+list_id+"'] #l_RTU_NAME").text(formData[10].value);
 									$("tr[name='list_"+list_id+"'] #l_RTU_TYPE_NAME").text(formData[11].value == "R00" ? "강우계" : formData[11].value == "F00" ? "수위계" : formData[11].value == "A00" ? "AWS" : formData[11].value == "S00" ? "적설계" : "");
-									$("tr[name='list_"+list_id+"'] #l_LINE_NAME").text(formData[20].value == "0" ? "TCP/IP" : formData[20].value == "3" ? "ODBC" : "");
-									$("tr[name='list_"+list_id+"'] #l_MODEL_NAME").text(formData[21].value == "0" ? "HS920M" : "");
-									$("tr[name='list_"+list_id+"'] #l_CONNECTION_INFO").text(formData[26].value);
-									$("tr[name='list_"+list_id+"'] #l_PORT").text(formData[25].value);
-									$("tr[name='list_"+list_id+"'] #l_BAUDRATE").text(formData[27].value);
+									$("tr[name='list_"+list_id+"'] #l_LINE_NAME").text(formData[18].value == "0" ? "TCP/IP" : formData[20].value == "3" ? "ODBC" : "");
+									$("tr[name='list_"+list_id+"'] #l_MODEL_NAME").text(formData[19].value == "0" ? "HS920M" : "");
+									$("tr[name='list_"+list_id+"'] #l_CONNECTION_INFO").text(formData[24].value);
+									$("tr[name='list_"+list_id+"'] #l_PORT").text(formData[23].value);
+									$("tr[name='list_"+list_id+"'] #l_BAUDRATE").text(formData[25].value);
 									$("tr[name='list_"+list_id+"'] #l_FLOW_WARNING").text(formData[13].value);
 									$("tr[name='list_"+list_id+"'] #l_FLOW_DANGER").text(formData[14].value);
 								}else{

@@ -834,7 +834,7 @@ Class ClassSetting {
 				$RTU_TYPE = "B00";
 			}
 
-			if($this->DB->html_encode($_REQUEST[0]['RTU_TYPE']) == 'S00'){
+			if($this->DB->html_encode($_REQUEST['RTU_TYPE']) == 'S00'){
 				$FLOW_WARNING = $this->DB->html_encode($_REQUEST['FLOW_WARNING'])*1000;
 				$FLOW_DANGER = $this->DB->html_encode($_REQUEST['FLOW_DANGER'])*1000;
 				$FLOW_WARNING_OFF = $this->DB->html_encode($_REQUEST['FLOW_WARNING_OFF'])*1000;
@@ -872,7 +872,7 @@ Class ClassSetting {
 				$RTU_TYPE = "B00";
 			}
 			
-			if($this->DB->html_encode($_REQUEST[0]['RTU_TYPE']) == 'S00'){
+			if($this->DB->html_encode($_REQUEST['RTU_TYPE']) == 'S00'){
 				$FLOW_WARNING = $this->DB->html_encode($_REQUEST['FLOW_WARNING'])*1000;
 				$FLOW_DANGER = $this->DB->html_encode($_REQUEST['FLOW_DANGER'])*1000;
 				$FLOW_WARNING_OFF = $this->DB->html_encode($_REQUEST['FLOW_WARNING_OFF'])*1000;
