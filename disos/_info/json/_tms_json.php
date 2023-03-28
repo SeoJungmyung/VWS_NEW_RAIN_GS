@@ -32,7 +32,8 @@ switch($mode){
 					$result = 2;
 				}
 			}
-			if($IdInfo['result'] == 6) $IdInfo['msg'] = 'change password';
+			if($IdInfo['result'] === '6') $IdInfo['msg'] = 'change password';
+			else  $IdInfo['msg'] = '';
 		} else {
 			if($IdInfo['msg']){
 				$result = 4;
