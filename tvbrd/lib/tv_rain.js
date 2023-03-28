@@ -324,8 +324,10 @@ function rain(kind, arr_area_code){ // 강우 - 강우만 있는 장비
 							$("#rain_"+item).show();
 							$("#rain_"+item).next().show();
 	    	    		}else{
-							$("#rain_"+item).hide();
-							$("#rain_"+item).next().hide();
+							if($("#wave_"+item).css('display') == 'none'){
+								$("#rain_"+item).hide();
+								$("#rain_"+item).next().hide();
+							}
 	    	    		}
 					}else{
 		    		}
@@ -367,6 +369,8 @@ function rain(kind, arr_area_code){ // 강우 - 강우만 있는 장비
 } // rain() end
 
 function rain_event(area_code,state,level) {
+	console.log(area_code ,state)
+	console.log(area_code ,level)
 	if(state == 1){
 		// circle[area_code].setVisible(true);
 		if(level == 1){

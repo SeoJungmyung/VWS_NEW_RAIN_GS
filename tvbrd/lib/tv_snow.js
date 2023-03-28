@@ -315,8 +315,10 @@ function snow(kind, arr_area_code){ // 강우 - 강우만 있는 장비
 							$("#snow_"+item).show();
 							$("#snow_"+item).next().show();
 	    	    		}else{
-							$("#snow_"+item).hide();
-							$("#snow_"+item).next().hide();
+							if($("#wave_"+item).css('display') == 'none'){
+								$("#snow_"+item).hide();
+								$("#snow_"+item).next().hide();
+							}
 	    	    		}
 					}else{
 		    		}

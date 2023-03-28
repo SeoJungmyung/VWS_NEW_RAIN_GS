@@ -320,8 +320,10 @@ function flow(kind, arr_area_code){ // 강우 - 강우만 있는 장비
 							$("#flow_"+item).show();
 							$("#flow_"+item).next().show();
 	    	    		}else{
-							$("#flow_"+item).hide();
-							$("#flow_"+item).next().hide();
+							if($("#wave_"+item).css('display') == 'none'){
+								$("#flow_"+item).hide();
+								$("#flow_"+item).next().hide();
+							}
 	    	    		}
 					}else{
 						// arr_rtu[item]['overlay'].setZIndex(add_zindex);
