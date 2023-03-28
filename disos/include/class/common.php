@@ -134,6 +134,17 @@ Class ClassCommon {
 					}else{
 						$result = true;
 					}
+
+					// 기본 아이디, 비밀번호이고, 관리자가 하나일때 결과값 변경
+					if($user_id == 'adminuser' 
+						&& $user_pwd == '2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3'){
+						$sql = " SELECT count(*) AS cnt FROM user_info ";
+			
+						$rs = $this->DB->execute($sql);
+						if($rs[0]['cnt'] == 1){
+							$result = 6;
+						}
+					}
 				}else{
 					$result = true;
 				}			
