@@ -408,10 +408,15 @@ Class ClassSetting {
 			$MOBILE = $this->rsa_encrypt($MOBILE, public_key);
 			$SMART_MOBILE = $this->rsa_encrypt($SMART_MOBILE, public_key);
 			$sql = " UPDATE USER_INFO SET ORGAN_ID = ".$this->DB->html_encode($_REQUEST['ORGAN_ID']).", USER_TYPE = '".$this->DB->html_encode($_REQUEST['USER_TYPE'])."', MENU_TYPE = '".$this->DB->html_encode($_REQUEST['MENU_TYPE'])."',
-					 USER_PWD = '".$this->DB->html_encode($l_pw)."', USER_PWD_LEN = '".$this->DB->html_encode($_REQUEST['USER_PWD_LEN'])."', USER_NAME = '".$this->DB->html_encode($_REQUEST['USER_NAME'])."', EMAIL = '".$EMAIL."', MOBILE = '".$MOBILE."', 
-					 IS_PERMIT = '".$this->DB->html_encode($_REQUEST['IS_PERMIT'])."', SMART_MOBILE = '".$SMART_MOBILE."', SMART_USE = '".$this->DB->html_encode($_REQUEST['SMART_USE'])."'
-					 , PASS_S = '".$_POST['PASS_S']."'
-					 WHERE USER_ID = '".$this->DB->html_encode($_REQUEST['C_USER_ID'])."' ";		 
+					USER_NAME = '".$this->DB->html_encode($_REQUEST['USER_NAME'])."', EMAIL = '".$EMAIL."', MOBILE = '".$MOBILE."', 
+					IS_PERMIT = '".$this->DB->html_encode($_REQUEST['IS_PERMIT'])."', SMART_MOBILE = '".$SMART_MOBILE."', SMART_USE = '".$this->DB->html_encode($_REQUEST['SMART_USE'])."'
+					";
+			if($_REQUEST['PASS_FLAG'] === 'true'){
+				$sql .= " , USER_PWD = '".$this->DB->html_encode($l_pw)."', 
+						  USER_PWD_LEN = '".$this->DB->html_encode($_REQUEST['USER_PWD_LEN'])."', 
+						  PASS_S = '".$_POST['PASS_S']."' ";
+			}
+			$sql .= " WHERE USER_ID = '".$this->DB->html_encode($_REQUEST['C_USER_ID'])."' ";		 
 			
 			if($this->DB->QUERYONE($sql)) $sqlReturn = true;
 			$this->DB->parseFree();

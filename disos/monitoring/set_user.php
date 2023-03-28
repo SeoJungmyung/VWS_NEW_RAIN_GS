@@ -219,6 +219,7 @@ require_once "./head.php";
 		</div>
 		</div>
 		<input type="hidden" name="PASS_S">
+		<input type="hidden" id="PASS_FLAG" name="PASS_FLAG">
 		</form>
 
 	</div>
@@ -639,8 +640,10 @@ $(document).ready(function(){
 						// tmp_pw = crypt.encrypt(tmp_pw);
 
 						$("#USER_PWD").val(tmp_pw);
+						$("#PASS_FLAG").val('true');
 					}else{
-						$("#USER_PWD_LEN").val($("#USER_PWD_LEN").val().length)
+						$("#PASS_FLAG").val('false');
+						$("#USER_PWD_LEN").val($("#USER_PWD_LEN").val().length);
 					}
 					
 					// frm.serialize() 대신 serializeArray() 써서 JSON으로 생성 
