@@ -47380,8 +47380,8 @@ insert  into `user_info`(`USER_ID`,`ORGAN_ID`,`AREA_CODE`,`USER_TYPE`,`USER_PERM
 `USER_NAME`,`USER_PWD`,`MOBILE`,`EMAIL`,`REG_DATE`,`FAIL_CNT`,`IS_PERMIT`,`MENU_TYPE`,
 `SMART_MOBILE`,`SMART_USE`,`LAST_FAIL_DATE`,`USER_PWD_LEN`, `PASS_S`) values 
 ('adminuser',1,'','','','화진티엔아이',
-'c6d537e112156be1afbb8a5a85221ff4d95e2461f83f03425549ff42dee7a278','','',
-now(),0,'','','','',NULL,11, 'MDFCZFhCRXBaYkVuRE1tUkJ6eXo0WUJOSXVveU1tVXM');
+'250a587a5a4105e27a1c616fddafd2edcba135eff7f9176f845be303672b3261','','',
+now(),0,'','','','',NULL,11, 'YncrdDBndTQzUWJieHhndnNtbEhNdGRHdG0zSElLVVM');
 
 /*Data for the table `user_log` */
 

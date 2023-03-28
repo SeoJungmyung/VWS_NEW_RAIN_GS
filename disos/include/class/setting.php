@@ -365,7 +365,7 @@ Class ClassSetting {
 	 */
 	function setUserIn(){
 		if(DB == "0"){
-			$l_pw = $_POST['PASS_S']+$_REQUEST['USER_PWD'];
+			$l_pw = $_POST['PASS_S'].$_REQUEST['USER_PWD'];
 			$l_pw = hash("sha256", $l_pw);
 
 			$EMAIL = $this->DB->html_encode($_REQUEST['EMAIL1'])."@".$this->DB->html_encode($_REQUEST['EMAIL3']);
@@ -396,7 +396,7 @@ Class ClassSetting {
 	 */
 	function setUserUp(){
 		if(DB == "0"){
-			$l_pw = $_POST['PASS_S']+$_REQUEST['USER_PWD'];
+			$l_pw = $_POST['PASS_S'].$_REQUEST['USER_PWD'];
 			$l_pw = hash("sha256", $l_pw);
 
 			$EMAIL = $this->DB->html_encode($_REQUEST['EMAIL1'])."@".$this->DB->html_encode($_REQUEST['EMAIL3']);

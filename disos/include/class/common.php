@@ -137,7 +137,7 @@ Class ClassCommon {
 
 					// 기본 아이디, 비밀번호이고, 관리자가 하나일때 결과값 변경
 					if($user_id == 'adminuser' 
-						&& $user_pwd == 'c6d537e112156be1afbb8a5a85221ff4d95e2461f83f03425549ff42dee7a278'){
+						&& $user_pwd == '250a587a5a4105e27a1c616fddafd2edcba135eff7f9176f845be303672b3261'){
 						// $sql = " SELECT count(*) AS cnt FROM user_info ";
 						// $rs = $this->DB->execute($sql);
 						// if($rs[0]['cnt'] == 1){
@@ -169,7 +169,7 @@ Class ClassCommon {
 			
 			$l_id = keyUserID;
 			$l_pw = $this->rsa_decrypt($_REQUEST['l_pw']);
-			$l_pw = hash("sha256", $this->PASS_S+$l_pw);
+			$l_pw = hash("sha256", $this->PASS_S.$l_pw);
 			
 			$sql = " SELECT a.user_id, a.user_pwd, a.user_type, a.user_name, 
 							a.organ_id, b.area_code, b.organ_name, b.sort_base
@@ -221,7 +221,7 @@ Class ClassCommon {
 
 				$l_id = $this->rsa_decrypt($_REQUEST['l_id']);
 				$l_pw = $this->rsa_decrypt($_REQUEST['l_pw']);
-				$l_pw = hash("sha256", $this->PASS_S+$l_pw);
+				$l_pw = hash("sha256", $this->PASS_S.$l_pw);
 				
 				$sql = " SELECT a.user_id, a.user_pwd, a.user_type, a.user_name, 
 								a.organ_id, b.area_code, b.organ_name, b.sort_base
