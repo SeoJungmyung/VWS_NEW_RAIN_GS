@@ -1185,7 +1185,6 @@ $(document).ready(function(){
 				// 	$("#USER_PWD").focus(); 
 				}
 			}
-			console.log(rs_flag && rs2_flag);
 			if(rs_flag && rs2_flag){
 				return true;
 			}else{
