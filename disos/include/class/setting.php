@@ -365,7 +365,9 @@ Class ClassSetting {
 	 */
 	function setUserIn(){
 		if(DB == "0"){
-			$l_pw = $_REQUEST['USER_PWD'];
+			$l_pw = $_POST['PASS_S']+$_REQUEST['USER_PWD'];
+			$l_pw = hash("sha256", $l_pw);
+
 			$EMAIL = $this->DB->html_encode($_REQUEST['EMAIL1'])."@".$this->DB->html_encode($_REQUEST['EMAIL3']);
 			$EMAIL = $EMAIL == "@" ? "" : $EMAIL;
 			$MOBILE = $this->DB->html_encode($_REQUEST['MOBILE1'])."-".$this->DB->html_encode($_REQUEST['MOBILE2'])."-".$this->DB->html_encode($_REQUEST['MOBILE3']);
@@ -374,11 +376,12 @@ Class ClassSetting {
 			if($SMART_MOBILE == "010--" || $SMART_MOBILE == "011--" || $SMART_MOBILE == "016--" || $SMART_MOBILE == "017--" || $SMART_MOBILE == "019--" || $SMART_MOBILE == "1") $SMART_MOBILE = "";
 			$MOBILE = $this->rsa_encrypt($MOBILE, public_key);
 			$SMART_MOBILE = $this->rsa_encrypt($SMART_MOBILE, public_key);
-			$sql = " INSERT INTO USER_INFO (ORGAN_ID,AREA_CODE, USER_TYPE, MENU_TYPE, USER_ID, USER_PWD, USER_PWD_LEN, USER_NAME, EMAIL, MOBILE, IS_PERMIT, SMART_MOBILE, SMART_USE, REG_DATE)
+			$sql = " INSERT INTO USER_INFO (ORGAN_ID,AREA_CODE, USER_TYPE, MENU_TYPE, USER_ID, USER_PWD, USER_PWD_LEN, USER_NAME, EMAIL, MOBILE, IS_PERMIT, SMART_MOBILE, SMART_USE, REG_DATE, PASS_S)
 					VALUES (".$this->DB->html_encode($_REQUEST['ORGAN_ID']).",
 					(SELECT area_code FROM organ_info WHERE organ_id = ".$this->DB->html_encode($_REQUEST['ORGAN_ID'])."),'".$this->DB->html_encode($_REQUEST['USER_TYPE'])."', '".$this->DB->html_encode($_REQUEST['MENU_TYPE'])."', '".$this->DB->html_encode($_REQUEST['USER_ID'])."', '".$this->DB->html_encode($l_pw)."',
 					'".$this->DB->html_encode($_REQUEST['USER_PWD_LEN'])."',
-					'".$this->DB->html_encode($_REQUEST['USER_NAME'])."', '".$EMAIL."', '".$MOBILE."', '".$this->DB->html_encode($_REQUEST['IS_PERMIT'])."', '".$SMART_MOBILE."', '".$this->DB->html_encode($_REQUEST['SMART_USE'])."', NOW()) ";
+					'".$this->DB->html_encode($_REQUEST['USER_NAME'])."', '".$EMAIL."', '".$MOBILE."', '".$this->DB->html_encode($_REQUEST['IS_PERMIT'])."', '".$SMART_MOBILE."', '".$this->DB->html_encode($_REQUEST['SMART_USE'])."', NOW()
+					, '".$_POST['PASS_S']."') ";
 			//echo $sql;
 			if($this->DB->QUERYONE($sql)) $sqlReturn = true;
 			$this->DB->parseFree();
@@ -393,7 +396,9 @@ Class ClassSetting {
 	 */
 	function setUserUp(){
 		if(DB == "0"){
-			$l_pw = $_REQUEST['USER_PWD'];
+			$l_pw = $_POST['PASS_S']+$_REQUEST['USER_PWD'];
+			$l_pw = hash("sha256", $l_pw);
+
 			$EMAIL = $this->DB->html_encode($_REQUEST['EMAIL1'])."@".$this->DB->html_encode($_REQUEST['EMAIL3']);
 			$EMAIL = $EMAIL == "@" ? "" : $EMAIL;
 			$MOBILE = $this->DB->html_encode($_REQUEST['MOBILE1'])."-".$this->DB->html_encode($_REQUEST['MOBILE2'])."-".$this->DB->html_encode($_REQUEST['MOBILE3']);
@@ -405,6 +410,7 @@ Class ClassSetting {
 			$sql = " UPDATE USER_INFO SET ORGAN_ID = ".$this->DB->html_encode($_REQUEST['ORGAN_ID']).", USER_TYPE = '".$this->DB->html_encode($_REQUEST['USER_TYPE'])."', MENU_TYPE = '".$this->DB->html_encode($_REQUEST['MENU_TYPE'])."',
 					 USER_PWD = '".$this->DB->html_encode($l_pw)."', USER_PWD_LEN = '".$this->DB->html_encode($_REQUEST['USER_PWD_LEN'])."', USER_NAME = '".$this->DB->html_encode($_REQUEST['USER_NAME'])."', EMAIL = '".$EMAIL."', MOBILE = '".$MOBILE."', 
 					 IS_PERMIT = '".$this->DB->html_encode($_REQUEST['IS_PERMIT'])."', SMART_MOBILE = '".$SMART_MOBILE."', SMART_USE = '".$this->DB->html_encode($_REQUEST['SMART_USE'])."'
+					 , PASS_S = '".$_POST['PASS_S']."'
 					 WHERE USER_ID = '".$this->DB->html_encode($_REQUEST['C_USER_ID'])."' ";		 
 			
 			if($this->DB->QUERYONE($sql)) $sqlReturn = true;

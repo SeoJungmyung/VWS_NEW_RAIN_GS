@@ -3,6 +3,7 @@
 Class ClassCommon {
 
 	private $DB;
+	private $PASS_S;
 
 	function __construct($DB){
 		$this->DB = $DB;
@@ -114,7 +115,7 @@ Class ClassCommon {
 
 				$l_id = $_REQUEST['l_id'] ? $this->rsa_decrypt($_REQUEST['l_id']) : keyUserID;
 				
-				$sql = " SELECT a.user_id, a.user_pwd, a.FAIL_CNT, a.LAST_FAIL_DATE
+				$sql = " SELECT a.user_id, a.user_pwd, a.FAIL_CNT, a.LAST_FAIL_DATE, a.PASS_S
 						 FROM user_info AS a
 						 LEFT JOIN organ_info AS b ON a.organ_id = b.organ_id
 						 WHERE a.user_id = '".$this->DB->html_encode($l_id)."' ";
@@ -122,6 +123,7 @@ Class ClassCommon {
 				$rs = $this->DB->execute($sql);
 				
 				if($this->DB->num_rows){
+					$this->PASS_S = $rs[0]['PASS_S'];
 					$user_id = $rs[0]['user_id'];
 					$user_pwd = $rs[0]['user_pwd'];
 					$FAIL_CNT = $rs[0]['FAIL_CNT'];
@@ -157,6 +159,7 @@ Class ClassCommon {
 			
 			$l_id = keyUserID;
 			$l_pw = $this->rsa_decrypt($_REQUEST['l_pw']);
+			$l_pw = hash("sha256", $this->PASS_S+$l_pw);
 			
 			$sql = " SELECT a.user_id, a.user_pwd, a.user_type, a.user_name, 
 							a.organ_id, b.area_code, b.organ_name, b.sort_base
@@ -208,6 +211,7 @@ Class ClassCommon {
 
 				$l_id = $this->rsa_decrypt($_REQUEST['l_id']);
 				$l_pw = $this->rsa_decrypt($_REQUEST['l_pw']);
+				$l_pw = hash("sha256", $this->PASS_S+$l_pw);
 				
 				$sql = " SELECT a.user_id, a.user_pwd, a.user_type, a.user_name, 
 								a.organ_id, b.area_code, b.organ_name, b.sort_base

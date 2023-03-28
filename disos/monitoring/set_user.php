@@ -19,6 +19,7 @@ require_once "./head.php";
 		<input type="hidden" id="dup_check" name="dup_check" value="0"><!-- 사용자 아이디 중복 체크 0:실패, 1:성공 -->
 		<input type="hidden" id="C_USER_ID" name="C_USER_ID"><!-- 선택한 사용자 아이디 -->
 		<input type="hidden" id="STR_RTU_ID" name="STR_RTU_ID"><!-- 선택한 방송권한 지역 RTU_ID -->
+		<input type="hidden" name="PASS_S">
 		<input type="hidden" id="mode" name="mode">
 		<input type="hidden" name="OTT" value="<? echo $ott; ?>">
 		<div class="main_contitle">

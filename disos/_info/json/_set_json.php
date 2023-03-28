@@ -106,6 +106,7 @@ if($_SESSION["OTT"] == $_POST["OTT"]){
 		// 사용자 등록
 		case 'user_in':
 			$USER_TYPE = $_REQUEST['USER_TYPE'];
+			$_POST['PASS_S'] = getToken();
 			// $USER_PWD = $_REQUEST['USER_PWD'];
 			$CNT = ($_REQUEST['STR_RTU_ID'] == "") ? 0 : count( explode("-", $_REQUEST['STR_RTU_ID']) );
 			if( $ClassSetting->getUserCheck() ){
@@ -135,6 +136,7 @@ if($_SESSION["OTT"] == $_POST["OTT"]){
 		// 사용자 수정
 		case 'user_up':
 			$USER_TYPE = $_REQUEST['USER_TYPE'];
+			$_POST['PASS_S'] = getToken();
 			// $USER_PWD = $_REQUEST['USER_PWD'];
 			$CNT = ($_REQUEST['STR_RTU_ID'] == "") ? 0 : count( explode("-", $_REQUEST['STR_RTU_ID']) );
 	
