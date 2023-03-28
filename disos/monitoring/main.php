@@ -169,6 +169,44 @@ $(document).ready(function(){
 		var session_time = getCookie("session_time_"+ms_token);
 		var tmp_src = $("#main").attr("src");
 
+		var pass_data = localStorage.getItem("pass_data");
+
+		if(pass_data == "change password"){
+			setTimeout(function(){
+				parent.swal({ 
+					title: '',
+					text: '',
+					confirmButtonText: ".",
+					cancelButtonText: ".",
+					showCancelButton: true,
+					closeOnConfirm: false,
+					closeOnCancel: false,
+					customClass : 'swal-wide-passchange'
+				}, function (isConfirm) {
+					if (isConfirm) {
+						if(session_time) {
+							let f = document.createElement('form');
+							let obj;
+							obj = document.createElement('input');
+							obj.setAttribute('type', 'hidden');
+							obj.setAttribute('name', 'target');
+							obj.setAttribute('value', 'set_user.php');
+			
+							f.appendChild(obj);
+							f.setAttribute('method', 'post');
+							f.setAttribute('action', 'main.php');
+							document.body.appendChild(f);
+							f.submit();
+							localStorage.setItem("pass_data","changed");
+						}
+					}
+				});
+				parent.$('.cancel').click(function() {
+					localStorage.setItem("pass_data","next");
+				});
+			})
+		}
+		
 		if(tmp_src == "tms_main.php" || $('#main').contents().find('.main_twrap').length > 0){
 			$("#btn_layout").removeClass('dp0');
 		}else{

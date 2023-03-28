@@ -281,7 +281,9 @@ $(document).ready(function(){
 		    dataType: "json",
 		    success : function(data){
 		    	if(data.result == 0){
-
+							if(data.msg == "change password"){
+								localStorage.setItem('pass_data', data.msg);
+							}
 							var ms = new Date().getTime() + 3600000;
 							var session_time = new Date(ms);
 
