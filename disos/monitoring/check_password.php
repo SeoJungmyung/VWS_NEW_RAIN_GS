@@ -38,6 +38,7 @@ $(document).ready(function(){
 				<div class='alpop_mes'><span style='color:#f30'>비밀번호 확인</div>",
 		text: "로그인시 사용한 비밀번호를 입력해 주세요",
 		type: 'input',
+		inputType: 'password',
 		showCancelButton: false,
 		confirmButtonColor: "#DD6B55",
 		confirmButtonText: "확인",
@@ -46,7 +47,7 @@ $(document).ready(function(){
 		html: true,
 		inputPlaceholder: "비밀번호 입력",
 	}, function(inputValue){
-		console.log(inputValue);
+		// console.log(inputValue);
 		if(inputValue){
 			// 암호화
 			var l_pw = CryptoJS.CRT(inputValue).toString();
