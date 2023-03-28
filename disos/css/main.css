@@ -145,9 +145,9 @@
   .font12 {font-size: 1.2rem !important;}
   .col_sky {color: #a6f9ff !important;}
 
-	  #top_layout { z-index: 55; position: absolute; width: 100%; min-width: 1100px;}
+	  #top_layout { z-index: 55; position: absolute; width: 100%; min-width: 1420px;}
 	  #top {background-color: #162A45; width: 100%; display: inline-flex; align-items: flex-end;}
-	  #logo {width: 20%; background-color: #fff; height: 60px; vertical-align: middle;  padding-left: 10px; display: flex; align-items: center; font-size: 2.3rem; letter-spacing: -2px;}
+	  #logo {width: 20%; background-color: #fff; height: 60px; vertical-align: middle;  padding-left: 10px; display: flex; align-items: center; font-size: 2rem; letter-spacing: -2px;}
 	  #logo span:last-child {width: 100%; text-align: center; color: #0050AB; font-weight: 800;  letter-spacing: -2px; padding:  0 5px; font-family:'nanumsquare', 'Dotum', 'Gulim', 'Arial', sans-serif !important;}
 	  #logo span:first-child {width: 150px; text-align: center;}
 	  #logo_area { height: 60px; text-align: center; display: inline-block;}
@@ -157,7 +157,7 @@
 	  
 	  #top_menu {padding-left: 5px; overflow: hidden;font-size: 1.7rem; font-weight: 700;  font-family:'nanumsquare', 'Dotum', 'Gulim', 'Arial', sans-serif !important;}
 	  #top_menu ul {width: 100%;}
-	  #top_menu ul li {width: 20%; height: 42px; background-color: #165AC1; border-radius: 7px 7px 0 0; border: #4B99FF 1px solid; border-bottom: none; margin-left: 5px; float: left; text-align: center;}
+	  #top_menu ul li {width: 23%; height: 42px; background-color: #165AC1; border-radius: 7px 7px 0 0; border: #4B99FF 1px solid; border-bottom: none; margin-left: 5px; float: left; text-align: center;}
 	  #top_menu ul li:hover {background-color: #2B8DFC;   transition: 0.5s; cursor: POINTER;}
 	  #top_menu ul li a{text-decoration: none; display: inline-flex; justify-content: center; align-items: center; color: #fff;}
 	  #top_menu ul li:hover img{position: relative;	opacity: 0.8; right: -2px; 	transition: 0.6s; }
@@ -1360,134 +1360,14 @@ filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/tvbrd_
 .tv_subcon{width:100%; height:84%; float:left; background:#fff;}
 
 
-@media all and (max-width:1023px){
-	.pR_15 {padding-right: 10px;}
-	.pB_13 {padding:0 0 13px 10px;}
-	#login {width: 34%;font-size: 1.1rem;}
-	.top_r {width: 44%;}
-	#logo {font-size: 1.5rem !important;width: 22% !important;cursor: pointer;}
-	#logo span:first-child {width: 95px;text-align: center;}
-	#logo_area { height: 60px; text-align: center; display: inline-block;}
-	#logo_area img{padding-right: 1px; width: 100%}
-	.layout_btn, .login_btn {width: 56px;font-size: 1rem;letter-spacing: -2px;}
-	#quick_menu ul li a {font-size: 1.1rem;padding: 0;}
-	#top_menu ul li {width: 23.7%;height: 42px;background-color: #165AC1;border-radius: 7px 7px 0 0;border: #4B99FF 1px solid;border-bottom: none;margin-left: 5px;float: left;text-align: center;font-size: 1.3rem;}
-	#top_menu ul li img {width: 22%; padding-top:3px;}
-	#left_sidebar{position: absolute;top: 0;bottom: 0;left: 22.2%;width: 49%;height: 100%;color: white;display:inline-block;margin:0;}
-	#left_sidebar i{text-decoration:none;font-size: 0.7rem;color: #ffffff;width: 100%;height: 28px !important;padding: 3px 0 0 0;display: inline-block;}
-	#left_sidebar i span {font-size: 1.1rem;font-style: normal;color: #fff;margin-right: 5px;letter-spacing: -0.5px;}
-	.main_contitle .tit{width: 60%;padding-left: 0.7rem;display: inline-flex;align-items: center;}
-	.main_contitle .tit span {padding:2px 5px 0 6px;color:#000;font-family: 'nanumsquare';font-weight:800;font-size: 1.9rem;}
-	.column {width: 20.8%;}
-	.column span {padding-left: 5px;font-size: 1rem !important;        font-weight: 700;}
-}
-
-
-@media all and (min-width:1024px) and (max-width:1159px){
-	.tv_logo{width:50px; height:49px;  float:left; margin:3% 1% 2% 3%;}
-	.tv_title{width:45%; color:#fff; font-size:2.5em; float:left; margin-top:3%;}
-	.tv_time{width:35%; color:#ddff93; font-size:1.2em; float:right; margin:4% 3% 1% 0; text-align:right;}
-	.tv_thumb_con{width:94%; height:78%; float:left; margin-left:3%;}
-	.tv_subtitle{width:100%; height: 16%; text-align:center; color:#fff; font-size:1.6em; float:left; border-radius: 10px 10px 0 0;}
-	#logo {width: 22%;background-color: #fff;height: 60px;vertical-align: middle;padding-left: 10px;display: flex;align-items: center;font-size: 1.5rem;letter-spacing: -2px;cursor: pointer;}
-	#logo span:first-child {width: 100px; text-align: center;}
-	#logo_area { height: 60px; text-align: center; display: inline-block;}
-	#logo_area img{padding-right: 2px;width: 100%;}
-	#top_menu ul li {width: 23.7%;height: 42px;background-color: #165AC1;border-radius: 7px 7px 0 0;border: #4B99FF 1px solid;border-bottom: none;margin-left: 5px;float: left;text-align: center;font-size: 1.5rem;}
-	.top_r {width: 43%;}
-	#left_sidebar{position: absolute;top: 0;bottom: 0;left: 22.2%;width: 49.5%;height: 100%;color: white;display:inline-block;margin:0;}
-	#left_sidebar i{text-decoration:none;font-size: 1rem;color: #ffffff;width: 100%;height: 28px !important;padding: 3px 0 0 0px;display: inline-block;}
-	#left_sidebar i span {font-size: 1.2rem;font-style: normal;color: #fff;margin-right: 5px;}
-	#login {width: 35%;font-size: 1.1rem;}
-	.layout_btn, .login_btn {width: 57px;font-size: 1rem;letter-spacing: -2px;}
-	#quick_menu ul li a {font-size: 1.1rem; padding: 0;}
-	.dropdown-content  {padding-left: 22.5%;}
-	.dropdown-content .row {width: 60%;}
-	.column {width: 20.3%;}
-	.column span {padding-left: 5px; font-size: 1.2rem; font-weight: 700;}
-	.pR_15 {padding-right: 10px !important; }
-	#top_menu ul li img {width: 20%;padding-top:3px;}
-}
-/* 0px에서 1280px까지 */ 
-@media all and (min-width:1160px) and (max-width:1279px){
-	.tv_logo{width:50px; height:49px;  float:left; margin:3% 1% 2% 3%;}
-	.tv_title{width:45%; color:#fff; font-size:2.5em; float:left; margin-top:3%;}
-	.tv_time{width:35%; color:#ddff93; font-size:1.2em; float:right; margin:4% 3% 1% 0; text-align:right;}
-	.tv_thumb_con{width:94%; height:78%; float:left; margin-left:3%;}
-	.tv_subtitle{width:100%; height: 16%; text-align:center; color:#fff; font-size:1.6em; float:left; border-radius: 10px 10px 0 0;}
-	#logo {width: 23%;background-color: #fff;height: 60px;vertical-align: middle;padding-left: 10px;display: flex;align-items: center;font-size: 1.9rem;letter-spacing: -2px;cursor: pointer;}
-	#logo span:first-child {width: 110px; text-align: center;}
-	#logo_area { height: 60px; text-align: center; display: inline-block;}
-	#logo_area img{padding-right: 3px;width: 100%;}
-	#top_menu ul li {width: 23.9%;height: 42px;background-color: #165AC1;border-radius: 7px 7px 0 0;border: #4B99FF 1px solid;border-bottom: none;margin-left: 5px;float: left;text-align: center;font-size: 1.5rem;}
-	.top_r {width: 42%;}
-	#left_sidebar{position: absolute;top: 0;bottom: 0;left: 23.2%;width: 47.5%;height: 100%;color: white;display:inline-block;margin:0;}
-	#left_sidebar i{text-decoration:none;font-size: 1rem;color: #ffffff;width: 100%;height: 28px !important;padding: 3px 0 0 0px;display: inline-block;}
-	#left_sidebar i span {font-size: 1.2rem;font-style: normal;color: #fff;margin-right: 5px;}
-	#login {width: 35%;font-size: 1.1rem;}
-	.layout_btn, .login_btn {width: 57px;font-size: 1rem;letter-spacing: -2px;}
-	#quick_menu ul li a {font-size: 1.2rem; padding: 0;}
-	.dropdown-content  {padding-left: 22.5%;}
-	.dropdown-content .row {width: 60%;}
-	.column {width: 20.8%;}
-	.column span {padding-left: 5px; font-size: 1.2rem; font-weight: 700;}
-	.pR_15 {padding-right: 15px !important; }
-	#top_menu ul li img {width: 20%;padding-top:3px;}
-}
-
-/* 1280px에서 1400px까지 */  
-@media all and (min-width:1280px) and (max-width:1415px){
-	.tv_logo{width:60px; height:58px; float:left;margin:3% 1% 2% 3%;}
-	.tv_title{width:45%; color:#fff; font-size:3em; float:left; margin-top:3%;}
-	.tv_time{width:35%; color:#ddff93; font-size:1.5em; float:right; margin:4% 3% 1% 0; text-align:right;}
-	.tv_thumb_con{width:94%; height:78%; float:left; margin-left:3%;}
-	.tv_subtitle{width:100%; height: 16%; text-align:center; color:#fff; font-size:2em; float:left; border-radius: 10px 10px 0 0;}
-	#logo{font-size: 2rem !important; cursor: pointer;width: 32%;}
-	#logo span:first-child {width: 120px; text-align: center;}
-	#logo_area { height: 60px; text-align: center; display: inline-block;}
-	#logo_area img{padding-right: 3px;width: 100%;}
-	.top_r {width: 66%;}
-	#top_menu ul li {width: 24.1%;height: 42px;background-color: #165AC1;border-radius: 7px 7px 0 0;border: #4B99FF 1px solid;border-bottom: none;margin-left: 5px;float: left;text-align: center;}
-	#login {width: 49%;  font-size: 1.2rem;}
-	#left_sidebar{position: absolute;top: 0;bottom: 0;left: 22%;width: 51.5%;height: 100%;color: white;display:inline-block;margin:0;}
-	.layout_btn, .login_btn {width: 70px; font-size: 1.1rem;}
-	#quick_menu ul li a {font-size: 1.2rem;}
-	.dropdown-content  {padding-left: 18%;}
-	.dropdown-content .row {width: 55.5%;}
-	.column {width: 20.8%;}
-	.column span {padding-left: 5px; font-size: 1.3rem; font-weight: 700; }
-}
-
 /* 1400px에서 1800px까지 */  
-@media all and (min-width:1416px) and (max-width:1599px) {
+@media (min-width: 1550px) and (max-width: 1799px) {
 	.tv_logo{width:80px; height:78px; float:left;margin:2% 1% 2% 3%;}
 	.tv_title{width:45%; color:#fff; font-size:3.9em; float:left; margin-top:2%;}
 	.tv_time{width:35%; color:#ddff93; font-size:2em; float:right; margin:4% 3% 1% 0; text-align:right;}
 	.tv_thumb_con{width:94%; height:78%; float:left; margin-left:3%;}
 	.tv_subtitle{width:100%; height: 16%; text-align:center; color:#fff; font-size:2.3em; float:left; border-radius: 10px 10px 0 0;}
-	#logo {font-size: 2.3rem !important;width: 22%;cursor: pointer;}
-	#logo span:first-child {width: 140px; text-align: center;}
-	#logo_area { height: 60px; text-align: center; display: inline-block;}
-	#logo_area img{padding-right: 4px;width: 100%;}
-	#login  {font-size: 1.2rem;width: 33%;}
-	.top_r {width: 45%;}
-	#top_menu ul li {font-size: 1.7rem;width: 24.2%;}
-	#quick_menu ul li a {font-size: 1.2rem;}
-	.dropdown-content  {padding-left: 21.5%;}
-	.dropdown-content .row {width: 48%;}
-	#left_sidebar{position: absolute;top: 0;bottom: 0;left: 22.2%;width: 51.5%;height: 100%;overflow: hidden;color: white;display:inline-block;margin:0;}
-	.column {width: 20.8%;}
-	.column span {padding-left: 5px; font-size: 1.3rem; font-weight: 700;}
-}
-
-/* 1400px에서 1800px까지 */  
-@media (min-width: 1600px) and (max-width: 1799px) {
-	.tv_logo{width:80px; height:78px; float:left;margin:2% 1% 2% 3%;}
-	.tv_title{width:45%; color:#fff; font-size:3.9em; float:left; margin-top:2%;}
-	.tv_time{width:35%; color:#ddff93; font-size:2em; float:right; margin:4% 3% 1% 0; text-align:right;}
-	.tv_thumb_con{width:94%; height:78%; float:left; margin-left:3%;}
-	.tv_subtitle{width:100%; height: 16%; text-align:center; color:#fff; font-size:2.3em; float:left; border-radius: 10px 10px 0 0;}
-	#logo {font-size: 2.5rem !important;width: 21%;cursor: pointer;}
+	#logo {font-size: 2.2rem !important;width: 21%;cursor: pointer;}
 	#logo span:first-child {width: 160px; text-align: center;}
 	#logo_area { height: 60px; text-align: center; display: inline-block;}
 	#logo_area img{padding-right: 4px;width: 100%;}
