@@ -383,8 +383,8 @@ $(document).ready(function(){
 									label: '<?=level_1?>',
 									data: DATA1,
 									yAxisID: 'y_flow',
-									backgroundColor: '#008000',
-									borderColor: '#008000',
+									backgroundColor: 'rgba(255, 154, 54 ,0.856)',
+									borderColor: 'rgba(255, 154, 54 ,0.856)',
 									borderWidth: 2,
 									fill: false,
 									pointRadius: 0
@@ -392,8 +392,8 @@ $(document).ready(function(){
 									label: '<?=level_2?>',
 									data: DATA2,
 									yAxisID: 'y_flow',
-									backgroundColor: '#ff8017',
-									borderColor: '#ff8017',
+									backgroundColor: 'rgba(231, 46, 52,0.856)',
+									borderColor: 'rgba(231, 46, 52,0.856)',
 									borderWidth: 2,
 									fill: false,
 									pointRadius: 0
@@ -553,8 +553,8 @@ $(document).ready(function(){
 									label: '<?=level_1?>',
 									data: DATA1,
 									yAxisID: 'y_flow',
-									backgroundColor: '#008000',
-									borderColor: '#008000',
+									backgroundColor: 'rgba(255, 154, 54 ,0.856)',
+									borderColor: 'rgba(255, 154, 54 ,0.856)',
 									borderWidth: 2,
 									fill: false,
 									pointRadius: 0
@@ -562,8 +562,8 @@ $(document).ready(function(){
 									label: '<?=level_2?>',
 									data: DATA2,
 									yAxisID: 'y_flow',
-									backgroundColor: '#ff8017',
-									borderColor: '#ff8017',
+									backgroundColor: 'rgba(231, 46, 52,0.856)',
+									borderColor: 'rgba(231, 46, 52,0.856)',
 									borderWidth: 2,
 									fill: false,
 									pointRadius: 0

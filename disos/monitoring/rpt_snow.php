@@ -558,8 +558,8 @@ $(document).ready(function(){
 									labelColor: function(tooltipItem, chart){
 										if(tooltipItem.datasetIndex == 1){
 											return {
-												backgroundColor : '#ff8017',
-												borderColor: '#ff8017'
+												backgroundColor : 'rgba(231, 46, 52,0.856)',
+												borderColor: 'rgba(231, 46, 52,0.856)'
 											}
 										}else if(tooltipItem.datasetIndex == 2){
 											return {
@@ -568,8 +568,8 @@ $(document).ready(function(){
 											}
 										}else{
 											return {
-												backgroundColor : '#008000',
-												borderColor: '#008000'
+												backgroundColor : 'rgba(255, 154, 54 ,0.856)',
+												borderColor: 'rgba(255, 154, 54 ,0.856)'
 											}
 										}
 									}
@@ -670,8 +670,8 @@ $(document).ready(function(){
 								label: '<?=level_1?>',
 								data: DATA1,
 								yAxisID: 'y_snow',
-								backgroundColor: '#008000',
-								borderColor: '#008000',
+								backgroundColor: 'rgba(255, 154, 54 ,0.856)',
+								borderColor: 'rgba(255, 154, 54 ,0.856)',
 								borderWidth: 2,
 								fill: false,
 								pointRadius: 0
@@ -680,8 +680,8 @@ $(document).ready(function(){
 								label: '<?=level_2?>',
 								data: DATA2,
 								yAxisID: 'y_snow',
-								backgroundColor: '#ff8017',
-								borderColor: '#ff8017',
+								backgroundColor: 'rgba(231, 46, 52,0.856)',
+								borderColor: 'rgba(231, 46, 52,0.856)',
 								borderWidth: 2,
 								fill: false,
 								pointRadius: 0
@@ -720,10 +720,10 @@ $(document).ready(function(){
 									generateLabels: function(chart){
 										labels = Chart.defaults.global.legend.labels.generateLabels(chart);
 										if($('input[name="sel_date"]:checked').val() == "H"){
-											labels[0].fillStyle = '#008000';
-											labels[0].strokeStyle = '#008000';
-											labels[1].fillStyle = '#ff8017';
-											labels[1].strokeStyle = '#ff8017';
+											labels[0].fillStyle = 'rgba(255, 154, 54 ,0.856)';
+											labels[0].strokeStyle = 'rgba(255, 154, 54 ,0.856)';
+											labels[1].fillStyle = 'rgba(231, 46, 52,0.856)';
+											labels[1].strokeStyle = 'rgba(231, 46, 52,0.856)';
 										}else{
 											labels[0].fillStyle = '#96c6f7';
 											labels[0].strokeStyle = '#96c6f7';
@@ -744,8 +744,8 @@ $(document).ready(function(){
 									labelColor: function(tooltipItem, chart){
 										if(tooltipItem.datasetIndex == 1){
 											return {
-												backgroundColor : '#ff8017',
-												borderColor: '#ff8017'
+												backgroundColor : 'rgba(231, 46, 52,0.856)',
+												borderColor: 'rgba(231, 46, 52,0.856)'
 											}
 										}else if(tooltipItem.datasetIndex == 2){
 											return {
@@ -754,8 +754,8 @@ $(document).ready(function(){
 											}
 										}else{
 											return {
-												backgroundColor : '#008000',
-												borderColor: '#008000'
+												backgroundColor : 'rgba(255, 154, 54 ,0.856)',
+												borderColor: 'rgba(255, 154, 54 ,0.856)'
 											}
 										}
 									}
