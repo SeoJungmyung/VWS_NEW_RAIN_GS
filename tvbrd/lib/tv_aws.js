@@ -435,8 +435,10 @@ function aws(kind, arr_area_code){ // AWS - AWS 장비
 				marker_el.addEventListener('mouseout', function(){
 					if( Number(map_level) < Number(over_level) ){
 						if(!arr_rtu[item]['overlay_on']){
-							$("#aws_"+item).hide();
-							$("#aws_"+item).next().hide();
+							if($("#wave_"+item).css('display') == 'none'){
+								$("#aws_"+item).hide();
+								$("#aws_"+item).next().hide();
+							}
 						}
 					}
 				});

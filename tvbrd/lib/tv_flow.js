@@ -292,8 +292,10 @@ function flow(kind, arr_area_code){ // 강우 - 강우만 있는 장비
 				marker_el.addEventListener('mouseout', function(){
 					if( Number(map_level) < Number(over_level) ){
 						if(!arr_rtu[item]['overlay_on']){
-							$("#flow_"+item).hide();
-							$("#flow_"+item).next().hide();
+							if($("#wave_"+item).css('display') == 'none'){
+								$("#flow_"+item).hide();
+								$("#flow_"+item).next().hide();
+							}
 						}
 					}
 				});
