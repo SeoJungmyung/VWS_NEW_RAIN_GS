@@ -47376,7 +47376,7 @@ insert  into `rtu_group`(`rtu_id`,`group_id`,`organ_id`,`SORT_FLAG`) values (9,'
 
 /*Data for the table `user_info` */
 
-insert  into `user_info`(`USER_ID`,`ORGAN_ID`,`AREA_CODE`,`USER_TYPE`,`USER_PERMIT`,`USER_NAME`,`USER_PWD`,`MOBILE`,`EMAIL`,`REG_DATE`,`FAIL_CNT`,`IS_PERMIT`,`MENU_TYPE`,`SMART_MOBILE`,`SMART_USE`,`LAST_FAIL_DATE`,`USER_PWD_LEN`) values ('adminuser',1,'','','','화진티엔아이','8fbfecce12f68bb2b58ca5574e8e099abecf9db12dbee7a65e464aef8863d63d','','',now(),0,'','','','',NULL,11);
+insert  into `user_info`(`USER_ID`,`ORGAN_ID`,`AREA_CODE`,`USER_TYPE`,`USER_PERMIT`,`USER_NAME`,`USER_PWD`,`MOBILE`,`EMAIL`,`REG_DATE`,`FAIL_CNT`,`IS_PERMIT`,`MENU_TYPE`,`SMART_MOBILE`,`SMART_USE`,`LAST_FAIL_DATE`,`USER_PWD_LEN`, `PASS_S`) values ('adminuser',1,'','','','화진티엔아이','2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3','','',now(),0,'','','','',NULL,11, 'YzJyMEtnZ1V2dVhxK20zYTdibGFqNFNMNktZUEZ6TE4');
 
 /*Data for the table `user_log` */
 
