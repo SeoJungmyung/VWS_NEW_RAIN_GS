@@ -23,6 +23,12 @@ require_once "./head.php";
 <script type="text/javascript">
 $(document).ready(function(){
 
+	history.pushState(null, null, "");
+ 
+	window.onpopstate = function(event) {
+		history.go(1);
+	};
+
 	// 객체 생성
 	var crypt = new JSEncrypt();
 
