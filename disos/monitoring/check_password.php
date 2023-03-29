@@ -142,6 +142,11 @@ $(document).ready(function(){
 	$('#btn_emer_del').click(function(){
 		parent.location.href = "main.php";
 	});
+	setTimeout(function(){
+		if($(".sweet-alert").css('display') == "none"){
+			location.reload();
+		}
+	},1000);
 });
 </script>
 
