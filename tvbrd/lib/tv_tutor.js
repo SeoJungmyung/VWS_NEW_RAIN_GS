@@ -511,11 +511,11 @@
           		setInt_data4 = setInterval(function(){
             		time_update();
 					
-					if(localStorage.getItem("pass_data") == "change password"){
-						var ms_token = localStorage.getItem("ms");
-						var session_time = getCookie("session_time_"+ms_token);
-						// setTimeout(function(){
-						if($(".sweet-overlay").css('display') == "none"){
+					if(map_control_type != 1){
+						if(localStorage.getItem("pass_data") == "change password"){
+							var ms_token = localStorage.getItem("ms");
+							var session_time = getCookie("session_time_"+ms_token);
+							// setTimeout(function(){
 							parent.swal({ 
 								title: '',
 								text: '',
@@ -533,7 +533,7 @@
 										obj = document.createElement('input');
 										obj.setAttribute('type', 'hidden');
 										obj.setAttribute('name', 'target');
-										obj.setAttribute('value', 'set_user.php');
+										obj.setAttribute('value', 'check_password.php');
 						
 										f.appendChild(obj);
 										f.setAttribute('method', 'post');
@@ -548,8 +548,8 @@
 								localStorage.setItem("pass_data","next");
 								parent.swal.close();
 							});
+							// })
 						}
-						// })
 					}
         		}, 1000);
           		
