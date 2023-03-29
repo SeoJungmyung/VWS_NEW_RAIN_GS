@@ -931,7 +931,7 @@ $(document).ready(function(){
 						return false;
 					}else{
 						swal({
-							title: "시스템 설정중 오류가 발생 했습니다.",
+							title: "해당 파일은 첨부할 수 없습니다.",
 							text: data.result[1], 
 							type: "warning",
 							timer: 1300,

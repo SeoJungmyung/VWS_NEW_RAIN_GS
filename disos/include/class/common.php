@@ -758,7 +758,7 @@ Class ClassCommon {
 		if($file_size > 5242880 ){
 			return array(2, "이미지는 5mb 이하만 등록하실 수 있습니다.");
 		}else if($file_type != "image/jpeg" && $file_type != "image/png"){
-			return array(2, "jpeg 또는 png만 등록하실 수 있습니다.");
+			return array(2, "※ 등록 가능 이미지 : jpg, jpeg, png");
 		}
 		
 		$real_name = $file_name; // 업로드 하기 전 파일명
