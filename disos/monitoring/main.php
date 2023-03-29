@@ -173,37 +173,39 @@ $(document).ready(function(){
 
 		if(pass_data == "change password"){
 			setTimeout(function(){
-				parent.swal({ 
-					title: '',
-					text: '',
-					confirmButtonText: ".",
-					cancelButtonText: ".",
-					showCancelButton: true,
-					closeOnConfirm: false,
-					closeOnCancel: false,
-					customClass : 'swal-wide-passchange'
-				}, function (isConfirm) {
-					if (isConfirm) {
-						if(session_time) {
-							let f = document.createElement('form');
-							let obj;
-							obj = document.createElement('input');
-							obj.setAttribute('type', 'hidden');
-							obj.setAttribute('name', 'target');
-							obj.setAttribute('value', 'check_password.php');
-			
-							f.appendChild(obj);
-							f.setAttribute('method', 'post');
-							f.setAttribute('action', 'main.php');
-							document.body.appendChild(f);
-							f.submit();
-							localStorage.setItem("pass_data","changed");
+				if($(".sweet-overlay").css('display') == "none"){
+					parent.swal({ 
+						title: '',
+						text: '',
+						confirmButtonText: ".",
+						cancelButtonText: ".",
+						showCancelButton: true,
+						closeOnConfirm: false,
+						closeOnCancel: false,
+						customClass : 'swal-wide-passchange'
+					}, function (isConfirm) {
+						if (isConfirm) {
+							if(session_time) {
+								let f = document.createElement('form');
+								let obj;
+								obj = document.createElement('input');
+								obj.setAttribute('type', 'hidden');
+								obj.setAttribute('name', 'target');
+								obj.setAttribute('value', 'check_password.php');
+				
+								f.appendChild(obj);
+								f.setAttribute('method', 'post');
+								f.setAttribute('action', 'main.php');
+								document.body.appendChild(f);
+								f.submit();
+								localStorage.setItem("pass_data","changed");
+							}
 						}
-					}
-				});
-				parent.$('.cancel').click(function() {
-					localStorage.setItem("pass_data","next");
-				});
+					});
+					parent.$('.cancel').click(function() {
+						localStorage.setItem("pass_data","next");
+					});
+				}
 			})
 		}
 		
