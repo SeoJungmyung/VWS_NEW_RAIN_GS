@@ -1515,7 +1515,6 @@
 	function parent_main_close(){
 		if( swal.getState() ){
 			if( swal.getOutsideClick() ){
-				audio.pause();
 				$("#popup_over_main1", parent.document).hide();
 				$("#popup_over_main2", parent.document).hide();
 				$("#popup_overlay").hide();
