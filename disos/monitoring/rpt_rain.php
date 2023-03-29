@@ -744,21 +744,28 @@ $(document).ready(function(){
 								},
 								callbacks: {
 									labelColor: function(tooltipItem, chart){
-										if(tooltipItem.datasetIndex == 1){
-											return {
-												backgroundColor : 'rgba(231, 46, 52,0.856)',
-												borderColor: 'rgba(231, 46, 52,0.856)'
-											}
-										}else if(tooltipItem.datasetIndex == 2){
-											return {
-												backgroundColor : '#69F',
-												borderColor: '#69F'
+										if($('input[name="sel_date"]:checked').val() == "H"){
+											if(tooltipItem.datasetIndex == 1){
+												return {
+													backgroundColor : 'rgba(231, 46, 52,0.856)',
+													borderColor: 'rgba(231, 46, 52,0.856)'
+												}
+											}else if(tooltipItem.datasetIndex == 2){
+												return {
+													backgroundColor : '#69F',
+													borderColor: '#69F'
+												}
+											}else{
+												return {
+													backgroundColor : 'rgba(255, 154, 54 ,0.856)',
+													borderColor: 'rgba(255, 154, 54 ,0.856)'
+												}
 											}
 										}else{
 											return {
-												backgroundColor : 'rgba(255, 154, 54 ,0.856)',
-												borderColor: 'rgba(255, 154, 54 ,0.856)'
-											}
+													backgroundColor : '#96c6f7',
+													borderColor: '#96c6f7'
+												}
 										}
 									}
 								}
