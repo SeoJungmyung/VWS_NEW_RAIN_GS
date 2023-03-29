@@ -39,6 +39,15 @@ $num = $_REQUEST['num'] ? $_REQUEST['num'] : "1";
 <script type="text/javascript">
 $(document).ready(function(){
 
+	// 현재 URL을 가져옵니다.
+	var currentUrl = window.location.href;
+
+	// 매개변수가 포함된 URL에서 매개변수를 제거합니다.
+	var newUrl = currentUrl.replace(/\?.*$/, "");
+
+	// 새로운 URL로 변경합니다.
+	window.history.pushState({}, document.title, newUrl);
+	
 	//logo 이미지 사이즈, 비율 조절
 	function logoImgChange(){
 		var nWidth = $("#top_img img")[0].naturalWidth;
