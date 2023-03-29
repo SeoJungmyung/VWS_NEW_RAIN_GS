@@ -15,10 +15,10 @@ if($_SESSION["OTT"] == $_POST["OTT"]){
 		// 시스템 설정
 		case 'set':
 			$result1 = $ClassCommon->setSetting();
-			if($result1[0] != 1){
+			$result2 = $ClassCommon->setMenu();
+			if($result1[0] !== 1){
 				$returnBody = array( 'result' => $result1);
 			}else{
-				$result2 = $ClassCommon->setMenu();
 				$result = ($result1 && $result2) ? true : false;
 				$returnBody = array( 'result' => $result);
 			}
