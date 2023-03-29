@@ -107,13 +107,23 @@ Class ClassRtuInfo {
 				$this->HUMI[$i] = $rs[$i]['HUMI'];
 				$this->RADI[$i] = $rs[$i]['RADI'];
 				$this->SUNS[$i] = $rs[$i]['SUNS'];
-				$this->FLOW_WARNING[$i] = $rs[$i]['FLOW_WARNING'] == "0" ? "-" : sprintf("%.2f", $rs[$i]['FLOW_WARNING'] * 0.01);
-				$this->FLOW_DANGER[$i] = $rs[$i]['FLOW_DANGER'] == "0" ? "-" : sprintf("%.2f", $rs[$i]['FLOW_DANGER'] * 0.01);
-				$this->FLOW_LEVEL1[$i] = $rs[$i]['FLOW_LEVEL1'] == "0" ? "-" : sprintf("%.2f", $rs[$i]['FLOW_LEVEL1'] * 0.01);
-				$this->FLOW_LEVEL2[$i] = $rs[$i]['FLOW_LEVEL2'] == "0" ? "-" : sprintf("%.2f", $rs[$i]['FLOW_LEVEL2'] * 0.01);
-				$this->FLOW_LEVEL3[$i] = $rs[$i]['FLOW_LEVEL3'] == "0" ? "-" : sprintf("%.2f", $rs[$i]['FLOW_LEVEL3'] * 0.01);
-				$this->FLOW_LEVEL4[$i] = $rs[$i]['FLOW_LEVEL4'] == "0" ? "-" : sprintf("%.2f", $rs[$i]['FLOW_LEVEL4'] * 0.01);
-				$this->FLOW_LEVEL5[$i] = $rs[$i]['FLOW_LEVEL5'] == "0" ? "-" : sprintf("%.2f", $rs[$i]['FLOW_LEVEL5'] * 0.01);
+				if($rs[$i]['RTU_TYPE'] == 'S00'){
+					$this->FLOW_WARNING[$i] = $rs[$i]['FLOW_WARNING'] == "0" ? "-" : sprintf("%.2f", $rs[$i]['FLOW_WARNING'] * 0.001);
+					$this->FLOW_DANGER[$i] = $rs[$i]['FLOW_DANGER'] == "0" ? "-" : sprintf("%.2f", $rs[$i]['FLOW_DANGER'] * 0.001);
+					$this->FLOW_LEVEL1[$i] = $rs[$i]['FLOW_LEVEL1'] == "0" ? "-" : sprintf("%.2f", $rs[$i]['FLOW_LEVEL1'] * 0.001);
+					$this->FLOW_LEVEL2[$i] = $rs[$i]['FLOW_LEVEL2'] == "0" ? "-" : sprintf("%.2f", $rs[$i]['FLOW_LEVEL2'] * 0.001);
+					$this->FLOW_LEVEL3[$i] = $rs[$i]['FLOW_LEVEL3'] == "0" ? "-" : sprintf("%.2f", $rs[$i]['FLOW_LEVEL3'] * 0.001);
+					$this->FLOW_LEVEL4[$i] = $rs[$i]['FLOW_LEVEL4'] == "0" ? "-" : sprintf("%.2f", $rs[$i]['FLOW_LEVEL4'] * 0.001);
+					$this->FLOW_LEVEL5[$i] = $rs[$i]['FLOW_LEVEL5'] == "0" ? "-" : sprintf("%.2f", $rs[$i]['FLOW_LEVEL5'] * 0.001);
+				}else{
+					$this->FLOW_WARNING[$i] = $rs[$i]['FLOW_WARNING'] == "0" ? "-" : sprintf("%.2f", $rs[$i]['FLOW_WARNING'] * 0.01);
+					$this->FLOW_DANGER[$i] = $rs[$i]['FLOW_DANGER'] == "0" ? "-" : sprintf("%.2f", $rs[$i]['FLOW_DANGER'] * 0.01);
+					$this->FLOW_LEVEL1[$i] = $rs[$i]['FLOW_LEVEL1'] == "0" ? "-" : sprintf("%.2f", $rs[$i]['FLOW_LEVEL1'] * 0.01);
+					$this->FLOW_LEVEL2[$i] = $rs[$i]['FLOW_LEVEL2'] == "0" ? "-" : sprintf("%.2f", $rs[$i]['FLOW_LEVEL2'] * 0.01);
+					$this->FLOW_LEVEL3[$i] = $rs[$i]['FLOW_LEVEL3'] == "0" ? "-" : sprintf("%.2f", $rs[$i]['FLOW_LEVEL3'] * 0.01);
+					$this->FLOW_LEVEL4[$i] = $rs[$i]['FLOW_LEVEL4'] == "0" ? "-" : sprintf("%.2f", $rs[$i]['FLOW_LEVEL4'] * 0.01);
+					$this->FLOW_LEVEL5[$i] = $rs[$i]['FLOW_LEVEL5'] == "0" ? "-" : sprintf("%.2f", $rs[$i]['FLOW_LEVEL5'] * 0.01);
+				}
 			}
 			$this->rsCnt = $i;
 			
