@@ -931,12 +931,13 @@ $(document).ready(function(){
 						return false;
 					}else{
 						swal({
-							title: "해당 파일은 첨부할 수 없습니다.",
-							text: data.result[1], 
+							title: "파일 첨부 실패",
+							text: "해당 파일은 첨부할 수 없습니다. \n\ " + data.result[1], 
 							type: "warning",
 							timer: 1300,
 							showConfirmButton: true,
-							allowOutsideClick: false
+							allowOutsideClick: false,
+							customClass : 'swal-warning-confirm'
 						}, function(){
 							// parent.location.reload();
 							return false;

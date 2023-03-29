@@ -55,6 +55,14 @@ body.stop-scrolling {
   z-index: 99999 !important;
 }
 
+.swal-warning-confirm .confirm {
+  left : -55px !important;
+  top: -30px !important;
+  position: absolute !important;
+  width: 100px !important;
+  height: 40px !important;
+}
+
 .swal-wide-passchange  {
   background-image: url('../images/pass_change.png');
   background-position: center;
