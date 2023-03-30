@@ -457,7 +457,7 @@ $(document).ready(function(){
 	var chart = null;
 	function graph_on(){
     	if(chart) chart.destroy();
-		console.log($('input[name="sel_date"]:checked').val());
+		
     	if($('input[name="sel_date"]:checked').val() == "A"){
 			$.ajax({
 				type: "POST",

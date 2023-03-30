@@ -113,7 +113,7 @@
 				tmp_html += '</tr>';
 
 				$.each(hour, function(index, item){
-					console.log(item);
+					// console.log(item);
 					var tmp_num = Number(hour.length - (index+1)); // 그래프 인덱스 거꾸로
 					var tmp_date = item['date'];
 					var tmp_deg = item['deg_data'];
