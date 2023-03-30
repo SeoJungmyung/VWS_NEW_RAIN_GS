@@ -32,8 +32,9 @@ CLASS DBmanager extends mysqli{
 	public FUNCTION SET_CONNECT(){
 		$this->db['conn'] = @mysqli_connect($this->db['host'], $this->db['user'], $this->db['passwd'], $this->db['database'], $this->db['port']);
 		if(!$this->db['conn']){
+			$this->updaterTrace($sql, mysqli_error($this->db['conn']));
 			// die("Connection to the server is not available at this time.");
-			header('Location: /errorpage.html');
+			// header('Location: /errorpage.html');
 			exit();
 		}
 		else{@mysqli_set_charset($this->db['conn'],"utf8");}
@@ -101,7 +102,8 @@ CLASS DBmanager extends mysqli{
 		if(isset($sql)){
 			$this->query_result=@mysqli_query($this->db['conn'],$sql);
 			if(!$this->query_result){
-				header('Location: /errorpage.html');
+				$this->updaterTrace($sql, mysqli_error($this->db['conn']));
+				// header('Location: /errorpage.html');
 				exit();
 			}
 			$this->num_rows = mysqli_num_rows($this->query_result);
@@ -166,7 +168,7 @@ CLASS DBmanager extends mysqli{
 		if(isset($sql))$this->query_result=@mysqli_query($this->db['conn'],$sql);
 		if(!$this->query_result){
 			$this->updaterTrace($sql, mysqli_error($this->db['conn']));
-			header('Location: /errorpage.html');
+			// header('Location: /errorpage.html');
 			exit();
 		}else{
 			$this->updaterTrace($sql, $this->query_result);

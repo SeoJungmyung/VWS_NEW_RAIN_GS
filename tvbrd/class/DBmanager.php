@@ -35,8 +35,13 @@ CLASS DBmanager extends mysqli{
 	******************/
 	public FUNCTION SET_CONNECT(){
 		$this->db['conn'] = @mysqli_connect($this->db['host'], $this->db['user'], $this->db['passwd'], $this->db['database'], $this->db['port']);
-		if(!$this->db['conn']){die("연결 실패 : ".mysqli_connect_error());}
-		else{mysqli_set_charset($this->db['conn'],"utf8");}
+		if(!$this->db['conn']){
+			$this->updaterTrace($sql, mysqli_error($this->db['conn']));
+			// die("Connection to the server is not available at this time.");
+			// header('Location: /errorpage.html');
+			exit();
+		}
+		else{@mysqli_set_charset($this->db['conn'],"utf8");}
 	}
 
 	/******************
@@ -98,9 +103,16 @@ CLASS DBmanager extends mysqli{
 	쿼리전송
 	******************/
 	public FUNCTION QUERY_LiNE($sql) {
-		if(isset($sql))$this->query_result=mysqli_query($this->db['conn'],$sql) or die(mysqli_error($this->db['conn']));
-		$this->num_rows = mysqli_num_rows($this->query_result);
-		$this->recordcount = $this->num_rows;
+		if(isset($sql)){
+			$this->query_result=@mysqli_query($this->db['conn'],$sql);
+			if(!$this->query_result){
+				$this->updaterTrace($sql, mysqli_error($this->db['conn']));
+				// header('Location: /errorpage.html');
+				exit();
+			}
+			$this->num_rows = mysqli_num_rows($this->query_result);
+			$this->recordcount = $this->num_rows;
+		}
 	}
 	
 	/******************
@@ -129,7 +141,7 @@ CLASS DBmanager extends mysqli{
 		// $this->query_result=mysqli_query($this->db['conn'],$sql2) or die(mysqli_error($this->db['conn']));
 		
 		// 개행문자, tab 제거
-		$sql = preg_replace('/\r\n|\r|\n|\t/','',$sql);
+		$sql = preg_replace('/\r\n|\r|\n|\t/',' ',$sql);
 		$str = $_SESSION['user_id']." | ".$this->client_ip." | ".addslashes($btVal)." | ".addslashes($sql)." | ".$result;
 
 		$sysIdx = strpos($btArr[count($btArr)-1]['file'], "\\APM_Setup\\");
@@ -157,9 +169,15 @@ CLASS DBmanager extends mysqli{
 	}
 
 	public FUNCTION QUERYONE($sql) {
-		if(isset($sql))$this->query_result=mysqli_query($this->db['conn'],$sql) or die(mysqli_error($this->db['conn']));
-		$this->updaterTrace($sql, $this->query_result);
-		return $this->query_result;
+		if(isset($sql))$this->query_result=@mysqli_query($this->db['conn'],$sql);
+		if(!$this->query_result){
+			$this->updaterTrace($sql, mysqli_error($this->db['conn']));
+			// header('Location: /errorpage.html');
+			exit();
+		}else{
+			$this->updaterTrace($sql, $this->query_result);
+			return $this->query_result;
+		}
 	}
 
 	/******************
