@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<title><?=top_title?> v3.0</title>
+<title>스마트 기상관측 시스템 v3.0</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta charset="utf-8">
 <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
