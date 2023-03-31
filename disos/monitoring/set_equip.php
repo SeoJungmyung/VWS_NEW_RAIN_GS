@@ -1222,7 +1222,7 @@ $(document).ready(function(){
 				}
 				
 				if(isConfirm){
-					
+					var sort_base = "<?=$_SESSION['sort_base']?>";
 					//중복 submit 방지
 					if(doubleSubmitCheck()) return;
 					$("#AREA_CODE").attr('disabled',false);
@@ -1252,33 +1252,34 @@ $(document).ready(function(){
 
 								$('#list_table').DataTable().destroy();
 								table_load();
-
-								if($("tr[name='list_"+list_id+"'] #l_SORT_FLAG").text() != (DANGER_USE == 1 ? formData[19].value : formData[15].value)){
-									sessionStorage.setItem('search_word',$("#search_word").val());
-									sessionStorage.setItem('search_col',$("#search_col").val());
-
-									$("tr[name='list_"+list_id+"'] #l_SORT_FLAG").text((DANGER_USE == 1 ? formData[19].value : formData[15].value));
-
-									const tbody = $("#list_table tbody");
-									const rows = tbody.find("tr:visible").get();
-
-									rows.sort((a, b) => {
-										const aValue = parseInt($(a).find("td:eq(1)").text());
-										const bValue = parseInt($(b).find("td:eq(1)").text());
-										// return aValue.localeCompare(bValue);
-										return aValue - bValue;
-									});
-									$.each(rows, (i, row) => {
-										tbody.append(row);
-										$(row).find("td:eq(0)").text(i + 1);
-									});
+								if(sort_base == "0"){
+									if($("tr[name='list_"+list_id+"'] #l_SORT_FLAG").text() != (DANGER_USE == 1 ? formData[19].value : formData[15].value)){
+										sessionStorage.setItem('search_word',$("#search_word").val());
+										sessionStorage.setItem('search_col',$("#search_col").val());
+	
+										$("tr[name='list_"+list_id+"'] #l_SORT_FLAG").text((DANGER_USE == 1 ? formData[19].value : formData[15].value));
+	
+										const tbody = $("#list_table tbody");
+										const rows = tbody.find("tr:visible").get();
+	
+										rows.sort((a, b) => {
+											const aValue = parseInt($(a).find("td:eq(1)").text());
+											const bValue = parseInt($(b).find("td:eq(1)").text());
+											// return aValue.localeCompare(bValue);
+											return aValue - bValue;
+										});
+										$.each(rows, (i, row) => {
+											tbody.append(row);
+											$(row).find("td:eq(0)").text(i + 1);
+										});
+									}
 								}
 								if(DANGER_USE == 1){
 									$("tr[name='list_"+list_id+"'] #l_SIGNAL_ID").text(formData[9].value);
 									$("tr[name='list_"+list_id+"'] #l_SORT_FLAG").text(formData[17].value);
 									$("tr[name='list_"+list_id+"'] #l_RTU_NAME").text(formData[10].value);
 									$("tr[name='list_"+list_id+"'] #l_RTU_TYPE_NAME").text(formData[11].value == "R00" ? "강우계" : formData[11].value == "F00" ? "수위계" : formData[11].value == "A00" ? "AWS" : formData[11].value == "S00" ? "적설계" : "");
-									$("tr[name='list_"+list_id+"'] #l_LINE_NAME").text(formData[18].value == "0" ? "TCP/IP" : formData[20].value == "3" ? "ODBC" : "");
+									$("tr[name='list_"+list_id+"'] #l_LINE_NAME").text(formData[18].value == "0" ? "TCP/IP" : formData[18].value == "3" ? "ODBC" : "");
 									$("tr[name='list_"+list_id+"'] #l_MODEL_NAME").text(formData[19].value == "0" ? "HS920M" : "");
 									$("tr[name='list_"+list_id+"'] #l_CONNECTION_INFO").text(formData[24].value);
 									$("tr[name='list_"+list_id+"'] #l_PORT").text(formData[23].value);
