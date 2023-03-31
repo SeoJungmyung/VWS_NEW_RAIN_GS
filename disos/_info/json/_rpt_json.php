@@ -244,15 +244,7 @@ switch($mode){
 				}
 			}
 		}
-		if(level_cnt == 2){
-			$data_list['MAX'] = ($data_list['MAX'] < $data_list['RISK_2']) ? $data_list['RISK_2'] : $data_list['MAX'];
-		}else if(level_cnt == 3){
-			$data_list['MAX'] = ($data_list['MAX'] < $data_list['RISK_3']) ? $data_list['RISK_3'] : $data_list['MAX'];
-		}else if(level_cnt == 4){
-			$data_list['MAX'] = ($data_list['MAX'] < $data_list['RISK_3']) ? $data_list['RISK_3'] : $data_list['MAX'];
-		}else if(level_cnt == 5){
-			$data_list['MAX'] = ($data_list['MAX'] < $data_list['RISK_5']) ? $data_list['RISK_5'] : $data_list['MAX'];
-		}
+		$data_list['MAX'] = ($data_list['MAX'] < $data_list['RISK_2']) ? $data_list['RISK_2'] : $data_list['MAX'];
 		$data_list['MIN'] = ($data_list['MIN'] > $data_list['RISK_1']) ? $data_list['RISK_1'] : $data_list['MIN'];
 			
 		$returnBody = array( 'list' => $data_list );
@@ -288,15 +280,7 @@ switch($mode){
 				}
 			}
 		}
-		if(level_cnt == 2){
-			$data_list['MAX'] = ($data_list['MAX'] < $data_list['RISK_2']) ? $data_list['RISK_2'] : $data_list['MAX'];
-		}else if(level_cnt == 3){
-			$data_list['MAX'] = ($data_list['MAX'] < $data_list['RISK_3']) ? $data_list['RISK_3'] : $data_list['MAX'];
-		}else if(level_cnt == 4){
-			$data_list['MAX'] = ($data_list['MAX'] < $data_list['RISK_3']) ? $data_list['RISK_3'] : $data_list['MAX'];
-		}else if(level_cnt == 5){
-			$data_list['MAX'] = ($data_list['MAX'] < $data_list['RISK_5']) ? $data_list['RISK_5'] : $data_list['MAX'];
-		}
+		$data_list['MAX'] = ($data_list['MAX'] < $data_list['RISK_2']) ? $data_list['RISK_2'] : $data_list['MAX'];
 		$data_list['MIN'] = ($data_list['MIN'] > $data_list['RISK_1']) ? $data_list['RISK_1'] : $data_list['MIN'];
 		
 		$returnBody = array( 'list' => $data_list );
@@ -332,15 +316,7 @@ switch($mode){
 				}
 			}
 		}
-		if(level_cnt == 2){
-			$data_list['MAX'] = ($data_list['MAX'] < $data_list['RISK_2']) ? $data_list['RISK_2'] : $data_list['MAX'];
-		}else if(level_cnt == 3){
-			$data_list['MAX'] = ($data_list['MAX'] < $data_list['RISK_3']) ? $data_list['RISK_3'] : $data_list['MAX'];
-		}else if(level_cnt == 4){
-			$data_list['MAX'] = ($data_list['MAX'] < $data_list['RISK_3']) ? $data_list['RISK_3'] : $data_list['MAX'];
-		}else if(level_cnt == 5){
-			$data_list['MAX'] = ($data_list['MAX'] < $data_list['RISK_5']) ? $data_list['RISK_5'] : $data_list['MAX'];
-		}
+		$data_list['MAX'] = ($data_list['MAX'] < $data_list['RISK_2']) ? $data_list['RISK_2'] : $data_list['MAX'];
 		$data_list['MIN'] = ($data_list['MIN'] > $data_list['RISK_1']) ? $data_list['RISK_1'] : $data_list['MIN'];
 		
 		$returnBody = array( 'list' => $data_list );
@@ -397,13 +373,7 @@ switch($mode){
 				}
 			}
 
-			if(level_cnt == 2){
-				$data_list['MAX'] = ($data_list['MAX'] < $data_list['RISK_2']) ? $data_list['RISK_2'] : $data_list['MAX'];
-			}else if(level_cnt == 3){
-				$data_list['MAX'] = ($data_list['MAX'] < $data_list['RISK_3']) ? $data_list['RISK_3'] : $data_list['MAX'];
-			}else if(level_cnt == 4){
-				$data_list['MAX'] = ($data_list['MAX'] < $data_list['RISK_3']) ? $data_list['RISK_3'] : $data_list['MAX'];
-			}
+			$data_list['MAX'] = ($data_list['MAX'] < $data_list['RISK_2']) ? $data_list['RISK_2'] : $data_list['MAX'];
 			$data_list['MIN'] = ($data_list['MIN'] > $data_list['RISK_1']) ? $data_list['RISK_1'] : $data_list['MIN'];
 		}
 			

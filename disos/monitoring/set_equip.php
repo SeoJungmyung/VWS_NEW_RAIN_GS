@@ -359,34 +359,8 @@ require_once "./head.php";
 					<tr>
 						<th class="w10i">센서</th>
 						<th class="w7">기준</th>
-					<? 
-						if(level_cnt == 2){ 
-					?>
 						<th><?=level_1?></th>
 						<th><?=level_2?></th>
-					<? 
-						}else if(level_cnt == 3){ 
-					?>
-						<th><?=level_1?></th>
-						<th><?=level_2?></th>
-						<th><?=level_3?></th>
-					<? 
-						}else if(level_cnt == 4){ 
-					?>
-						<th><?=level_1?></th>
-						<th><?=level_2?></th>
-						<th><?=level_3?></th>
-					<? 
-						}else if(level_cnt == 5){ 
-					?>
-						<th><?=level_1?></th>
-						<th><?=level_2?></th>
-						<th><?=level_3?></th>
-						<th><?=level_4?></th>
-						<th><?=level_5?></th>
-					<? 
-						}
-					?>
 						<th class="w90p">기준치<br>사용여부</th>
 						<th class="w120p">최종 호출시각</th>
 						<th>평균 산출</th>
@@ -402,24 +376,8 @@ require_once "./head.php";
 					<tr id="sensor_<?=$val?>">
 						<td class="h40p" rowspan="2"><?=$sensor_name[$key]?><input type="hidden" id="IS_SENSOR" name="IS_SENSOR[]" class="IS_SENSOR" value="<?=$val?>"></td>
 						<td class="h40p">발령</td>
-					<? if(level_cnt == 2){ ?>
 						<td><input type="text" id="BASE_RISKLEVEL1" name="BASE_RISKLEVEL1[]" size="2" <? if(!in_array($val, $sensor_judg)){ ?> class="bg_lgr_d2" readonly <? } ?>></td>
 						<td><input type="text" id="BASE_RISKLEVEL2" name="BASE_RISKLEVEL2[]" size="2" <? if(!in_array($val, $sensor_judg)){ ?> class="bg_lgr_d2" readonly <? } ?>></td>
-					<? }else if(level_cnt == 3){ ?>
-						<td><input type="text" id="BASE_RISKLEVEL1" name="BASE_RISKLEVEL1[]" size="2" <? if(!in_array($val, $sensor_judg)){ ?> class="bg_lgr_d2" readonly <? } ?>></td>
-						<td><input type="text" id="BASE_RISKLEVEL2" name="BASE_RISKLEVEL2[]" size="2" <? if(!in_array($val, $sensor_judg)){ ?> class="bg_lgr_d2" readonly <? } ?>></td>
-						<td><input type="text" id="BASE_RISKLEVEL3" name="BASE_RISKLEVEL3[]" size="2" <? if(!in_array($val, $sensor_judg)){ ?> class="bg_lgr_d2" readonly <? } ?>></td>
-					<? }else if(level_cnt == 4){ ?>
-						<td><input type="text" id="BASE_RISKLEVEL1" name="BASE_RISKLEVEL1[]" size="2" <? if(!in_array($val, $sensor_judg)){ ?> class="bg_lgr_d2" readonly <? } ?>></td>
-						<td><input type="text" id="BASE_RISKLEVEL2" name="BASE_RISKLEVEL2[]" size="2" <? if(!in_array($val, $sensor_judg)){ ?> class="bg_lgr_d2" readonly <? } ?>></td>
-						<td><input type="text" id="BASE_RISKLEVEL3" name="BASE_RISKLEVEL3[]" size="2" <? if(!in_array($val, $sensor_judg)){ ?> class="bg_lgr_d2" readonly <? } ?>></td>
-					<? }else if(level_cnt == 5){ ?>
-						<td><input type="text" id="BASE_RISKLEVEL1" name="BASE_RISKLEVEL1[]" size="2" <? if(!in_array($val, $sensor_judg)){ ?> class="bg_lgr_d2" readonly <? } ?>></td>
-						<td><input type="text" id="BASE_RISKLEVEL2" name="BASE_RISKLEVEL2[]" size="2" <? if(!in_array($val, $sensor_judg)){ ?> class="bg_lgr_d2" readonly <? } ?>></td>
-						<td><input type="text" id="BASE_RISKLEVEL3" name="BASE_RISKLEVEL3[]" size="2" <? if(!in_array($val, $sensor_judg)){ ?> class="bg_lgr_d2" readonly <? } ?>></td>
-						<td><input type="text" id="BASE_RISKLEVEL4" name="BASE_RISKLEVEL4[]" size="2" <? if(!in_array($val, $sensor_judg)){ ?> class="bg_lgr_d2" readonly <? } ?>></td>
-						<td><input type="text" id="BASE_RISKLEVEL5" name="BASE_RISKLEVEL5[]" size="2" <? if(!in_array($val, $sensor_judg)){ ?> class="bg_lgr_d2" readonly <? } ?>></td>
-					<? } ?>
 						<td rowspan="2">
 							<select id="IS_USE" name="AUTO_EVENT_USE[]">
 								<option value="0">미사용</option>
@@ -465,24 +423,8 @@ require_once "./head.php";
 					</tr>
 					<tr id="sensor_<?=$val?>">
 						<td class="h40p">해제</td>
-					<? if(level_cnt == 2){ ?>
 						<td><input type="text" id="BASE_RISKLEVEL1_OFF" name="BASE_RISKLEVEL1_OFF[]" size="2" <? if(!in_array($val, $sensor_judg)){ ?> class="bg_lgr_d2" readonly <? } ?>></td>
 						<td><input type="text" id="BASE_RISKLEVEL2_OFF" name="BASE_RISKLEVEL2_OFF[]" size="2" <? if(!in_array($val, $sensor_judg)){ ?> class="bg_lgr_d2" readonly <? } ?>></td>
-					<? }else if(level_cnt == 3){ ?>
-						<td><input type="text" id="BASE_RISKLEVEL1_OFF" name="BASE_RISKLEVEL1_OFF[]" size="2" <? if(!in_array($val, $sensor_judg)){ ?> class="bg_lgr_d2" readonly <? } ?>></td>
-						<td><input type="text" id="BASE_RISKLEVEL2_OFF" name="BASE_RISKLEVEL2_OFF[]" size="2" <? if(!in_array($val, $sensor_judg)){ ?> class="bg_lgr_d2" readonly <? } ?>></td>
-						<td><input type="text" id="BASE_RISKLEVEL3_OFF" name="BASE_RISKLEVEL3_OFF[]" size="2" <? if(!in_array($val, $sensor_judg)){ ?> class="bg_lgr_d2" readonly <? } ?>></td>
-					<? }else if(level_cnt == 4){ ?>
-						<td><input type="text" id="BASE_RISKLEVEL1_OFF" name="BASE_RISKLEVEL1_OFF[]" size="2" <? if(!in_array($val, $sensor_judg)){ ?> class="bg_lgr_d2" readonly <? } ?>></td>
-						<td><input type="text" id="BASE_RISKLEVEL2_OFF" name="BASE_RISKLEVEL2_OFF[]" size="2" <? if(!in_array($val, $sensor_judg)){ ?> class="bg_lgr_d2" readonly <? } ?>></td>
-						<td><input type="text" id="BASE_RISKLEVEL3_OFF" name="BASE_RISKLEVEL3_OFF[]" size="2" <? if(!in_array($val, $sensor_judg)){ ?> class="bg_lgr_d2" readonly <? } ?>></td>
-					<? }else if(level_cnt == 5){ ?>
-						<td><input type="text" id="BASE_RISKLEVEL1_OFF" name="BASE_RISKLEVEL1_OFF[]" size="2" <? if(!in_array($val, $sensor_judg)){ ?> class="bg_lgr_d2" readonly <? } ?>></td>
-						<td><input type="text" id="BASE_RISKLEVEL2_OFF" name="BASE_RISKLEVEL2_OFF[]" size="2" <? if(!in_array($val, $sensor_judg)){ ?> class="bg_lgr_d2" readonly <? } ?>></td>
-						<td><input type="text" id="BASE_RISKLEVEL3_OFF" name="BASE_RISKLEVEL3_OFF[]" size="2" <? if(!in_array($val, $sensor_judg)){ ?> class="bg_lgr_d2" readonly <? } ?>></td>
-						<td><input type="text" id="BASE_RISKLEVEL4_OFF" name="BASE_RISKLEVEL4_OFF[]" size="2" <? if(!in_array($val, $sensor_judg)){ ?> class="bg_lgr_d2" readonly <? } ?>></td>
-						<td><input type="text" id="BASE_RISKLEVEL5_OFF" name="BASE_RISKLEVEL5_OFF[]" size="2" <? if(!in_array($val, $sensor_judg)){ ?> class="bg_lgr_d2" readonly <? } ?>></td>
-					<? } ?>
 					</tr>
 					<? } ?>
 					<tr id="no_sensor" style="display:none;"><td colspan="9">센서가 없습니다.</td></tr>

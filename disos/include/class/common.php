@@ -708,37 +708,11 @@ Class ClassCommon {
 				define("sort", "RTU_NAME");
 			}
 
-			if(level_cnt == 2){
-				define("level_1", "경계치");		
-				define("level_2", "위험치");		
-				define("event_code_on", "19, 20, 23, 25");
-				define("event_code_off", "22, 24, 26");
-				define("event_code_all", "19, 20, 22, 23, 24, 25, 26");
-			}else if(level_cnt == 3){
-				define("level_1", "경계치");
-				define("level_2", "위험치");
-				define("level_3", "중위험");
-				define("event_code_on", "19, 20, 21, 23, 25, 27");
-				define("event_code_off", "22, 24, 26, 28");
-				define("event_code_all", "19, 20, 21, 22, 23, 24, 25, 26, 27, 28");
-			}else if(level_cnt == 4){
-				define("level_1", "주의보");
-				define("level_2", "경보");
-				define("level_3", "대피");
-				// define("level_4", "심각");
-				define("event_code_on", "19, 20, 21, 23, 25, 27, 33, 37, 101, 102, 103, 104");
-				define("event_code_off", "22, 24, 26, 28, 35, 105, 106, 107, 108");
-				define("event_code_all", "19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 33, 35, 37, 101, 102, 103, 104, 105, 106, 107, 108");
-			}else if(level_cnt == 5){
-				define("level_1", "둔치주의");
-				define("level_2", "둔치대피");
-				define("level_3", "홍수주의");
-				define("level_4", "홍수경보");
-				define("level_5", "하천범람");
-				define("event_code_on", "19, 20, 21, 23, 25, 27, 33, 34, 37, 38, 101, 102, 103, 104");
-				define("event_code_off", "22, 24, 26, 28, 35, 36, 105, 106, 107, 108");
-				define("event_code_all", "19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 33, 34, 35, 36, 37, 38, 101, 102, 103, 104, 105, 106, 107, 108");
-			}
+			define("level_1", "경계치");		
+			define("level_2", "위험치");		
+			define("event_code_on", "19, 20, 23, 25");
+			define("event_code_off", "22, 24, 26");
+			define("event_code_all", "19, 20, 22, 23, 24, 25, 26");
 			
 			unset($rs); unset($rs2);
 			$this->DB->parseFree();

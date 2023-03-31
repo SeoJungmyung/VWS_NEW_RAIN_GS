@@ -757,26 +757,12 @@ Class ClassSetting {
 			
 			if(count($_REQUEST['IS_SENSOR']) != 0){
 				$sql = " INSERT INTO RTU_SENSOR (RTU_ID, SENSOR_TYPE, BASE_RISKLEVEL1, BASE_RISKLEVEL1_OFF, BASE_RISKLEVEL2, BASE_RISKLEVEL2_OFF, ";
-				if(level_cnt == 3){
-					$sql.= " BASE_RISKLEVEL3, BASE_RISKLEVEL3_OFF, ";
-				}else if(level_cnt == 4){
-					$sql.= " BASE_RISKLEVEL3, BASE_RISKLEVEL3_OFF, ";
-				}else if(level_cnt == 5){
-					$sql.= " BASE_RISKLEVEL3, BASE_RISKLEVEL3_OFF, BASE_RISKLEVEL4, BASE_RISKLEVEL4_OFF, BASE_RISKLEVEL5, BASE_RISKLEVEL5_OFF, ";
-				}
 				$sql.= " AUTO_EVENT_USE, IS_AVERAGE, LAST_TIME) VALUES ";
 				for($i=0; $i<count($_REQUEST['IS_SENSOR']); $i++){
 					$LAST_TIME = $this->DB->html_encode($_REQUEST['LAST_TIME_DD'][$i])." ".$this->DB->html_encode($_REQUEST['LAST_TIME_HH'][$i]).":".$this->DB->html_encode($_REQUEST['LAST_TIME_MM'][$i]).":00";
 					
 					if($i != 0) $sql.= " , ";
 					$sql .= " ('".$this->DB->html_encode($_REQUEST['S_RTU_ID'])."', '".$this->DB->html_encode($_REQUEST['IS_SENSOR'][$i])."', '".$this->DB->html_encode($_REQUEST['BASE_RISKLEVEL1'][$i])."', '".$this->DB->html_encode($_REQUEST['BASE_RISKLEVEL1_OFF'][$i])."', '".$this->DB->html_encode($_REQUEST['BASE_RISKLEVEL2'][$i])."', '".$this->DB->html_encode($_REQUEST['BASE_RISKLEVEL2_OFF'][$i])."', ";
-					if(level_cnt == 3){
-						$sql.= " '".$this->DB->html_encode($_REQUEST['BASE_RISKLEVEL3'][$i])."', '".$this->DB->html_encode($_REQUEST['BASE_RISKLEVEL3_OFF'][$i])."', ";
-					}else if(level_cnt == 4){
-						$sql.= " '".$this->DB->html_encode($_REQUEST['BASE_RISKLEVEL3'][$i])."', '".$this->DB->html_encode($_REQUEST['BASE_RISKLEVEL3_OFF'][$i])."', ";
-					}else if(level_cnt == 5){
-						$sql.= " '".$this->DB->html_encode($_REQUEST['BASE_RISKLEVEL3'][$i])."', '".$this->DB->html_encode($_REQUEST['BASE_RISKLEVEL3_OFF'][$i])."', '".$this->DB->html_encode($_REQUEST['BASE_RISKLEVEL4'][$i])."', '".$this->DB->html_encode($_REQUEST['BASE_RISKLEVEL4_OFF'][$i])."', '".$this->DB->html_encode($_REQUEST['BASE_RISKLEVEL5'][$i])."', '".$this->DB->html_encode($_REQUEST['BASE_RISKLEVEL5_OFF'][$i])."', ";
-					}
 					$sql.= " '".$this->DB->html_encode($_REQUEST['AUTO_EVENT_USE'][$i])."', '".$this->DB->html_encode($_REQUEST['IS_AVERAGE'][$i])."', '".$LAST_TIME."') ";
 				}
 			}

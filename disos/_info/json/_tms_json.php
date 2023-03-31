@@ -215,23 +215,6 @@ switch($mode){
 			//2단계
 			$data_flow[$i]['FLOW_LEVEL2'] = $FlowLocalDB->FLOW_LEVEL2[$i];
 			
-			if(level_cnt == 3){
-				//3단계
-				$data_flow[$i]['FLOW_LEVEL3'] = $FlowLocalDB->FLOW_LEVEL3[$i];
-			}else if(level_cnt == 4){
-				//3단계
-				$data_flow[$i]['FLOW_LEVEL3'] = $FlowLocalDB->FLOW_LEVEL3[$i];
-				
-			}else if(level_cnt == 5){
-				//3단계
-				$data_flow[$i]['FLOW_LEVEL3'] = $FlowLocalDB->FLOW_LEVEL3[$i];
-				
-				//4단계
-				$data_flow[$i]['FLOW_LEVEL4'] = $FlowLocalDB->FLOW_LEVEL4[$i];
-				
-				//5단계
-				$data_flow[$i]['FLOW_LEVEL5'] = $FlowLocalDB->FLOW_LEVEL5[$i];
-			}
 			
 			//통신상태
 			$ClassFlowinfo->getFlowCallValue($FlowLocalDB->AREA_CODE[$i]);
@@ -751,20 +734,6 @@ switch($mode){
 				
 				//2단계
 				$data_flow[$i]['FLOW_LEVEL2'] = $FlowLocalDB->FLOW_LEVEL2[$i];
-				
-				if(level_cnt == 3 || level_cnt == 4){
-					//3단계
-					$data_flow[$i]['FLOW_LEVEL3'] = $FlowLocalDB->FLOW_LEVEL3[$i];
-				}else if(level_cnt == 5){
-					//3단계
-					$data_flow[$i]['FLOW_LEVEL3'] = $FlowLocalDB->FLOW_LEVEL3[$i];
-					
-					//4단계
-					$data_flow[$i]['FLOW_LEVEL4'] = $FlowLocalDB->FLOW_LEVEL4[$i];
-					
-					//5단계
-					$data_flow[$i]['FLOW_LEVEL5'] = $FlowLocalDB->FLOW_LEVEL5[$i];
-				}
 				
 				//통신상태
 				$ClassFlowinfo->getFlowCallValue($FlowLocalDB->AREA_CODE[$i]);
