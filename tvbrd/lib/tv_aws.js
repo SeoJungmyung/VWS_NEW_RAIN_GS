@@ -868,7 +868,18 @@ function aws_event(area_code,state,level) {
 				}
 			}
 		}
-		$("#aws_"+area_code).css('margin-top','-110px');//tmp_yAnchor = -111;
+		// if($("#aws_"+area_code))
+		if( jQuery.inArray("4", map_data) != "-1" ){
+			$("#aws_"+area_code).css('margin-top','-215px');//tmp_yAnchor = -111;
+			$("#wind_"+area_code).show();
+			$("#damp_"+area_code).show();
+			$("#temp_"+area_code).show();
+		}else{
+			$("#aws_"+area_code).css('margin-top','-110px');//tmp_yAnchor = -111;
+			$("#wind_"+area_code).hide();
+			$("#damp_"+area_code).hide();
+			$("#temp_"+area_code).hide();
+		}
 		$.post( "controll/rain.php", { "mode" : "rain", "arr_area_code" : global_aws_area_code }, function(response){
 			$.each(response.list, function(index, item){
 				$("#rain_"+item.area_code+" .dat_right").text(item.day);
