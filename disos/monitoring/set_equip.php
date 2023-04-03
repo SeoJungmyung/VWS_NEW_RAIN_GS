@@ -1250,14 +1250,14 @@ $(document).ready(function(){
 								// });
 								// console.log(formData);
 
-								$('#list_table').DataTable().destroy();
-								table_load();
 								if(sort_base == "0"){
-									if($("tr[name='list_"+list_id+"'] #l_SORT_FLAG").text() != (DANGER_USE == 1 ? formData[19].value : formData[15].value)){
+									if($("tr[name='list_"+list_id+"'] #l_SORT_FLAG").text() != (DANGER_USE == 1 ? formData[17].value : formData[15].value)){
+										$('#list_table').DataTable().destroy();
+										table_load();
 										sessionStorage.setItem('search_word',$("#search_word").val());
 										sessionStorage.setItem('search_col',$("#search_col").val());
 	
-										$("tr[name='list_"+list_id+"'] #l_SORT_FLAG").text((DANGER_USE == 1 ? formData[19].value : formData[15].value));
+										$("tr[name='list_"+list_id+"'] #l_SORT_FLAG").text((DANGER_USE == 1 ? formData[17].value : formData[15].value));
 	
 										const tbody = $("#list_table tbody");
 										const rows = tbody.find("tr:visible").get();
