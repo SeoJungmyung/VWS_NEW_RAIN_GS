@@ -801,23 +801,23 @@ function aws(kind, arr_area_code){ // AWS - AWS 장비
 	}
 } // aws() end
 
-function aws_event(area_code,state,level,type) {
-	var sensor_type = (type == 0 ? "rain" : (type == 1 ? "flow" : ( type == 2 ? "snow" : (type == 3 ? "aws" : "aws" ))));
+function aws_event(area_code,state,level) {
+	// var sensor_type = (type == 0 ? "rain" : (type == 1 ? "flow" : ( type == 2 ? "snow" : (type == 3 ? "aws" : "aws" ))));
 	if(state == 1){
 		// circle[area_code].setVisible(true);
 		if(level == 1){
 			if(!$("#wave_"+area_code).hasClass('waves')){
 				$("#aws_"+area_code).parent().parent().css('z-index', 121);
 				$("#aws_"+area_code+"_marker").parent().parent().css('z-index',112);
-				// $("#aws_"+area_code).show();
+				$("#aws_"+area_code).show();
 				
 				// $("#aws_"+area_code).show();
-				if( jQuery.inArray("1", map_data) != "-1" ){
+				// if( jQuery.inArray("1", map_data) != "-1" ){
 					$("#rain_"+area_code).show();
-				}
-				if( jQuery.inArray("3", map_data) != "-1" ){
+				// }
+				// if( jQuery.inArray("3", map_data) != "-1" ){
 					$("#snow_"+area_code).show();
-				}
+				// }
 				if( jQuery.inArray("4", map_data) != "-1" ){
 					$("#aws_"+area_code).show();
 				}
@@ -831,21 +831,23 @@ function aws_event(area_code,state,level,type) {
 					$("#wave_"+area_code).show();
 					$("#wave_"+area_code).css('z-index', 101);
 				}
+				
 			}
 		}else if (level == 2){
 			if(!$("#wave_"+area_code).hasClass('waves2')){
 				$("#aws_"+area_code).parent().parent().css('z-index',121);
 				$("#aws_"+area_code+"_marker").parent().parent().css('z-index', 112);
-
+				$("#aws_"+area_code).show();
 				// $("#aws_"+area_code).show();
-				if( jQuery.inArray("1", map_data) != "-1" ){
+
+				// if( jQuery.inArray("1", map_data) != "-1" ){
 					$("#rain_"+area_code).show();
 					if( jQuery.inArray("4", map_data) != "-1" ){
 						$("#aws_"+area_code).show();
 						$("#aws_"+area_code).next().show();
 						$("#aws_"+area_code+"_marker").show();
 					}
-				}
+				// }
 				if( jQuery.inArray("3", map_data) != "-1" ){
 					$("#snow_"+area_code).show();
 				}
@@ -854,6 +856,9 @@ function aws_event(area_code,state,level,type) {
 					$("#aws_"+area_code).next().show();
 					$("#aws_"+area_code+"_marker").show();
 				}
+				
+				$("#aws_"+area_code).next().show();
+				$("#aws_"+area_code+"_marker").show();
 
 				if($("#aws_"+area_code).css('display') == 'block'){
 					$("#wave_"+area_code).removeClass('waves');
@@ -863,6 +868,14 @@ function aws_event(area_code,state,level,type) {
 				}
 			}
 		}
+		$("#aws_"+area_code).css('margin-top','-110px');//tmp_yAnchor = -111;
+		$.post( "controll/rain.php", { "mode" : "rain", "arr_area_code" : global_aws_area_code }, function(response){
+			$.each(response.list, function(index, item){
+				$("#rain_"+item.area_code+" .dat_right").text(item.day);
+				arr_rtu[item.area_code]['rain'] = item.day;
+			});
+		}, "json");
+
 	}else if(state == 0){
 		if($("#aws_"+area_code).css('display') != 'none'){
 			$("#wave_"+area_code).removeClass('waves');
