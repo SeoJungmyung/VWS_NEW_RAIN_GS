@@ -1241,7 +1241,12 @@ $(document).ready(function(){
 								var DANGER_USE = sessionStorage.getItem('DANGER_USE');
 								$("#list_table tbody tr #list_"+list_id).click();
 								var formData = $('#set_frm').serializeArray();
-								
+								var sort_flag = '-1';
+								formData.forEach(function(v, i){
+									if(formData[i].name == 'SORT_FLAG'){
+										sort_flag = formData[i].value;
+									}
+								});
 								// var search_cnt = 1;
 								// $.each( $("#list_table tr"), function(i, v){
 								// 		$(v).closest("tr").show();
@@ -1249,34 +1254,37 @@ $(document).ready(function(){
 								// 		search_cnt++;
 								// });
 								// console.log(formData);
-
 								if(sort_base == "0"){
-									if($("tr[name='list_"+list_id+"'] #l_SORT_FLAG").text() != (DANGER_USE == 1 ? formData[17].value : formData[15].value)){
-										$('#list_table').DataTable().destroy();
-										table_load();
-										sessionStorage.setItem('search_word',$("#search_word").val());
-										sessionStorage.setItem('search_col',$("#search_col").val());
-	
-										$("tr[name='list_"+list_id+"'] #l_SORT_FLAG").text((DANGER_USE == 1 ? formData[17].value : formData[15].value));
-	
-										const tbody = $("#list_table tbody");
-										const rows = tbody.find("tr:visible").get();
-	
-										rows.sort((a, b) => {
-											const aValue = parseInt($(a).find("td:eq(1)").text());
-											const bValue = parseInt($(b).find("td:eq(1)").text());
-											// return aValue.localeCompare(bValue);
-											return aValue - bValue;
-										});
-										$.each(rows, (i, row) => {
-											tbody.append(row);
-											$(row).find("td:eq(0)").text(i + 1);
-										});
+									if(sort_flag != '-1'){
+										if($("tr[name='list_"+list_id+"'] #l_SORT_FLAG").text() != sort_flag){
+											$('#list_table').DataTable().destroy();
+											table_load();
+											sessionStorage.setItem('search_word',$("#search_word").val());
+											sessionStorage.setItem('search_col',$("#search_col").val());
+		
+											$("tr[name='list_"+list_id+"'] #l_SORT_FLAG").text(sort_flag);
+		
+											const tbody = $("#list_table tbody");
+											const rows = tbody.find("tr:visible").get();
+		
+											rows.sort((a, b) => {
+												const aValue = parseInt($(a).find("td:eq(1)").text());
+												const bValue = parseInt($(b).find("td:eq(1)").text());
+												// return aValue.localeCompare(bValue);
+												return aValue - bValue;
+											});
+											$.each(rows, (i, row) => {
+												tbody.append(row);
+												$(row).find("td:eq(0)").text(i + 1);
+											});
+										}
 									}
 								}
 								if(DANGER_USE == 1){
 									$("tr[name='list_"+list_id+"'] #l_SIGNAL_ID").text(formData[9].value);
-									$("tr[name='list_"+list_id+"'] #l_SORT_FLAG").text(formData[17].value);
+									if(sort_flag != '-1'){
+										$("tr[name='list_"+list_id+"'] #l_SORT_FLAG").text(sort_flag);
+									}
 									$("tr[name='list_"+list_id+"'] #l_RTU_NAME").text(formData[10].value);
 									$("tr[name='list_"+list_id+"'] #l_RTU_TYPE_NAME").text(formData[11].value == "R00" ? "강우계" : formData[11].value == "F00" ? "수위계" : formData[11].value == "A00" ? "AWS" : formData[11].value == "S00" ? "적설계" : "");
 									$("tr[name='list_"+list_id+"'] #l_LINE_NAME").text(formData[18].value == "0" ? "TCP/IP" : formData[18].value == "3" ? "ODBC" : "");
@@ -1288,7 +1296,9 @@ $(document).ready(function(){
 									$("tr[name='list_"+list_id+"'] #l_FLOW_DANGER").text(formData[14].value);
 								}else{
 									$("tr[name='list_"+list_id+"'] #l_SIGNAL_ID").text(formData[9].value);
-									$("tr[name='list_"+list_id+"'] #l_SORT_FLAG").text(formData[15].value);
+									if(sort_flag != '-1'){
+										$("tr[name='list_"+list_id+"'] #l_SORT_FLAG").text(sort_flag);
+									}
 									$("tr[name='list_"+list_id+"'] #l_RTU_NAME").text(formData[10].value);
 									$("tr[name='list_"+list_id+"'] #l_RTU_TYPE_NAME").text(formData[11].value == "R00" ? "강우계" : formData[11].value == "F00" ? "수위계" : formData[11].value == "A00" ? "AWS" : formData[11].value == "S00" ? "적설계" : "");
 									$("tr[name='list_"+list_id+"'] #l_LINE_NAME").text(formData[16].value == "0" ? "TCP/IP" : formData[16].value == "3" ? "ODBC" : "");
