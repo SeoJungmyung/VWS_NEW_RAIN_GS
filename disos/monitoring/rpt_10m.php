@@ -263,7 +263,11 @@ $(document).ready(function(){
 								if(mode == 'wind'){
 									DATADEG[idx] = new Image();
 									if(v.DATA_DEG){
-										DATADEG[idx].src = "../../tvbrd/img/wind_small/"+v.DATA_DEG;
+										if(v.DATA_DEG != '-'){
+											DATADEG[idx].src = "../../tvbrd/img/wind_small/"+v.DATA_DEG;
+										}else{
+											DATADEG[idx].src = "";
+										}
 									}
 								}
 								// LEGD[idx] = tmpLeg;
