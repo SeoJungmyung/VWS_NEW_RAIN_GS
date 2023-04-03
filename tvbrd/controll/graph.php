@@ -95,8 +95,8 @@ $dvUtil   = new Divas_Util();
 		$calc = 1;
 	    if($tmpInfo){
 			if($kind == "rain" || $kind == "flow" || $kind == "snow"){
-				if($kind == "disp"){
-					$calc = 0.01;
+				if($kind == "snow"){
+					$calc = 0.1;
 				}
 				$tmpInfo->getTimeListValue( $area_code, $option, $startdate, $enddate);
 				for($i=0; $i<$tmpInfo->rsCnt; $i++){
