@@ -233,16 +233,16 @@
 							datasets: [{
 									label: '경계치',
 									data: data1,
-									backgroundColor: '#008000',
-									borderColor: '#008000',
+									backgroundColor: 'rgba(255, 154, 54 ,0.856)',
+									borderColor: 'rgba(255, 154, 54 ,0.856)',
 									borderWidth: 2,
 									fill: false,
 									pointRadius: 0
 								}, {
 									label: '위험치',
 									data: data2,
-									backgroundColor: '#ff8017',
-									borderColor: '#ff8017',
+									backgroundColor: 'rgba(231, 46, 52,0.856)',
+									borderColor: 'rgba(231, 46, 52,0.856)',
 									borderWidth: 2,
 									fill: false,
 									pointRadius: 0
@@ -296,8 +296,8 @@
 								type: 'line',
 								label: '경계치',
 								data: data1,
-								backgroundColor: '#008000',
-								borderColor: '#008000',
+								backgroundColor: 'rgba(255, 154, 54 ,0.856)',
+								borderColor: 'rgba(255, 154, 54 ,0.856)',
 								borderWidth: 2,
 								fill: false,
 								pointRadius: 0
@@ -305,8 +305,8 @@
 								type: 'line',
 								label: '위험치',
 								data: data2,
-								backgroundColor: '#ff8017',
-								borderColor: '#ff8017',
+								backgroundColor: 'rgba(231, 46, 52,0.856)',
+								borderColor: 'rgba(231, 46, 52,0.856)',
 								borderWidth: 2,
 								fill: false,
 								pointRadius: 0
