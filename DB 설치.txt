@@ -1,10 +1,15 @@
 mysql -uroot -p --default-character-set=utf8
 SET names 'utf8';
 
+
+ALTER TABLE user_info ADD PASS_S VARCHAR(100) DEFAULT NULL;
+
+UPDATE dn_menu_in set menu_url = 'check_password.php' where menu_name = '관리자설정';
+
 insert  into `user_info`
 (`USER_ID`,`ORGAN_ID`,`AREA_CODE`,`USER_TYPE`,`USER_PERMIT`,`USER_NAME`,
 `USER_PWD`,`MOBILE`,`EMAIL`,`REG_DATE`,`FAIL_CNT`,`IS_PERMIT`,`MENU_TYPE`,
-`SMART_MOBILE`,`SMART_USE`,`LAST_FAIL_DATE`,`USER_PWD_LEN`) 
+`SMART_MOBILE`,`SMART_USE`,`LAST_FAIL_DATE`,`USER_PWD_LEN`, `PASS_S`) 
 values ('adminuser',1,'','','','화진티엔아이',
 '250a587a5a4105e27a1c616fddafd2edcba135eff7f9176f845be303672b3261',
 '','',now(),0,'','','','',NULL,11,'YncrdDBndTQzUWJieHhndnNtbEhNdGRHdG0zSElLVVM');

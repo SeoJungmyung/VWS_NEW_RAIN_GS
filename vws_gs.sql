@@ -821,6 +821,7 @@ CREATE TABLE `user_info` (
   `SMART_USE` char(1) DEFAULT NULL,
   `LAST_FAIL_DATE` datetime DEFAULT NULL,
   `USER_PWD_LEN` int(10) DEFAULT '0' COMMENT '비밀번호 길이',
+  `PASS_S` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`USER_IDX`,`USER_ID`),
   KEY `ORGAN_ID` (`ORGAN_ID`),
   KEY `AREA_CODE` (`AREA_CODE`)
@@ -47334,7 +47335,7 @@ insert  into `dn_layout_ival`(`lay_ival`,`lay_text`) values (1,'강우현황'),(
 
 /*Data for the table `dn_menu_in` */
 
-insert  into `dn_menu_in`(`menu_idx`,`menu_num`,`menu_name`,`menu_url`,`menu_level`,`menu_use`) values (1,1,'종합현황','tms_main.php',0,1),(1,2,'강우현황','tms_rain.php',0,1),(1,3,'수위현황','tms_flow.php',0,1),(1,4,'AWS현황','tms_aws.php',0,1),(1,5,'적설현황','tms_snow.php',0,1),(2,1,'상세보고서','rpt_10m.php',0,1),(2,2,'강우보고서','rpt_rain.php',0,1),(2,3,'수위보고서','rpt_wl.php',0,1),(2,4,'AWS보고서','rpt_aws.php',0,1),(2,5,'적설보고서','rpt_snow.php',0,1),(3,1,'강우자료','dtm_rain.php',0,1),(3,2,'수위자료','dtm_wl.php',0,1),(3,3,'AWS자료','dtm_aws.php',0,1),(3,4,'적설자료','dtm_snow.php',0,1),(4,1,'시스템설정','set_setting.php',0,1),(4,2,'기관정보설정','set_organ.php',0,1),(4,3,'관리자설정','set_user.php',0,1),(4,4,'장비설정','set_equip.php',0,1);
+insert  into `dn_menu_in`(`menu_idx`,`menu_num`,`menu_name`,`menu_url`,`menu_level`,`menu_use`) values (1,1,'종합현황','tms_main.php',0,1),(1,2,'강우현황','tms_rain.php',0,1),(1,3,'수위현황','tms_flow.php',0,1),(1,4,'AWS현황','tms_aws.php',0,1),(1,5,'적설현황','tms_snow.php',0,1),(2,1,'상세보고서','rpt_10m.php',0,1),(2,2,'강우보고서','rpt_rain.php',0,1),(2,3,'수위보고서','rpt_wl.php',0,1),(2,4,'AWS보고서','rpt_aws.php',0,1),(2,5,'적설보고서','rpt_snow.php',0,1),(3,1,'강우자료','dtm_rain.php',0,1),(3,2,'수위자료','dtm_wl.php',0,1),(3,3,'AWS자료','dtm_aws.php',0,1),(3,4,'적설자료','dtm_snow.php',0,1),(4,1,'시스템설정','set_setting.php',0,1),(4,2,'기관정보설정','set_organ.php',0,1),(4,3,'관리자설정','check_password.php',0,1),(4,4,'장비설정','set_equip.php',0,1);
 
 /*Data for the table `dn_menu_top` */
 
