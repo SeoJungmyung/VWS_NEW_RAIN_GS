@@ -572,6 +572,10 @@ $(document).ready(function(){
 								}
 							});
 						}
+
+						$(win.document.body).find("tbody").remove();
+						$(win.document.body).find(".tb_data").append($("#list_table tbody").clone());
+						$(win.document.body).find(".tb_data tbody tr").removeClass('selected');
 						$(win.document.body).css("height","100px");
 						$(win.document.body).css("background-color", "white");
 						$(win.document.body).find("body").css("overflow", "visible");
