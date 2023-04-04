@@ -1159,7 +1159,7 @@ $(document).ready(function(){
 												}
 											}
 										}else if($("#option").val() == 0){
-											if($('input[name="sel_date"]:checked').val() == "H"){
+											if($('input[name="sel_date"]:checked').val() == "H" && DANGER_USE == 1){
 												if(tooltipItem.datasetIndex == 1){
 													return {
 														backgroundColor : 'rgba(231, 46, 52,0.856)',
@@ -1257,6 +1257,7 @@ $(document).ready(function(){
 					var DATADEG = new Array();
 					var DATADEG_TRASH = new Array();
 					var DEG_KO = new Array();
+					var DANGER_USE = 0;
 
 					if(data.list){
 						if($("#option").val() == 1 || $("#option").val() == 4){
@@ -1270,6 +1271,7 @@ $(document).ready(function(){
 						}
 						LEG = data.list.LEG;
 						DATA = data.list.DATA;
+						DANGER_USE = data.list.DANGER_USE;
 						var idx = 0;
 						// 풍향 아이콘 사전작업
 						if($("#option").val() == 2){
@@ -1375,7 +1377,7 @@ $(document).ready(function(){
 								pointStyle: DATADEG
 							}];
 					}else if($("#option").val() == 0){
-						if($('input[name="sel_date"]:checked').val() == "H"){
+						if($('input[name="sel_date"]:checked').val() == "H" && DANGER_USE == 1){
 							dtset = 
 								[{
 									type: 'line',
@@ -1437,7 +1439,7 @@ $(document).ready(function(){
 									generateLabels: function(chart){
 										labels = Chart.defaults.global.legend.labels.generateLabels(chart);
 										if($("#option").val() == 0){
-											if($('input[name="sel_date"]:checked').val() == "H"){
+											if($('input[name="sel_date"]:checked').val() == "H" && DANGER_USE == 1){
 												labels[0].fillStyle = 'rgba(255, 154, 54 ,0.856)';
 												labels[0].strokeStyle = 'rgba(255, 154, 54 ,0.856)';
 												labels[1].fillStyle = 'rgba(231, 46, 52,0.856)';
@@ -1509,7 +1511,7 @@ $(document).ready(function(){
 												}
 											}
 										}else if($("#option").val() == 0){
-											if($('input[name="sel_date"]:checked').val() == "H"){
+											if($('input[name="sel_date"]:checked').val() == "H" && DANGER_USE == 1){
 												if(tooltipItem.datasetIndex == 1){
 													return {
 														backgroundColor : 'rgba(231, 46, 52,0.856)',

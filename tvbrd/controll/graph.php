@@ -127,6 +127,7 @@ $dvUtil   = new Divas_Util();
 	    }
 	    
 	    $resultArr["rtuname"] = $RtuInfo->RTU_NAME;
+	    $resultArr["danger_use"] = $RtuInfo->DANGER_USE;
 	    $resultArr["hour"] = $arr_data;
 	
 	 	$returnBody = array( 'result' => true, 'data' => $resultArr,

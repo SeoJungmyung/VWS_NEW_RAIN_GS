@@ -32,7 +32,7 @@ Class ClassRtuInfo {
 				default: $w_sensertype = "'0'"; break;
 			}
 			
-			$sql = " SELECT	A.RTU_ID, A.AREA_CODE, A.RTU_NAME, A.CALL_LAST, A.RTU_TYPE, D.GROUP_ID, D.GROUP_NAME,
+			$sql = " SELECT	A.RTU_ID, A.AREA_CODE, A.RTU_NAME, A.CALL_LAST, A.RTU_TYPE, D.GROUP_ID, D.GROUP_NAME, A.DANGER_USE,
 						    SUM(IF(B.SENSOR_TYPE='0', 1, 0)) AS RAIN,
 						 	SUM(IF(B.SENSOR_TYPE='1', 1, 0)) AS FLOW,
 						 	SUM(IF(B.SENSOR_TYPE='A', 1, 0)) AS ATMO,
@@ -83,6 +83,7 @@ Class ClassRtuInfo {
 				$this->RTU_TYPE[$i] = $rs[$i]['RTU_TYPE'];
 				$this->GROUP_ID[$i] = $rs[$i]['GROUP_ID'];
 				$this->GROUP_NAME[$i] = $rs[$i]['GROUP_NAME'];
+				$this->DANGER_USE[$i] = $rs[$i]['DANGER_USE'];
 				// $this->WR_EMD_CD[$i] = $rs[$i]['WR_EMD_CD'];
 				// $this->REAL_ORGAN_CODE[$i] = $rs[$i]['REAL_ORGAN_CODE'];
 				// $this->ORGAN_NAME[$i] = $rs[$i]['ORGAN_NAME'];

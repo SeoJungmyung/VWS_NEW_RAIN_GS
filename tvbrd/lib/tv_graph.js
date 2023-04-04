@@ -53,8 +53,9 @@
 				var data3 = [];
 				var data4 = [];
 				var data5 = [];
+				var danger_use = 0; // 경계치 사용여부
 
-
+				danger_use = list.danger_use;
 				tmp_name = decodeURIComponent(list.rtuname);
 				tmp_name = (tmp_name.length > 10) ? tmp_name.substring(0, 10)+".." : tmp_name;
 				$("#sidr-id-chart_name").html(tmp_name);
@@ -230,7 +231,7 @@
 						type: CTYPE,
 						data: {
 							labels: LEG,
-							datasets: [{
+							datasets: (danger_use == 1) ? [{
 									label: '경계치',
 									data: data1,
 									backgroundColor: 'rgba(255, 154, 54 ,0.856)',
@@ -253,6 +254,14 @@
 									borderColor: 'rgb(54, 162, 235)',
 									borderWidth: 1,
 									pointRadius: 0
+							}] :
+							[{
+								label: tmp_title,
+								data: DATA,
+								backgroundColor: 'rgb(54, 162, 235)',
+								borderColor: 'rgb(54, 162, 235)',
+								borderWidth: 1,
+								pointRadius: 0
 							}]
 						},
 						options: {
@@ -292,7 +301,7 @@
 						type: CTYPE,
 						data: {
 							labels: LEG,
-							datasets: [{
+							datasets: (danger_use == 1) ? [{
 								type: 'line',
 								label: '경계치',
 								data: data1,
@@ -317,7 +326,15 @@
 								borderColor: 'rgb(54, 162, 235)',
 								borderWidth: 1,
 								pointRadius: 0
-							}]
+							}] :
+							[{
+								label: tmp_title,
+								data: DATA,
+								backgroundColor: 'rgb(54, 162, 235)',
+								borderColor: 'rgb(54, 162, 235)',
+								borderWidth: 1,
+								pointRadius: 0
+							}] 
 						},
 						options: {
 							scales: {

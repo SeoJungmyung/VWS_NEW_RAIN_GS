@@ -556,7 +556,7 @@ $(document).ready(function(){
 								},
 								callbacks: {
 									labelColor: function(tooltipItem, chart){
-										if($('input[name="sel_date"]:checked').val() == "H"){
+										if($('input[name="sel_date"]:checked').val() == "H" && DANGER_USE == 1){
 											if(tooltipItem.datasetIndex == 1){
 												return {
 													backgroundColor : 'rgba(231, 46, 52,0.856)',
@@ -644,12 +644,14 @@ $(document).ready(function(){
 					//console.log(data);
 					var LEG, DATA = [];		
 					var MAX, MIN, INCRE = null;
-
+					var DANGER_USE = 0;
+					
 					if(data.list){
 						LEG = data.list.LEG;
 						DATA = data.list.DATA;
 						DATA1 = data.list.DATA1;
 						DATA2 = data.list.DATA2;
+						DANGER_USE = data.list.DANGER_USE;
 						MAX = data.list.MAX;
 						MIN = data.list.MIN;
 						$("#rtu_name").text(data.list.RTU_NAME);
@@ -670,7 +672,7 @@ $(document).ready(function(){
 					MIN = MIN < 0 ? 0 : MIN;
 					//console.log("MAX:"+MAX, "MIN:"+MIN, "INC:"+INCRE);
 					var dtset;
-					if($('input[name="sel_date"]:checked').val() == "H"){
+					if($('input[name="sel_date"]:checked').val() == "H" && DANGER_USE == 1){
 						dtset = 
 							[{
 								type: 'line',
@@ -726,7 +728,7 @@ $(document).ready(function(){
 								labels: {
 									generateLabels: function(chart){
 										labels = Chart.defaults.global.legend.labels.generateLabels(chart);
-										if($('input[name="sel_date"]:checked').val() == "H"){
+										if($('input[name="sel_date"]:checked').val() == "H" && DANGER_USE == 1){
 											labels[0].fillStyle = 'rgba(255, 154, 54 ,0.856)';
 											labels[0].strokeStyle = 'rgba(255, 154, 54 ,0.856)';
 											labels[1].fillStyle = 'rgba(231, 46, 52,0.856)';
@@ -749,7 +751,7 @@ $(document).ready(function(){
 								},
 								callbacks: {
 									labelColor: function(tooltipItem, chart){
-										if($('input[name="sel_date"]:checked').val() == "H"){
+										if($('input[name="sel_date"]:checked').val() == "H" && DANGER_USE == 1){
 											if(tooltipItem.datasetIndex == 1){
 												return {
 													backgroundColor : 'rgba(231, 46, 52,0.856)',
