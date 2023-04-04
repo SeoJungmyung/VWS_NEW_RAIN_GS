@@ -615,7 +615,7 @@ function aws(kind, arr_area_code){ // AWS - AWS 장비
 						$("#rain_"+item).hide();
 					}
 				}else{
-					if($("#wave_"+item).css('display') !== 'none'){
+					if($("#wave_"+item).css('display') != 'none'){
 						$("#aws_"+item).hide();
 						$("#aws_label_"+item).hide();
 						$("#aws_"+item+"_marker").hide();
@@ -654,6 +654,10 @@ function aws(kind, arr_area_code){ // AWS - AWS 장비
 							$("#aws_label_"+item).show();
 							$("#aws_"+item+"_marker").show();
 							$("#rain_"+item).show();
+							$("#wind_"+item).show();
+							$("#damp_"+item).show();
+							$("#temp_"+item).show();
+	
 						}
 					}
 				}
@@ -811,16 +815,11 @@ function aws_event(area_code,state,level) {
 				$("#aws_"+area_code+"_marker").parent().parent().css('z-index',112);
 				$("#aws_"+area_code).show();
 				
-				// $("#aws_"+area_code).show();
-				// if( jQuery.inArray("1", map_data) != "-1" ){
-					$("#rain_"+area_code).show();
-				// }
-				// if( jQuery.inArray("3", map_data) != "-1" ){
-					$("#snow_"+area_code).show();
-				// }
-				if( jQuery.inArray("4", map_data) != "-1" ){
-					$("#aws_"+area_code).show();
-				}
+				$("#rain_"+area_code).show();
+				$("#wind_"+area_code).show();
+				$("#damp_"+area_code).show();
+				$("#temp_"+area_code).show();
+
 				$("#aws_"+area_code).next().show();
 				$("#aws_"+area_code+"_marker").show();
 				// $("#aws_"+area_code+" li").show();
@@ -838,25 +837,11 @@ function aws_event(area_code,state,level) {
 				$("#aws_"+area_code).parent().parent().css('z-index',121);
 				$("#aws_"+area_code+"_marker").parent().parent().css('z-index', 112);
 				$("#aws_"+area_code).show();
-				// $("#aws_"+area_code).show();
 
-				// if( jQuery.inArray("1", map_data) != "-1" ){
-					$("#rain_"+area_code).show();
-					if( jQuery.inArray("4", map_data) != "-1" ){
-						$("#aws_"+area_code).show();
-						$("#aws_"+area_code).next().show();
-						$("#aws_"+area_code+"_marker").show();
-					}
-				// }
-				if( jQuery.inArray("3", map_data) != "-1" ){
-					$("#snow_"+area_code).show();
-				}
-				if( jQuery.inArray("4", map_data) != "-1" ){
-					$("#aws_"+area_code).show();
-					$("#aws_"+area_code).next().show();
-					$("#aws_"+area_code+"_marker").show();
-				}
-				
+				$("#rain_"+area_code).show();
+				$("#wind_"+area_code).show();
+				$("#damp_"+area_code).show();
+				$("#temp_"+area_code).show();
 				$("#aws_"+area_code).next().show();
 				$("#aws_"+area_code+"_marker").show();
 
@@ -875,15 +860,45 @@ function aws_event(area_code,state,level) {
 			$("#damp_"+area_code).show();
 			$("#temp_"+area_code).show();
 		}else{
-			$("#aws_"+area_code).css('margin-top','-110px');//tmp_yAnchor = -111;
-			$("#wind_"+area_code).hide();
-			$("#damp_"+area_code).hide();
-			$("#temp_"+area_code).hide();
+			$("#aws_"+area_code).css('margin-top','-215px');//tmp_yAnchor = -111;
 		}
 		$.post( "controll/rain.php", { "mode" : "rain", "arr_area_code" : global_aws_area_code }, function(response){
 			$.each(response.list, function(index, item){
 				$("#rain_"+item.area_code+" .dat_right").text(item.day);
 				arr_rtu[item.area_code]['rain'] = item.day;
+			});
+		}, "json");
+		$.post( "controll/wind.php", { "mode" : "wind", "arr_area_code" : global_aws_area_code, "check" : "aws" }, function(response){
+			$.each(response.list, function(index, item){
+				if(item.day == "-"){
+					$("#wind_"+item.area_code+" .dat_right").html('<span style="font-size: 25px; letter-spacing: 0; font-weight: 600 !important;">-</span>');
+				}else{
+					if($("#wind_"+item.area_code+" .dat_right img").length == 1){
+						$("#wind_"+item.area_code+" .dat_right div").text(item.day);
+						if(item.deg == "-"){
+							$("#wind_"+item.area_code+" .dat_right").attr("src", "");
+						}else{
+							$("#wind_"+item.area_code+" .dat_right img").attr("src", "img/wind/"+item.deg);
+						}
+					}else{
+						if(item.deg == "-"){
+							$("#wind_"+item.area_code+" .dat_right").html("<img class='sidr-class-mT8' src='' /> <div>"+item.day+"</div>");
+						}else{
+							$("#wind_"+item.area_code+" .dat_right").html("<img class='sidr-class-mT8' src='img/wind/"+item.deg+"' /> <div>"+item.day+"</div>");
+						}
+					}
+				}
+				
+			});
+		}, "json");
+		$.post( "controll/damp.php", { "mode" : "damp", "arr_area_code" : global_aws_area_code, "check" : "aws" }, function(response){
+			$.each(response.list, function(index, item){
+				$("#damp_"+item.area_code+" .dat_right").html(item.day);
+			});
+		}, "json");
+		$.post( "controll/temp.php", { "mode" : "temp", "arr_area_code" : global_aws_area_code, "check" : "aws" }, function(response){
+			$.each(response.list, function(index, item){
+				$("#temp_"+item.area_code+" .dat_right").html(item.day);
 			});
 		}, "json");
 
