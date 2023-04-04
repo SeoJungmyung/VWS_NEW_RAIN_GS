@@ -91,6 +91,7 @@ switch($mode){
 		$data_common['board_url'] = board_url;
 		$data_common['root_dir'] = ROOT_DIR;
 		$data_common['vhf_use'] = vhf_use;
+		$data_common['rpt_flag'] = $_SESSION['rpt_flag'];
 		
 		$returnBody = array( 'common' => $data_common );
 		echo json_encode( $returnBody );

@@ -4,6 +4,30 @@
 //# content : 기상상황판 js
 //################################################################################################################################
     function graph_slide(get_kind, get_area_code){
+
+		// 공용 변수 호출
+		$.ajax({
+			type: "POST",
+			url: "../disos/_info/json/_tms_json.php",
+			data: { "mode" : "common" },
+			async: false, // 동기
+			cache: false,
+			dataType: "json",
+			success : function(data){
+				if(data.common){
+					$.each(data.common, function(i, v){
+						window['common_'+i] = v;
+					});
+					window.onkeydown = function() {
+						var kcode = event.keyCode;
+						if(kcode == 116) {
+						history.replaceState({}, null, location.pathname);
+						}
+					}
+				}
+			}
+		}); 
+
 		var chart = null;
 		$.ajax({
             type: "POST",
@@ -59,7 +83,10 @@
 				tmp_name = decodeURIComponent(list.rtuname);
 				tmp_name = (tmp_name.length > 10) ? tmp_name.substring(0, 10)+".." : tmp_name;
 				$("#sidr-id-chart_name").html(tmp_name);
-
+				// console.log(common_rpt_flag);
+				if(common_rpt_flag != 1){
+					$("#sidr-id-btn_graph_detail").hide();
+				}
 				if(get_kind == "rain"){
 					tmp_title = "강우"; tmp_unit = "(mm)";
 					$("#sidr-id-btn_graph_detail").attr("href", "../disos/monitoring/main.php?url=rpt_10m.php&area_code="+get_area_code);

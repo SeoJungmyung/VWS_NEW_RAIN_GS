@@ -541,9 +541,13 @@ Class ClassCommon {
 	 */
 	function getMenuList(){
 		if(DB == "0"){
-			$sql = " SELECT a.menu_idx, a.menu_name, b.menu_name AS sub_name, b.menu_url, a.menu_icon, a.menu_use
+			$sql = " SELECT a.menu_idx, a.menu_name, b.menu_name AS sub_name, 
+						b.menu_url, a.menu_icon, a.menu_use
 					 FROM dn_menu_top AS a
-					 LEFT JOIN dn_menu_in AS b ON a.menu_idx = b.menu_idx AND a.menu_num = b.menu_num ";
+					 LEFT JOIN (
+						SELECT * FROM dn_menu_in WHERE menu_use = 1 GROUP BY menu_idx
+					 ) AS b 
+					ON a.menu_idx = b.menu_idx ";
 			
 			$rs_top = $this->DB->execute($sql);
 			
