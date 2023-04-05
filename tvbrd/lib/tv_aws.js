@@ -584,27 +584,70 @@ function aws(kind, arr_area_code){ // AWS - AWS 장비
 				var tmp_cnt = 0;
 				var tmp_last = "";
 				
-				//AWS 장비 표시 우선 체크
-				if( jQuery.inArray("4", map_data) != "-1" ){
+				// map_data 안에 속한 숫자가 1만 존재한다면
+				if (map_data.includes('1') && !map_data.includes('4')) {
 					$("#aws_"+item).show();
 					$("#aws_label_"+item).show();
 					$("#aws_"+item+"_marker").show();
+					$("#wind_"+item).hide();
+					$("#damp_"+item).hide();
+					$("#temp_"+item).hide();
+					$("#rain_"+item).show();
+					$("#aws_"+item).css('margin-top','-110px');
+
+					$("#aws_"+item+"_marker img").attr('src','img/icon_s_01.png');
+					$("#aws_"+item+" .label_top").css('background','#2782ff url(img/icon_label_04.png) left top no-repeat');
+					if( $("#rain_"+item).length != 0 ){
+						tmp_arr_area_code['rain'].push(item); 
+						tmp_cnt++;
+						tmp_last = "rain";
+					}
+					// 처리 로직
+				}
+				// 1과 4가 모두 존재한다면
+				else if (map_data.includes('1') && map_data.includes('4')) {
+					$("#aws_"+item).show();
+					$("#aws_label_"+item).show();
+					$("#aws_"+item+"_marker").show();
+					$("#rain_"+item).show();
 					$("#wind_"+item).show();
 					$("#damp_"+item).show();
 					$("#temp_"+item).show();
-					$("#rain_"+item).show();
-					$("#aws_"+item).css('margin-top','-215px');//tmp_yAnchor = -111;
-					
+					$("#aws_"+item).css('margin-top','-215px');
+
 					$("#aws_"+item+"_marker img").attr('src','img/icon_s_03.png');
 					$("#aws_"+item+" .label_top").css('background','#0ca629 url(img/icon_label_04.png) left top no-repeat');	
-					
+					// 처리 로직
 					$.each(arr_rtu[item]['sensor_kind'], function(index2, item2){
 						$("#"+item2+"_"+item).show(); 
 						tmp_arr_area_code[item2].push(item); 
 						tmp_cnt++;
 						tmp_last = item2;
 					});
-				}else if(jQuery.inArray("4", map_data) == "-1" && jQuery.inArray("1", map_data) == "-1"){
+				}
+				// 4만 존재한다면
+				else if (map_data.includes('4')) {
+					$("#aws_"+item).show();
+					$("#aws_label_"+item).show();
+					$("#aws_"+item+"_marker").show();
+					$("#rain_"+item).show();
+					$("#wind_"+item).show();
+					$("#damp_"+item).show();
+					$("#temp_"+item).show();
+					$("#aws_"+item).css('margin-top','-215px');
+
+					$("#aws_"+item+"_marker img").attr('src','img/icon_s_03.png');
+					$("#aws_"+item+" .label_top").css('background','#0ca629 url(img/icon_label_04.png) left top no-repeat');	
+					// 처리 로직
+					$.each(arr_rtu[item]['sensor_kind'], function(index2, item2){
+						$("#"+item2+"_"+item).show(); 
+						tmp_arr_area_code[item2].push(item); 
+						tmp_cnt++;
+						tmp_last = item2;
+					});
+				}
+				// 1과 4 둘 다 없다면
+				else if (!map_data.includes('1') && !map_data.includes('4')) {
 					if($("#wave_"+item).css('display') == 'none'){
 						$("#aws_"+item).hide();
 						$("#aws_label_"+item).hide();
@@ -613,9 +656,23 @@ function aws(kind, arr_area_code){ // AWS - AWS 장비
 						$("#damp_"+item).hide();
 						$("#temp_"+item).hide();
 						$("#rain_"+item).hide();
+					}else{
+						$("#aws_"+item).show();
+						$("#aws_label_"+item).show();
+						$("#aws_"+item+"_marker").show();
+						$("#rain_"+item).show();
+						$("#wind_"+item).show();
+						$("#damp_"+item).show();
+						$("#temp_"+item).show();
+						// $("#aws_"+item).css('margin-top','-110px');
+						$("#aws_"+item).css('margin-top','-215px');
+						$("#aws_"+item+"_marker img").attr('src','img/icon_s_03.png');
+						$("#aws_"+item+" .label_top").css('background','#0ca629 url(img/icon_label_04.png) left top no-repeat');	
 					}
-				}else{
-					if($("#wave_"+item).css('display') != 'none'){
+					// 처리 로직
+				}
+				// 다른 경우 처리 로직
+				else {
 						$("#aws_"+item).hide();
 						$("#aws_label_"+item).hide();
 						$("#aws_"+item+"_marker").hide();
@@ -623,44 +680,9 @@ function aws(kind, arr_area_code){ // AWS - AWS 장비
 						$("#damp_"+item).hide();
 						$("#temp_"+item).hide();
 						$("#rain_"+item).hide();
-					}
-					// 강우 선택시 AWS 강우가 포함되어있을 시
-					if( jQuery.inArray("1", map_data) != "-1" ){
-						$("#aws_"+item).show();
-						$("#aws_label_"+item).show();
-						$("#aws_"+item+"_marker").show();
-						$("#rain_"+item).show();
-						$("#wind_"+item).hide();
-						$("#damp_"+item).hide();
-						$("#temp_"+item).hide();
-
-						$("#aws_"+item).css('margin-top','-110px');//tmp_yAnchor = -111;
-						
-						$("#aws_"+item+"_marker img").attr('src','img/icon_s_01.png');
-						$("#aws_"+item+" .label_top").css('background','#2782ff url(img/icon_label_04.png) left top no-repeat');
-						if( $("#rain_"+item).length != 0 ){
-							tmp_arr_area_code['rain'].push(item); 
-							tmp_cnt++;
-							tmp_last = "rain";
-						}
-					}else{
-						if($("#wave_"+item).css('display') == 'none'){
-							$("#aws_"+item).hide();
-							$("#aws_label_"+item).hide();
-							$("#aws_"+item+"_marker").hide();
-						}else{
-							$("#aws_"+item).css('margin-top','-215px');//tmp_yAnchor = -111;
-							$("#aws_"+item).show();
-							$("#aws_label_"+item).show();
-							$("#aws_"+item+"_marker").show();
-							$("#rain_"+item).show();
-							$("#wind_"+item).show();
-							$("#damp_"+item).show();
-							$("#temp_"+item).show();
-	
-						}
-					}
+					// 처리 로직
 				}
+
 				// 줌레벨에 따른 오버레이 표시
 				if( Number(map_level) < Number(over_level) ){
 					if(arr_rtu[item]['overlay_on']){
@@ -684,46 +706,6 @@ function aws(kind, arr_area_code){ // AWS - AWS 장비
 					}
 				}else{
 				}
-				// //줌레벨에 따른 오버레이 표시
-				// if( Number(map_level) < Number(over_level) ){
-				// 	console.log(111);
-				// 		$("#aws_"+item).show();
-				// 		$("#aws_label_"+item).show();
-						
-				// 		if( (map_kind == 1 || map_kind == 2) && jQuery.inArray("1", map_data) != "-1" ){
-				// 			$("#rain_"+item).show();
-				// 		}
-				// 		if( (map_kind == 1 || map_kind == 2) && jQuery.inArray("2", map_data) != "-1" ){
-				// 			$("#flow_"+item).show();
-				// 		}
-				// 		if( (map_kind == 1 || map_kind == 2) && jQuery.inArray("3", map_data) != "-1" ){
-				// 			$("#snow_"+item).show();
-				// 		}
-				// 		if( (map_kind == 1 || map_kind == 2) && jQuery.inArray("4", map_data) != "-1" ){
-				// 			$.each(arr_rtu[item]['sensor_kind'], function(index2, item2){
-				// 				$("#"+item2+"_"+item).show();
-				// 			});
-				// 		}
-				// }else{
-				// 	console.log(211);
-				// 	$("#aws_"+item).hide();
-				// 	$("#aws_label_"+item).hide();
-					
-				// 	if( (map_kind == 1 || map_kind == 2) && jQuery.inArray("1", map_data) != "-1" ){
-				// 		$("#rain_"+item).hide();
-				// 	}
-				// 	if( (map_kind == 1 || map_kind == 2) && jQuery.inArray("2", map_data) != "-1" ){
-				// 		$("#flow_"+item).hide();
-				// 	}
-				// 	if( (map_kind == 1 || map_kind == 2) && jQuery.inArray("3", map_data) != "-1" ){
-				// 		$("#snow_"+item).hide();
-				// 	}
-				// 	if( (map_kind == 1 || map_kind == 2) && jQuery.inArray("4", map_data) != "-1" ){
-				// 		$.each(arr_rtu[item]['sensor_kind'], function(index2, item2){
-				// 			$("#"+item2+"_"+item).hide();
-				// 		});
-				// 	}
-				// }
 			}); // $.each(arr_area_code, function(index, item) end
 			
 			if(map_kind != 2){
@@ -996,4 +978,3 @@ function aws_event(area_code,state,level) {
 		}
 	}
 }
-	
