@@ -38,7 +38,7 @@ CLASS DBmanager extends mysqli{
 		if(!$this->db['conn']){
 			$this->updaterTrace('mysqli connect error!', mysqli_connect_error());
 			// die("Connection to the server is not available at this time.");
-			// header('Location: /errorpage.html');
+			header('Location: /errorpage.html');
 			exit();
 		}
 		else{@mysqli_set_charset($this->db['conn'],"utf8");}
