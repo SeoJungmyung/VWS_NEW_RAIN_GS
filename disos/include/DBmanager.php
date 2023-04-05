@@ -32,7 +32,7 @@ CLASS DBmanager extends mysqli{
 	public FUNCTION SET_CONNECT(){
 		$this->db['conn'] = @mysqli_connect($this->db['host'], $this->db['user'], $this->db['passwd'], $this->db['database'], $this->db['port']);
 		if(!$this->db['conn']){
-			$this->updaterTrace($sql, mysqli_error($this->db['conn']));
+			$this->updaterTrace('mysqli connect error!', mysqli_connect_error());
 			// die("Connection to the server is not available at this time.");
 			// header('Location: /errorpage.html');
 			exit();
