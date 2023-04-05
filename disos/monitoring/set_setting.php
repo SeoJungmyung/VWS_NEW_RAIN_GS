@@ -620,7 +620,7 @@ require_once "./head.php";
 							<td class="bg_td_gry"><img src="../img/<?=$val['menu_icon']?>" /></td> -->
 							<td>
 							<? 
-								if($val['menu_idx'] != '4'){
+								if($val['menu_idx'] == '3'){
 							?>
 								<select name="top_use[]">
 									<option value="0" <?if($val['menu_use']=="0"){echo "selected";}?>>미사용</option>
@@ -694,25 +694,13 @@ require_once "./head.php";
 								<input type="hidden" name="sub_num[]" value="<?=$val2['menu_num']?>">
 								<input type="hidden" name="sub_idx[]" value="<?=$val['menu_idx']?>">
 							<? 
-								if($val['menu_idx'] == '4' && $val2['menu_num'] == '1'){
+								if($val['menu_idx'] != '3' && $val2['menu_num'] == '1'){
 							?>
 								<input type="hidden" name="sub_use[]" value="1">
 								<select name="sub_system" disabled>
 									<option value="0">설정 불가</option>
 									<option value="1" selected>설정 불가</option>
 								</select>
-							<? 
-								}else if($val['menu_idx'] == '1' && $val2['menu_num'] == '1'){
-							?>
-								<select class="sub_use" name="sub_use[]">
-									<option value="0" <?if($val2['menu_use']=="0"){echo "selected";}?>>미사용</option>
-									<option value="1" <?if($val2['menu_use']=="1"){echo "selected";}?>>사용</option>
-								</select>
-								<br/>
-								<span> 
-									<i class="fa fa-exclamation-circle col_org mR_5"></i>
-									<span class="spc1">미사용시 상단의 메뉴에서만 보이지 않게 됩니다.</span>
-								</span>
 							<? 
 								}else{
 							?>
@@ -991,7 +979,7 @@ $(document).ready(function(){
 		// 사용여부 검사
 		submenu_arr.forEach(function(v,i){
 			if(v.indexOf('1') === -1) {
-				swal("체크", topmenunames[i]+" 메뉴를 미사용으로 변경해 주세요.", "warning");
+				swal("체크", "하위 메뉴 전체를 미사용으로 바꿀 수 없습니다.\n "+topmenunames[i]+" 메뉴를 미사용으로 변경해 주세요.", "warning");
 				$(e.target).val('1');
 			};
 		});
