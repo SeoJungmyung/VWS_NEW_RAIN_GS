@@ -853,14 +853,98 @@ function aws_event(area_code,state,level) {
 				}
 			}
 		}
-		// if($("#aws_"+area_code))
-		if( jQuery.inArray("4", map_data) != "-1" ){
-			$("#aws_"+area_code).css('margin-top','-215px');//tmp_yAnchor = -111;
+		// map_data 안에 속한 숫자가 1만 존재한다면
+		if (map_data.includes('1') && !map_data.includes('4')) {
+			$("#aws_"+area_code).show();
+			$("#aws_label_"+area_code).show();
+			$("#aws_"+area_code+"_marker").show();
+			$("#wind_"+area_code).hide();
+			$("#damp_"+area_code).hide();
+			$("#temp_"+area_code).hide();
+			$("#rain_"+area_code).show();
+			$("#aws_"+area_code).css('margin-top','-110px');
+
+			$("#aws_"+area_code+"_marker img").attr('src','img/icon_s_01.png');
+			$("#aws_"+area_code+" .label_top").css('background','#2782ff url(img/icon_label_04.png) left top no-repeat');
+			if( $("#rain_"+area_code).length != 0 ){
+				tmp_arr_area_code['rain'].push(area_code); 
+				tmp_cnt++;
+				tmp_last = "rain";
+			}
+			// 처리 로직
+		}
+		// 1과 4가 모두 존재한다면
+		else if (map_data.includes('1') && map_data.includes('4')) {
+			$("#aws_"+area_code).show();
+			$("#aws_label_"+area_code).show();
+			$("#aws_"+area_code+"_marker").show();
+			$("#rain_"+area_code).show();
 			$("#wind_"+area_code).show();
 			$("#damp_"+area_code).show();
 			$("#temp_"+area_code).show();
-		}else{
-			$("#aws_"+area_code).css('margin-top','-215px');//tmp_yAnchor = -111;
+			$("#aws_"+area_code).css('margin-top','-215px');
+
+			$("#aws_"+area_code+"_marker img").attr('src','img/icon_s_03.png');
+			$("#aws_"+area_code+" .label_top").css('background','#0ca629 url(img/icon_label_04.png) left top no-repeat');	
+			// 처리 로직
+			$.each(arr_rtu[area_code]['sensor_kind'], function(index2, item2){
+				$("#"+item2+"_"+area_code).show(); 
+				tmp_arr_area_code[item2].push(area_code); 
+				tmp_last = item2;
+			});
+		}
+		// 4만 존재한다면
+		else if (map_data.includes('4')) {
+			$("#aws_"+area_code).show();
+			$("#aws_label_"+area_code).show();
+			$("#aws_"+area_code+"_marker").show();
+			$("#rain_"+area_code).show();
+			$("#wind_"+area_code).show();
+			$("#damp_"+area_code).show();
+			$("#temp_"+area_code).show();
+			$("#aws_"+area_code).css('margin-top','-215px');
+
+			$("#aws_"+area_code+"_marker img").attr('src','img/icon_s_03.png');
+			$("#aws_"+area_code+" .label_top").css('background','#0ca629 url(img/icon_label_04.png) left top no-repeat');	
+			// 처리 로직
+			$.each(arr_rtu[area_code]['sensor_kind'], function(index2, item2){
+				$("#"+item2+"_"+area_code).show(); 
+				tmp_arr_area_code[item2].push(area_code); 
+				tmp_last = item2;
+			});
+		}
+		// 1과 4 둘 다 없다면
+		else if (!map_data.includes('1') && !map_data.includes('4')) {
+			if($("#wave_"+area_code).css('display') == 'none'){
+				$("#aws_"+area_code).hide();
+				$("#aws_label_"+area_code).hide();
+				$("#aws_"+area_code+"_marker").hide();
+				$("#wind_"+area_code).hide();
+				$("#damp_"+area_code).hide();
+				$("#temp_"+area_code).hide();
+				$("#rain_"+area_code).hide();
+			}else{
+				$("#aws_"+area_code).show();
+				$("#aws_label_"+area_code).show();
+				$("#aws_"+area_code+"_marker").show();
+				$("#rain_"+area_code).show();
+				$("#wind_"+area_code).show();
+				$("#damp_"+area_code).show();
+				$("#temp_"+area_code).show();
+				$("#aws_"+area_code).css('margin-top','-215px');
+			}
+			// 처리 로직
+		}
+		// 다른 경우 처리 로직
+		else {
+				$("#aws_"+area_code).hide();
+				$("#aws_label_"+area_code).hide();
+				$("#aws_"+area_code+"_marker").hide();
+				$("#wind_"+area_code).hide();
+				$("#damp_"+area_code).hide();
+				$("#temp_"+area_code).hide();
+				$("#rain_"+area_code).hide();
+			// 처리 로직
 		}
 		$.post( "controll/rain.php", { "mode" : "rain", "arr_area_code" : global_aws_area_code }, function(response){
 			$.each(response.list, function(index, item){
