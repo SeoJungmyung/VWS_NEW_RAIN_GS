@@ -45,14 +45,25 @@ require_once "../_info/_set_setting.php";
             if($data_in[ $val['menu_idx'] ]){
               foreach($data_in[ $val['menu_idx'] ] as $key2 => $val2){ 
                 if($val2['menu_use'] == "1"){
+                  if($val2['menu_idx'] == "2" && $val2['menu_num'] == "1" && $val2['menu_url'] == "rpt_10m.php"){
+                    $_SESSION['rpt_flag'] = 1;
+                  }
               ?>
                       <li><i href="<?=$val2['menu_url']?>" data-num="<?=$val['menu_idx']?>"><span><i class="fa fa-chevron-right"><span style="vertical-align: top;"><?=$val2['menu_name']?></span></i></span></i></li>
-          <?    }  
+          <?    }else{
+                   if($val2['menu_idx'] == "2" && $val2['menu_num'] == "1" && $val2['menu_url'] == "rpt_10m.php"){
+                      $_SESSION['rpt_flag'] = 0;
+                   }
+                }  
               }
             }
             ?>
           </div>
           <?
+            }else{
+              if($val['menu_idx'] == "2"){
+                $_SESSION['rpt_flag'] = 0;
+              }
             }
           }
           ?>

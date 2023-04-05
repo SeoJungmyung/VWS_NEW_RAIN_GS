@@ -22,8 +22,8 @@ require_once "./head.php";
 					<!-- <div class="tit w100 bB_2blue"> -->
 					<div class="tit w100">
 					<div data-tab="system-tab" class="tab">운영 설정</div>
-					<div data-tab="main-tab" class="tab">메인 메뉴 설정</div>
-					<div data-tab="sub-tab" class="tab">서브 메뉴 설정</div>
+					<div data-tab="main-tab" class="tab">상위 메뉴 설정</div>
+					<div data-tab="sub-tab" class="tab">하위 메뉴 설정</div>
 					<div data-tab="popup-tab" class="tab">팝업 메뉴 설정</div>
 					<!-- <div data-tab="report-tab" class="tab">기본보고서 설정</div> -->
 					
@@ -591,7 +591,7 @@ require_once "./head.php";
 		<div id="main-tab" class="right_bg2 hd">
 
 		<ul class="system_tit">
-				<li><i class="fa fa-cog"></i>메인 메뉴 설정</li>
+				<li><i class="fa fa-cog"></i>상위 메뉴 설정</li>
 				<li><button type="button" name="btn_save" class="btn_bb80">저장</button></li></ul>
 		
 
@@ -657,7 +657,7 @@ require_once "./head.php";
 
 		<div id="sub-tab" class="right_bg2 hd">
 		<ul class="system_tit">
-				<li><i class="fa fa-cog"></i>서브 메뉴 설정</li>
+				<li><i class="fa fa-cog"></i>하위 메뉴 설정</li>
 				<li><button type="button" name="btn_save" class="btn_bb80">저장</button></li></ul>
 		
 		<ul class="set_ulwrap_nh hd">
@@ -681,8 +681,8 @@ require_once "./head.php";
 					  	  		foreach($data_in[ $val['menu_idx'] ] as $key2 => $val2){ 
 					?>
 						<tr class="hh">
-							<td class="gubun"><?=$val['menu_name']?></td><input type="hidden" name="sub_idx[]" value="<?=$val['menu_idx']?>">
-							<td><?=$val2['menu_name']?><input type="hidden" name="sub_num[]" value="<?=$val2['menu_num']?>"></td>
+							<td class="gubun"><?=$val['menu_name']?></td>
+							<td><?=$val2['menu_name']?></td>
 							<!-- <td><a href="<?=$val2['menu_url']?>"><?=$val2['menu_url']?></a></td> -->
 							<!-- <td>
 								<select name="sub_level[]">
@@ -691,6 +691,8 @@ require_once "./head.php";
 								</select> 부터
 							</td> -->
 							<td>
+								<input type="hidden" name="sub_num[]" value="<?=$val2['menu_num']?>">
+								<input type="hidden" name="sub_idx[]" value="<?=$val['menu_idx']?>">
 							<? 
 								if($val['menu_idx'] == '4' && $val2['menu_num'] == '1'){
 							?>
@@ -700,9 +702,21 @@ require_once "./head.php";
 									<option value="1" selected>설정 불가</option>
 								</select>
 							<? 
+								}else if($val['menu_idx'] == '1' && $val2['menu_num'] == '1'){
+							?>
+								<select class="sub_use" name="sub_use[]">
+									<option value="0" <?if($val2['menu_use']=="0"){echo "selected";}?>>미사용</option>
+									<option value="1" <?if($val2['menu_use']=="1"){echo "selected";}?>>사용</option>
+								</select>
+								<br/>
+								<span> 
+									<i class="fa fa-exclamation-circle col_org mR_5"></i>
+									<span class="spc1">미사용시 상단의 메뉴에서만 보이지 않게 됩니다.</span>
+								</span>
+							<? 
 								}else{
 							?>
-								<select name="sub_use[]">
+								<select class="sub_use" name="sub_use[]">
 									<option value="0" <?if($val2['menu_use']=="0"){echo "selected";}?>>미사용</option>
 									<option value="1" <?if($val2['menu_use']=="1"){echo "selected";}?>>사용</option>
 								</select>
@@ -954,6 +968,35 @@ $(document).ready(function(){
 	$(".tab:first").addClass("tab_hover").show();
 	$(".right_bg2:first").show();
 
+	// 환경설정 제외한 상위 매뉴별 사용여부
+	$(".sub_use").change(function(e){
+		let submenu_arr = [];
+		let topmenunames = ['관측현황','보고서','자료관리'];
+		let tmp_arr = [];
+		let tmp_idx = 0;
+		$(".sub_use").each(function(i,v){
+			// let sl_e = Array.from($(v).siblings());
+			// sl_e.forEach(function(v2,i2){ //console.log($(v2).val()); });
+			let sl_e = $(v).prev();
+			if(i != 0){
+				if(tmp_idx != $(sl_e).val()) {
+					submenu_arr.push(tmp_arr);
+					tmp_arr = [];
+				}
+			}
+			tmp_arr.push($(v).val());
+			tmp_idx = $(sl_e).val();
+		});
+		// console.log(submenu_arr);
+		// 사용여부 검사
+		submenu_arr.forEach(function(v,i){
+			if(v.indexOf('1') === -1) {
+				swal("체크", topmenunames[i]+" 메뉴를 미사용으로 변경해 주세요.", "warning");
+				$(e.target).val('1');
+			};
+		});
+	});
+
 	$(".tab").click(function(){
 		 var tab_id = $(this).attr('data-tab');
 
@@ -964,7 +1007,7 @@ $(document).ready(function(){
 		  $("#"+tab_id).show();
 	});
 
-	//서브메뉴 상위메뉴 rowspan설정 이벤트
+	//하위메뉴 상위메뉴 rowspan설정 이벤트
 	$(".gubun").each(function(){
 		var rows = $(".gubun:contains('" + $(this).text()+ "')");
 	

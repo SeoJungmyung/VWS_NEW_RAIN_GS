@@ -41,8 +41,10 @@
 					lay_html += ' <div class="main_contitle"> ';
 					lay_html += ' <div class="tit"> ';
 					lay_html += ' <img src="../images/board_icon_aws.png" alt="강우현황">  <span>강우현황</span> ';
-					lay_html += ' <span class="quick"> ';
-					lay_html += ' <img src="../images/quick_link.png" alt="상세보고서 바로가기" onclick="quick_button(1);"></span>';
+					if(common_rpt_flag == 1){
+						lay_html += ' <span class="quick"> ';
+						lay_html += ' <img src="../images/quick_link.png" alt="상세보고서 바로가기" onclick="quick_button(1);"></span>';
+					}
 					lay_html += ' </div>';
 					lay_html += ' </div> <div class="right_bg2">';
 					lay_html += ' <table class="main_table m20"> ';
@@ -392,8 +394,10 @@
 					lay_html += ' <div class="main_contitle"> ';
 					lay_html += ' <div class="tit"> ';
 					lay_html += ' <img src="../images/board_icon_aws.png" alt="수위현황">  <span>수위현황</span> ';
-					lay_html += ' <span class="quick"> ';
-					lay_html += ' <img src="../images/quick_link.png" alt="상세보고서 바로가기" onclick="quick_button(2);"></span>';
+					if(common_rpt_flag == 1){
+						lay_html += ' <span class="quick"> ';
+						lay_html += ' <img src="../images/quick_link.png" alt="상세보고서 바로가기" onclick="quick_button(2);"></span>';
+					}
 					lay_html += ' </div>';
 					lay_html += ' </div> <div class="right_bg2">';
 					lay_html += ' <table class="main_table m20 allv"> ';
@@ -508,8 +512,10 @@
 					lay_html += ' <div class="main_contitle"> ';
 					lay_html += ' <div class="tit"> ';
 					lay_html += ' <img src="../images/board_icon_aws.png" alt="AWS현황">  <span>AWS현황</span> ';
-					lay_html += ' <span class="quick"> ';
-					lay_html += ' <img src="../images/quick_link.png" alt="상세보고서 바로가기" onclick="quick_button(3);"></span>';
+					if(common_rpt_flag == 1){
+						lay_html += ' <span class="quick"> ';
+						lay_html += ' <img src="../images/quick_link.png" alt="상세보고서 바로가기" onclick="quick_button(3);"></span>';
+					}
 					lay_html += ' </div>';
 					lay_html += ' </div> <div class="right_bg2">';
 					lay_html += ' <table class="main_table_1 m20"> ';
@@ -705,8 +711,10 @@
 					lay_html += ' <div class="main_contitle"> ';
 					lay_html += ' <div class="tit"> ';
 					lay_html += ' <img src="../images/board_icon_aws.png" alt="적설현황">  <span>적설현황</span> ';
-					lay_html += ' <span class="quick"> ';
-					lay_html += ' <img src="../images/quick_link.png" alt="상세보고서 바로가기" onclick="quick_button(4);"></span>';
+					if(common_rpt_flag == 1){
+						lay_html += ' <span class="quick"> ';
+						lay_html += ' <img src="../images/quick_link.png" alt="상세보고서 바로가기" onclick="quick_button(4);"></span>';
+					}
 					lay_html += ' </div>';
 					lay_html += ' </div> <div class="right_bg2">';
 					lay_html += ' <table class="main_table m20"> ';
@@ -817,6 +825,7 @@
 
 
 	function quick_button(mode){
+		// console.log(common_rpt_flag);
 		if(mode == 1) {
 			$("#main",parent.document).attr("src","rpt_10m.php");
 			location.href = "../monitoring/rpt_10m.php"; //강우현황
@@ -832,18 +841,6 @@
 		if(mode == 4) {
 			$("#main",parent.document).attr("src","rpt_10m.php");
 			location.href = "../monitoring/rpt_10m.php?option=2"; // 적설현황
-		}
-		if(mode == 5) {
-			$("#main",parent.document).attr("src","rpt_brhist.php");
-			location.href = "../monitoring/rpt_brhist.php"; // 방송현황
-		}
-		if(mode == 6) {
-			$("#main",parent.document).attr("src","rpt_alarmlog.php");
-			location.href = "../monitoring/rpt_alarmlog.php"; // 경보현황
-		}
-		if(mode == 7) {
-			$("#main",parent.document).attr("src","tms_equip.php");
-			location.href = "../monitoring/tms_equip.php"; // 장비상태
 		}
 	}
 
