@@ -957,33 +957,33 @@ $(document).ready(function(){
 	$(".right_bg2:first").show();
 
 	// 환경설정 제외한 상위 매뉴별 사용여부
-	$(".sub_use").change(function(e){
-		let submenu_arr = [];
-		let topmenunames = ['관측현황','보고서','자료관리'];
-		let tmp_arr = [];
-		let tmp_idx = 0;
-		$(".sub_use").each(function(i,v){
-			// let sl_e = Array.from($(v).siblings());
-			// sl_e.forEach(function(v2,i2){ //console.log($(v2).val()); });
-			let sl_e = $(v).prev();
-			if(i != 0){
-				if(tmp_idx != $(sl_e).val()) {
-					submenu_arr.push(tmp_arr);
-					tmp_arr = [];
-				}
-			}
-			tmp_arr.push($(v).val());
-			tmp_idx = $(sl_e).val();
-		});
-		// console.log(submenu_arr);
-		// 사용여부 검사
-		submenu_arr.forEach(function(v,i){
-			if(v.indexOf('1') === -1) {
-				swal("체크", "하위 메뉴 전체를 미사용으로 바꿀 수 없습니다.\n "+topmenunames[i]+" 메뉴를 미사용으로 변경해 주세요.", "warning");
-				$(e.target).val('1');
-			};
-		});
-	});
+	// $(".sub_use").change(function(e){
+	// 	let submenu_arr = [];
+	// 	let topmenunames = ['관측현황','보고서','자료관리'];
+	// 	let tmp_arr = [];
+	// 	let tmp_idx = 0;
+	// 	$(".sub_use").each(function(i,v){
+	// 		// let sl_e = Array.from($(v).siblings());
+	// 		// sl_e.forEach(function(v2,i2){ //console.log($(v2).val()); });
+	// 		let sl_e = $(v).prev();
+	// 		if(i != 0){
+	// 			if(tmp_idx != $(sl_e).val()) {
+	// 				submenu_arr.push(tmp_arr);
+	// 				tmp_arr = [];
+	// 			}
+	// 		}
+	// 		tmp_arr.push($(v).val());
+	// 		tmp_idx = $(sl_e).val();
+	// 	});
+	// 	// console.log(submenu_arr);
+	// 	// 사용여부 검사
+	// 	submenu_arr.forEach(function(v,i){
+	// 		if(v.indexOf('1') === -1) {
+	// 			swal("체크", "하위 메뉴 전체를 미사용으로 바꿀 수 없습니다.\n "+topmenunames[i]+" 메뉴를 미사용으로 변경해 주세요.", "warning");
+	// 			$(e.target).val('1');
+	// 		};
+	// 	});
+	// });
 
 	$(".tab").click(function(){
 		 var tab_id = $(this).attr('data-tab');
