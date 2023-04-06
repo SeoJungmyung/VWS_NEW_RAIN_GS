@@ -850,7 +850,6 @@ function aws_event(area_code,state,level) {
 			$("#aws_"+area_code+" .label_top").css('background','#2782ff url(img/icon_label_04.png) left top no-repeat');
 			if( $("#rain_"+area_code).length != 0 ){
 				tmp_arr_area_code['rain'].push(area_code); 
-				tmp_cnt++;
 				tmp_last = "rain";
 			}
 			// 처리 로직
