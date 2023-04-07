@@ -186,13 +186,13 @@ $(document).ready(function(){
 	//클릭 시 스크롤 이동
 	function goTarget(idx){
 		var firstOffset = $("#list_table tr").eq(0).offset();
-		var offset = $("#list_table tr").eq(idx+1).offset();
+		var offset = $("#list_table tr").eq(idx).offset();
 		// console.log($("#list_table tr").eq(idx+1).html());
 		$('.li100_nor_rignt').animate({scrollTop : offset.top - firstOffset.top}, 400);
 		
 		// 전체 blink 클래스 삭제 후 blink 클래스 추가
 		$("#list_table tr .effect").removeClass('blink');
-		$("#list_table tr").eq(idx+1).find('.effect').addClass('blink');
+		$("#list_table tr").eq(idx).find('.effect').addClass('blink');
 	}
 
 	// 그래프 호출
@@ -240,8 +240,8 @@ $(document).ready(function(){
 					var idx = 0;
 					var uniqeArr = [];
 					$.each(data.list, function(i, v){
-						if(v.hasOwnProperty('LEG')){
-							if(v.LEG == LEGD[idx]){
+						if(v.hasOwnProperty('DATE')){
+							if(v.DATE == LEGD[idx]){
 								// if(LEGD[idx].substr(11, 5) == '00:00'){
 								// 	var tmpLeg = LEGD[idx].substr(5, 11);
 								// }else{
@@ -339,9 +339,10 @@ $(document).ready(function(){
 						},
 						options: {
 							onClick: function(evt, activeElements) {
-								// console.log(this.data.labels[elementIndex]);
+								// var leg = activeElements[0]._model.label;
+								// console.log($('#list_table #'+leg));
 								if(activeElements.length > 0){
-									var elementIndex = (DATAD.length - 1)- activeElements[0]._index;
+									var elementIndex = (LEGD.length)- activeElements[0]._index;
 									if(today_date != $("#edate").val()){
 										elementIndex--;
 									}
