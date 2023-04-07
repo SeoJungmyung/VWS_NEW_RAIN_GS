@@ -327,6 +327,7 @@ $(document).ready(function(){
 					var DATA3 = new Array();
 					var DATA4 = new Array();
 					var DATA5 = new Array();
+					var DANGER_USE = 0;
 					var MAX, MIN, INCRE = null;
 					var tmpMax = 0;
 					var tmpMin = 0;
@@ -337,6 +338,7 @@ $(document).ready(function(){
 						if(data.area.MAX !=null && tmpMax < data.area.MAX) tmpMax = data.area.MAX;
 						if(data.area.MIN !=null && tmpMin > data.area.MIN) tmpMin = data.area.MIN;
 						$("#rtu_name").text(data.area.RTU_NAME);
+						DANGER_USE = data.area.DANGER_USE;
 					}
 
 					if(data.list){
@@ -373,39 +375,55 @@ $(document).ready(function(){
 						MIN = Number(MIN) - Number(INCRE);
 					}
 					MIN = MIN < 0 ? 0 : MIN;
-	
+					var dtset;
+					if(DANGER_USE == 1){
+						dtset = 
+							[{
+							 	label: '<?=level_1?>',
+								data: DATA1,
+								yAxisID: 'y_flow',
+								backgroundColor: 'rgba(255, 154, 54 ,0.856)',
+								borderColor: 'rgba(255, 154, 54 ,0.856)',
+								borderWidth: 2,
+								fill: false,
+								pointRadius: 0
+							}, {
+								label: '<?=level_2?>',
+								data: DATA2,
+								yAxisID: 'y_flow',
+								backgroundColor: 'rgba(231, 46, 52,0.856)',
+								borderColor: 'rgba(231, 46, 52,0.856)',
+								borderWidth: 2,
+								fill: false,
+								pointRadius: 0
+							}, {
+								label: '수위',
+								data: DATAD,
+								yAxisID: 'y_flow',
+								backgroundColor: '#b7d5f4',
+								borderColor: '#69F',
+								borderWidth: 2,
+								fill: 'start'
+							}]
+					}else{
+						dtset = 
+							[{
+								label: '수위',
+								data: DATAD,
+								yAxisID: 'y_flow',
+								backgroundColor: '#b7d5f4',
+								borderColor: '#69F',
+								borderWidth: 2,
+								fill: 'start'
+							}];
+					}
+					
 					if(common_level_cnt == 2){
 						chart = new Chart($("#graph"), {
 							type: 'line',
 							data: {
 								labels: LEGD,
-								datasets: [{
-									label: '<?=level_1?>',
-									data: DATA1,
-									yAxisID: 'y_flow',
-									backgroundColor: 'rgba(255, 154, 54 ,0.856)',
-									borderColor: 'rgba(255, 154, 54 ,0.856)',
-									borderWidth: 2,
-									fill: false,
-									pointRadius: 0
-								}, {
-									label: '<?=level_2?>',
-									data: DATA2,
-									yAxisID: 'y_flow',
-									backgroundColor: 'rgba(231, 46, 52,0.856)',
-									borderColor: 'rgba(231, 46, 52,0.856)',
-									borderWidth: 2,
-									fill: false,
-									pointRadius: 0
-								}, {
-									label: '수위',
-									data: DATAD,
-									yAxisID: 'y_flow',
-									backgroundColor: '#b7d5f4',
-									borderColor: '#69F',
-									borderWidth: 2,
-									fill: 'start'
-								}]
+								datasets: dtset
 							},
 							options: {
 								elements: {
