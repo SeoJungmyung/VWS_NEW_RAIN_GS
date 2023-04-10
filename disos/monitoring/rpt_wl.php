@@ -174,7 +174,7 @@ $(document).ready(function(){
 
 	$("#area_code").change(function(){
 		area_code = $("#area_code").val();
-		graph_on();
+		$("#form_search").submit();
 	});
 	
 	// tr 클릭시 그래프 변경
@@ -182,7 +182,7 @@ $(document).ready(function(){
 		var rtu_n = $(this).attr('id');
 		$("#area_code").val(rtu_n).attr("selected", true);
 		area_code = $("#area_code").val();
-		graph_on();
+		$("#form_search").submit();
 	});
 
 	// 달력 호출
