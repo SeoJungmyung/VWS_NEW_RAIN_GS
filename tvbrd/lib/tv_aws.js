@@ -383,24 +383,26 @@ function aws(kind, arr_area_code){ // AWS - AWS 장비
 							}
 							arr_rtu[item]['overlay_on'] = false;
 						}else{
-							$("#aws_"+item).show();
-							$("#aws_"+item).next().show();
-							$("#aws_labal_"+item).show();
-							if( (map_kind == 1 || map_kind == 2) && jQuery.inArray("1", map_data) != "-1" ){
-								$("#rain_"+item).show();
+							if($("#wave_"+item).css('display') == 'none'){
+								$("#aws_"+item).show();
+								$("#aws_"+item).next().show();
+								$("#aws_labal_"+item).show();
+								if( (map_kind == 1 || map_kind == 2) && jQuery.inArray("1", map_data) != "-1" ){
+									$("#rain_"+item).show();
+								}
+								if( (map_kind == 1 || map_kind == 2) && jQuery.inArray("2", map_data) != "-1" ){
+									$("#flow_"+item).show();
+								}
+								if( (map_kind == 1 || map_kind == 2) && jQuery.inArray("3", map_data) != "-1" ){
+									$("#snow_"+item).show();
+								}
+								if( (map_kind == 1 || map_kind == 2) && jQuery.inArray("4", map_data) != "-1" ){
+									$.each(arr_rtu[item]['sensor_kind'], function(index2, item2){
+										$("#"+item2+"_"+item).show();
+									});
+								}
+								arr_rtu[item]['overlay_on'] = true;
 							}
-							if( (map_kind == 1 || map_kind == 2) && jQuery.inArray("2", map_data) != "-1" ){
-								$("#flow_"+item).show();
-							}
-							if( (map_kind == 1 || map_kind == 2) && jQuery.inArray("3", map_data) != "-1" ){
-								$("#snow_"+item).show();
-							}
-							if( (map_kind == 1 || map_kind == 2) && jQuery.inArray("4", map_data) != "-1" ){
-								$.each(arr_rtu[item]['sensor_kind'], function(index2, item2){
-									$("#"+item2+"_"+item).show();
-								});
-							}
-							arr_rtu[item]['overlay_on'] = true;
 						}
 					}
 

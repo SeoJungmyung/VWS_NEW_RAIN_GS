@@ -272,9 +272,11 @@ function rain(kind, arr_area_code){ // 강우 - 강우만 있는 장비
 							$("#rain_"+item).next().hide();
 							arr_rtu[item]['overlay_on'] = false;
 						}else{
-							$("#rain_"+item).show();
-							$("#rain_"+item).next().show();
-							arr_rtu[item]['overlay_on'] = true;
+							if($("#wave_"+item).css('display') == 'none'){
+								$("#rain_"+item).show();
+								$("#rain_"+item).next().show();
+								arr_rtu[item]['overlay_on'] = true;
+							}
 						}
 					}
 				});
