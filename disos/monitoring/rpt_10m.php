@@ -184,16 +184,16 @@ $(document).ready(function(){
 	}
 
 	//클릭 시 스크롤 이동
-	function goTarget(idx){
-		var firstOffset = $("#list_table tr").eq(0).offset();
-		var offset = $("#list_table tr").eq(idx).offset();
-		// console.log($("#list_table tr").eq(idx+1).html());
-		$('.li100_nor_rignt').animate({scrollTop : offset.top - firstOffset.top}, 400);
+	// function goTarget(idx){
+	// 	var firstOffset = $("#list_table tr").eq(0).offset();
+	// 	var offset = $("#list_table tr").eq(idx).offset();
+	// 	// console.log($("#list_table tr").eq(idx+1).html());
+	// 	$('.li100_nor_rignt').animate({scrollTop : offset.top - firstOffset.top}, 400);
 		
-		// 전체 blink 클래스 삭제 후 blink 클래스 추가
-		$("#list_table tr .effect").removeClass('blink');
-		$("#list_table tr").eq(idx).find('.effect').addClass('blink');
-	}
+	// 	// 전체 blink 클래스 삭제 후 blink 클래스 추가
+	// 	$("#list_table tr .effect").removeClass('blink');
+	// 	$("#list_table tr").eq(idx).find('.effect').addClass('blink');
+	// }
 
 	// 그래프 호출
 	if(area_code != "") graph_on();
