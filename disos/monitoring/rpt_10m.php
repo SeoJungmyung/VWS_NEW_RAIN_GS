@@ -338,7 +338,7 @@ $(document).ready(function(){
 							]
 						},
 						options: {
-							onClick: function(evt, activeElements) {
+							/* onClick: function(evt, activeElements) {
 								// var leg = activeElements[0]._model.label;
 								// console.log($('#list_table #'+leg));
 								if(activeElements.length > 0){
@@ -350,7 +350,7 @@ $(document).ready(function(){
 								}
 							// this.data.datasets[0].backgroundColor[elementIndex] = 'red';
 							// this.update();
-							},
+							}, */
 							elements: {
 								line: {
 									tension: 0
