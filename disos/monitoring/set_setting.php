@@ -620,7 +620,7 @@ require_once "./head.php";
 							<td class="bg_td_gry"><img src="../img/<?=$val['menu_icon']?>" /></td> -->
 							<td>
 							<? 
-								if($val['menu_idx'] == '3'){
+								if($val['menu_idx'] != '4'){
 							?>
 								<select name="top_use[]">
 									<option value="0" <?if($val['menu_use']=="0"){echo "selected";}?>>미사용</option>
@@ -694,7 +694,7 @@ require_once "./head.php";
 								<input type="hidden" name="sub_num[]" value="<?=$val2['menu_num']?>">
 								<input type="hidden" name="sub_idx[]" value="<?=$val['menu_idx']?>">
 							<? 
-								if($val['menu_idx'] != '3' && $val2['menu_num'] == '1'){
+								if($val['menu_idx'] == '4' && $val2['menu_num'] == '1'){
 							?>
 								<input type="hidden" name="sub_use[]" value="1">
 								<select name="sub_system" disabled>
