@@ -132,7 +132,7 @@ CLASS DBmanager extends mysqli{
 		$result = $result == 1 ? "true" : $result;
 		$btArr = debug_backtrace();
 		
-		$rootIdx = !strpos($btArr[count($btArr)-1]['file'], "\\divas\\") ? strpos($btArr[count($btArr)-1]['file'], "\\tvbrd\\") : strpos($btArr[count($btArr)-1]['file'], "\\divas\\");
+		$rootIdx = !strpos($btArr[count($btArr)-1]['file'], "\\disos\\") ? strpos($btArr[count($btArr)-1]['file'], "\\tvbrd\\") : strpos($btArr[count($btArr)-1]['file'], "\\disos\\");
 		$rootFile = substr($btArr[count($btArr)-1]['file'], $rootIdx+1);
 
 		$btVal = $rootFile .",".$btArr[count($btArr)-1]['function'];

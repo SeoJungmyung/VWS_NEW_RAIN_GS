@@ -1,26 +1,5 @@
 <?
-// DB 정보
-/*
-define('DB_HOST',       "10.1.1.10:13306");
-define('DB_USER',       "root");
-define('DB_PASSWORD',   "a32956!");
-define('DB_DATABASE',   "divas_gapyeong");
-*/
-/*
-define('DB_HOST',       "localhost:3309");
-define('DB_USER',       "root");
-define('DB_PASSWORD',   "123456");
-define('DB_DATABASE',   "divas_ech");
-*/
-/*
-define('DB_HOST',		"27.101.121.81:13306");
-define('DB_USER',		"root");  
-define('DB_PASSWORD',	"divas32956");
-define('DB_DATABASE',	"divas"); 
-*/
-
-
-define('DB_HOST',		"192.168.1.8");
+define('DB_HOST',		"192.168.1.7");
 define('DB_USER',		"root");  
 define('DB_PASSWORD',	"123456");
 define('DB_DATABASE',	"vws"); 

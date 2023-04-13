@@ -1,8 +1,8 @@
 <?
-define('ORA_DSN',	"DivasDB");
-define('ORA_TNS',	"DIVASDB");  
-define('ORA_ID',	"DivasDB");
-define('ORA_PW',	"htni1600"); 
+define('ORA_DSN',	"");
+define('ORA_TNS',	"");  
+define('ORA_ID',	"");
+define('ORA_PW',	""); 
 
 #오라클 쿼리 실행중 월간의 마지막날 가져오기
 $year	= date("Y");
