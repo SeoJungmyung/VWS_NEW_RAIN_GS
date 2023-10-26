@@ -106,7 +106,7 @@ require_once "./head.php";
 						echo "<tr class='not_d'>
 						<td></td><td class='bL_1gry'></td><td class='bL_1gry'></td><td class='bL_1gry'></td><td class='bL_1gry'></td>
 						<td class='bL_1gry'></td><td class='bL_1gry'></td><td class='bL_1gry'></td><td class='bL_1gry'></td><td class='bL_1gry'></td>
-						<td class='bL_1gry'></td><td class='bL_1gry'></td><td class='bL_1gry'></td>
+						<td class='bL_1gry'></td><td class='bL_1gry'></td><td class='bL_1gry'></td><td class='bL_1gry dp0'></td>
 						</tr>";
 					}
 				}

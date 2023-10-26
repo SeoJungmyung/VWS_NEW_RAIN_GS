@@ -819,6 +819,7 @@ Class ClassSetting {
 	 */
 	function setEquipIn(){
 		if(DB == "0"){
+			$SENSOR_TYPE = 0;
 			$CALL_LAST = $this->DB->html_encode($_REQUEST['CALL_LAST_D'])." ".$this->DB->html_encode($_REQUEST['CALL_LAST_H']).":".$this->DB->html_encode($_REQUEST['CALL_LAST_M']).":00";
 
 			if($this->DB->html_encode($_REQUEST['RTU_TYPE'])=='BR0' || $this->DB->html_encode($_REQUEST['RTU_TYPE'])=='BF0' || $this->DB->html_encode($_REQUEST['RTU_TYPE'])=='BA0'){ //방송장비 경보방송에 안나오기때문에 등록시 처리 --20181220
@@ -826,24 +827,32 @@ Class ClassSetting {
 			}
 
 			if($this->DB->html_encode($_REQUEST['RTU_TYPE']) == 'S00'){
+				$SENSOR_TYPE = 2;
 				$FLOW_WARNING = $this->DB->html_encode($_REQUEST['FLOW_WARNING'])*1000;
 				$FLOW_DANGER = $this->DB->html_encode($_REQUEST['FLOW_DANGER'])*1000;
 				$FLOW_WARNING_OFF = $this->DB->html_encode($_REQUEST['FLOW_WARNING_OFF'])*1000;
 				$FLOW_DANGER_OFF = $this->DB->html_encode($_REQUEST['FLOW_DANGER_OFF'])*1000;
 			}else{
+				if($this->DB->html_encode($_REQUEST['RTU_TYPE']) == 'F00'){
+					$SENSOR_TYPE = 1;
+				}else if($this->DB->html_encode($_REQUEST['RTU_TYPE']) == 'A00'){
+					$SENSOR_TYPE = 3;
+				}
 				$FLOW_WARNING = $this->DB->html_encode($_REQUEST['FLOW_WARNING'])*100;
 				$FLOW_DANGER = $this->DB->html_encode($_REQUEST['FLOW_DANGER'])*100;
 				$FLOW_WARNING_OFF = $this->DB->html_encode($_REQUEST['FLOW_WARNING_OFF'])*100;
 				$FLOW_DANGER_OFF = $this->DB->html_encode($_REQUEST['FLOW_DANGER_OFF'])*100;
 			}
-			
+
 			$sql = " INSERT INTO RTU_INFO (RTU_ID, SIGNAL_ID, AREA_CODE, RTU_NAME, ORGAN_ID, LINE_NO, MODEL_NO, RTU_TYPE, CONNECTION_INFO,
-					 CALL_LAST, SORT_FLAG, PORT, BAUD_RATE, VHF_USE, VHF_SYSTEM_ID, VHF_RTU_ID, VHF_TRANS_ID, REG_DATE, FLOW_DANGER, FLOW_WARNING, FLOW_DANGER_OFF, FLOW_WARNING_OFF, DANGER_USE)
+					 CALL_LAST, SORT_FLAG, PORT, BAUD_RATE, VHF_USE, VHF_SYSTEM_ID, VHF_RTU_ID, VHF_TRANS_ID, REG_DATE, FLOW_DANGER, FLOW_WARNING,
+					 FLOW_DANGER_OFF, FLOW_WARNING_OFF, DANGER_USE, SENSOR_TYPE)
 					 VALUES ('".$this->DB->html_encode($_REQUEST['RTU_ID'])."', '".$this->DB->html_encode($_REQUEST['SIGNAL_ID'])."', '".$this->DB->html_encode($_REQUEST['AREA_CODE'])."', '".$this->DB->html_encode($_REQUEST['RTU_NAME'])."', '".$this->DB->html_encode($_REQUEST['ORGAN_ID'])."',
 					 '".$this->DB->html_encode($_REQUEST['LINE_NO'])."', '".$this->DB->html_encode($_REQUEST['MODEL_NO'])."', '".$this->DB->html_encode($_REQUEST['RTU_TYPE'])."', '".$this->DB->html_encode($_REQUEST['CONNECTION_INFO'])."',
 					 '".$CALL_LAST."', '".$this->DB->html_encode($_REQUEST['SORT_FLAG'])."', '".$this->DB->html_encode($_REQUEST['PORT'])."', '".$this->DB->html_encode($_REQUEST['BAUDRATE'])."', '".$this->DB->html_encode($_REQUEST['VHF_USE'])."', 
 					 '".$this->DB->html_encode($_REQUEST['VHF_SYSTEM_ID'])."', '".$this->DB->html_encode($_REQUEST['VHF_RTU_ID'])."', '".$this->DB->html_encode($_REQUEST['VHF_TRANS_ID'])."',
-					 NOW(), '".$FLOW_DANGER."', '".$FLOW_WARNING."', '".$FLOW_DANGER_OFF."', '".$FLOW_WARNING_OFF."', '".$this->DB->html_encode($_REQUEST['DANGER_USE'])."') ";
+					 NOW(), '".$FLOW_DANGER."', '".$FLOW_WARNING."', '".$FLOW_DANGER_OFF."', '".$FLOW_WARNING_OFF."', '".$this->DB->html_encode($_REQUEST['DANGER_USE'])."'
+					 ,".$SENSOR_TYPE." ) ";
 			if($this->DB->QUERYONE($sql)) $sqlReturn = true;
 			$this->DB->parseFree();
 			return $sqlReturn;
@@ -857,6 +866,7 @@ Class ClassSetting {
 	 */
 	function setEquipUp(){
 		if(DB == "0"){
+			$SENSOR_TYPE = 0;
 			$CALL_LAST = $this->DB->html_encode($_REQUEST['CALL_LAST_D'])." ".$this->DB->html_encode($_REQUEST['CALL_LAST_H']).":".$this->DB->html_encode($_REQUEST['CALL_LAST_M']).":00";
 
 			if($this->DB->html_encode($_REQUEST['RTU_TYPE'])=='BR0' || $this->DB->html_encode($_REQUEST['RTU_TYPE'])=='BF0' || $this->DB->html_encode($_REQUEST['RTU_TYPE'])=='BA0'){ //방송장비 경보방송에 안나오기때문에 등록시 처리 --20181220
@@ -864,11 +874,17 @@ Class ClassSetting {
 			}
 			
 			if($this->DB->html_encode($_REQUEST['RTU_TYPE']) == 'S00'){
+				$SENSOR_TYPE = 2;
 				$FLOW_WARNING = $this->DB->html_encode($_REQUEST['FLOW_WARNING'])*1000;
 				$FLOW_DANGER = $this->DB->html_encode($_REQUEST['FLOW_DANGER'])*1000;
 				$FLOW_WARNING_OFF = $this->DB->html_encode($_REQUEST['FLOW_WARNING_OFF'])*1000;
 				$FLOW_DANGER_OFF = $this->DB->html_encode($_REQUEST['FLOW_DANGER_OFF'])*1000;
 			}else{
+				if($this->DB->html_encode($_REQUEST['RTU_TYPE']) == 'F00'){
+					$SENSOR_TYPE = 1;
+				}else if($this->DB->html_encode($_REQUEST['RTU_TYPE']) == 'A00'){
+					$SENSOR_TYPE = 3;
+				}
 				$FLOW_WARNING = $this->DB->html_encode($_REQUEST['FLOW_WARNING'])*100;
 				$FLOW_DANGER = $this->DB->html_encode($_REQUEST['FLOW_DANGER'])*100;
 				$FLOW_WARNING_OFF = $this->DB->html_encode($_REQUEST['FLOW_WARNING_OFF'])*100;
@@ -881,6 +897,7 @@ Class ClassSetting {
 					 SORT_FLAG = '".$this->DB->html_encode($_REQUEST['SORT_FLAG'])."', PORT = '".$this->DB->html_encode($_REQUEST['PORT'])."', BAUD_RATE = '".$this->DB->html_encode($_REQUEST['BAUDRATE'])."', VHF_USE = '".$this->DB->html_encode($_REQUEST['VHF_USE'])."', 
 					 VHF_SYSTEM_ID = '".$this->DB->html_encode($_REQUEST['VHF_SYSTEM_ID'])."', VHF_RTU_ID = '".$this->DB->html_encode($_REQUEST['VHF_RTU_ID'])."', VHF_TRANS_ID = '".$this->DB->html_encode($_REQUEST['VHF_TRANS_ID'])."',
 					 FLOW_DANGER = '".$FLOW_DANGER."', FLOW_WARNING = '".$FLOW_WARNING."', FLOW_DANGER_OFF = '".$FLOW_DANGER_OFF."', FLOW_WARNING_OFF = '".$FLOW_WARNING_OFF."', DANGER_USE = '".$this->DB->html_encode($_REQUEST['DANGER_USE'])."'
+					 , SENSOR_TYPE = ".$SENSOR_TYPE."
 					 WHERE RTU_ID = '".$this->DB->html_encode($_REQUEST['C_RTU_ID'])."' ";
 			
 			if($this->DB->QUERYONE($sql)) $sqlReturn = true;
