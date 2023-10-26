@@ -92,7 +92,7 @@ $(document).ready(function(){
 	// 1초에 한번 시간 업데이트
 	var server_time = new Date(<?=date("Y")?>, <?=date("m")?>-1, <?=date("d")?>, <?=date("H")?>, <?=date("i")?>, <?=date("s")?>);
 	var client_time = new Date();
-	var time_diff = server_time.getTime() - client_time.getTime();
+	var time_diff = client_time.getTime() - server_time.getTime();
 	var session_dead = 0;
 	var checkLogin = getCookie("set_login");
 	var session_cookie = getCookie("session_time");
@@ -160,7 +160,7 @@ $(document).ready(function(){
 
 	setInt_time = setInterval(function(){
 		var now_client_time = new Date();
-		var now_server_time = new Date(now_client_time.getTime() + time_diff);
+		var now_server_time = new Date(server_time.getTime() + time_diff);
 		
 		var now_date = now_server_time;
 		var now_y = now_date.getFullYear();
