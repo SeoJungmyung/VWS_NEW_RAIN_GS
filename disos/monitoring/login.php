@@ -45,10 +45,10 @@ wd+TfN++aIZJivncuQIDAQAB
 <?
 if(recaptcha == 0){
 	$tmp = "";
-// }else if(recaptcha == 1){
-// 	$tmp = "1";
-// }else if(recaptcha == 2){
-// 	$tmp = "2";
+}else if(recaptcha == 1){
+	$tmp = "1";
+}else if(recaptcha == 2){
+	$tmp = "2";
 }
 ?>
 <form id="login_frm" class="login<?=$tmp?>" autocomplete="off">
