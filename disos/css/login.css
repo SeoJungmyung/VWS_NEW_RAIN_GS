@@ -37,7 +37,7 @@ fieldset{position:relative; width:100%;}
 .login_titletxt{color:#666 !important;}
 
 .txt_box { }
-.close_box {float: right; cursor: pointer; padding: 25px;}
+.close_box {float: right; cursor: pointer; padding: 15px 25px;}
 .close_box:hover {}
 .captcha{margin-bottom: -4px; width: 178px;}
 .captchaT{margin: 20px 0 10px 0; font-size:12px; color: #fff; letter-spacing: -0.5px; }

@@ -65,7 +65,9 @@ if(recaptcha == 0){
 					<div class="top_txt_01">재난 정보를 보다 쉽고 편리하게 관리하세요</div>
 					<!-- <span id="logo_img"><img src="../images/top/<?=top_img?>"></span> -->
 					<!-- <span id="top_title"><?=top_title?></span> <span id="top_text"><?=top_text?></span> -->
-					<span class="top_title_01"><?=top_title?></span><span class="top_title_02">스마트 기상관측 시스템</span>
+					<span class="top_title_01"><?=top_title?></span>
+					<br>
+					<span class="top_title_02">스마트 기상관측 시스템</span>
 					<div class="top_txt_02"><b>DISOS</b> (Disaster State Observer System) v3.0</div>
 				</div>
 			</div>		
