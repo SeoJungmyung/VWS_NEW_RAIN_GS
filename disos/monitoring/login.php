@@ -31,7 +31,7 @@ $login_kind = $_COOKIE['login_kind'] ? $_COOKIE['login_kind'] : 1;
 </head>
 <body>
 
-<!-- 팝업사이즈 : 520x510px -->
+<!-- 팝업사이즈 : 670x750px -->
 
 <textarea id="publicKey" cols="66" rows="7" style="display:none;">-----BEGIN PUBLIC KEY-----
 MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDpFrdz4NJSmGDVWDjVvIHHTrCn
@@ -57,18 +57,18 @@ if(recaptcha == 0){
 	<input type="hidden" id="l_id" name="l_id">
 	<input type="hidden" id="l_pw" name="l_pw">
 	<div id="login_wrapper" class="login_wrapper<?=$tmp?>">
-		<div class="login_title">
+		<div class="close_box"><img src="../images/login_close.png"></div>
+		<div class="login_title">			
 			<div class="txt_box">
-				<span id="login_logo"></span>
+				<!-- <span id="login_logo"></span> -->
 				<div class="login_txt">
-					<span id="logo_img">
-						<img src="../images/top/<?=top_img?>">
-					</span>
-					<span id="top_title"><?=top_title?></span> <span id="top_text"><?=top_text?></span>
+					<div class="top_txt_01">재난 정보를 보다 쉽고 편리하게 관리하세요</div>
+					<!-- <span id="logo_img"><img src="../images/top/<?=top_img?>"></span> -->
+					<!-- <span id="top_title"><?=top_title?></span> <span id="top_text"><?=top_text?></span> -->
+					<span class="top_title_01"><?=top_title?></span><span class="top_title_02">스마트 기상관측 시스템</span>
+					<div class="top_txt_02"><b>DISOS</b> (Disaster State Observer System) v3.0</div>
 				</div>
-			</div>
-			<div class="close_box">X
-			</div>
+			</div>		
 		</div>
 		<fieldset style="margin-bottom:20px;">
 			<div class="input">
@@ -95,7 +95,7 @@ if(recaptcha == 0){
 						</div>
 					</tr>
 					<tr>
-						<td rowspan="2"><img src="" id="captcha" class="captcha" style="" tabindex="0" alt="보안 문자"/></td>
+						<td rowspan="2" class="captchaIMG"><img src="" id="captcha" class="captcha" style="" tabindex="0" alt="보안 문자"/></td>
 						<td class="g-recaptcha2-icon refresh" id="refresh" onclick="captcha_start()">
 							<button aria-label="새로고침"><i class="fa fa-rotate-right"></i></button>새로고침
 						</td>
@@ -128,8 +128,11 @@ if(recaptcha == 0){
 	</div>
 	<div class="copyright">
 		<input id="tts_code" type="hidden" value="" autocomplete="off">
-		본 시스템은 국민의 재산과 생명을 보호하기 위한 것으로<br>관계자 외 접근은 허용하지 않습니다.
-</div>
+		Google 크롬 브라우저에서 최적화되어 Google 크롬 브라우저 사용을 권장 드립니다. <br>
+		본 시스템은 국민의 재산과 생명을 보호하기 위한 것으로 관계자 외 접근은 허용하지 않습니다.<br>
+		<div class="copyright_2">Copyright ⓒ 2023 Hwajintni All rights reserved.</div>
+	</div>
+
 </form>
 
 <script type="text/javascript">
@@ -155,19 +158,19 @@ if(recaptcha == 0){
 
 $(document).ready(function(){
 
-	//logo 이미지 비율에 따라 위치 조정
-	function logoDisChange(){
-		var nWidth = $("#logo_img img")[0].naturalWidth;
-		var nHeight = $("#logo_img img")[0].naturalHeight;
-		var fixVal = nWidth / nHeight;
-		// console.log(fixVal);
-		if(fixVal > 1.7){
-			$("#login_logo").html($("#logo_img").html());
-			$(".login_txt #logo_img").html("");
-			$(".login_title img").css("top", "7px");
-		}
-	}
-	logoDisChange();
+	// //logo 이미지 비율에 따라 위치 조정
+	// function logoDisChange(){
+	// 	var nWidth = $("#logo_img img")[0].naturalWidth;
+	// 	var nHeight = $("#logo_img img")[0].naturalHeight;
+	// 	var fixVal = nWidth / nHeight;
+	// 	// console.log(fixVal);
+	// 	if(fixVal > 1.7){
+	// 		$("#login_logo").html($("#logo_img").html());
+	// 		$(".login_txt #logo_img").html("");
+	// 		$(".login_title img").css("top", "7px");
+	// 	}
+	// }
+	// logoDisChange();
 
 	$("#user_id").focus();
 

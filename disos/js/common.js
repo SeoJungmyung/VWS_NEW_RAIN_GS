@@ -1566,7 +1566,7 @@
 	function login(target){
 		swal({ 
 			title: '',
-			text: '<div><iframe width="451px" height="571px" scrolling="no" src="./login.php?target='+target+'" style="border: 0;margin-top:-30px;margin-left: -5px;"></iframe></div>',
+			text: '<div><iframe width="670px" height="750px" scrolling="no" src="./login.php?target='+target+'" style="border: 0;margin-top:-30px;margin-left: -5px;"></iframe></div>',
 			showConfirmButton: false,
 			html: true,
 			customClass: localStorage.getItem("recaptcha") == 0 ? 'swal-wide' : 'swal-wide-recaptcha',
