@@ -29,7 +29,7 @@ CREATE TABLE `area_info` (
   `LI` varchar(50) DEFAULT NULL,
   `AREA_LEVEL` char(1) NOT NULL,
   PRIMARY KEY (`AREA_CODE`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `atmo_hist` */
 
@@ -44,7 +44,7 @@ CREATE TABLE `atmo_hist` (
   `MAX_VAL` int(11) DEFAULT NULL,
   `RTU_STATE` char(1) DEFAULT NULL,
   PRIMARY KEY (`AREA_CODE`,`DATA_TYPE`,`ATMO_DATE`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `broadcast_log` */
 
@@ -81,7 +81,7 @@ CREATE TABLE `broadcast_log` (
   `VOICE` int(11) DEFAULT '0' COMMENT '0:여자,1:남자',
   `SPEED` int(11) DEFAULT '80' COMMENT '음원속도',
   PRIMARY KEY (`LOG_NO`)
-) ENGINE=MyISAM AUTO_INCREMENT=320 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=320 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `broadcast_passphonenum` */
 
@@ -94,7 +94,7 @@ CREATE TABLE `broadcast_passphonenum` (
   `STATUS` tinyint(1) DEFAULT NULL COMMENT '전송상태 (0:등록, 1:진행중, 2:완료)',
   `UPDATE_TIME` datetime DEFAULT NULL,
   PRIMARY KEY (`IDX`)
-) ENGINE=MyISAM AUTO_INCREMENT=410 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=410 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `broadcast_plan` */
 
@@ -127,7 +127,7 @@ CREATE TABLE `broadcast_plan` (
   `PLAN_REG_DATE` datetime NOT NULL COMMENT '등록일',
   `VHF_MSG_GRP` int(11) DEFAULT NULL,
   PRIMARY KEY (`PLAN_NO`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='InnoDB free: 8192 kB';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='InnoDB free: 8192 kB';
 
 /*Table structure for table `broadcast_script` */
 
@@ -157,7 +157,7 @@ CREATE TABLE `broadcast_script` (
   `SCRIPT_MOD_DATE` datetime DEFAULT NULL COMMENT '수정일',
   `SCRIPT_MOD_USER` varchar(50) DEFAULT NULL COMMENT '수정한 ID',
   PRIMARY KEY (`SCRIPT_NO`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `broadcast_section` */
 
@@ -168,7 +168,7 @@ CREATE TABLE `broadcast_section` (
   `SECTION_NAME` varchar(100) DEFAULT NULL COMMENT '방송구분 이름',
   `SORT_FLAG` int(11) DEFAULT NULL COMMENT '방송구분 정렬 순서',
   PRIMARY KEY (`SECTION_NO`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `chime_info` */
 
@@ -178,7 +178,7 @@ CREATE TABLE `chime_info` (
   `CHIME_NO` int(11) NOT NULL COMMENT '차임벨 일련번호',
   `CHIME_NAME` varchar(20) NOT NULL COMMENT '차임벨 명',
   PRIMARY KEY (`CHIME_NO`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `dam_hist` */
 
@@ -194,7 +194,7 @@ CREATE TABLE `dam_hist` (
   `INF` int(11) DEFAULT NULL,
   `OUTF` int(11) DEFAULT NULL,
   PRIMARY KEY (`AREA_CODE`,`BTYPE`,`DAMDATE`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `dn_direct_url` */
 
@@ -208,7 +208,7 @@ CREATE TABLE `dn_direct_url` (
   `menu_use` int(1) DEFAULT '0' COMMENT '메뉴 사용 여부(0: 미사용, 1: 사용)',
   `login_check` int(1) DEFAULT '0' COMMENT '로그인 체크 여부 (0 :미사용 , 1 사용)',
   PRIMARY KEY (`menu_idx`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `dn_layout` */
 
@@ -218,7 +218,7 @@ CREATE TABLE `dn_layout` (
   `lay_idx` int(11) NOT NULL DEFAULT '1' COMMENT 'oragn_info 테이블의 키 값',
   `lay_case` int(2) NOT NULL DEFAULT '1' COMMENT '화면구성 번호',
   PRIMARY KEY (`lay_idx`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `dn_layout_item` */
 
@@ -230,7 +230,7 @@ CREATE TABLE `dn_layout_item` (
   `lay_item` int(2) NOT NULL DEFAULT '1' COMMENT '해당 영역의 항목 순서',
   `lay_ival` int(2) DEFAULT NULL COMMENT '해당 항목(1: 강우, 2: 수위, 3: AWS, 4: 적설, 5: 방송, 6: 경보, 7: 장비상태)',
   PRIMARY KEY (`lay_idx`,`lay_area`,`lay_item`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='레이아웃 구성 항목별 설정';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='레이아웃 구성 항목별 설정';
 
 /*Table structure for table `dn_layout_ival` */
 
@@ -240,7 +240,7 @@ CREATE TABLE `dn_layout_ival` (
   `lay_ival` int(2) NOT NULL AUTO_INCREMENT COMMENT '항목 키 값',
   `lay_text` varchar(100) NOT NULL COMMENT '항목 이름',
   PRIMARY KEY (`lay_ival`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `dn_main_group` */
 
@@ -252,7 +252,7 @@ CREATE TABLE `dn_main_group` (
   `group_sort` int(11) DEFAULT NULL COMMENT '그룹 정렬',
   `organ_id` int(11) DEFAULT NULL COMMENT 'oragn_info 테이블의 키 값',
   PRIMARY KEY (`group_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `dn_main_member` */
 
@@ -262,7 +262,7 @@ CREATE TABLE `dn_main_member` (
   `group_id` int(11) NOT NULL COMMENT '그룹 아이디',
   `rtu_id` int(11) NOT NULL COMMENT '장비 아이디',
   PRIMARY KEY (`group_id`,`rtu_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `dn_menu_in` */
 
@@ -276,7 +276,7 @@ CREATE TABLE `dn_menu_in` (
   `menu_level` int(1) DEFAULT NULL COMMENT '메뉴 권한(1: 최상위관리자, 2: 지역관리자, 3: 일반사용자, 4: 임시사용자)',
   `menu_use` int(1) DEFAULT NULL COMMENT '메뉴 사용 여부(0: 미사용, 1: 사용)',
   PRIMARY KEY (`menu_idx`,`menu_num`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `dn_menu_top` */
 
@@ -289,7 +289,7 @@ CREATE TABLE `dn_menu_top` (
   `menu_icon` varchar(100) DEFAULT NULL COMMENT '메뉴 아이콘',
   `menu_use` int(1) DEFAULT NULL COMMENT '메뉴 사용 여부(0: 미사용, 1: 사용)',
   PRIMARY KEY (`menu_idx`,`menu_name`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `dn_report_url` */
 
@@ -301,7 +301,7 @@ CREATE TABLE `dn_report_url` (
   `report_name` varchar(100) DEFAULT NULL COMMENT '메뉴 이름',
   `report_use` varchar(100) NOT NULL DEFAULT '0' COMMENT '메뉴 url',
   PRIMARY KEY (`idx`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `dn_setting` */
 
@@ -356,7 +356,7 @@ CREATE TABLE `flow_hist` (
   `FLOW_MIN` int(11) DEFAULT NULL,
   PRIMARY KEY (`AREA_CODE`,`DATA_TYPE`,`FLOW_DATE`),
   UNIQUE KEY `FLOW_DATE` (`DATA_TYPE`,`FLOW_DATE`,`AREA_CODE`) USING BTREE
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 /*Table structure for table `group_info` */
 
@@ -370,7 +370,7 @@ CREATE TABLE `group_info` (
   `TREE_PATH` varchar(30) DEFAULT NULL COMMENT '계층경로 : GROUP_ID 조합',
   `AREA_CODE` varchar(10) DEFAULT NULL COMMENT '지역코드',
   `GROUP_NAME` varchar(50) DEFAULT NULL COMMENT '그룹명'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `humi_hist` */
 
@@ -385,7 +385,7 @@ CREATE TABLE `humi_hist` (
   `MAX_VAL` int(11) DEFAULT NULL,
   `RTU_STATE` char(1) DEFAULT NULL,
   PRIMARY KEY (`AREA_CODE`,`DATA_TYPE`,`HUMI_DATE`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `line_info` */
 
@@ -395,7 +395,7 @@ CREATE TABLE `line_info` (
   `LINE_TYPE` char(1) NOT NULL DEFAULT '',
   `LINE_NAME` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`LINE_TYPE`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `model_info` */
 
@@ -407,7 +407,7 @@ CREATE TABLE `model_info` (
   `CALL_START` datetime DEFAULT NULL,
   `CALL_TERM` int(11) DEFAULT NULL,
   PRIMARY KEY (`MODEL_TYPE`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 /*Table structure for table `organ_info` */
 
@@ -423,7 +423,7 @@ CREATE TABLE `organ_info` (
   `AREA_SUB` varchar(20) DEFAULT NULL COMMENT '행정구역 시군구',
   PRIMARY KEY (`ORGAN_ID`),
   KEY `AREA_CODE` (`AREA_CODE`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `overlay_state` */
 
@@ -434,7 +434,7 @@ CREATE TABLE `overlay_state` (
   `x` varchar(100) DEFAULT NULL,
   `y` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`AREA_CODE`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `radi_hist` */
 
@@ -447,7 +447,7 @@ CREATE TABLE `radi_hist` (
   `RADIATION` int(11) DEFAULT NULL,
   `RTU_STATE` char(1) DEFAULT NULL,
   PRIMARY KEY (`AREA_CODE`,`DATA_TYPE`,`RADI_DATE`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `rain_hist` */
 
@@ -461,7 +461,7 @@ CREATE TABLE `rain_hist` (
   `SENSING` char(1) DEFAULT '0',
   PRIMARY KEY (`AREA_CODE`,`RAIN_DATE`,`DATA_TYPE`),
   UNIQUE KEY `RAIN_DATE` (`DATA_TYPE`,`RAIN_DATE`,`AREA_CODE`) USING BTREE
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `realtime_data` */
 
@@ -473,7 +473,7 @@ CREATE TABLE `realtime_data` (
   `REALTIME` datetime DEFAULT '0000-00-00 00:00:00',
   `REALDATA` int(11) DEFAULT NULL,
   PRIMARY KEY (`AREA_CODE`,`SENSOR_TYPE`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='InnoDB free: 8192 kB; InnoDB free: 8192 kB';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='InnoDB free: 8192 kB; InnoDB free: 8192 kB';
 
 /*Table structure for table `report_info` */
 
@@ -505,7 +505,7 @@ CREATE TABLE `report_info` (
   `W_OPERATION` varchar(200) DEFAULT NULL COMMENT '상황근무',
   `W_CORRECTIVE` varchar(200) DEFAULT NULL COMMENT '조치사항',
   PRIMARY KEY (`IDX`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `rtu_group` */
 
@@ -517,7 +517,7 @@ CREATE TABLE `rtu_group` (
   `organ_id` int(11) NOT NULL,
   `SORT_FLAG` int(11) DEFAULT '0',
   PRIMARY KEY (`rtu_id`,`group_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `rtu_hist` */
 
@@ -533,7 +533,7 @@ CREATE TABLE `rtu_hist` (
   `WORK_DESC` varchar(600) DEFAULT NULL,
   `REG_DATE` datetime DEFAULT NULL,
   PRIMARY KEY (`WORK_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `rtu_info` */
 
@@ -585,7 +585,7 @@ CREATE TABLE `rtu_info` (
   `DANGER_USE` int(100) NOT NULL DEFAULT '0' COMMENT '이벤트 미사용 : 0 사용 : 1',
   PRIMARY KEY (`RTU_ID`,`SENSOR_TYPE`,`SIGNAL_ID`),
   KEY `AREA_CODE` (`AREA_CODE`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `rtu_location` */
 
@@ -607,7 +607,7 @@ CREATE TABLE `rtu_location` (
   `WR_Y_POINT` double DEFAULT '127.0973769',
   `WR_EMD_CD` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`RTU_ID`,`MAP_ICON_X`,`MAP_ICON_Y`,`MAP_DATA_X`,`MAP_DATA_Y`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `rtu_log` */
 
@@ -623,7 +623,7 @@ CREATE TABLE `rtu_log` (
   `VHF_CALL` int(10) NOT NULL DEFAULT '0',
   `VHF_RESULT` int(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`LOG_NO`,`RTU_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `rtu_plan` */
 
@@ -634,7 +634,7 @@ CREATE TABLE `rtu_plan` (
   `RTU_ID` int(11) DEFAULT NULL,
   UNIQUE KEY `RTU_PLAN_UK` (`PLAN_ID`,`RTU_ID`),
   KEY `PLAN_ID` (`PLAN_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `rtu_sensor` */
 
@@ -661,7 +661,7 @@ CREATE TABLE `rtu_sensor` (
   `AUTO_EVENT_USE` int(1) DEFAULT '0',
   PRIMARY KEY (`RTU_ID`,`SENSOR_TYPE`),
   UNIQUE KEY `RTU_ID` (`SENSOR_TYPE`,`RTU_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `rtuconfiginfo` */
 
@@ -689,7 +689,7 @@ CREATE TABLE `rtuconfiginfo` (
   `DefaultUserTel3` varchar(16) DEFAULT NULL,
   `RegDate` datetime DEFAULT NULL,
   PRIMARY KEY (`RTU_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `snow_hist` */
 
@@ -703,7 +703,7 @@ CREATE TABLE `snow_hist` (
   `SENSING` char(1) DEFAULT '0',
   PRIMARY KEY (`AREA_CODE`,`DATA_TYPE`,`SNOW_DATE`),
   UNIQUE KEY `SNOW_DATE` (`DATA_TYPE`,`AREA_CODE`,`SNOW_DATE`) USING BTREE
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `state_hist` */
 
@@ -742,7 +742,7 @@ CREATE TABLE `state_hist` (
   `DI_STATUS` int(11) DEFAULT '0',
   `SPEAKER_SELECT` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`AREA_CODE`,`LOG_DATE`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `statistics_tmp` */
 
@@ -751,7 +751,7 @@ DROP TABLE IF EXISTS `statistics_tmp`;
 CREATE TABLE `statistics_tmp` (
   `TYPE` varchar(2) DEFAULT NULL,
   `NUM` int(11) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `suns_hist` */
 
@@ -764,7 +764,7 @@ CREATE TABLE `suns_hist` (
   `SUNSHINE` int(11) DEFAULT NULL,
   `RTU_STATE` char(1) DEFAULT NULL,
   PRIMARY KEY (`AREA_CODE`,`DATA_TYPE`,`SUNS_DATE`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `temp_hist` */
 
@@ -781,7 +781,7 @@ CREATE TABLE `temp_hist` (
   `MAX_TIME` datetime DEFAULT NULL,
   `RTU_STATE` char(1) DEFAULT NULL,
   PRIMARY KEY (`AREA_CODE`,`DATA_TYPE`,`TEMP_DATE`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `updater_log` */
 
@@ -825,7 +825,7 @@ CREATE TABLE `user_info` (
   PRIMARY KEY (`USER_IDX`,`USER_ID`),
   KEY `ORGAN_ID` (`ORGAN_ID`),
   KEY `AREA_CODE` (`AREA_CODE`)
-) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `user_log` */
 
@@ -837,7 +837,7 @@ CREATE TABLE `user_log` (
   `LOG_CODE` int(3) NOT NULL DEFAULT '0',
   `LOG_DESC` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`LOG_DATE`,`USER_ID`,`LOG_CODE`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `user_right` */
 
@@ -848,7 +848,7 @@ CREATE TABLE `user_right` (
   `RTU_ID` int(11) NOT NULL COMMENT '장비 ID',
   `RTU_RIGHT` int(11) DEFAULT NULL COMMENT '권한레벨 4+2+1',
   PRIMARY KEY (`USER_ID`,`RTU_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `wind_hist` */
 
@@ -867,7 +867,7 @@ CREATE TABLE `wind_hist` (
   `MAX_VEL_TIME` datetime DEFAULT NULL,
   `RTU_STATE` char(1) DEFAULT NULL,
   PRIMARY KEY (`AREA_CODE`,`DATA_TYPE`,`WIND_DATE`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `wr_alarm_emer` */
 
@@ -879,7 +879,7 @@ CREATE TABLE `wr_alarm_emer` (
   `script_no` int(8) DEFAULT NULL COMMENT '방송 스크립트 번호',
   `sort` int(11) DEFAULT NULL COMMENT '정렬 순서',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='기상상황판 긴급방송';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='기상상황판 긴급방송';
 
 /*Table structure for table `wr_map_alert` */
 
@@ -891,7 +891,7 @@ CREATE TABLE `wr_map_alert` (
   `width` varchar(30) DEFAULT NULL,
   `height` varchar(30) DEFAULT NULL,
   `mode` int(5) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `wr_map_info` */
 
@@ -907,7 +907,7 @@ CREATE TABLE `wr_map_info` (
   `EMD_KOR_NM` varchar(100) DEFAULT NULL COMMENT '읍면동 한글명',
   `X_CENT` varchar(100) DEFAULT NULL COMMENT '읍면동 중심 X 좌표',
   `Y_CENT` varchar(100) DEFAULT NULL COMMENT '읍면동 중심 Y 좌표'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `wr_map_setting` */
 
@@ -939,7 +939,7 @@ CREATE TABLE `wr_map_setting` (
   `SIG_CD` varchar(12) NOT NULL COMMENT '지역코드',
   `api_key` varchar(100) NOT NULL,
   PRIMARY KEY (`idx`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='기상상황판 설정';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='기상상황판 설정';
 
 /*Table structure for table `wr_map_sub_info` */
 
@@ -954,7 +954,7 @@ CREATE TABLE `wr_map_sub_info` (
   `sub_x_point` double DEFAULT NULL COMMENT '장비 x 좌표',
   `sub_y_point` double DEFAULT NULL COMMENT '장비 y 좌표',
   PRIMARY KEY (`sub_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `wr_rtu_group_info` */
 
@@ -967,7 +967,7 @@ CREATE TABLE `wr_rtu_group_info` (
   `CENTER_Y` varchar(100) DEFAULT NULL COMMENT '중심좌표 Y',
   `ZOOM_LEVEL` int(2) DEFAULT NULL COMMENT '줌레벨',
   PRIMARY KEY (`AREA_GRP_NO`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 /*Data for the table `area_info` */
