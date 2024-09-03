@@ -1387,7 +1387,7 @@
         	// 	$("#sel_move").lcs_on();
         	// }
         	
-			state_update(1);
+			// state_update(1);
     	});
 			
     	// 마커 및 오버레이 업데이트
@@ -1476,9 +1476,9 @@
 				
     		// 	if(kind == 1) map_load(); // 처음만 map_load() 호출
         	// });
-			map_load();
+			
     	} // state_update() end
-    	
+    	map_load();
 
 		// 교집합 함수
 		function intersect(a, b){
