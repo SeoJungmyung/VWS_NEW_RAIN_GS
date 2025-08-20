@@ -47323,11 +47323,11 @@ insert  into `dn_layout`(`lay_idx`,`lay_case`) values (1,2);
 
 /*Data for the table `dn_layout_item` */
 
-insert  into `dn_layout_item`(`lay_idx`,`lay_area`,`lay_item`,`lay_ival`) values (1,1,1,5),(1,2,1,1),(1,2,2,2),(1,2,3,3);
+insert  into `dn_layout_item`(`lay_idx`,`lay_area`,`lay_item`,`lay_ival`) values (1,1,1,1),(1,2,1,2),(1,2,2,3),(1,2,3,4);
 
 /*Data for the table `dn_layout_ival` */
 
-insert  into `dn_layout_ival`(`lay_ival`,`lay_text`) values (1,'강우현황'),(2,'수위현황'),(3,'AWS현황'),(4,'적설현황'),(5,'지도현황');
+insert  into `dn_layout_ival`(`lay_ival`,`lay_text`) values (1,'강우현황'),(2,'수위현황'),(3,'AWS현황'),(4,'적설현황');
 
 /*Data for the table `dn_main_group` */
 
