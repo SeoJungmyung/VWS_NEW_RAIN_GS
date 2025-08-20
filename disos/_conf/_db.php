@@ -1,8 +1,8 @@
 <?
-define('DB_HOST',		"192.168.1.7");
+define('DB_HOST',		"192.168.1.25");
 define('DB_USER',		"root");  
 define('DB_PASSWORD',	"123456");
-define('DB_DATABASE',	"vws"); 
+define('DB_DATABASE',	"vws_gs_simple"); 
 
 define("DIFF", ""); // 해당 수치만큼 뺀 기준으로 데이터 표출
 // define("DIFF", "-1 hour");

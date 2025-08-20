@@ -474,13 +474,6 @@ $(document).ready(function(){
 							}else if(v.lay_ival == 4){ // 적설현황
 								snow_table(1, lay_id);
 								ajax_var += "snow_t,";
-							}else if(v.lay_ival == 5){ // 지도현황
-								if(lay_case == 1 || lay_case == 2 || lay_case == 5){
-									map_table_full(1, lay_id);
-								}else{
-									map_table(1, lay_id);
-								}
-								ajax_var += "displace_t,";
 							// }else if(v.lay_ival == 6){ // 지진현황
 							// 	eqk_table(1, lay_id);
 							// 	ajax_var += "eqk_t,";

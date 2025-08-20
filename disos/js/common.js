@@ -329,52 +329,6 @@
         }); // ajax end
 	}
 	
-	// 지도 테이블 호출
-	function map_table_full(type, lay_id){
-		var tmp_spin = null;
-
-		        if(type == 1){
-		    		var lay_html = '';
-					lay_html += ' <div class="main_contitle"> ';
-					lay_html += ' <div class="tit"> ';
-					lay_html += ' <img src="../images/board_icon_aws.png" alt="관제상황판">  <span>관제상황판</span> ';
-					lay_html += ' <span class="quick"> ';
-					// lay_html += ' <img src="../images/quick_link.png" onclick=";"></span>';
-					lay_html += ' </div>';
-					lay_html += '  <div class="right_bg2">';
-					lay_html += ' <table class="main_table"> ';
-					lay_html += ' <iframe src="../../tvbrd/index.php?type=1" style="width:100%; height:800px; border-radius: 10px;"/> ';
-					lay_html += ' </table> </div> ';
-					$(lay_id).append(lay_html);
-					
-		        }else if(type == 2){					
-		        }
-	}
-	
-	// 지도 테이블 호출
-	function map_table(type, lay_id){
-		var tmp_spin = null;
-
-		        if(type == 1){
-		    		var lay_html = '';	
-					lay_html += ' <div class="main_contitle"> ';
-					lay_html += ' <div class="tit"> ';
-					lay_html += ' <img src="../images/board_icon_aws.png" alt="관제상황판">  <span>관제상황판</span> ';
-					lay_html += ' <span class="quick"> ';
-					// lay_html += ' <img src="../images/quick_link.png" onclick=";"></span>';
-					lay_html += ' </div>';
-					lay_html += '  <div class="right_bg2">';
-					lay_html += ' <table class="main_table"> ';
-					lay_html += ' <iframe src="../../tvbrd/index.php?type=1" style="width:100%; height:495px; border-radius: 10px;"/> ';
-					lay_html += ' </table> </div> ';
-					$(lay_id).append(lay_html);
-					
-		        }else if(type == 2){					
-		        }
-	}
-
-	
-
 	// 수위 테이블 호출
 	function flow_table(type, lay_id){
 		var tmp_spin = null;
