@@ -126,7 +126,7 @@ require_once "../_info/_set_setting.php";
 	var login_token = "<?=keyIsLogin?>";
 	var sesstiontime_token = getCookie("session_time_"+ms_token);
 
-  if(login_token != 1){
+  if(login_token == "0"){
     // 로그인 안했을때 숨김처리
     // $("#btn_logout").addClass('dp_b');
     $("#btn_logout").addClass('dp0');

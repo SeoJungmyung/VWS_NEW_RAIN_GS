@@ -361,7 +361,7 @@ $(document).ready(function(){
 		login_token = "<?=keyIsLogin?>";
 		sesstiontime_token = getCookie("session_time_"+ms_token);
 
-		if(login_token != "1"){
+		if(login_token == "0"){
 			if(tmp_num == 3 || tmp_num == 4 || tmp_href == "rpt_ori.php"){
 				// $("#main").attr("src", ");
 				// window.open("./login.php?target="+tmp_href, "로그인을 해주세요.", "width=533, height=533 , status=no");
@@ -384,7 +384,7 @@ $(document).ready(function(){
 		login_token = "<?=keyIsLogin?>";
 		sesstiontime_token = getCookie("session_time_"+ms_token);
 
-		if(login_token != "1"){
+		if(login_token == "0"){
 			if(tmp_num == 3 || tmp_num == 4 || tmp_href == "rpt_ori.php"){
 				// $("#main").attr("src", ");
 				// window.open("./login.php?target="+tmp_href, "로그인을 해주세요.", "width=533, height=533, toolbar=no,status=no,menubar=no,resizable=yes, location=no");
@@ -400,7 +400,7 @@ $(document).ready(function(){
     //아이프레임 로드 시
 	$("#main").load(function(){
 		var tmp_src = $(this).attr("src");
-		if(login_token == "1" && login_token) {
+		if(login_token && login_token != "0") {
 			if(tmp_src == "tms_main.php"){
 				$("#btn_layout").removeClass("dp0");
 			}else{
