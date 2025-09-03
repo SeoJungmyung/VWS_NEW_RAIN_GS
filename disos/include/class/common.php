@@ -167,19 +167,18 @@ Class ClassCommon {
 	function checkPassword(){
 		if(DB == "0"){
 			
-			$l_id = keyUserID;
-			$l_pw = $this->rsa_decrypt($_REQUEST['l_pw']);
-			$l_pw = hash("sha256", $this->PASS_S.$l_pw);
+			$l_id = keyUserID ? keyUserID : $_SESSION['user_id'];
 			
-			$sql = " SELECT a.user_id, a.user_pwd, a.user_type, a.user_name, 
-							a.organ_id, b.area_code, b.organ_name, b.sort_base
+			$sql = " SELECT a.USER_ID, a.USER_PWD, a.PASS_S
 					 FROM user_info AS a
-					 LEFT JOIN organ_info AS b ON a.organ_id = b.organ_id
-					 WHERE a.user_id = '".$this->DB->html_encode($l_id)."' AND a.user_pwd = '".$this->DB->html_encode($l_pw)."' ";
+					 WHERE a.USER_ID = '".$this->DB->html_encode($l_id)."' ";
 						
 			$rs = $this->DB->execute($sql);
+
+			$l_pw = $this->rsa_decrypt($_REQUEST['l_pw']);
+			$l_pw = hash("sha256", $rs[0]['PASS_S'].$l_pw);
 			
-			if($this->DB->num_rows){
+			if($this->DB->num_rows && $l_pw == $rs[0]['USER_PWD']){
 				$sqlReturn = true;
 				$result = 1;
 			}else{
